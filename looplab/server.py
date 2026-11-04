@@ -92,6 +92,7 @@ class App:
         with self.jobs_lock:
             if self.busy():
                 raise ValueError("An evaluation is already running; check its progress or cancel it")
+            self.refresh()  # Pick up models added since the companion started.
             models = list(self.models.values()) if selection == "all" else [self.model(selection)]
             models.sort(key=lambda m: m.size_bytes)
             with self.worker.lock:
