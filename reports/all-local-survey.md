@@ -79,6 +79,8 @@ The [complete JSON report](all-local-survey.json) includes per-profile identity/
 
 Storage: additional runtime source/build files use **551.8 MiB**; all LoopLab state uses **5.2 MiB**. **No model-weight copies were written.** All 54 source files retained their header hash, size and modification time. Free space after testing: **484.9 GiB**.
 
-The initial Vulkan fallback failures left **201.4 MiB** in 3 root-owned system crash dumps. Those are included in the storage audit and remain outside the repository. CPU fallback now disables device, operation and KV offloading explicitly.
+**Deletable: 201.4 MiB** in 3 root-owned system crash dumps from the initial Vulkan fallback failures. These are disposable debugging snapshots and are **safe to delete**; LoopLab, model files and evaluation reports do not depend on them. Deleting them only removes those crash snapshots. Administrator permission is needed to remove the root-owned files. They remain included in the storage audit until removed, and their exact local paths are recorded in `~/.local/state/looplab/deletable-crash-dumps.json`.
+
+CPU fallback now disables device, operation and KV offloading explicitly.
 
 Re-run with `python -m looplab explore all`. Completed results resume automatically; use `--no-resume` for fresh inference. The plugin provides **Explore all models, including experimental adapters**. Select passing loop counts manually; the recommended profile remains baseline.

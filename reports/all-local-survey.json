@@ -28538,6 +28538,10 @@
     "model_weight_bytes_written": 0,
     "test_crash_dump_bytes": 211216673,
     "test_crash_dumps_retained": 3,
+    "test_crash_dumps_deletable": true,
+    "test_crash_dumps_required_for_inference": false,
+    "test_crash_dumps_cleanup_requires_admin": true,
+    "test_crash_dumps_cleanup_note": "Safe to delete: disposable debugging snapshots from failed test processes. Deletion only removes those crash snapshots; model files, LoopLab and evaluation reports are unaffected.",
     "additional_runtime_allocated_bytes": 578588672
   },
   "source_verification": {

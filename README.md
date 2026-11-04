@@ -119,6 +119,8 @@ The plugin streams text and reasoning, forwards function tools and tool results,
 
 Each chat answer identifies the active mode: **original model** or the actual number of **experimental loop passes**. Choosing the recommended profile can select the original model when the diagnostics do not demonstrate a benefit.
 
+The original model-library entries keep their existing names. Select the **bouldinnathan/looplab** generator, enter the model name or ID, and choose **2**, **3**, or **4 passes, anchored damping (experimental)** in **Loop profile**. An active looped reply starts with a banner such as **LoopLab · 2 passes (experimental)**; baseline replies say **LoopLab · original model**. **Show selected model's report** lists which pass counts passed testing. Older files named `*-looped-2x-mid4` are legacy static-repeat conversions, separate from these runtime loop profiles.
+
 ## Commands and resource limits
 
 ```sh
