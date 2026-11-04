@@ -21,6 +21,17 @@ export function messages(history: Chat): any[] {
 
 function summary(report: any): string {
   if (!report || report.status === "untested") return "This model has not been tested yet.";
+  if (report.suite?.startsWith("looplab-explore-")) {
+    const rows = (report.profiles || []).map((p: any) =>
+      `| ${p.passes} | ${p.anchor_identity?.passed ? "Passed" : "Failed"} | ${p.loop_smoke?.passed ? "Passed" : p.status} |`);
+    return `**${report.model?.name}: ${report.status}**\n\n` +
+      `Adapter: ${report.model?.tier}. Original-model check: ${report.baseline_check?.passed ? "passed" : "not passed or not run"}.\n\n` +
+      (rows.length ? `| Passes | Anchor identity | Loop smoke test |\n|---|---|---|\n${rows.join("\n")}\n\n` : "") +
+      (report.reasons?.length ? report.reasons.join("; ") + "\n\n" : "") +
+      (report.diagnostic ? `Diagnostic:\n\n\`\`\`text\n${report.diagnostic}\n\`\`\`\n\n` : "") +
+      (report.repair ? "A repair handoff has been saved for a later coding pass.\n\n" : "") +
+      "Successful profiles can be selected manually. These are experimental compatibility checks; quality improvement has not been tested.";
+  }
   const baseline = report.baseline;
   const rows = (report.profiles || []).map((p: any) =>
     `| ${p.passes} | ${p.anchor_identity?.passed ? "Passed" : "Failed"} | ${p.selection_passed}/${p.selection_total} | ${p.holdout_total ? `${p.holdout_passed}/${p.holdout_total}` : "Not selected"} |`);
@@ -42,9 +53,9 @@ export async function generate(ctl: GeneratorController, history: Chat): Promise
   const inventory = async () => {
     const data = await json("/looplab/refresh", {});
     ctl.fragmentGenerated("Select a model by entering its name or ID in plugin settings.\n\n" +
-      data.models.map((m: any) => `- **${m.name}**: ${m.eligible ? "eligible for testing" : m.reasons.join("; ")}\n  ID: \`${m.id}\``).join("\n"));
+      data.models.map((m: any) => `- **${m.name}**: ${m.eligible ? `${m.tier || "validated"} adapter, eligible for testing` : m.reasons.join("; ")}\n  ID: \`${m.id}\``).join("\n"));
   };
-  if (action === "scan" || (!model && !["test-all", "jobs", "cancel"].includes(action))) {
+  if (action === "scan" || (!model && !["test-all", "explore-all", "jobs", "cancel"].includes(action))) {
     await inventory(); return;
   }
   if (action === "jobs" || action === "cancel") {
@@ -60,10 +71,11 @@ export async function generate(ctl: GeneratorController, history: Chat): Promise
   const getReport = () => json(`/looplab/reports/${encodeURIComponent(model)}`);
   if (action === "report") { ctl.fragmentGenerated(summary(await getReport())); return; }
   let report = model ? await getReport() : null;
-  const shouldTest = ["test-model", "test-all"].includes(action) ||
+  const shouldTest = ["test-model", "test-all", "explore-all", "explore-model"].includes(action) ||
     (action === "chat" && config.get("profile") !== "baseline" && config.get("autoTest") && report?.status === "untested");
   if (shouldTest) {
-    const job = await json("/looplab/jobs", { model: action === "test-all" ? "all" : model, quick: config.get("quick") });
+    const job = await json("/looplab/jobs", { model: ["test-all", "explore-all"].includes(action) ? "all" : model,
+      quick: config.get("quick"), explore: action.startsWith("explore-") });
     ctl.fragmentGenerated(`Auto-test started (${job.id}). You can cancel it from the plugin's Cancel active tests action.\n\n`);
     let last = "";
     try {

@@ -6,6 +6,7 @@ import json
 import os
 from pathlib import Path
 import secrets
+import resource
 import shutil
 import socket
 import subprocess
@@ -14,7 +15,7 @@ import time
 from urllib.error import URLError
 from urllib.request import Request, urlopen
 
-from .models import ROOT, Profile
+from .models import ROOT, Profile, resource_reason, runtime_binary
 
 MIN_FREE_BYTES = 2 * 1024**3
 MAX_LOG_BYTES = 8 * 1024**2
@@ -24,7 +25,7 @@ MAX_LOG_FILES = 64
 class Worker:
     def __init__(self, state, binary=None, context=2048, gpu_layers=999, timeout=300):
         self.state = Path(state)
-        self.binary = Path(binary or ROOT / ".runtime/build/bin/llama-server").resolve()
+        self.binary = Path(binary or runtime_binary()).resolve()
         self.context = context
         self.gpu_layers = gpu_layers
         self.timeout = timeout
@@ -42,11 +43,12 @@ class Worker:
         if not self.binary.is_file() or not marker.is_file():
             raise RuntimeError("LoopLab runtime is not built. Run python scripts/build_runtime.py")
         info = json.loads(marker.read_text())
-        if info.get("method") != "anchored_damped_euler" or info.get("version") != 1:
+        if info.get("method") != "anchored_damped_euler" or info.get("version") not in (1, 2):
             raise RuntimeError("Runtime does not declare the required LoopLab capabilities")
         return {**info, "execution_policy": {"context": self.context, "gpu_layers": self.gpu_layers,
                 "kv_type": "f16", "flash_attention": False, "vulkan_fusion": False,
-                "prefix_cache": False, "runner_version": "0.1.0"}}
+                "prefix_cache": False, "swa_full": info.get('version') == 2,
+                "cpu_above_gib": 32, "runner_version": "0.2.0"}}
 
     def _stop_process(self):
         if self.process:
@@ -112,9 +114,9 @@ class Worker:
             if output:
                 output.close()
 
-    def ensure(self, model, profile):
+    def ensure(self, model, profile, diagnostic=False):
         info = self.build_info()
-        if not model.eligible:
+        if not model.eligible and not (diagnostic and profile.passes == 1 and model.loadable):
             raise ValueError("Model is not eligible: " + "; ".join(model.reasons))
         stat = Path(model.path).stat()
         if stat.st_size != model.size_bytes or stat.st_mtime_ns != model.mtime_ns:
@@ -125,6 +127,8 @@ class Worker:
         if self.key == key and self.process and self.process.poll() is None:
             return
         self._stop_process()
+        if reason := resource_reason(model):
+            raise MemoryError(reason)
         self.state.mkdir(parents=True, exist_ok=True)
         with socket.socket() as sock:
             sock.bind(("127.0.0.1", 0))
@@ -144,11 +148,22 @@ class Worker:
         env["GGML_VK_DISABLE_FUSION"] = "1"
         env["LLAMA_API_KEY"] = self.token
         args = [str(self.binary), "-m", model.path, "--host", "127.0.0.1", "--port", str(port),
-                "--alias", model.id, "-ngl", str(self.gpu_layers),
+                "--alias", model.id, "-ngl", str(0 if model.size_bytes > 32 * 1024**3 else self.gpu_layers),
                 "-c", str(self.context), "-b", str(self.context), "-ub", str(self.context),
                 "--parallel", "1", "--no-context-shift", "--jinja", "--flash-attn", "off",
                 "--cache-type-k", "f16", "--cache-type-v", "f16"]
+        if info.get('version') == 2:
+            args.append('--swa-full')
+        if model.role == 'embedding':
+            args.append('--embedding')
+        self.log_path.write_text('')
         self.process = subprocess.Popen(args, env=env, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        # A failed experimental graph must not dump tens of GiB of mapped weights.
+        if hasattr(resource, 'prlimit'):
+            try:
+                resource.prlimit(self.process.pid, resource.RLIMIT_CORE, (0, 0))
+            except ProcessLookupError:
+                pass
         self.log_thread = threading.Thread(target=self.drain_log, args=(self.process.stdout, self.log_path), daemon=True)
         self.log_thread.start()
         deadline = time.monotonic() + self.timeout
@@ -180,10 +195,10 @@ class Worker:
             return json.load(response)
 
     @contextmanager
-    def use(self, model, profile):
+    def use(self, model, profile, diagnostic=False):
         with self.lock:
             try:
-                self.ensure(model, profile)
+                self.ensure(model, profile, diagnostic)
             except BaseException:
                 self.close()
                 raise

@@ -13,10 +13,11 @@ from . import __version__
 from .benchmark import public_summary, test_model
 from .models import Profile, atomic_json, discover, storage_snapshot
 from .worker import Worker
+from .explore import explore_model, VERSION as EXPLORE_VERSION
 
 
 class App:
-    def __init__(self, state, roots=None, binary=None, max_model_gib=32, context=2048, gpu_layers=999):
+    def __init__(self, state, roots=None, binary=None, max_model_gib=80, context=2048, gpu_layers=999):
         self.state = state
         state.mkdir(parents=True, exist_ok=True, mode=0o700)
         self.roots = roots
@@ -34,7 +35,7 @@ class App:
         self.refresh()
 
     def refresh(self):
-        models, self.errors = discover(self.roots, self.max_model_bytes)
+        models, self.errors = discover(self.roots, self.max_model_bytes, self.worker.binary)
         self.models = {m.id: m for m in models}
         atomic_json(self.state / "inventory.json", {"models": [asdict(m) for m in models], "errors": self.errors})
         return {"models": [m.public() for m in models], "errors": self.errors}
@@ -50,8 +51,9 @@ class App:
         raise ValueError("Unknown or ambiguous model. Use /looplab/models to select an exact identifier.")
 
     def report(self, model):
-        path = self.state / "reports" / f"{model.id}.json"
-        return json.loads(path.read_text()) if path.exists() else None
+        paths = [self.state / directory / f'{model.id}.json' for directory in ('reports', 'exploration')]
+        paths = [path for path in paths if path.exists()]
+        return json.loads(max(paths, key=lambda p: p.stat().st_mtime_ns).read_text()) if paths else None
 
     def profile(self, model, requested):
         report = self.report(model)
@@ -72,6 +74,7 @@ class App:
         tested = tested and report.get("runtime", {}).get("execution_policy") == info.get("execution_policy")
         tested = tested and any(p["passes"] == passes and p.get("profile") == asdict(profile)
                                 and p.get("anchor_identity", {}).get("passed")
+                                and (report.get('suite') != EXPLORE_VERSION or p.get('loop_smoke', {}).get('passed'))
                                 for p in report.get("profiles", []))
         if not tested:
             raise ValueError("This loop profile has no current conformance pass. Run Auto-test first.")
@@ -85,7 +88,7 @@ class App:
         with self.jobs_lock:
             return [self.job(j) for j in self.jobs]
 
-    def start_job(self, selection, quick=False):
+    def start_job(self, selection, quick=False, explore=False):
         with self.jobs_lock:
             if self.busy():
                 raise ValueError("An evaluation is already running; check its progress or cancel it")
@@ -105,7 +108,10 @@ class App:
                     for model in models:
                         if cancel.is_set():
                             break
-                        report = test_model(self.worker, model, self.state, quick=quick, cancel=cancel, progress=progress)
+                        if explore:
+                            report = explore_model(self.worker, model, self.state, cancel=cancel, progress=progress)
+                        else:
+                            report = test_model(self.worker, model, self.state, quick=quick, cancel=cancel, progress=progress)
                         job["reports"].append(public_summary(report))
                     job["status"] = "cancelled" if cancel.is_set() else "complete"
                     job["progress"] = "Finished"
@@ -193,9 +199,9 @@ def handler(app):
                         raise ValueError("Cannot refresh during evaluation")
                     self.send_json(200, app.refresh())
                 elif self.path == "/looplab/jobs":
-                    if type(body.get("quick", False)) is not bool:
-                        raise ValueError("quick must be a boolean")
-                    self.send_json(202, app.start_job(body.get("model", "all"), body.get("quick", False)))
+                    if any(type(body.get(k, False)) is not bool for k in ('quick', 'explore')):
+                        raise ValueError("quick and explore must be booleans")
+                    self.send_json(202, app.start_job(body.get("model", "all"), body.get("quick", False), body.get('explore', False)))
                 elif self.path.endswith("/cancel") and self.path.startswith("/looplab/jobs/"):
                     job_id = self.path.split("/")[-2]
                     app.job(job_id)

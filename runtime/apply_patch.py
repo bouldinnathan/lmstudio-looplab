@@ -8,6 +8,9 @@ import shutil
 import subprocess
 import sys
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from auto_adapters import generate
+
 REVISION = "0893ec98f5eafad36a43a72cd1c3723d72b0d03a"
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -23,29 +26,25 @@ def apply(source: Path):
     if revision != REVISION:
         raise RuntimeError(f"Expected llama.cpp {REVISION}, found {revision}")
     header = (ROOT / "runtime/looplab.h").read_bytes()
-    patch_id = hashlib.sha256(header + Path(__file__).read_bytes()).hexdigest()
+    patch_id = hashlib.sha256(header + Path(__file__).read_bytes() + (ROOT / "runtime/auto_adapters.py").read_bytes()).hexdigest()
     marker = source / ".looplab-patch.json"
     if marker.exists():
         previous = json.loads(marker.read_text())
         if previous.get("patch_sha256") == patch_id:
             return previous
-        raise RuntimeError("Different LoopLab patch already applied; use a fresh checkout")
-    changes = {}
-    for name in ["llama", "qwen2", "qwen3", "qwen3moe"]:
-        path = source / f"src/models/{name}.cpp"
-        original = path.read_text()
-        if "looplab::" in original:
-            raise RuntimeError("Already modified model graph")
-        text = original.replace('#include "models.h"', '#include "models.h"\n#include "looplab.h"', 1)
-        text = replace_once(text, "    for (int il = 0; il < n_layer; ++il) {",
-                            "    auto looplab_layer = [&](ggml_tensor * layer_input, int il) {\n        inpL = layer_input;")
-        old = "        inpL = cur;\n    }\n    cur = inpL;"
-        moe = "true" if name == "qwen3moe" else "false"
-        new = ("        return cur;\n    };\n"
-               f"    const auto looplab_config = looplab::config::read(n_layer, {moe});\n"
-               f"    cur = looplab::run(ctx0, gf, looplab_config, inpL, n_layer, {moe}, looplab_layer);")
-        text = replace_once(text, old, new)
-        changes[path] = (original, text)
+        managed = previous.get("managed_files", {})
+        if not managed or any(hashlib.sha256((source / p).read_bytes()).hexdigest() != digest
+                              for p, digest in managed.items()):
+            raise RuntimeError("Managed runtime files changed; use a fresh checkout to preserve edits")
+        for name in managed:
+            path = source / name
+            if name == "src/looplab.h":
+                path.unlink()
+            else:
+                path.write_bytes(subprocess.check_output(["git", "-C", str(source), "show", "HEAD:" + name]))
+        marker.unlink()
+    generated, catalog, decisions = generate(source)
+    changes = {path: (path.read_text(), updated) for path, updated in generated.items()}
 
     path = source / "src/llama-graph.cpp"
     original = path.read_text()
@@ -71,6 +70,23 @@ def apply(source: Path):
     if needle not in body:
         raise RuntimeError("Standard KV attention context missing")
     text = before + body.replace(needle, addition + needle, 1)
+    # SWA uses the same indexed writes, with separate full and sliding-window caches.
+    needle = "    // optionally store to KV cache\n    if (store_kv && k_cur) {"
+    addition = """    if (looplab::active && store_kv && (k_cur || v_cur) && !looplab::active->restore_kv.count(il)) {
+        auto * saved_k = k_cur ? ggml_dup(ctx0, k_cur) : nullptr;
+        auto * saved_v = v_cur ? ggml_dup(ctx0, v_cur) : nullptr;
+        if (saved_k) { ggml_build_forward_expand(gf, saved_k); }
+        if (saved_v) { ggml_build_forward_expand(gf, saved_v); }
+        auto * ki = is_swa ? inp->get_k_idxs_swa() : inp->get_k_idxs();
+        auto * vi = is_swa ? inp->get_v_idxs_swa() : inp->get_v_idxs();
+        looplab::active->restore_kv.emplace(il, [this, mctx_cur, saved_k, saved_v, ki, vi, il]() {
+            if (saved_k) { ggml_build_forward_expand(gf, mctx_cur->cpy_k(ctx0, saved_k, ki, il)); }
+            if (saved_v) { ggml_build_forward_expand(gf, mctx_cur->cpy_v(ctx0, saved_v, vi, il)); }
+        });
+    }
+
+"""
+    text = replace_once(text, needle, addition + needle)
     needle = "    //call early so that topk-moe can be used\n    ggml_build_forward_expand(gf, weights);"
     addition = """    if (looplab::active && looplab::active->pin_routes) {
         auto & routes = looplab::active->routes;
@@ -103,8 +119,10 @@ def apply(source: Path):
         path.write_text(updated)
     shutil.copyfile(ROOT / "runtime/looplab.h", source / "src/looplab.h")
     result = {"llama_cpp_revision": revision, "patch_sha256": patch_id,
-              "method": "anchored_damped_euler", "architectures": ["llama", "qwen2", "qwen3", "qwen3moe"],
-              "cache": ["first", "last"], "moe_routing": "pinned_ids_and_weights", "version": 1}
+              "method": "anchored_damped_euler", "architectures": sorted(catalog), "adapters": catalog, "adapter_rejections": decisions,
+              "cache": ["first", "last"], "moe_routing": "pinned_ids_and_weights", "version": 2}
+    result["managed_files"] = {str(p.relative_to(source)): hashlib.sha256(p.read_bytes()).hexdigest()
+                               for p in [*changes, source / "src/looplab.h"]}
     marker.write_text(json.dumps(result, indent=2) + "\n")
     return result
 

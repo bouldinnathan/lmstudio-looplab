@@ -42,8 +42,14 @@ def main():
         raise SystemExit("Install CMake, or run .venv/bin/pip install cmake")
     runtime=ROOT/".runtime"
     runtime.mkdir(exist_ok=True)
-    source=runtime/"llama.cpp"
-    checkout("https://github.com/ggml-org/llama.cpp.git",source,patch.REVISION)
+    cache=runtime/"llama.cpp"
+    checkout("https://github.com/ggml-org/llama.cpp.git",cache,patch.REVISION)
+    source=runtime/"auto/source"
+    source.parent.mkdir(exist_ok=True)
+    if not source.exists():
+        run(["git", "clone", "--shared", "--no-checkout", cache, source])
+        run(["git", "-C", source, "checkout", "--detach", patch.REVISION])
+    build=runtime/"auto/build"
     info=patch.apply(source)
     flags=["-DCMAKE_BUILD_TYPE=Release","-DGGML_NATIVE=OFF","-DLLAMA_BUILD_TESTS=OFF",
            "-DLLAMA_BUILD_EXAMPLES=ON","-DLLAMA_BUILD_SERVER=ON","-DLLAMA_BUILD_APP=OFF",
@@ -60,11 +66,11 @@ def main():
                   f"-DCMAKE_PREFIX_PATH={deps}",f"-DCMAKE_CXX_FLAGS=-I{deps/'include'}"]
     else:
         flags.append("-DGGML_VULKAN=OFF")
-    run([cmake,"-S",source,"-B",runtime/"build","-G","Ninja",*flags])
-    run([cmake,"--build",runtime/"build","--target","llama-server","llama-perplexity","--parallel",args.jobs])
+    run([cmake,"-S",source,"-B",build,"-G","Ninja",*flags])
+    run([cmake,"--build",build,"--target","llama-server","llama-perplexity","--parallel",args.jobs])
     info["backend"]="cpu" if args.cpu else "vulkan"
     info["dependencies"]={"vulkan_headers":VULKAN_REV,"spirv_headers":SPIRV_REV}
-    (runtime/"build/bin/looplab-build.json").write_text(json.dumps(info,indent=2)+"\n")
+    (build/"bin/looplab-build.json").write_text(json.dumps(info,indent=2)+"\n")
     run(["g++","-std=c++17","-O2",f"-I{ROOT/'runtime'}",f"-I{source/'ggml/include'}",
          ROOT/"runtime/test_integrator.cpp","-o",runtime/"test-integrator"])
     run([runtime/"test-integrator"])

@@ -7,6 +7,8 @@ export const configSchematics = createConfigSchematics()
     { value: "scan", displayName: "Find models and check architecture support" },
     { value: "test-model", displayName: "Auto-test selected model" },
     { value: "test-all", displayName: "Auto-test all local models" },
+    { value: "explore-all", displayName: "Explore all models, including experimental adapters" },
+    { value: "explore-model", displayName: "Check experimental compatibility of selected model" },
     { value: "report", displayName: "Show selected model's report" },
     { value: "jobs", displayName: "Show test progress" },
     { value: "cancel", displayName: "Cancel active tests" }

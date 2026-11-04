@@ -233,6 +233,9 @@ def test_model(worker, model, state, passes=(2,3,4), quick=False, cancel=None, p
 
 def public_summary(report):
     """Explicit allowlist: never export local paths, tokens, logs, or conversations."""
+    if report.get('suite', '').startswith('looplab-explore-'):
+        from .explore import public_exploration
+        return public_exploration(report)
     result = {k: report[k] for k in ("schema", "suite", "suite_sha256", "quick", "status", "error_type", "evaluation_policy",
               "paper_reproduction", "recommended_profile", "recommendation", "limitations") if k in report}
     if "model" in report:

@@ -29,6 +29,7 @@ The first evaluation of `g(input)` is shared between the natural output and the 
 
 - Dense `llama`, `qwen2`, and `qwen3` graphs support block or layer recurrence.
 - `qwen3moe` uses layer recurrence with the first iteration's expert IDs **and mixture weights** reused across substeps.
+- A structural adapter generator preserves recognizable native decoder-layer bodies and adds experimental support for related architectures. The pinned source currently yields 93 candidates, including Granite, InternLM2, Mistral3, Phi3 and several sliding-window families. This count is **generated candidates, not validated architectures**.
 - Each pass uses the same model tensors and original token positions. The KV cache has the original number of layers.
 - `cache=first` preserves the first pass's current-position K/V and restores them after refinement. `cache=last` computes a separate stash pass from the refined output. Existing prefix rows are preserved.
 - Loop iterations execute at prefill and decode. Native graph ordering finishes attention reads before the next pass overwrites current-position KV rows.
@@ -42,9 +43,17 @@ Specifically, LoopLab follows the **K substeps** in Equations 10 and 13–16; Al
 
 Use the plugin's **Find models**, **Auto-test selected model**, **Auto-test all local models**, **Show report**, and **Cancel active tests** actions.
 
+For broad, best-effort compatibility, use **Explore all models, including experimental adapters**. It discovers LM Studio files, Ollama manifest blobs and locally cached Hugging Face GGUFs, deduplicates shared files, and tests every loadable original checkpoint. Embedding checkpoints get finite-vector tests. Vision projectors, old static-repeat variants, split files and models beyond the memory budget get explicit outcomes.
+
+Exploration tests baseline generation, then K=2/3/4 anchor identity, finite looped output, a measurable change from baseline and repeat-request stability. A successful profile becomes manually selectable and stays labeled experimental. It never changes the recommended profile or claims a quality gain. A partially compatible model can expose only its passing profiles. These checks are intentionally much lighter than the quality evaluation below.
+
+Unrecognized graphs and failed models produce local repair handoffs under `~/.local/state/looplab/repairs/`: metadata, representative tensor names/shapes, native-source information, sanitized errors and a reproduction command. A later coding LLM can use them to extend the adapter. LoopLab does not send weights or reports to an external LLM. Completed exploration results are reused only for matching model and runtime fingerprints; `--no-resume` forces a rerun.
+
+The generator recognizes ordinary KV and sliding-window KV interfaces. It rejects unknown recurrent/convolution/MLA state and unrecognized residual-stream boundaries. Sliding-window experiments allocate the full cache and retain the model's attention mask. Only the original four architectures have the independent numerical reference; generated adapters require per-checkpoint smoke checks and remain a weaker evidence tier.
+
 The evaluator performs:
 
-1. **Read-only preflight:** inspect GGUF metadata; reject unsupported architectures, split files, embedding models, sliding-window variants, existing static conversions and models over the configured size budget.
+1. **Read-only preflight:** inspect GGUF metadata and the built adapter catalog; reject missing adapters, split files, embedding models, existing static conversions and models over the configured size budget.
 2. **Baseline:** evaluate the original model using the same runtime and decoding settings.
 3. **Anchor identity:** test each candidate with `beta=1` and compare generated token IDs and aligned top-token log probabilities to baseline. Failed identities cannot be selected for chat.
 4. **Selection:** test 2, 3 and 4 passes with `beta=0.5`, a four-layer middle window, and `cache=first` on 12 diagnostic tasks.
@@ -57,7 +66,7 @@ The small public diagnostic suite covers code tracing, sorting, intervals and si
 
 The 2/3/4-pass sweep is a bounded starting point, not an established upper limit on useful recurrence. The native integrator supports up to eight passes; the plugin deliberately exposes only candidates covered by its automatic sweep.
 
-An independent NumPy test generates tiny F32 GGUF networks and compares full next-token distributions across prefill and autoregressive decode. It covers RMSNorm, RoPE, causal attention, SwiGLU, MoE routing, both cache policies and the anchor identity for all four adapters. No pretrained weights are downloaded for this test.
+An independent NumPy test generates tiny F32 GGUF networks and compares full next-token distributions across prefill and autoregressive decode. It covers RMSNorm, RoPE, causal attention, SwiGLU, MoE routing, both cache policies and the anchor identity for the four reference-validated architectures. No pretrained weights are downloaded for this test.
 
 ## Install on Linux
 
@@ -120,6 +129,10 @@ Each chat answer identifies the active mode: **original model** or the actual nu
 # Full tests; one model/profile at a time
 .venv/bin/python -m looplab test all
 
+# Broad compatibility survey, including new candidates and repair handoffs
+.venv/bin/python -m looplab explore all --output reports/all-local-survey.json
+.venv/bin/python -m looplab explore granite4.1-3b --no-resume
+
 # Add a model root or test a single original GGUF
 .venv/bin/python -m looplab --models /path/to/models scan
 .venv/bin/python -m looplab --models /path/to/model.gguf test all
@@ -131,11 +144,13 @@ Each chat answer identifies the active mode: **original model** or the actual nu
 .venv/bin/python -m looplab export-report local-report.json public-summary.json
 ```
 
-The default limit is 32 GiB per model, one worker, and a 2,048-token context. The companion unloads an idle worker after five minutes. Inference stops if the state filesystem has less than 2 GiB free. Worker logs rotate at 8 MiB, with at most 64 log files retained. Models are never downloaded, modified, reflinked or copied by this workflow. Source/build files and reports still consume disk space. Full tests can take a long time on larger dense models; cancellation takes effect between requests.
+The default file-size ceiling is 80 GiB, with an additional available-RAM check: estimated weights/working memory plus an 8 GiB reserve must fit. Models above 32 GiB use CPU inference to avoid large GPU allocations. This estimate cannot guarantee that every graph fits; failures are recorded. There is one worker and a 2,048-token context. Override the file ceiling with `--max-model-gib`.
+
+The companion unloads an idle worker after five minutes. Inference stops if the state filesystem has less than 2 GiB free. Worker logs rotate at 8 MiB, with at most 64 log files retained. Models are never downloaded, modified, reflinked or copied by this workflow. Source/build files and reports still consume disk space. Full tests can take a long time on larger dense models; cancellation takes effect between requests.
 
 CLI and companion instances using the same state directory share a process lock, preventing competing model loads. The companion also serializes jobs and rejects chat requests while it evaluates. Different state directories have independent locks.
 
-Original GGUF files downloaded by Ollama can also be used through `--models /path/to/blob`, or existing LM Studio model links. LoopLab runs their inference in its companion; it does not add recurrence support to the Ollama server itself.
+Default discovery includes `$OLLAMA_MODELS`, `~/.ollama/models`, and `/usr/share/ollama/.ollama/models`, as applicable. Original GGUF files can also be selected through `--models /path/to/blob`, or existing LM Studio model links. LoopLab runs their inference in its companion; it does not add recurrence support to the Ollama server itself.
 
 ## Updating LM Studio
 
@@ -143,12 +158,15 @@ The plugin uses LM Studio's documented generator API, and the engine is installe
 
 The llama.cpp revision, development-header revisions, plugin dependencies and build patch fingerprint are pinned. Model test records include the original header hash, file size/modification time, exact loop configuration, patch fingerprint, context and execution settings. Changing these invalidates the corresponding loop-profile approval. The header hash is not a full hash of every weight byte; deliberately preserving all file metadata while replacing weights is outside this check.
 
+The expanded runtime lives in `.runtime/auto/`; an earlier `.runtime/build/` installation is preserved. Rebuilding updates only files recorded as managed by LoopLab and refuses to overwrite manual changes. Adding a checkpoint of a recognized family requires discovery and testing, not an LM Studio engine edit.
+
 **Cross-request prompt-prefix caching is currently disabled for chat.** Normal token-by-token KV caching within a response remains enabled. Each loop profile needs separate cache identity, and partial prompt reuse can change recurrent prefill semantics. Reports include an experimental cache comparison; a passing single probe does not enable caching automatically. Reuse of weight tensors inside one run is implemented.
 
 ## Current boundaries
 
-- Kimi/DeepSeek MLA, hybrid/recurrent architectures, multimodal models, and sliding-window architectures do not yet have adapters. They are listed with a reason, not silently converted.
-- A new architecture requires a native adapter and an independent numerical reference before it should be enabled.
+- Kimi/DeepSeek MLA and hybrid/recurrent state still need explicit adapters. Exploration can run their baseline if the pinned loader supports the checkpoint and it fits memory.
+- Generated adapters are best-effort candidates. Checkpoint format differences can fail before looping even begins; repair reports distinguish loader, state-adapter and conformance failures.
+- Some multimodal architectures can run their text component, but the plugin accepts text/tool messages only. Projectors are inventoried separately.
 - The companion currently manages one loaded profile. Switching profiles restarts the worker and invalidates KV state.
 - The graphical plugin, companion and native runtime are separate components. Installing only the plugin does not add loop support to LM Studio's bundled engine.
 - Dependency status and local API boundaries are documented in [SECURITY.md](SECURITY.md).

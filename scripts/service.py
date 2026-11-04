@@ -35,7 +35,7 @@ def main():
             target.unlink()
             run("daemon-reload")
         return
-    if not (ROOT/".runtime/build/bin/looplab-build.json").exists():
+    if not any((ROOT/path).exists() for path in ('.runtime/auto/build/bin/looplab-build.json', '.runtime/build/bin/looplab-build.json')):
         raise SystemExit("Build the native runtime first: python scripts/build_runtime.py")
     directory.mkdir(parents=True, exist_ok=True)
     target.write_text(MARKER + f"""[Unit]

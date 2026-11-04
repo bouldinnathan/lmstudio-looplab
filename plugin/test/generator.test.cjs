@@ -92,3 +92,24 @@ test('aborting a test also cancels the companion job',async t=>{
   assert.ok(fake.requests.some(r=>r.path.endsWith('/cancel')));
   assert.ok(!fake.requests.some(r=>r.path==='/v1/chat/completions'));
 });
+
+test('explore all requests the broad survey and presents experimental results',async t=>{
+  const fake=await companion(t,(req,res)=>{
+    if(req.path==='/looplab/jobs') {
+      assert.equal(req.body.model,'all');
+      assert.equal(req.body.explore,true);
+      return json(res,{id:'survey'});
+    }
+    assert.equal(req.path,'/looplab/jobs/survey');
+    json(res,{status:'complete',reports:[{suite:'looplab-explore-v1',status:'partially_compatible',
+      model:{name:'new-family',tier:'experimental'},baseline_check:{passed:true},repair:{},profiles:[
+        {passes:2,anchor_identity:{passed:true},loop_smoke:{passed:true},status:'compatible_experimental'}]}]});
+  });
+  const ctl=controller(fake.base,{action:'explore-all',model:''});
+  await generate(ctl,Chat.from([{role:'user',content:'Explore'}]));
+  const text=ctl.fragments.map(f=>f.text).join('');
+  assert.match(text,/new-family/);
+  assert.match(text,/repair handoff/);
+  assert.match(text,/quality improvement has not been tested/);
+  assert.ok(!fake.requests.some(r=>r.path==='/v1/chat/completions'));
+});

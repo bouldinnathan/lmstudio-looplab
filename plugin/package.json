@@ -1,6 +1,6 @@
 {
   "name": "lmstudio-looplab-plugin",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Local paper-style recurrence experiments and automatic model checks for LM Studio",
   "main": "dist/index.js",
   "license": "AGPL-3.0-or-later",
