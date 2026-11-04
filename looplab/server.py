@@ -45,7 +45,7 @@ class App:
             raise ValueError("model must be a model identifier")
         if model_id in self.models:
             return self.models[model_id]
-        matches = [m for m in self.models.values() if m.name == model_id]
+        matches = [m for m in self.models.values() if m.name == model_id or model_id in m.aliases]
         if len(matches) == 1:
             return matches[0]
         raise ValueError("Unknown or ambiguous model. Use /looplab/models to select an exact identifier.")

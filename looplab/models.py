@@ -146,8 +146,10 @@ def discover(roots=None, max_model_bytes=80 * 1024**3, binary=None):
     rows, errors, seen = [], [], {}
     catalog, decisions = adapter_catalog(binary)
     for root in map(Path, roots):
-        paths = [(root, None)] if root.is_file() else [(p, None) for p in sorted(root.rglob('*.gguf'))]
         manifests = root / 'manifests'
+        # Ollama tags can themselves end in .gguf; their contents are JSON manifests.
+        paths = [(root, None)] if root.is_file() else [(p, None) for p in sorted(root.rglob('*.gguf'))
+                                                       if manifests not in p.parents]
         if manifests.is_dir():
             for manifest in sorted(manifests.rglob('*')):
                 if not manifest.is_file():

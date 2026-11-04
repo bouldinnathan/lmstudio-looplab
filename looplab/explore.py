@@ -47,18 +47,22 @@ def repair_handoff(model, report):
     representative = [t for t in gguf.tensors if not t.name.startswith('blk.') or t.name.startswith('blk.0.')]
     return {
         'model_id': model.id, 'architecture': model.architecture, 'status': report['status'],
-        'adapter': model.adapter, 'metadata': metadata, 'tensor_count': len(gguf.tensors),
+        'adapter': model.adapter or report.get('runtime', {}).get('adapter_rejections', {}).get(model.architecture, {}),
+        'metadata': metadata, 'tensor_count': len(gguf.tensors),
         'representative_tensors': [{'name': t.name, 'dimensions': t.dims, 'ggml_type': t.kind} for t in representative[:160]],
         'runtime_revision': report.get('runtime', {}).get('llama_cpp_revision'),
         'patch_sha256': report.get('runtime', {}).get('patch_sha256'),
         'reasons': report.get('reasons', model.reasons),
-        'failures': [report.get('diagnostic', '')] + [p.get('diagnostic', '') for p in report.get('profiles', [])],
+        'failures': [text for text in [report.get('diagnostic', '')] +
+                     [p.get('diagnostic', '') for p in report.get('profiles', [])] if text],
+        'profile_failures': [p for p in report.get('profiles', []) if p.get('status') != 'compatible_experimental'],
         'reproduce': f'python -m looplab explore {model.id} --no-resume',
         'next_steps': [
             'Check the pinned native model loader and original graph before changing metadata or tensor names.',
             'For an unrecognized but similar graph, extend runtime/auto_adapters.py and preserve its original layer body.',
             'For recurrent, MLA, shared, or convolution state, implement and test the state snapshot/restore semantics explicitly.',
             'For MoE, retain the first expert IDs and mixture weights through the shared routing helper.',
+            'For repeat-request instability, inspect cache clearing, graph reuse and backend numerical behavior with cache_prompt=false.',
             'Rebuild, pass the independent native reference tests, then rerun this exact model and its K=2/3/4 probes.',
             'Treat successful smoke tests as experimental compatibility, never proof of quality gains or full paper reproduction.'
         ]}

@@ -76,13 +76,13 @@ def test_manifest_discovery_deduplicates_shared_files(tmp_path, monkeypatch):
     blob = blobs / ('sha256-' + digest)
     blob.write_bytes(b'fake')
     (studio / 'original.gguf').symlink_to(blob)
-    manifest = ollama / 'manifests/registry.ollama.ai/library/test/latest'
+    manifest = ollama / 'manifests/registry.ollama.ai/library/test/latest.gguf'
     manifest.parent.mkdir(parents=True)
     manifest.write_text(json.dumps({'layers': [{'mediaType': 'application/vnd.ollama.image.model', 'digest': 'sha256:' + digest}]}))
     monkeypatch.setattr(models, 'inspect', lambda *args: model())
     rows, errors = models.discover([studio, ollama])
     assert not errors and len(rows) == 1
-    assert rows[0].aliases == ['library/test/latest']
+    assert rows[0].aliases == ['library/test/latest.gguf']
 
 
 class FakeWorker:
