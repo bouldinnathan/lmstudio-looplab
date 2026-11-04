@@ -66,7 +66,7 @@ class App:
             raise ValueError("profile must be recommended, baseline, loop2, loop3, or loop4")
         passes = int(requested[-1])
         profile = Profile.for_model(model, passes)
-        info = self.worker.build_info()
+        info = self.worker.build_info(model)
         tested = report and report.get("model", {}).get("header_sha256") == model.header_sha256
         tested = tested and report.get("model", {}).get("size_bytes") == model.size_bytes
         tested = tested and report.get("source_mtime_ns") == model.mtime_ns

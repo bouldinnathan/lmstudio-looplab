@@ -38,7 +38,10 @@ class Worker:
         self.base = None
         self.last_used = time.monotonic()
 
-    def build_info(self):
+    def cpu_mode(self, model=None):
+        return self.gpu_layers == 0 or (model is not None and model.size_bytes > 32 * 1024**3)
+
+    def build_info(self, model=None):
         marker = self.binary.parent / "looplab-build.json"
         if not self.binary.is_file() or not marker.is_file():
             raise RuntimeError("LoopLab runtime is not built. Run python scripts/build_runtime.py")
@@ -48,7 +51,8 @@ class Worker:
         return {**info, "execution_policy": {"context": self.context, "gpu_layers": self.gpu_layers,
                 "kv_type": "f16", "flash_attention": False, "vulkan_fusion": False,
                 "prefix_cache": False, "swa_full": info.get('version') == 2,
-                "cpu_above_gib": 32, "runner_version": "0.2.0"}}
+                "cpu_above_gib": 32, "runner_version": "0.2.0",
+                **({'cpu_offload_disabled': True, 'auto_fit': False} if self.cpu_mode(model) else {})}}
 
     def _stop_process(self):
         if self.process:
@@ -115,7 +119,7 @@ class Worker:
                 output.close()
 
     def ensure(self, model, profile, diagnostic=False):
-        info = self.build_info()
+        info = self.build_info(model)
         if not model.eligible and not (diagnostic and profile.passes == 1 and model.loadable):
             raise ValueError("Model is not eligible: " + "; ".join(model.reasons))
         stat = Path(model.path).stat()
@@ -148,7 +152,7 @@ class Worker:
         env["GGML_VK_DISABLE_FUSION"] = "1"
         env["LLAMA_API_KEY"] = self.token
         args = [str(self.binary), "-m", model.path, "--host", "127.0.0.1", "--port", str(port),
-                "--alias", model.id, "-ngl", str(0 if model.size_bytes > 32 * 1024**3 else self.gpu_layers),
+                "--alias", model.id, "-ngl", str(0 if self.cpu_mode(model) else self.gpu_layers),
                 "-c", str(self.context), "-b", str(self.context), "-ub", str(self.context),
                 "--parallel", "1", "--no-context-shift", "--jinja", "--flash-attn", "off",
                 "--cache-type-k", "f16", "--cache-type-v", "f16"]
@@ -156,6 +160,9 @@ class Worker:
             args.append('--swa-full')
         if model.role == 'embedding':
             args.append('--embedding')
+        if self.cpu_mode(model):
+            # -ngl 0 alone still permits automatic fitting and operation/KV offload.
+            args += ['--device', 'none', '--no-op-offload', '--no-kv-offload', '--fit', 'off']
         self.log_path.write_text('')
         self.process = subprocess.Popen(args, env=env, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         # A failed experimental graph must not dump tens of GiB of mapped weights.

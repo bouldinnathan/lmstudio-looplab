@@ -1459,7 +1459,9 @@
       "prefix_cache": false,
       "swa_full": true,
       "cpu_above_gib": 32,
-      "runner_version": "0.2.0"
+      "runner_version": "0.2.0",
+      "cpu_offload_disabled": true,
+      "auto_fit": false
     }
   },
   "passed": true,

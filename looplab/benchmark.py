@@ -168,7 +168,7 @@ def test_model(worker, model, state, passes=(2,3,4), quick=False, cancel=None, p
     selection = CASES[:4] if quick else CASES[:12]
     holdout = CASES[12:16] if quick else CASES[12:]
     try:
-        report["runtime"] = worker.build_info()
+        report["runtime"] = worker.build_info(model)
         if progress:
             progress(f"{model.name}: baseline")
         with worker.use(model, Profile.for_model(model)):

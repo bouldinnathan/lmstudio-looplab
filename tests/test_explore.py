@@ -14,6 +14,7 @@ transform = adapters.transform
 from looplab import explore, models
 from looplab.models import Model, Profile, atomic_json
 from looplab.server import App
+from looplab.worker import Worker
 
 
 GRAPH = '''
@@ -66,6 +67,22 @@ def test_ram_guard_leaves_reserve(monkeypatch):
     assert models.resource_reason(model()) is None
 
 
+def test_cpu_fallback_policy_invalidates_only_affected_models(tmp_path):
+    binary = tmp_path / 'llama-server'
+    binary.touch()
+    atomic_json(tmp_path / 'looplab-build.json', {'method': 'anchored_damped_euler', 'version': 2})
+    worker = Worker(tmp_path / 'state', binary)
+    small, large = model(), model()
+    large.size_bytes = 55 * 1024**3
+    small_policy = worker.build_info(small)['execution_policy']
+    large_policy = worker.build_info(large)['execution_policy']
+    assert not worker.cpu_mode(small) and worker.cpu_mode(large)
+    assert 'cpu_offload_disabled' not in small_policy
+    assert large_policy['cpu_offload_disabled'] and large_policy['auto_fit'] is False
+    worker.gpu_layers = 0
+    assert worker.build_info(small)['execution_policy']['cpu_offload_disabled']
+
+
 def test_manifest_discovery_deduplicates_shared_files(tmp_path, monkeypatch):
     studio = tmp_path / 'studio'
     ollama = tmp_path / 'ollama'
@@ -89,7 +106,7 @@ class FakeWorker:
     token = 'secret-token'
     gpu_layers = 999
     def __init__(self): self.profile = None; self.calls = 0
-    def build_info(self): return {'patch_sha256': 'build', 'execution_policy': {'context': 2048}}
+    def build_info(self, model=None): return {'patch_sha256': 'build', 'execution_policy': {'context': 2048}}
     def close(self): pass
     @contextmanager
     def use(self, m, p, diagnostic=False):
@@ -123,7 +140,7 @@ def test_survey_continues_after_profile_failure_and_resumes(tmp_path, monkeypatc
 def test_experimental_chat_requires_actual_loop_smoke(tmp_path):
     app = App(tmp_path, roots=[tmp_path / 'absent'])
     m = model()
-    app.worker.build_info = lambda: FakeWorker().build_info()
+    app.worker.build_info = lambda model=None: FakeWorker().build_info()
     report = {'suite': explore.VERSION, 'model': m.public(), 'source_mtime_ns': m.mtime_ns,
               'runtime': app.worker.build_info(), 'profiles': [{'passes': 2, 'profile': asdict(Profile.for_model(m, 2)),
               'anchor_identity': {'passed': True}, 'loop_smoke': {'passed': False}}]}

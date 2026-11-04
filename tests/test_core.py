@@ -87,7 +87,7 @@ def test_loopback_api_auth_origin_and_input_limits(tmp_path):
 def test_unverified_loop_profiles_fail_closed(tmp_path):
     app=App(tmp_path/'state',roots=[tmp_path/'models'])
     m=Model('m','m','unused','qwen2',48,10,0,'x',True,[],'block')
-    app.worker.build_info=lambda:{'patch_sha256':'build'}
+    app.worker.build_info=lambda model=None:{'patch_sha256':'build'}
     assert app.profile(m,'recommended').passes==1
     with pytest.raises(ValueError,match='conformance'): app.profile(m,'loop2')
 
@@ -120,7 +120,7 @@ def test_test_record_is_invalidated_by_execution_settings(tmp_path):
     from looplab.models import atomic_json
     app=App(tmp_path/'state',roots=[tmp_path/'models'])
     m=Model('m','m','unused','qwen2',48,10,0,'hash',True,[],'block')
-    app.worker.build_info=lambda:{'patch_sha256':'build','execution_policy':{'context':2048}}
+    app.worker.build_info=lambda model=None:{'patch_sha256':'build','execution_policy':{'context':2048}}
     report={'model':{'header_sha256':'hash','size_bytes':10},'source_mtime_ns':0,
             'runtime':app.worker.build_info(),
             'profiles':[{'passes':2,'profile':asdict(Profile.for_model(m,2)),'anchor_identity':{'passed':True}}]}
@@ -134,5 +134,5 @@ def test_test_record_is_invalidated_by_execution_settings(tmp_path):
     with pytest.raises(ValueError,match='conformance'):app.profile(m,'loop2')
     report['profiles'][0]['profile']['cache']='first'
     atomic_json(app.state/'reports/m.json',report)
-    app.worker.build_info=lambda:{'patch_sha256':'build','execution_policy':{'context':4096}}
+    app.worker.build_info=lambda model=None:{'patch_sha256':'build','execution_policy':{'context':4096}}
     with pytest.raises(ValueError,match='conformance'):app.profile(m,'loop2')

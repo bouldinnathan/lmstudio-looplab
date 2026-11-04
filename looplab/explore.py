@@ -91,7 +91,7 @@ def public_exploration(report):
 def explore_model(worker, model, state, cancel=None, progress=None, resume=True):
     state = Path(state)
     target = state / 'exploration' / f'{model.id}.json'
-    info = worker.build_info()
+    info = worker.build_info(model)
     if resume and target.exists():
         previous = json.loads(target.read_text())
         if current(previous, model, info):
