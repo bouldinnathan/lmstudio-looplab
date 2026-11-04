@@ -1,0 +1,12 @@
+{
+  "plugin": "bouldinnathan/looplab",
+  "version": "0.2.0",
+  "controller": "test harness using the real SDK and generator",
+  "companion": "real local HTTP service",
+  "runtime": "real Vulkan native worker",
+  "model": "gemma4-12b",
+  "profile": "loop2",
+  "lmstudio_graphical_host": "not verified; external SDK plugin invocation requires plugins.use permission",
+  "generated_text": "**LoopLab · 2 passes (experimental)**\n\n4",
+  "passed": true
+}
