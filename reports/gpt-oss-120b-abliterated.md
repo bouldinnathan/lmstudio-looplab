@@ -24,6 +24,6 @@ The initial response after each profile change includes loading the model. The f
 
 The source GGUF retained its header hash, size and modification time after both the compatibility and chat checks. No new crash dumps were observed. The previously marked 201.4 MiB of disposable crash dumps remain marked safe to delete.
 
-In LM Studio, choose **bouldinnathan/looplab**, enter **gpt-oss-120b-abliterated-latest** as the model, and select **2**, **3** or **4 passes, anchored damping (experimental)**. The recommended profile still defaults to baseline; these checks establish compatibility and simple chat operation, not improved answer quality.
+In LM Studio, open **Chat → model picker**, search **looplab**, and choose **bouldinnathan/looplab** under **Your Generators**. Enter **gpt-oss-120b-abliterated-latest** as the model in LoopLab's settings, and select **2**, **3** or **4 passes, anchored damping (experimental)**. LM Studio's Developer/server picker does not show generators, and this method creates no additional GPT-OSS model-file entry. The recommended profile still defaults to baseline; these checks establish compatibility and simple chat operation, not improved answer quality.
 
 Machine-readable results: [fresh compatibility checks](gpt-oss-120b-abliterated-recheck.json), [live chat checks](gpt-oss-120b-abliterated-chat.json).

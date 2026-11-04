@@ -111,7 +111,9 @@ npm test
 lms dev --install --yes
 ```
 
-Select **bouldinnathan/looplab** from LM Studio's model dropdown. Set the action to **Find models** and send a message. Enter a returned model name or ID in the plugin settings, choose an action/profile, and send another message. Blank model selection also lists models.
+Open LM Studio's **Chat** page, open the model picker at the top, and search for **looplab**. Select **bouldinnathan/looplab** under **Your Generators**. Set the action to **Find models** and send a message. Enter a returned model name or ID in the plugin settings, choose an action/profile, and send another message. Blank model selection also lists models.
+
+If LoopLab seems missing, check which picker is open. In LM Studio 0.4.25+1, the **Developer/server** model picker does not display generators. **My Models** lists model files; LoopLab does not create additional GGUF entries. Generator plugins also appear in the Chat model picker rather than the ordinary tools-plugin list, as described in [LM Studio's generator documentation](https://lmstudio.ai/docs/typescript/plugins/generator). Search for `looplab` in that picker, then enter the underlying model name in LoopLab's settings. Searching the picker for `gpt-oss` finds the original model, not the shared LoopLab generator.
 
 The companion listens only on `127.0.0.1:7341`. The plugin reads the local token from `$XDG_STATE_HOME/looplab/token` or `~/.local/state/looplab/token`; no copy/paste is needed for the standard installation. An explicitly configured token is also supported. Custom state directories require that token setting.
 
@@ -119,7 +121,7 @@ The plugin streams text and reasoning, forwards function tools and tool results,
 
 Each chat answer identifies the active mode: **original model** or the actual number of **experimental loop passes**. Choosing the recommended profile can select the original model when the diagnostics do not demonstrate a benefit.
 
-The original model-library entries keep their existing names. Select the **bouldinnathan/looplab** generator, enter the model name or ID, and choose **2**, **3**, or **4 passes, anchored damping (experimental)** in **Loop profile**. An active looped reply starts with a banner such as **LoopLab · 2 passes (experimental)**; baseline replies say **LoopLab · original model**. **Show selected model's report** lists which pass counts passed testing. Older files named `*-looped-2x-mid4` are legacy static-repeat conversions, separate from these runtime loop profiles.
+The original model-library entries keep their existing names. In **Chat → model picker → Your Generators**, select **bouldinnathan/looplab**, enter the model name or ID in its settings, and choose **2**, **3**, or **4 passes, anchored damping (experimental)** in **Loop profile**. An active looped reply starts with a banner such as **LoopLab · 2 passes (experimental)**; baseline replies say **LoopLab · original model**. **Show selected model's report** lists which pass counts passed testing. Older files named `*-looped-2x-mid4` are legacy static-repeat conversions, separate from these runtime loop profiles.
 
 ## Commands and resource limits
 
