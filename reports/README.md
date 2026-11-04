@@ -8,4 +8,18 @@ The named model files are allowlisted exports from the automatic diagnostic suit
 
 The 12 selection and 12 held-out tasks are small, public diagnostics. Their scores should not be compared to the paper's benchmarks. Only one candidate reaches the held-out split; quick runs never recommend a loop profile. Prefix caching stays disabled even when one cache probe happens to agree.
 
-The LM Studio plugin was installed successfully on the development machine. Generator-controller integration tests cover discovery, first-use evaluation, streaming, tool calls and cancellation. Live model discovery through the companion also passed. An external SDK client was denied `plugins.use` permission by LM Studio, so those tests do not establish successful end-to-end invocation from the graphical LM Studio host.
+The LM Studio plugin was installed successfully on the development machine. Generator-controller integration tests cover discovery, first-use evaluation, streaming, tool calls and cancellation. Live model discovery through the companion also passed. Live streamed chat also passed through the real companion and native Vulkan worker in both baseline and 2-pass modes; see `integration.json`. Its generator controller was supplied by a test harness. An external SDK client was denied `plugins.use` permission by LM Studio, so graphical-host invocation remains unverified.
+
+## Initial local model results
+
+Full diagnostic run on 2026-11-04 UTC. All five models passed the 2-, 3- and 4-pass anchor-identity probes with a maximum observed log-probability difference of zero. The selected candidate in each case used two passes.
+
+| Model | Original held-out score | Selected passes | Looped held-out score | Recommended |
+|---|---:|---:|---:|---|
+| [deepcoder-14b](deepcoder-14b.json) | 8/12 | 2 | 8/12 | Original |
+| [deepseek-r1-32b](deepseek-r1-32b.json) | 10/12 | 2 | 10/12 | Original |
+| [devstral-24b](devstral-24b.json) | 8/12 | 2 | 9/12 | Original |
+| [qwen3-coder-30b](qwen3-coder-30b.json) | 10/12 | 2 | 10/12 | Original |
+| [reader-lm-1.5b](reader-lm-1.5b.json) | 0/12 | 2 | 0/12 | Original |
+
+Scores are out of 12 held-out diagnostics. Devstral's one additional correct answer did not satisfy the paired evidence threshold. No candidate was promoted automatically. DeepSeek-R1 32B here is a dense Qwen2-architecture checkpoint; this does not establish support for DeepSeek/Kimi MLA models.

@@ -1,0 +1,24 @@
+{
+  "plugin": "bouldinnathan/looplab",
+  "controller": "test harness using the real installed SDK",
+  "companion": "real local HTTP service",
+  "runtime": "real Vulkan native worker",
+  "lmstudio_graphical_host": "not verified; the external SDK client was denied plugins.use permission",
+  "checks": [
+    {
+      "model": "devstral-24b",
+      "profile": "baseline",
+      "label": "**LoopLab · original model**",
+      "answer": "4",
+      "passed": true
+    },
+    {
+      "model": "devstral-24b",
+      "profile": "loop2",
+      "label": "**LoopLab · 2 passes (experimental)**",
+      "answer": "4",
+      "passed": true
+    }
+  ],
+  "passed": true
+}
