@@ -1,5 +1,9 @@
 name: Tests
-on: [push, pull_request]
+on:
+  push:
+    paths-ignore: ['reports/**', '**.md', 'LICENSE', 'NOTICE']
+  pull_request:
+    paths-ignore: ['reports/**', '**.md', 'LICENSE', 'NOTICE']
 permissions:
   contents: read
 jobs:

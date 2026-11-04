@@ -1,0 +1,198 @@
+{
+  "schema": 1,
+  "suite": "looplab-diagnostic-v2",
+  "suite_sha256": "8b2d60609aa5dccdb5e0c5680251a16ec3bfec3417ffacd99656b426bf7f848b",
+  "quick": false,
+  "status": "tested",
+  "evaluation_policy": {
+    "temperature": 0,
+    "seed": 1729,
+    "max_tokens": 192,
+    "cache_prompt": false,
+    "reasoning_effort": "none",
+    "reasoning_budget_tokens": 0,
+    "add_generation_prompt": false,
+    "continue_final_message": "content",
+    "response_format": {
+      "type": "json_object"
+    },
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    },
+    "assistant_prefill": "{\"answer\":"
+  },
+  "paper_reproduction": false,
+  "recommended_profile": "baseline",
+  "recommendation": {
+    "wins": 1,
+    "losses": 0,
+    "one_sided_sign_test_p": 0.5,
+    "recommend_loop": false,
+    "verdict": "no_demonstrated_improvement"
+  },
+  "limitations": [
+    "Quantized checkpoints and a small local diagnostic suite differ from the paper's BF16 benchmarks.",
+    "Held-out tasks are public diagnostics, not a general capability guarantee.",
+    "Prompt-prefix reuse is disabled by default; a cache probe is reported separately."
+  ],
+  "model": {
+    "id": "devstral-24b-3d18ea49",
+    "name": "devstral-24b",
+    "architecture": "llama",
+    "layers": 40,
+    "size_bytes": 14333909728,
+    "header_sha256": "25dfc8ec3d79ae3414686d85d9901effc9cd68dd01ddca4188eb993542bf5908",
+    "eligible": true,
+    "reasons": [],
+    "mode": "block"
+  },
+  "runtime": {
+    "llama_cpp_revision": "0893ec98f5eafad36a43a72cd1c3723d72b0d03a",
+    "patch_sha256": "deb36000184f565ff563db72ec829095e6aa892b432738d69439dc9e32d77893",
+    "method": "anchored_damped_euler",
+    "architectures": [
+      "llama",
+      "qwen2",
+      "qwen3",
+      "qwen3moe"
+    ],
+    "cache": [
+      "first",
+      "last"
+    ],
+    "moe_routing": "pinned_ids_and_weights",
+    "version": 1,
+    "backend": "vulkan",
+    "execution_policy": {
+      "context": 2048,
+      "gpu_layers": 999,
+      "kv_type": "f16",
+      "flash_attention": false,
+      "vulkan_fusion": false,
+      "prefix_cache": false,
+      "runner_version": "0.1.0"
+    }
+  },
+  "profiles": [
+    {
+      "passes": 2,
+      "status": "tested",
+      "anchor_identity": {
+        "passed": true,
+        "max_logprob_error": 0.0
+      },
+      "cache_probe": {
+        "same_tokens": true,
+        "tokens_cached": 17,
+        "max_logprob_error": 0.05713987350463867,
+        "enabled_by_default": false
+      },
+      "selection_passed": 9,
+      "selection_total": 12,
+      "holdout_passed": 9,
+      "holdout_total": 12,
+      "selection_metrics": {
+        "passed": 9,
+        "total": 12,
+        "truncated": 0,
+        "format_errors": 0,
+        "seconds": 38.86834712600103,
+        "completion_tokens": 105
+      },
+      "holdout_metrics": {
+        "passed": 9,
+        "total": 12,
+        "truncated": 0,
+        "format_errors": 0,
+        "seconds": 41.793776292019174,
+        "completion_tokens": 108
+      }
+    },
+    {
+      "passes": 3,
+      "status": "tested",
+      "anchor_identity": {
+        "passed": true,
+        "max_logprob_error": 0.0
+      },
+      "cache_probe": {
+        "same_tokens": true,
+        "tokens_cached": 17,
+        "max_logprob_error": 0.04659318923950195,
+        "enabled_by_default": false
+      },
+      "selection_passed": 9,
+      "selection_total": 12,
+      "holdout_passed": 0,
+      "holdout_total": 0,
+      "selection_metrics": {
+        "passed": 9,
+        "total": 12,
+        "truncated": 0,
+        "format_errors": 0,
+        "seconds": 41.104240915956325,
+        "completion_tokens": 105
+      },
+      "holdout_metrics": {
+        "passed": 0,
+        "total": 0,
+        "truncated": 0,
+        "format_errors": 0,
+        "seconds": 0,
+        "completion_tokens": 0
+      }
+    },
+    {
+      "passes": 4,
+      "status": "tested",
+      "anchor_identity": {
+        "passed": true,
+        "max_logprob_error": 0.0
+      },
+      "cache_probe": {
+        "same_tokens": true,
+        "tokens_cached": 17,
+        "max_logprob_error": 0.05603432655334473,
+        "enabled_by_default": false
+      },
+      "selection_passed": 9,
+      "selection_total": 12,
+      "holdout_passed": 0,
+      "holdout_total": 0,
+      "selection_metrics": {
+        "passed": 9,
+        "total": 12,
+        "truncated": 0,
+        "format_errors": 0,
+        "seconds": 43.50011509298929,
+        "completion_tokens": 105
+      },
+      "holdout_metrics": {
+        "passed": 0,
+        "total": 0,
+        "truncated": 0,
+        "format_errors": 0,
+        "seconds": 0,
+        "completion_tokens": 0
+      }
+    }
+  ],
+  "baseline": {
+    "selection": {
+      "passed": 9,
+      "total": 12,
+      "truncated": 0,
+      "format_errors": 0,
+      "seconds": 40.229647233049036,
+      "completion_tokens": 105
+    },
+    "holdout": {
+      "passed": 8,
+      "total": 12,
+      "truncated": 0,
+      "format_errors": 0,
+      "seconds": 41.25238105698372,
+      "completion_tokens": 107
+    }
+  }
+}

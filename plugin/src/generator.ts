@@ -96,6 +96,11 @@ export async function generate(ctl: GeneratorController, history: Chat): Promise
     max_tokens: config.get("maxTokens"), ...(tools.length ? { tools } : {})
   });
   if (!response.body) throw new Error("No response stream");
+  const activePasses = Number(response.headers.get("X-LoopLab-Passes"));
+  if (activePasses >= 1) {
+    ctl.fragmentGenerated(activePasses === 1 ? "**LoopLab · original model**\n\n" :
+      `**LoopLab · ${activePasses} passes (experimental)**\n\n`);
+  }
   const calls = new Map<number, {id?: string; name: string; arguments: string}>();
   for await (const event of events(response.body)) {
     signal.throwIfAborted();

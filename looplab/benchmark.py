@@ -150,6 +150,7 @@ def test_model(worker, model, state, passes=(2,3,4), quick=False, cancel=None, p
     if model.eligible:
         worker.claim()
     report = {"schema": 1, "model": model.public(), "started": time.time(), "status": "running",
+              "source_mtime_ns": model.mtime_ns,
               "suite": SUITE_VERSION, "suite_sha256": SUITE_SHA256, "quick": quick,
               "evaluation_policy": {**EVALUATION_POLICY, "assistant_prefill": ANSWER_PREFIX},
               "paper_reproduction": False, "recommended_profile": "baseline", "profiles": [],

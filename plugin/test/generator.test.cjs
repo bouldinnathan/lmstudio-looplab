@@ -60,6 +60,7 @@ test('first use tests, reads the report and streams text, reasoning and tool cal
     assert.equal(req.body.messages[0].content,'Use a tool');
     assert.equal(req.body.tools[0].function.name,'sum');
     res.setHeader('Content-Type','text/event-stream');
+    res.setHeader('X-LoopLab-Passes','1');
     for(const delta of [
       {reasoning_content:'Checking.'},{content:'Answer: '},
       {tool_calls:[{index:0,id:'call-1',function:{name:'sum',arguments:'{"a":'}}]},
@@ -71,6 +72,7 @@ test('first use tests, reads the report and streams text, reasoning and tool cal
   await generate(ctl,Chat.from([{role:'user',content:'Use a tool'}]));
   assert.ok(ctl.fragments.some(f=>f.text==='Checking.'&&f.opts.reasoningType==='reasoning'));
   assert.ok(ctl.fragments.some(f=>f.text==='Answer: '));
+  assert.ok(ctl.fragments.some(f=>f.text.includes('LoopLab · original model')));
   assert.deepEqual(ctl.tools,[{type:'function',id:'call-1',name:'sum',arguments:{a:2}}]);
   assert.equal(fake.requests.filter(r=>r.path==='/looplab/jobs').length,1);
 });

@@ -36,6 +36,8 @@ The first evaluation of `g(input)` is shared between the natural output and the 
 
 This is an independent implementation of the equations and selected cache policies, **not a reproduction of the paper's published scores**. Its GGUF quantization, diagnostic tasks, and runtime differ from the paper's BF16/Transformers evaluations. The paper has variations between its main recipe, appendices, and linked example; this repository states its exact implemented behavior.
 
+Specifically, LoopLab follows the **K substeps** in Equations 10 and 13–16; Algorithm 3 prints a different loop bound. In layer mode, `cache=first` uses each layer's own saved input. These choices are explicit so the numerical reference checks a defined operator. The current evaluator uses full decode looping and one fixed middle window; it does not reproduce the paper's broader window search, decode-bypass variants or benchmark harness.
+
 ## Automatic testing
 
 Use the plugin's **Find models**, **Auto-test selected model**, **Auto-test all local models**, **Show report**, and **Cancel active tests** actions.
@@ -104,6 +106,8 @@ The companion listens only on `127.0.0.1:7341`. The plugin reads the local token
 
 The plugin streams text and reasoning, forwards function tools and tool results, handles cancellation, and supports text conversations. Images and attachments are rejected explicitly.
 
+Each chat answer identifies the active mode: **original model** or the actual number of **experimental loop passes**. Choosing the recommended profile can select the original model when the diagnostics do not demonstrate a benefit.
+
 ## Commands and resource limits
 
 ```sh
@@ -137,9 +141,9 @@ Original GGUF files downloaded by Ollama can also be used through `--models /pat
 
 The plugin uses LM Studio's documented generator API, and the engine is installed under this repository's `.runtime/` directory. Updating an LM Studio runtime pack therefore does not replace this engine. A future incompatible plugin API change may require an adapter update; the SDK labels plugin APIs experimental.
 
-The llama.cpp revision, development-header revisions, plugin dependencies and build patch fingerprint are pinned. Model test records include the original header hash, patch fingerprint, context and execution settings. Changing the runtime/settings invalidates the corresponding loop-profile approval.
+The llama.cpp revision, development-header revisions, plugin dependencies and build patch fingerprint are pinned. Model test records include the original header hash, file size/modification time, exact loop configuration, patch fingerprint, context and execution settings. Changing these invalidates the corresponding loop-profile approval. The header hash is not a full hash of every weight byte; deliberately preserving all file metadata while replacing weights is outside this check.
 
-**Prompt-prefix caching is currently disabled for chat.** Each loop profile needs separate cache identity, and partial prompt reuse can change recurrent prefill semantics. Reports include an experimental cache comparison; a passing single probe does not enable caching automatically. Reuse of weight tensors inside one run is implemented.
+**Cross-request prompt-prefix caching is currently disabled for chat.** Normal token-by-token KV caching within a response remains enabled. Each loop profile needs separate cache identity, and partial prompt reuse can change recurrent prefill semantics. Reports include an experimental cache comparison; a passing single probe does not enable caching automatically. Reuse of weight tensors inside one run is implemented.
 
 ## Current boundaries
 

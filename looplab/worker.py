@@ -142,8 +142,9 @@ class Worker:
         # Fusion changes the quantized anchor identity when intermediate K/V are retained.
         # Keep the same unfused kernels for baseline, conformance probes, and chat.
         env["GGML_VK_DISABLE_FUSION"] = "1"
+        env["LLAMA_API_KEY"] = self.token
         args = [str(self.binary), "-m", model.path, "--host", "127.0.0.1", "--port", str(port),
-                "--alias", model.id, "--api-key", self.token, "-ngl", str(self.gpu_layers),
+                "--alias", model.id, "-ngl", str(self.gpu_layers),
                 "-c", str(self.context), "-b", str(self.context), "-ub", str(self.context),
                 "--parallel", "1", "--no-context-shift", "--jinja", "--flash-attn", "off",
                 "--cache-type-k", "f16", "--cache-type-v", "f16"]

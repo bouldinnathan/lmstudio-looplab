@@ -63,15 +63,19 @@ class App:
         if requested not in {"loop2", "loop3", "loop4"}:
             raise ValueError("profile must be recommended, baseline, loop2, loop3, or loop4")
         passes = int(requested[-1])
+        profile = Profile.for_model(model, passes)
         info = self.worker.build_info()
         tested = report and report.get("model", {}).get("header_sha256") == model.header_sha256
+        tested = tested and report.get("model", {}).get("size_bytes") == model.size_bytes
+        tested = tested and report.get("source_mtime_ns") == model.mtime_ns
         tested = tested and report.get("runtime", {}).get("patch_sha256") == info["patch_sha256"]
         tested = tested and report.get("runtime", {}).get("execution_policy") == info.get("execution_policy")
-        tested = tested and any(p["passes"] == passes and p.get("anchor_identity", {}).get("passed")
+        tested = tested and any(p["passes"] == passes and p.get("profile") == asdict(profile)
+                                and p.get("anchor_identity", {}).get("passed")
                                 for p in report.get("profiles", []))
         if not tested:
             raise ValueError("This loop profile has no current conformance pass. Run Auto-test first.")
-        return Profile.for_model(model, passes)
+        return profile
 
     def busy(self):
         with self.jobs_lock:
@@ -221,6 +225,7 @@ def handler(app):
                                 self.send_response(200)
                                 self.send_header("Content-Type", "text/event-stream")
                                 self.send_header("Cache-Control", "no-cache")
+                                self.send_header("X-LoopLab-Passes", str(profile.passes))
                                 self.end_headers()
                                 for line in response:
                                     self.wfile.write(line)

@@ -116,13 +116,23 @@ def test_logs_stay_bounded_and_low_disk_prevents_inference(tmp_path,monkeypatch)
 
 
 def test_test_record_is_invalidated_by_execution_settings(tmp_path):
+    from dataclasses import asdict
     from looplab.models import atomic_json
     app=App(tmp_path/'state',roots=[tmp_path/'models'])
     m=Model('m','m','unused','qwen2',48,10,0,'hash',True,[],'block')
     app.worker.build_info=lambda:{'patch_sha256':'build','execution_policy':{'context':2048}}
-    report={'model':{'header_sha256':'hash'},'runtime':app.worker.build_info(),
-            'profiles':[{'passes':2,'anchor_identity':{'passed':True}}]}
+    report={'model':{'header_sha256':'hash','size_bytes':10},'source_mtime_ns':0,
+            'runtime':app.worker.build_info(),
+            'profiles':[{'passes':2,'profile':asdict(Profile.for_model(m,2)),'anchor_identity':{'passed':True}}]}
     atomic_json(app.state/'reports/m.json',report)
     assert app.profile(m,'loop2').passes==2
+    m.mtime_ns=1
+    with pytest.raises(ValueError,match='conformance'):app.profile(m,'loop2')
+    m.mtime_ns=0
+    report['profiles'][0]['profile']['cache']='last'
+    atomic_json(app.state/'reports/m.json',report)
+    with pytest.raises(ValueError,match='conformance'):app.profile(m,'loop2')
+    report['profiles'][0]['profile']['cache']='first'
+    atomic_json(app.state/'reports/m.json',report)
     app.worker.build_info=lambda:{'patch_sha256':'build','execution_policy':{'context':4096}}
     with pytest.raises(ValueError,match='conformance'):app.profile(m,'loop2')
