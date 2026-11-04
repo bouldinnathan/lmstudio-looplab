@@ -1,16 +1,14 @@
 {
   "suite": "looplab-all-local-v1",
-  "completed_utc": "2026-11-04T05:09:37.530373+00:00",
+  "completed_utc": "2026-11-04T19:03:51.058193+00:00",
   "model_files": 54,
   "outcomes": {
     "not_applicable": 3,
     "baseline_failed": 20,
-    "partially_compatible": 4,
+    "compatible_experimental": 17,
     "embedding_passed": 2,
-    "compatible_experimental": 10,
     "baseline_only": 6,
     "preflight_skipped": 5,
-    "conformance_failed": 3,
     "resource_skipped": 1
   },
   "models": [
@@ -406,7 +404,7 @@
     {
       "schema": 1,
       "suite": "looplab-explore-v1",
-      "status": "partially_compatible",
+      "status": "compatible_experimental",
       "model": {
         "id": "reader-lm-1-5b-faf34a76",
         "name": "reader-lm-1.5b",
@@ -439,7 +437,7 @@
       "baseline_check": {
         "passed": true,
         "tokens": 12,
-        "effective_gpu_layers": 999
+        "effective_gpu_layers": 0
       },
       "profiles": [
         {
@@ -476,16 +474,16 @@
             "start": 12,
             "end": 16
           },
-          "status": "smoke_failed",
+          "status": "compatible_experimental",
           "anchor_identity": {
             "passed": true,
             "max_logprob_error": 0.0
           },
           "loop_smoke": {
-            "passed": false,
+            "passed": true,
             "finite": true,
-            "repeat_stable": false,
-            "repeat_max_logprob_error": 0.05538225173950195,
+            "repeat_stable": true,
+            "repeat_max_logprob_error": 0.0,
             "changed_from_baseline": true,
             "same_sequence_logprob_difference": null
           }
@@ -518,192 +516,294 @@
       "paper_reproduction": false,
       "quality_tested": false,
       "recommended_profile": "baseline",
-      "repair": {
-        "model_id": "reader-lm-1-5b-faf34a76",
-        "architecture": "qwen2",
-        "status": "partially_compatible",
-        "adapter": {
-          "family": "dense",
-          "cache_interfaces": [
-            "kv"
-          ],
-          "strategy": "preserve_native_layer_body",
-          "source_sha256": "7f7f9df9bdaaf7c8aaab900fe046c97936b67d656f66dea445735f1beec695f4",
-          "source": "src/models/qwen2.cpp",
-          "tier": "reference_validated"
-        },
-        "metadata": {
-          "qwen2.block_count": 28,
-          "qwen2.context_length": 256000,
-          "qwen2.embedding_length": 1536,
-          "qwen2.feed_forward_length": 8960,
-          "qwen2.attention.head_count": 12,
-          "qwen2.attention.head_count_kv": 2,
-          "qwen2.rope.freq_base": 2000000.0,
-          "qwen2.attention.layer_norm_rms_epsilon": 9.999999974752427e-07
-        },
-        "tensor_count": 338,
-        "representative_tensors": [
-          {
-            "name": "token_embd.weight",
-            "dimensions": [
-              1536,
-              151936
-            ],
-            "ggml_type": 14
-          },
-          {
-            "name": "blk.0.attn_norm.weight",
-            "dimensions": [
-              1536
-            ],
-            "ggml_type": 0
-          },
-          {
-            "name": "blk.0.ffn_down.weight",
-            "dimensions": [
-              8960,
-              1536
-            ],
-            "ggml_type": 2
-          },
-          {
-            "name": "blk.0.ffn_gate.weight",
-            "dimensions": [
-              1536,
-              8960
-            ],
-            "ggml_type": 2
-          },
-          {
-            "name": "blk.0.ffn_up.weight",
-            "dimensions": [
-              1536,
-              8960
-            ],
-            "ggml_type": 2
-          },
-          {
-            "name": "blk.0.ffn_norm.weight",
-            "dimensions": [
-              1536
-            ],
-            "ggml_type": 0
-          },
-          {
-            "name": "blk.0.attn_k.bias",
-            "dimensions": [
-              256
-            ],
-            "ggml_type": 0
-          },
-          {
-            "name": "blk.0.attn_k.weight",
-            "dimensions": [
-              1536,
-              256
-            ],
-            "ggml_type": 2
-          },
-          {
-            "name": "blk.0.attn_output.weight",
-            "dimensions": [
-              1536,
-              1536
-            ],
-            "ggml_type": 2
-          },
-          {
-            "name": "blk.0.attn_q.bias",
-            "dimensions": [
-              1536
-            ],
-            "ggml_type": 0
-          },
-          {
-            "name": "blk.0.attn_q.weight",
-            "dimensions": [
-              1536,
-              1536
-            ],
-            "ggml_type": 2
-          },
-          {
-            "name": "blk.0.attn_v.bias",
-            "dimensions": [
-              256
-            ],
-            "ggml_type": 0
-          },
-          {
-            "name": "blk.0.attn_v.weight",
-            "dimensions": [
-              1536,
-              256
-            ],
-            "ggml_type": 2
-          },
-          {
-            "name": "output_norm.weight",
-            "dimensions": [
-              1536
-            ],
-            "ggml_type": 0
-          }
-        ],
-        "runtime_revision": "0893ec98f5eafad36a43a72cd1c3723d72b0d03a",
-        "patch_sha256": "d4506c79258f07b66b0a720122a9efb2f874a478286dc2d1448b1e9c732f6860",
-        "reasons": [],
-        "failures": [],
-        "profile_failures": [
-          {
-            "passes": 3,
-            "profile": {
-              "passes": 3,
-              "anchor": 0.5,
-              "mode": "block",
-              "cache": "first",
-              "start": 12,
-              "end": 16
-            },
-            "status": "smoke_failed",
-            "anchor_identity": {
-              "passed": true,
-              "max_logprob_error": 0.0
-            },
-            "loop_smoke": {
-              "passed": false,
-              "finite": true,
-              "repeat_stable": false,
-              "repeat_max_logprob_error": 0.05538225173950195,
-              "changed_from_baseline": true,
-              "same_sequence_logprob_difference": null
-            }
-          }
-        ],
-        "reproduce": "python -m looplab explore reader-lm-1-5b-faf34a76 --no-resume",
-        "next_steps": [
-          "Check the pinned native model loader and original graph before changing metadata or tensor names.",
-          "For an unrecognized but similar graph, extend runtime/auto_adapters.py and preserve its original layer body.",
-          "For recurrent, MLA, shared, or convolution state, implement and test the state snapshot/restore semantics explicitly.",
-          "For MoE, retain the first expert IDs and mixture weights through the shared routing helper.",
-          "For repeat-request instability, inspect cache clearing, graph reuse and backend numerical behavior with cache_prompt=false.",
-          "Rebuild, pass the independent native reference tests, then rerun this exact model and its K=2/3/4 probes.",
-          "Treat successful smoke tests as experimental compatibility, never proof of quality gains or full paper reproduction."
-        ]
-      },
-      "seconds": 7.620506471997942,
+      "seconds": 5.280067882005824,
       "storage_before": {
-        "time": 1793767150.6389344,
-        "free_bytes": 520840769536,
-        "state_bytes": 955050,
+        "time": 1793811301.7297044,
+        "free_bytes": 520594862080,
+        "state_bytes": 0,
         "model_weight_bytes_written": 0
       },
       "storage_after": {
-        "time": 1793767158.259067,
-        "free_bytes": 520840769536,
-        "state_bytes": 961333,
+        "time": 1793811307.0095935,
+        "free_bytes": 520594862080,
+        "state_bytes": 57152,
         "model_weight_bytes_written": 0
+      },
+      "backend_recovery": {
+        "version": "looplab-precision-recovery-v1",
+        "selected": "cpu",
+        "attempts": [
+          {
+            "mode": "default",
+            "status": "partially_compatible",
+            "execution_policy": {
+              "context": 2048,
+              "gpu_layers": 999,
+              "kv_type": "f16",
+              "flash_attention": false,
+              "vulkan_fusion": false,
+              "prefix_cache": false,
+              "swa_full": true,
+              "cpu_above_gib": 32,
+              "runner_version": "0.2.0"
+            },
+            "profiles": [
+              {
+                "passes": 2,
+                "profile": {
+                  "passes": 2,
+                  "anchor": 0.5,
+                  "mode": "block",
+                  "cache": "first",
+                  "start": 12,
+                  "end": 16
+                },
+                "status": "compatible_experimental",
+                "anchor_identity": {
+                  "passed": true,
+                  "max_logprob_error": 0.0
+                },
+                "loop_smoke": {
+                  "passed": true,
+                  "finite": true,
+                  "repeat_stable": true,
+                  "repeat_max_logprob_error": 0.0,
+                  "changed_from_baseline": true,
+                  "same_sequence_logprob_difference": null
+                }
+              },
+              {
+                "passes": 3,
+                "profile": {
+                  "passes": 3,
+                  "anchor": 0.5,
+                  "mode": "block",
+                  "cache": "first",
+                  "start": 12,
+                  "end": 16
+                },
+                "status": "smoke_failed",
+                "anchor_identity": {
+                  "passed": true,
+                  "max_logprob_error": 0.0
+                },
+                "loop_smoke": {
+                  "passed": false,
+                  "finite": true,
+                  "repeat_stable": false,
+                  "repeat_max_logprob_error": 0.05538225173950195,
+                  "changed_from_baseline": true,
+                  "same_sequence_logprob_difference": null
+                }
+              },
+              {
+                "passes": 4,
+                "profile": {
+                  "passes": 4,
+                  "anchor": 0.5,
+                  "mode": "block",
+                  "cache": "first",
+                  "start": 12,
+                  "end": 16
+                },
+                "status": "compatible_experimental",
+                "anchor_identity": {
+                  "passed": true,
+                  "max_logprob_error": 0.0
+                },
+                "loop_smoke": {
+                  "passed": true,
+                  "finite": true,
+                  "repeat_stable": true,
+                  "repeat_max_logprob_error": 0.0,
+                  "changed_from_baseline": true,
+                  "same_sequence_logprob_difference": null
+                }
+              }
+            ]
+          },
+          {
+            "mode": "vulkan_f32",
+            "status": "partially_compatible",
+            "execution_policy": {
+              "context": 2048,
+              "gpu_layers": 999,
+              "kv_type": "f16",
+              "flash_attention": false,
+              "vulkan_fusion": false,
+              "prefix_cache": false,
+              "swa_full": true,
+              "cpu_above_gib": 32,
+              "runner_version": "0.2.0",
+              "vulkan_f16": false
+            },
+            "profiles": [
+              {
+                "passes": 2,
+                "profile": {
+                  "passes": 2,
+                  "anchor": 0.5,
+                  "mode": "block",
+                  "cache": "first",
+                  "start": 12,
+                  "end": 16
+                },
+                "status": "smoke_failed",
+                "anchor_identity": {
+                  "passed": true,
+                  "max_logprob_error": 0.0
+                },
+                "loop_smoke": {
+                  "passed": false,
+                  "finite": true,
+                  "repeat_stable": false,
+                  "repeat_max_logprob_error": 0.039929866790771484,
+                  "changed_from_baseline": true,
+                  "same_sequence_logprob_difference": null
+                }
+              },
+              {
+                "passes": 3,
+                "profile": {
+                  "passes": 3,
+                  "anchor": 0.5,
+                  "mode": "block",
+                  "cache": "first",
+                  "start": 12,
+                  "end": 16
+                },
+                "status": "compatible_experimental",
+                "anchor_identity": {
+                  "passed": true,
+                  "max_logprob_error": 0.0
+                },
+                "loop_smoke": {
+                  "passed": true,
+                  "finite": true,
+                  "repeat_stable": true,
+                  "repeat_max_logprob_error": 0.0,
+                  "changed_from_baseline": true,
+                  "same_sequence_logprob_difference": null
+                }
+              },
+              {
+                "passes": 4,
+                "profile": {
+                  "passes": 4,
+                  "anchor": 0.5,
+                  "mode": "block",
+                  "cache": "first",
+                  "start": 12,
+                  "end": 16
+                },
+                "status": "compatible_experimental",
+                "anchor_identity": {
+                  "passed": true,
+                  "max_logprob_error": 0.0
+                },
+                "loop_smoke": {
+                  "passed": true,
+                  "finite": true,
+                  "repeat_stable": true,
+                  "repeat_max_logprob_error": 0.0,
+                  "changed_from_baseline": true,
+                  "same_sequence_logprob_difference": null
+                }
+              }
+            ]
+          },
+          {
+            "mode": "cpu",
+            "status": "compatible_experimental",
+            "execution_policy": {
+              "context": 2048,
+              "gpu_layers": 999,
+              "kv_type": "f16",
+              "flash_attention": false,
+              "vulkan_fusion": false,
+              "prefix_cache": false,
+              "swa_full": true,
+              "cpu_above_gib": 32,
+              "runner_version": "0.2.0",
+              "cpu_offload_disabled": true,
+              "auto_fit": false
+            },
+            "profiles": [
+              {
+                "passes": 2,
+                "profile": {
+                  "passes": 2,
+                  "anchor": 0.5,
+                  "mode": "block",
+                  "cache": "first",
+                  "start": 12,
+                  "end": 16
+                },
+                "status": "compatible_experimental",
+                "anchor_identity": {
+                  "passed": true,
+                  "max_logprob_error": 0.0
+                },
+                "loop_smoke": {
+                  "passed": true,
+                  "finite": true,
+                  "repeat_stable": true,
+                  "repeat_max_logprob_error": 0.0,
+                  "changed_from_baseline": true,
+                  "same_sequence_logprob_difference": null
+                }
+              },
+              {
+                "passes": 3,
+                "profile": {
+                  "passes": 3,
+                  "anchor": 0.5,
+                  "mode": "block",
+                  "cache": "first",
+                  "start": 12,
+                  "end": 16
+                },
+                "status": "compatible_experimental",
+                "anchor_identity": {
+                  "passed": true,
+                  "max_logprob_error": 0.0
+                },
+                "loop_smoke": {
+                  "passed": true,
+                  "finite": true,
+                  "repeat_stable": true,
+                  "repeat_max_logprob_error": 0.0,
+                  "changed_from_baseline": true,
+                  "same_sequence_logprob_difference": null
+                }
+              },
+              {
+                "passes": 4,
+                "profile": {
+                  "passes": 4,
+                  "anchor": 0.5,
+                  "mode": "block",
+                  "cache": "first",
+                  "start": 12,
+                  "end": 16
+                },
+                "status": "compatible_experimental",
+                "anchor_identity": {
+                  "passed": true,
+                  "max_logprob_error": 0.0
+                },
+                "loop_smoke": {
+                  "passed": true,
+                  "finite": true,
+                  "repeat_stable": true,
+                  "repeat_max_logprob_error": 0.0,
+                  "changed_from_baseline": true,
+                  "same_sequence_logprob_difference": null
+                }
+              }
+            ]
+          }
+        ]
       },
       "runtime": {
         "llama_cpp_revision": "0893ec98f5eafad36a43a72cd1c3723d72b0d03a",
@@ -717,7 +817,9 @@
           "prefix_cache": false,
           "swa_full": true,
           "cpu_above_gib": 32,
-          "runner_version": "0.2.0"
+          "runner_version": "0.2.0",
+          "cpu_offload_disabled": true,
+          "auto_fit": false
         }
       }
     },
@@ -861,7 +963,7 @@
     {
       "schema": 1,
       "suite": "looplab-explore-v1",
-      "status": "partially_compatible",
+      "status": "compatible_experimental",
       "model": {
         "id": "granite4-1-3b-72064317",
         "name": "granite4.1-3b",
@@ -918,7 +1020,7 @@
             "repeat_stable": true,
             "repeat_max_logprob_error": 0.0,
             "changed_from_baseline": true,
-            "same_sequence_logprob_difference": null
+            "same_sequence_logprob_difference": 0.42874741554260254
           }
         },
         {
@@ -931,18 +1033,18 @@
             "start": 18,
             "end": 22
           },
-          "status": "smoke_failed",
+          "status": "compatible_experimental",
           "anchor_identity": {
             "passed": true,
             "max_logprob_error": 0.0
           },
           "loop_smoke": {
-            "passed": false,
+            "passed": true,
             "finite": true,
-            "repeat_stable": false,
-            "repeat_max_logprob_error": 0.05869722366333008,
+            "repeat_stable": true,
+            "repeat_max_logprob_error": 0.0,
             "changed_from_baseline": true,
-            "same_sequence_logprob_difference": null
+            "same_sequence_logprob_difference": 0.6236417293548584
           }
         },
         {
@@ -955,219 +1057,221 @@
             "start": 18,
             "end": 22
           },
-          "status": "smoke_failed",
+          "status": "compatible_experimental",
           "anchor_identity": {
             "passed": true,
             "max_logprob_error": 0.0
           },
           "loop_smoke": {
-            "passed": false,
+            "passed": true,
             "finite": true,
-            "repeat_stable": false,
-            "repeat_max_logprob_error": null,
+            "repeat_stable": true,
+            "repeat_max_logprob_error": 0.0,
             "changed_from_baseline": true,
-            "same_sequence_logprob_difference": null
+            "same_sequence_logprob_difference": 0.40978217124938965
           }
         }
       ],
       "paper_reproduction": false,
       "quality_tested": false,
       "recommended_profile": "baseline",
-      "repair": {
-        "model_id": "granite4-1-3b-72064317",
-        "architecture": "granite",
-        "status": "partially_compatible",
-        "adapter": {
-          "family": "moe",
-          "cache_interfaces": [
-            "kv"
-          ],
-          "strategy": "preserve_native_layer_body",
-          "source_sha256": "8601bb092790b0ba1f81ed5f43181712965e5e891c9d2b0bc1137cd2c36a0dcf",
-          "source": "src/models/granite.cpp",
-          "tier": "experimental"
-        },
-        "metadata": {
-          "granite.block_count": 40,
-          "granite.context_length": 131072,
-          "granite.embedding_length": 2560,
-          "granite.feed_forward_length": 8192,
-          "granite.attention.head_count": 40,
-          "granite.attention.head_count_kv": 8,
-          "granite.rope.freq_base": 10000000.0,
-          "granite.attention.layer_norm_rms_epsilon": 9.999999747378752e-06,
-          "granite.vocab_size": 100352,
-          "granite.rope.dimension_count": 64,
-          "granite.attention.scale": 0.015625,
-          "granite.embedding_scale": 12.0,
-          "granite.residual_scale": 0.2199999988079071,
-          "granite.logit_scale": 10.0
-        },
-        "tensor_count": 362,
-        "representative_tensors": [
-          {
-            "name": "output_norm.weight",
-            "dimensions": [
-              2560
-            ],
-            "ggml_type": 0
-          },
-          {
-            "name": "token_embd.weight",
-            "dimensions": [
-              2560,
-              100352
-            ],
-            "ggml_type": 14
-          },
-          {
-            "name": "blk.0.attn_k.weight",
-            "dimensions": [
-              2560,
-              512
-            ],
-            "ggml_type": 12
-          },
-          {
-            "name": "blk.0.attn_norm.weight",
-            "dimensions": [
-              2560
-            ],
-            "ggml_type": 0
-          },
-          {
-            "name": "blk.0.attn_output.weight",
-            "dimensions": [
-              2560,
-              2560
-            ],
-            "ggml_type": 12
-          },
-          {
-            "name": "blk.0.attn_q.weight",
-            "dimensions": [
-              2560,
-              2560
-            ],
-            "ggml_type": 12
-          },
-          {
-            "name": "blk.0.attn_v.weight",
-            "dimensions": [
-              2560,
-              512
-            ],
-            "ggml_type": 14
-          },
-          {
-            "name": "blk.0.ffn_down.weight",
-            "dimensions": [
-              8192,
-              2560
-            ],
-            "ggml_type": 14
-          },
-          {
-            "name": "blk.0.ffn_gate.weight",
-            "dimensions": [
-              2560,
-              8192
-            ],
-            "ggml_type": 12
-          },
-          {
-            "name": "blk.0.ffn_norm.weight",
-            "dimensions": [
-              2560
-            ],
-            "ggml_type": 0
-          },
-          {
-            "name": "blk.0.ffn_up.weight",
-            "dimensions": [
-              2560,
-              8192
-            ],
-            "ggml_type": 12
-          }
-        ],
-        "runtime_revision": "0893ec98f5eafad36a43a72cd1c3723d72b0d03a",
-        "patch_sha256": "d4506c79258f07b66b0a720122a9efb2f874a478286dc2d1448b1e9c732f6860",
-        "reasons": [],
-        "failures": [],
-        "profile_failures": [
-          {
-            "passes": 3,
-            "profile": {
-              "passes": 3,
-              "anchor": 0.5,
-              "mode": "block",
-              "cache": "first",
-              "start": 18,
-              "end": 22
-            },
-            "status": "smoke_failed",
-            "anchor_identity": {
-              "passed": true,
-              "max_logprob_error": 0.0
-            },
-            "loop_smoke": {
-              "passed": false,
-              "finite": true,
-              "repeat_stable": false,
-              "repeat_max_logprob_error": 0.05869722366333008,
-              "changed_from_baseline": true,
-              "same_sequence_logprob_difference": null
-            }
-          },
-          {
-            "passes": 4,
-            "profile": {
-              "passes": 4,
-              "anchor": 0.5,
-              "mode": "block",
-              "cache": "first",
-              "start": 18,
-              "end": 22
-            },
-            "status": "smoke_failed",
-            "anchor_identity": {
-              "passed": true,
-              "max_logprob_error": 0.0
-            },
-            "loop_smoke": {
-              "passed": false,
-              "finite": true,
-              "repeat_stable": false,
-              "repeat_max_logprob_error": null,
-              "changed_from_baseline": true,
-              "same_sequence_logprob_difference": null
-            }
-          }
-        ],
-        "reproduce": "python -m looplab explore granite4-1-3b-72064317 --no-resume",
-        "next_steps": [
-          "Check the pinned native model loader and original graph before changing metadata or tensor names.",
-          "For an unrecognized but similar graph, extend runtime/auto_adapters.py and preserve its original layer body.",
-          "For recurrent, MLA, shared, or convolution state, implement and test the state snapshot/restore semantics explicitly.",
-          "For MoE, retain the first expert IDs and mixture weights through the shared routing helper.",
-          "For repeat-request instability, inspect cache clearing, graph reuse and backend numerical behavior with cache_prompt=false.",
-          "Rebuild, pass the independent native reference tests, then rerun this exact model and its K=2/3/4 probes.",
-          "Treat successful smoke tests as experimental compatibility, never proof of quality gains or full paper reproduction."
-        ]
-      },
-      "seconds": 13.110362980005448,
+      "seconds": 13.959551192005165,
       "storage_before": {
-        "time": 1793767159.8037806,
-        "free_bytes": 520840769536,
-        "state_bytes": 1090287,
+        "time": 1793811307.0180118,
+        "free_bytes": 520594862080,
+        "state_bytes": 0,
         "model_weight_bytes_written": 0
       },
       "storage_after": {
-        "time": 1793767172.9131641,
-        "free_bytes": 520840769536,
-        "state_bytes": 1165275,
+        "time": 1793811320.9774294,
+        "free_bytes": 520594862080,
+        "state_bytes": 57149,
         "model_weight_bytes_written": 0
+      },
+      "backend_recovery": {
+        "version": "looplab-precision-recovery-v1",
+        "selected": "vulkan_f32",
+        "attempts": [
+          {
+            "mode": "default",
+            "status": "partially_compatible",
+            "execution_policy": {
+              "context": 2048,
+              "gpu_layers": 999,
+              "kv_type": "f16",
+              "flash_attention": false,
+              "vulkan_fusion": false,
+              "prefix_cache": false,
+              "swa_full": true,
+              "cpu_above_gib": 32,
+              "runner_version": "0.2.0"
+            },
+            "profiles": [
+              {
+                "passes": 2,
+                "profile": {
+                  "passes": 2,
+                  "anchor": 0.5,
+                  "mode": "block",
+                  "cache": "first",
+                  "start": 18,
+                  "end": 22
+                },
+                "status": "compatible_experimental",
+                "anchor_identity": {
+                  "passed": true,
+                  "max_logprob_error": 0.0
+                },
+                "loop_smoke": {
+                  "passed": true,
+                  "finite": true,
+                  "repeat_stable": true,
+                  "repeat_max_logprob_error": 0.0,
+                  "changed_from_baseline": true,
+                  "same_sequence_logprob_difference": null
+                }
+              },
+              {
+                "passes": 3,
+                "profile": {
+                  "passes": 3,
+                  "anchor": 0.5,
+                  "mode": "block",
+                  "cache": "first",
+                  "start": 18,
+                  "end": 22
+                },
+                "status": "smoke_failed",
+                "anchor_identity": {
+                  "passed": true,
+                  "max_logprob_error": 0.0
+                },
+                "loop_smoke": {
+                  "passed": false,
+                  "finite": true,
+                  "repeat_stable": false,
+                  "repeat_max_logprob_error": 0.05869722366333008,
+                  "changed_from_baseline": true,
+                  "same_sequence_logprob_difference": null
+                }
+              },
+              {
+                "passes": 4,
+                "profile": {
+                  "passes": 4,
+                  "anchor": 0.5,
+                  "mode": "block",
+                  "cache": "first",
+                  "start": 18,
+                  "end": 22
+                },
+                "status": "smoke_failed",
+                "anchor_identity": {
+                  "passed": true,
+                  "max_logprob_error": 0.0
+                },
+                "loop_smoke": {
+                  "passed": false,
+                  "finite": true,
+                  "repeat_stable": false,
+                  "repeat_max_logprob_error": null,
+                  "changed_from_baseline": true,
+                  "same_sequence_logprob_difference": null
+                }
+              }
+            ]
+          },
+          {
+            "mode": "vulkan_f32",
+            "status": "compatible_experimental",
+            "execution_policy": {
+              "context": 2048,
+              "gpu_layers": 999,
+              "kv_type": "f16",
+              "flash_attention": false,
+              "vulkan_fusion": false,
+              "prefix_cache": false,
+              "swa_full": true,
+              "cpu_above_gib": 32,
+              "runner_version": "0.2.0",
+              "vulkan_f16": false
+            },
+            "profiles": [
+              {
+                "passes": 2,
+                "profile": {
+                  "passes": 2,
+                  "anchor": 0.5,
+                  "mode": "block",
+                  "cache": "first",
+                  "start": 18,
+                  "end": 22
+                },
+                "status": "compatible_experimental",
+                "anchor_identity": {
+                  "passed": true,
+                  "max_logprob_error": 0.0
+                },
+                "loop_smoke": {
+                  "passed": true,
+                  "finite": true,
+                  "repeat_stable": true,
+                  "repeat_max_logprob_error": 0.0,
+                  "changed_from_baseline": true,
+                  "same_sequence_logprob_difference": 0.42874741554260254
+                }
+              },
+              {
+                "passes": 3,
+                "profile": {
+                  "passes": 3,
+                  "anchor": 0.5,
+                  "mode": "block",
+                  "cache": "first",
+                  "start": 18,
+                  "end": 22
+                },
+                "status": "compatible_experimental",
+                "anchor_identity": {
+                  "passed": true,
+                  "max_logprob_error": 0.0
+                },
+                "loop_smoke": {
+                  "passed": true,
+                  "finite": true,
+                  "repeat_stable": true,
+                  "repeat_max_logprob_error": 0.0,
+                  "changed_from_baseline": true,
+                  "same_sequence_logprob_difference": 0.6236417293548584
+                }
+              },
+              {
+                "passes": 4,
+                "profile": {
+                  "passes": 4,
+                  "anchor": 0.5,
+                  "mode": "block",
+                  "cache": "first",
+                  "start": 18,
+                  "end": 22
+                },
+                "status": "compatible_experimental",
+                "anchor_identity": {
+                  "passed": true,
+                  "max_logprob_error": 0.0
+                },
+                "loop_smoke": {
+                  "passed": true,
+                  "finite": true,
+                  "repeat_stable": true,
+                  "repeat_max_logprob_error": 0.0,
+                  "changed_from_baseline": true,
+                  "same_sequence_logprob_difference": 0.40978217124938965
+                }
+              }
+            ]
+          }
+        ]
       },
       "runtime": {
         "llama_cpp_revision": "0893ec98f5eafad36a43a72cd1c3723d72b0d03a",
@@ -1181,7 +1285,8 @@
           "prefix_cache": false,
           "swa_full": true,
           "cpu_above_gib": 32,
-          "runner_version": "0.2.0"
+          "runner_version": "0.2.0",
+          "vulkan_f16": false
         }
       }
     },
@@ -2712,7 +2817,7 @@
     {
       "schema": 1,
       "suite": "looplab-explore-v1",
-      "status": "partially_compatible",
+      "status": "compatible_experimental",
       "model": {
         "id": "granite4-1-guardian-8b-q4-k-m-9b16f68b",
         "name": "granite4.1-guardian-8b-q4_K_M",
@@ -2745,7 +2850,7 @@
       "baseline_check": {
         "passed": true,
         "tokens": 12,
-        "effective_gpu_layers": 999
+        "effective_gpu_layers": 0
       },
       "profiles": [
         {
@@ -2769,7 +2874,7 @@
             "repeat_stable": true,
             "repeat_max_logprob_error": 0.0,
             "changed_from_baseline": true,
-            "same_sequence_logprob_difference": 0.2765984535217285
+            "same_sequence_logprob_difference": 0.23971176147460938
           }
         },
         {
@@ -2782,18 +2887,18 @@
             "start": 18,
             "end": 22
           },
-          "status": "smoke_failed",
+          "status": "compatible_experimental",
           "anchor_identity": {
             "passed": true,
             "max_logprob_error": 0.0
           },
           "loop_smoke": {
-            "passed": false,
+            "passed": true,
             "finite": true,
-            "repeat_stable": false,
-            "repeat_max_logprob_error": 0.08347225189208984,
+            "repeat_stable": true,
+            "repeat_max_logprob_error": 0.0,
             "changed_from_baseline": true,
-            "same_sequence_logprob_difference": 0.3284783363342285
+            "same_sequence_logprob_difference": 0.28432631492614746
           }
         },
         {
@@ -2817,184 +2922,301 @@
             "repeat_stable": true,
             "repeat_max_logprob_error": 0.0,
             "changed_from_baseline": true,
-            "same_sequence_logprob_difference": 0.36089372634887695
+            "same_sequence_logprob_difference": 0.27678346633911133
           }
         }
       ],
       "paper_reproduction": false,
       "quality_tested": false,
       "recommended_profile": "baseline",
-      "repair": {
-        "model_id": "granite4-1-guardian-8b-q4-k-m-9b16f68b",
-        "architecture": "granite",
-        "status": "partially_compatible",
-        "adapter": {
-          "family": "moe",
-          "cache_interfaces": [
-            "kv"
-          ],
-          "strategy": "preserve_native_layer_body",
-          "source_sha256": "8601bb092790b0ba1f81ed5f43181712965e5e891c9d2b0bc1137cd2c36a0dcf",
-          "source": "src/models/granite.cpp",
-          "tier": "experimental"
-        },
-        "metadata": {
-          "granite.block_count": 40,
-          "granite.context_length": 131072,
-          "granite.embedding_length": 4096,
-          "granite.feed_forward_length": 12800,
-          "granite.attention.head_count": 32,
-          "granite.attention.head_count_kv": 8,
-          "granite.rope.freq_base": 10000000.0,
-          "granite.attention.layer_norm_rms_epsilon": 9.999999747378752e-06,
-          "granite.vocab_size": 100352,
-          "granite.rope.dimension_count": 128,
-          "granite.attention.scale": 0.0078125,
-          "granite.embedding_scale": 12.0,
-          "granite.residual_scale": 0.2199999988079071,
-          "granite.logit_scale": 16.0
-        },
-        "tensor_count": 362,
-        "representative_tensors": [
-          {
-            "name": "output_norm.weight",
-            "dimensions": [
-              4096
-            ],
-            "ggml_type": 0
-          },
-          {
-            "name": "token_embd.weight",
-            "dimensions": [
-              4096,
-              100352
-            ],
-            "ggml_type": 14
-          },
-          {
-            "name": "blk.0.attn_k.weight",
-            "dimensions": [
-              4096,
-              1024
-            ],
-            "ggml_type": 12
-          },
-          {
-            "name": "blk.0.attn_norm.weight",
-            "dimensions": [
-              4096
-            ],
-            "ggml_type": 0
-          },
-          {
-            "name": "blk.0.attn_output.weight",
-            "dimensions": [
-              4096,
-              4096
-            ],
-            "ggml_type": 12
-          },
-          {
-            "name": "blk.0.attn_q.weight",
-            "dimensions": [
-              4096,
-              4096
-            ],
-            "ggml_type": 12
-          },
-          {
-            "name": "blk.0.attn_v.weight",
-            "dimensions": [
-              4096,
-              1024
-            ],
-            "ggml_type": 14
-          },
-          {
-            "name": "blk.0.ffn_down.weight",
-            "dimensions": [
-              12800,
-              4096
-            ],
-            "ggml_type": 14
-          },
-          {
-            "name": "blk.0.ffn_gate.weight",
-            "dimensions": [
-              4096,
-              12800
-            ],
-            "ggml_type": 12
-          },
-          {
-            "name": "blk.0.ffn_norm.weight",
-            "dimensions": [
-              4096
-            ],
-            "ggml_type": 0
-          },
-          {
-            "name": "blk.0.ffn_up.weight",
-            "dimensions": [
-              4096,
-              12800
-            ],
-            "ggml_type": 12
-          }
-        ],
-        "runtime_revision": "0893ec98f5eafad36a43a72cd1c3723d72b0d03a",
-        "patch_sha256": "d4506c79258f07b66b0a720122a9efb2f874a478286dc2d1448b1e9c732f6860",
-        "reasons": [],
-        "failures": [],
-        "profile_failures": [
-          {
-            "passes": 3,
-            "profile": {
-              "passes": 3,
-              "anchor": 0.5,
-              "mode": "block",
-              "cache": "first",
-              "start": 18,
-              "end": 22
-            },
-            "status": "smoke_failed",
-            "anchor_identity": {
-              "passed": true,
-              "max_logprob_error": 0.0
-            },
-            "loop_smoke": {
-              "passed": false,
-              "finite": true,
-              "repeat_stable": false,
-              "repeat_max_logprob_error": 0.08347225189208984,
-              "changed_from_baseline": true,
-              "same_sequence_logprob_difference": 0.3284783363342285
-            }
-          }
-        ],
-        "reproduce": "python -m looplab explore granite4-1-guardian-8b-q4-k-m-9b16f68b --no-resume",
-        "next_steps": [
-          "Check the pinned native model loader and original graph before changing metadata or tensor names.",
-          "For an unrecognized but similar graph, extend runtime/auto_adapters.py and preserve its original layer body.",
-          "For recurrent, MLA, shared, or convolution state, implement and test the state snapshot/restore semantics explicitly.",
-          "For MoE, retain the first expert IDs and mixture weights through the shared routing helper.",
-          "For repeat-request instability, inspect cache clearing, graph reuse and backend numerical behavior with cache_prompt=false.",
-          "Rebuild, pass the independent native reference tests, then rerun this exact model and its K=2/3/4 probes.",
-          "Treat successful smoke tests as experimental compatibility, never proof of quality gains or full paper reproduction."
-        ]
-      },
-      "seconds": 26.013234719997854,
+      "seconds": 20.142048203008017,
       "storage_before": {
-        "time": 1793767197.044711,
-        "free_bytes": 520839708672,
-        "state_bytes": 1451784,
+        "time": 1793811347.2452137,
+        "free_bytes": 520594059264,
+        "state_bytes": 0,
         "model_weight_bytes_written": 0
       },
       "storage_after": {
-        "time": 1793767223.0567973,
-        "free_bytes": 520841920512,
-        "state_bytes": 1526926,
+        "time": 1793811367.387154,
+        "free_bytes": 520593973248,
+        "state_bytes": 57245,
         "model_weight_bytes_written": 0
+      },
+      "backend_recovery": {
+        "version": "looplab-precision-recovery-v1",
+        "selected": "cpu",
+        "attempts": [
+          {
+            "mode": "default",
+            "status": "partially_compatible",
+            "execution_policy": {
+              "context": 2048,
+              "gpu_layers": 999,
+              "kv_type": "f16",
+              "flash_attention": false,
+              "vulkan_fusion": false,
+              "prefix_cache": false,
+              "swa_full": true,
+              "cpu_above_gib": 32,
+              "runner_version": "0.2.0"
+            },
+            "profiles": [
+              {
+                "passes": 2,
+                "profile": {
+                  "passes": 2,
+                  "anchor": 0.5,
+                  "mode": "block",
+                  "cache": "first",
+                  "start": 18,
+                  "end": 22
+                },
+                "status": "compatible_experimental",
+                "anchor_identity": {
+                  "passed": true,
+                  "max_logprob_error": 0.0
+                },
+                "loop_smoke": {
+                  "passed": true,
+                  "finite": true,
+                  "repeat_stable": true,
+                  "repeat_max_logprob_error": 0.0,
+                  "changed_from_baseline": true,
+                  "same_sequence_logprob_difference": 0.2765984535217285
+                }
+              },
+              {
+                "passes": 3,
+                "profile": {
+                  "passes": 3,
+                  "anchor": 0.5,
+                  "mode": "block",
+                  "cache": "first",
+                  "start": 18,
+                  "end": 22
+                },
+                "status": "smoke_failed",
+                "anchor_identity": {
+                  "passed": true,
+                  "max_logprob_error": 0.0
+                },
+                "loop_smoke": {
+                  "passed": false,
+                  "finite": true,
+                  "repeat_stable": false,
+                  "repeat_max_logprob_error": 0.08347225189208984,
+                  "changed_from_baseline": true,
+                  "same_sequence_logprob_difference": 0.3284783363342285
+                }
+              },
+              {
+                "passes": 4,
+                "profile": {
+                  "passes": 4,
+                  "anchor": 0.5,
+                  "mode": "block",
+                  "cache": "first",
+                  "start": 18,
+                  "end": 22
+                },
+                "status": "compatible_experimental",
+                "anchor_identity": {
+                  "passed": true,
+                  "max_logprob_error": 0.0
+                },
+                "loop_smoke": {
+                  "passed": true,
+                  "finite": true,
+                  "repeat_stable": true,
+                  "repeat_max_logprob_error": 0.0,
+                  "changed_from_baseline": true,
+                  "same_sequence_logprob_difference": 0.36089372634887695
+                }
+              }
+            ]
+          },
+          {
+            "mode": "vulkan_f32",
+            "status": "partially_compatible",
+            "execution_policy": {
+              "context": 2048,
+              "gpu_layers": 999,
+              "kv_type": "f16",
+              "flash_attention": false,
+              "vulkan_fusion": false,
+              "prefix_cache": false,
+              "swa_full": true,
+              "cpu_above_gib": 32,
+              "runner_version": "0.2.0",
+              "vulkan_f16": false
+            },
+            "profiles": [
+              {
+                "passes": 2,
+                "profile": {
+                  "passes": 2,
+                  "anchor": 0.5,
+                  "mode": "block",
+                  "cache": "first",
+                  "start": 18,
+                  "end": 22
+                },
+                "status": "smoke_failed",
+                "anchor_identity": {
+                  "passed": true,
+                  "max_logprob_error": 0.0
+                },
+                "loop_smoke": {
+                  "passed": false,
+                  "finite": true,
+                  "repeat_stable": true,
+                  "repeat_max_logprob_error": 0.0,
+                  "changed_from_baseline": false,
+                  "same_sequence_logprob_difference": null
+                }
+              },
+              {
+                "passes": 3,
+                "profile": {
+                  "passes": 3,
+                  "anchor": 0.5,
+                  "mode": "block",
+                  "cache": "first",
+                  "start": 18,
+                  "end": 22
+                },
+                "status": "smoke_failed",
+                "anchor_identity": {
+                  "passed": true,
+                  "max_logprob_error": 0.0
+                },
+                "loop_smoke": {
+                  "passed": false,
+                  "finite": true,
+                  "repeat_stable": true,
+                  "repeat_max_logprob_error": 0.0,
+                  "changed_from_baseline": false,
+                  "same_sequence_logprob_difference": null
+                }
+              },
+              {
+                "passes": 4,
+                "profile": {
+                  "passes": 4,
+                  "anchor": 0.5,
+                  "mode": "block",
+                  "cache": "first",
+                  "start": 18,
+                  "end": 22
+                },
+                "status": "compatible_experimental",
+                "anchor_identity": {
+                  "passed": true,
+                  "max_logprob_error": 0.0
+                },
+                "loop_smoke": {
+                  "passed": true,
+                  "finite": true,
+                  "repeat_stable": true,
+                  "repeat_max_logprob_error": 0.0,
+                  "changed_from_baseline": true,
+                  "same_sequence_logprob_difference": 0.3564472198486328
+                }
+              }
+            ]
+          },
+          {
+            "mode": "cpu",
+            "status": "compatible_experimental",
+            "execution_policy": {
+              "context": 2048,
+              "gpu_layers": 999,
+              "kv_type": "f16",
+              "flash_attention": false,
+              "vulkan_fusion": false,
+              "prefix_cache": false,
+              "swa_full": true,
+              "cpu_above_gib": 32,
+              "runner_version": "0.2.0",
+              "cpu_offload_disabled": true,
+              "auto_fit": false
+            },
+            "profiles": [
+              {
+                "passes": 2,
+                "profile": {
+                  "passes": 2,
+                  "anchor": 0.5,
+                  "mode": "block",
+                  "cache": "first",
+                  "start": 18,
+                  "end": 22
+                },
+                "status": "compatible_experimental",
+                "anchor_identity": {
+                  "passed": true,
+                  "max_logprob_error": 0.0
+                },
+                "loop_smoke": {
+                  "passed": true,
+                  "finite": true,
+                  "repeat_stable": true,
+                  "repeat_max_logprob_error": 0.0,
+                  "changed_from_baseline": true,
+                  "same_sequence_logprob_difference": 0.23971176147460938
+                }
+              },
+              {
+                "passes": 3,
+                "profile": {
+                  "passes": 3,
+                  "anchor": 0.5,
+                  "mode": "block",
+                  "cache": "first",
+                  "start": 18,
+                  "end": 22
+                },
+                "status": "compatible_experimental",
+                "anchor_identity": {
+                  "passed": true,
+                  "max_logprob_error": 0.0
+                },
+                "loop_smoke": {
+                  "passed": true,
+                  "finite": true,
+                  "repeat_stable": true,
+                  "repeat_max_logprob_error": 0.0,
+                  "changed_from_baseline": true,
+                  "same_sequence_logprob_difference": 0.28432631492614746
+                }
+              },
+              {
+                "passes": 4,
+                "profile": {
+                  "passes": 4,
+                  "anchor": 0.5,
+                  "mode": "block",
+                  "cache": "first",
+                  "start": 18,
+                  "end": 22
+                },
+                "status": "compatible_experimental",
+                "anchor_identity": {
+                  "passed": true,
+                  "max_logprob_error": 0.0
+                },
+                "loop_smoke": {
+                  "passed": true,
+                  "finite": true,
+                  "repeat_stable": true,
+                  "repeat_max_logprob_error": 0.0,
+                  "changed_from_baseline": true,
+                  "same_sequence_logprob_difference": 0.27678346633911133
+                }
+              }
+            ]
+          }
+        ]
       },
       "runtime": {
         "llama_cpp_revision": "0893ec98f5eafad36a43a72cd1c3723d72b0d03a",
@@ -3008,7 +3230,9 @@
           "prefix_cache": false,
           "swa_full": true,
           "cpu_above_gib": 32,
-          "runner_version": "0.2.0"
+          "runner_version": "0.2.0",
+          "cpu_offload_disabled": true,
+          "auto_fit": false
         }
       }
     },
@@ -9084,7 +9308,7 @@
     {
       "schema": 1,
       "suite": "looplab-explore-v1",
-      "status": "conformance_failed",
+      "status": "compatible_experimental",
       "model": {
         "id": "phi4-reasoning-plus-1b770441",
         "name": "phi4-reasoning-plus",
@@ -9131,18 +9355,18 @@
             "start": 18,
             "end": 22
           },
-          "status": "smoke_failed",
+          "status": "compatible_experimental",
           "anchor_identity": {
             "passed": true,
             "max_logprob_error": 0.0
           },
           "loop_smoke": {
-            "passed": false,
+            "passed": true,
             "finite": true,
-            "repeat_stable": false,
-            "repeat_max_logprob_error": 0.017964601516723633,
+            "repeat_stable": true,
+            "repeat_max_logprob_error": 0.0,
             "changed_from_baseline": true,
-            "same_sequence_logprob_difference": 0.1788496971130371
+            "same_sequence_logprob_difference": 0.1578061580657959
           }
         },
         {
@@ -9155,18 +9379,18 @@
             "start": 18,
             "end": 22
           },
-          "status": "smoke_failed",
+          "status": "compatible_experimental",
           "anchor_identity": {
             "passed": true,
             "max_logprob_error": 0.0
           },
           "loop_smoke": {
-            "passed": false,
+            "passed": true,
             "finite": true,
-            "repeat_stable": false,
-            "repeat_max_logprob_error": 0.016317367553710938,
+            "repeat_stable": true,
+            "repeat_max_logprob_error": 0.0,
             "changed_from_baseline": true,
-            "same_sequence_logprob_difference": 0.22777295112609863
+            "same_sequence_logprob_difference": 0.20092988014221191
           }
         },
         {
@@ -9179,225 +9403,221 @@
             "start": 18,
             "end": 22
           },
-          "status": "smoke_failed",
+          "status": "compatible_experimental",
           "anchor_identity": {
             "passed": true,
             "max_logprob_error": 0.0
           },
           "loop_smoke": {
-            "passed": false,
+            "passed": true,
             "finite": true,
-            "repeat_stable": false,
-            "repeat_max_logprob_error": 0.01507711410522461,
+            "repeat_stable": true,
+            "repeat_max_logprob_error": 0.0,
             "changed_from_baseline": true,
-            "same_sequence_logprob_difference": 0.24732255935668945
+            "same_sequence_logprob_difference": 0.2341160774230957
           }
         }
       ],
       "paper_reproduction": false,
       "quality_tested": false,
       "recommended_profile": "baseline",
-      "repair": {
-        "model_id": "phi4-reasoning-plus-1b770441",
-        "architecture": "phi3",
-        "status": "conformance_failed",
-        "adapter": {
-          "family": "moe",
-          "cache_interfaces": [
-            "kv",
-            "kv_iswa"
-          ],
-          "strategy": "preserve_native_layer_body",
-          "source_sha256": "dd957f5ae2526482a6620cff8b4abc727f9e77fe56342f124f3f4c6b01fdc502",
-          "source": "src/models/phi3.cpp",
-          "tier": "experimental"
-        },
-        "metadata": {
-          "phi3.context_length": 32768,
-          "phi3.rope.scaling.original_context_length": 32768,
-          "phi3.embedding_length": 5120,
-          "phi3.feed_forward_length": 17920,
-          "phi3.block_count": 40,
-          "phi3.attention.head_count": 40,
-          "phi3.attention.head_count_kv": 10,
-          "phi3.attention.layer_norm_rms_epsilon": 9.999999747378752e-06,
-          "phi3.rope.dimension_count": 128,
-          "phi3.rope.freq_base": 500000.0,
-          "phi3.attention.sliding_window": 0
-        },
-        "tensor_count": 243,
-        "representative_tensors": [
-          {
-            "name": "output.weight",
-            "dimensions": [
-              5120,
-              100352
-            ],
-            "ggml_type": 14
-          },
-          {
-            "name": "output_norm.weight",
-            "dimensions": [
-              5120
-            ],
-            "ggml_type": 0
-          },
-          {
-            "name": "token_embd.weight",
-            "dimensions": [
-              5120,
-              100352
-            ],
-            "ggml_type": 12
-          },
-          {
-            "name": "blk.0.attn_norm.weight",
-            "dimensions": [
-              5120
-            ],
-            "ggml_type": 0
-          },
-          {
-            "name": "blk.0.attn_output.weight",
-            "dimensions": [
-              5120,
-              5120
-            ],
-            "ggml_type": 12
-          },
-          {
-            "name": "blk.0.attn_qkv.weight",
-            "dimensions": [
-              5120,
-              7680
-            ],
-            "ggml_type": 1
-          },
-          {
-            "name": "blk.0.ffn_down.weight",
-            "dimensions": [
-              17920,
-              5120
-            ],
-            "ggml_type": 14
-          },
-          {
-            "name": "blk.0.ffn_norm.weight",
-            "dimensions": [
-              5120
-            ],
-            "ggml_type": 0
-          },
-          {
-            "name": "blk.0.ffn_up.weight",
-            "dimensions": [
-              5120,
-              35840
-            ],
-            "ggml_type": 12
-          }
-        ],
-        "runtime_revision": "0893ec98f5eafad36a43a72cd1c3723d72b0d03a",
-        "patch_sha256": "d4506c79258f07b66b0a720122a9efb2f874a478286dc2d1448b1e9c732f6860",
-        "reasons": [],
-        "failures": [],
-        "profile_failures": [
-          {
-            "passes": 2,
-            "profile": {
-              "passes": 2,
-              "anchor": 0.5,
-              "mode": "block",
-              "cache": "first",
-              "start": 18,
-              "end": 22
-            },
-            "status": "smoke_failed",
-            "anchor_identity": {
-              "passed": true,
-              "max_logprob_error": 0.0
-            },
-            "loop_smoke": {
-              "passed": false,
-              "finite": true,
-              "repeat_stable": false,
-              "repeat_max_logprob_error": 0.017964601516723633,
-              "changed_from_baseline": true,
-              "same_sequence_logprob_difference": 0.1788496971130371
-            }
-          },
-          {
-            "passes": 3,
-            "profile": {
-              "passes": 3,
-              "anchor": 0.5,
-              "mode": "block",
-              "cache": "first",
-              "start": 18,
-              "end": 22
-            },
-            "status": "smoke_failed",
-            "anchor_identity": {
-              "passed": true,
-              "max_logprob_error": 0.0
-            },
-            "loop_smoke": {
-              "passed": false,
-              "finite": true,
-              "repeat_stable": false,
-              "repeat_max_logprob_error": 0.016317367553710938,
-              "changed_from_baseline": true,
-              "same_sequence_logprob_difference": 0.22777295112609863
-            }
-          },
-          {
-            "passes": 4,
-            "profile": {
-              "passes": 4,
-              "anchor": 0.5,
-              "mode": "block",
-              "cache": "first",
-              "start": 18,
-              "end": 22
-            },
-            "status": "smoke_failed",
-            "anchor_identity": {
-              "passed": true,
-              "max_logprob_error": 0.0
-            },
-            "loop_smoke": {
-              "passed": false,
-              "finite": true,
-              "repeat_stable": false,
-              "repeat_max_logprob_error": 0.01507711410522461,
-              "changed_from_baseline": true,
-              "same_sequence_logprob_difference": 0.24732255935668945
-            }
-          }
-        ],
-        "reproduce": "python -m looplab explore phi4-reasoning-plus-1b770441 --no-resume",
-        "next_steps": [
-          "Check the pinned native model loader and original graph before changing metadata or tensor names.",
-          "For an unrecognized but similar graph, extend runtime/auto_adapters.py and preserve its original layer body.",
-          "For recurrent, MLA, shared, or convolution state, implement and test the state snapshot/restore semantics explicitly.",
-          "For MoE, retain the first expert IDs and mixture weights through the shared routing helper.",
-          "For repeat-request instability, inspect cache clearing, graph reuse and backend numerical behavior with cache_prompt=false.",
-          "Rebuild, pass the independent native reference tests, then rerun this exact model and its K=2/3/4 probes.",
-          "Treat successful smoke tests as experimental compatibility, never proof of quality gains or full paper reproduction."
-        ]
-      },
-      "seconds": 38.81366801599506,
+      "seconds": 40.276945908000926,
       "storage_before": {
-        "time": 1793767311.435907,
-        "free_bytes": 520839614464,
-        "state_bytes": 2272569,
+        "time": 1793811367.3999066,
+        "free_bytes": 520593973248,
+        "state_bytes": 0,
         "model_weight_bytes_written": 0
       },
       "storage_after": {
-        "time": 1793767350.2481005,
-        "free_bytes": 520840732672,
-        "state_bytes": 2277940,
+        "time": 1793811407.6767156,
+        "free_bytes": 520595521536,
+        "state_bytes": 57183,
         "model_weight_bytes_written": 0
+      },
+      "backend_recovery": {
+        "version": "looplab-precision-recovery-v1",
+        "selected": "vulkan_f32",
+        "attempts": [
+          {
+            "mode": "default",
+            "status": "conformance_failed",
+            "execution_policy": {
+              "context": 2048,
+              "gpu_layers": 999,
+              "kv_type": "f16",
+              "flash_attention": false,
+              "vulkan_fusion": false,
+              "prefix_cache": false,
+              "swa_full": true,
+              "cpu_above_gib": 32,
+              "runner_version": "0.2.0"
+            },
+            "profiles": [
+              {
+                "passes": 2,
+                "profile": {
+                  "passes": 2,
+                  "anchor": 0.5,
+                  "mode": "block",
+                  "cache": "first",
+                  "start": 18,
+                  "end": 22
+                },
+                "status": "smoke_failed",
+                "anchor_identity": {
+                  "passed": true,
+                  "max_logprob_error": 0.0
+                },
+                "loop_smoke": {
+                  "passed": false,
+                  "finite": true,
+                  "repeat_stable": false,
+                  "repeat_max_logprob_error": 0.017964601516723633,
+                  "changed_from_baseline": true,
+                  "same_sequence_logprob_difference": 0.1788496971130371
+                }
+              },
+              {
+                "passes": 3,
+                "profile": {
+                  "passes": 3,
+                  "anchor": 0.5,
+                  "mode": "block",
+                  "cache": "first",
+                  "start": 18,
+                  "end": 22
+                },
+                "status": "smoke_failed",
+                "anchor_identity": {
+                  "passed": true,
+                  "max_logprob_error": 0.0
+                },
+                "loop_smoke": {
+                  "passed": false,
+                  "finite": true,
+                  "repeat_stable": false,
+                  "repeat_max_logprob_error": 0.016317367553710938,
+                  "changed_from_baseline": true,
+                  "same_sequence_logprob_difference": 0.22777295112609863
+                }
+              },
+              {
+                "passes": 4,
+                "profile": {
+                  "passes": 4,
+                  "anchor": 0.5,
+                  "mode": "block",
+                  "cache": "first",
+                  "start": 18,
+                  "end": 22
+                },
+                "status": "smoke_failed",
+                "anchor_identity": {
+                  "passed": true,
+                  "max_logprob_error": 0.0
+                },
+                "loop_smoke": {
+                  "passed": false,
+                  "finite": true,
+                  "repeat_stable": false,
+                  "repeat_max_logprob_error": 0.01507711410522461,
+                  "changed_from_baseline": true,
+                  "same_sequence_logprob_difference": 0.24732255935668945
+                }
+              }
+            ]
+          },
+          {
+            "mode": "vulkan_f32",
+            "status": "compatible_experimental",
+            "execution_policy": {
+              "context": 2048,
+              "gpu_layers": 999,
+              "kv_type": "f16",
+              "flash_attention": false,
+              "vulkan_fusion": false,
+              "prefix_cache": false,
+              "swa_full": true,
+              "cpu_above_gib": 32,
+              "runner_version": "0.2.0",
+              "vulkan_f16": false
+            },
+            "profiles": [
+              {
+                "passes": 2,
+                "profile": {
+                  "passes": 2,
+                  "anchor": 0.5,
+                  "mode": "block",
+                  "cache": "first",
+                  "start": 18,
+                  "end": 22
+                },
+                "status": "compatible_experimental",
+                "anchor_identity": {
+                  "passed": true,
+                  "max_logprob_error": 0.0
+                },
+                "loop_smoke": {
+                  "passed": true,
+                  "finite": true,
+                  "repeat_stable": true,
+                  "repeat_max_logprob_error": 0.0,
+                  "changed_from_baseline": true,
+                  "same_sequence_logprob_difference": 0.1578061580657959
+                }
+              },
+              {
+                "passes": 3,
+                "profile": {
+                  "passes": 3,
+                  "anchor": 0.5,
+                  "mode": "block",
+                  "cache": "first",
+                  "start": 18,
+                  "end": 22
+                },
+                "status": "compatible_experimental",
+                "anchor_identity": {
+                  "passed": true,
+                  "max_logprob_error": 0.0
+                },
+                "loop_smoke": {
+                  "passed": true,
+                  "finite": true,
+                  "repeat_stable": true,
+                  "repeat_max_logprob_error": 0.0,
+                  "changed_from_baseline": true,
+                  "same_sequence_logprob_difference": 0.20092988014221191
+                }
+              },
+              {
+                "passes": 4,
+                "profile": {
+                  "passes": 4,
+                  "anchor": 0.5,
+                  "mode": "block",
+                  "cache": "first",
+                  "start": 18,
+                  "end": 22
+                },
+                "status": "compatible_experimental",
+                "anchor_identity": {
+                  "passed": true,
+                  "max_logprob_error": 0.0
+                },
+                "loop_smoke": {
+                  "passed": true,
+                  "finite": true,
+                  "repeat_stable": true,
+                  "repeat_max_logprob_error": 0.0,
+                  "changed_from_baseline": true,
+                  "same_sequence_logprob_difference": 0.2341160774230957
+                }
+              }
+            ]
+          }
+        ]
       },
       "runtime": {
         "llama_cpp_revision": "0893ec98f5eafad36a43a72cd1c3723d72b0d03a",
@@ -9411,7 +9631,8 @@
           "prefix_cache": false,
           "swa_full": true,
           "cpu_above_gib": 32,
-          "runner_version": "0.2.0"
+          "runner_version": "0.2.0",
+          "vulkan_f16": false
         }
       }
     },
@@ -11775,7 +11996,7 @@
     {
       "schema": 1,
       "suite": "looplab-explore-v1",
-      "status": "conformance_failed",
+      "status": "compatible_experimental",
       "model": {
         "id": "granite4-1-30b-e82a09f0",
         "name": "granite4.1-30b",
@@ -11808,7 +12029,7 @@
       "baseline_check": {
         "passed": true,
         "tokens": 12,
-        "effective_gpu_layers": 999
+        "effective_gpu_layers": 0
       },
       "profiles": [
         {
@@ -11821,18 +12042,18 @@
             "start": 30,
             "end": 34
           },
-          "status": "smoke_failed",
+          "status": "compatible_experimental",
           "anchor_identity": {
             "passed": true,
             "max_logprob_error": 0.0
           },
           "loop_smoke": {
-            "passed": false,
+            "passed": true,
             "finite": true,
-            "repeat_stable": false,
-            "repeat_max_logprob_error": 0.12701892852783203,
+            "repeat_stable": true,
+            "repeat_max_logprob_error": 0.0,
             "changed_from_baseline": true,
-            "same_sequence_logprob_difference": 0.1738882064819336
+            "same_sequence_logprob_difference": 0.2789030075073242
           }
         },
         {
@@ -11845,18 +12066,18 @@
             "start": 30,
             "end": 34
           },
-          "status": "smoke_failed",
+          "status": "compatible_experimental",
           "anchor_identity": {
             "passed": true,
             "max_logprob_error": 0.0
           },
           "loop_smoke": {
-            "passed": false,
+            "passed": true,
             "finite": true,
-            "repeat_stable": false,
-            "repeat_max_logprob_error": 0.06316041946411133,
+            "repeat_stable": true,
+            "repeat_max_logprob_error": 0.0,
             "changed_from_baseline": true,
-            "same_sequence_logprob_difference": 0.28290557861328125
+            "same_sequence_logprob_difference": 0.47904253005981445
           }
         },
         {
@@ -11869,243 +12090,223 @@
             "start": 30,
             "end": 34
           },
-          "status": "smoke_failed",
+          "status": "compatible_experimental",
           "anchor_identity": {
             "passed": true,
             "max_logprob_error": 0.0
           },
           "loop_smoke": {
-            "passed": false,
+            "passed": true,
             "finite": true,
-            "repeat_stable": false,
-            "repeat_max_logprob_error": 0.0704948902130127,
+            "repeat_stable": true,
+            "repeat_max_logprob_error": 0.0,
             "changed_from_baseline": true,
-            "same_sequence_logprob_difference": 0.2529287338256836
+            "same_sequence_logprob_difference": 0.4628129005432129
           }
         }
       ],
       "paper_reproduction": false,
       "quality_tested": false,
       "recommended_profile": "baseline",
-      "repair": {
-        "model_id": "granite4-1-30b-e82a09f0",
-        "architecture": "granite",
-        "status": "conformance_failed",
-        "adapter": {
-          "family": "moe",
-          "cache_interfaces": [
-            "kv"
-          ],
-          "strategy": "preserve_native_layer_body",
-          "source_sha256": "8601bb092790b0ba1f81ed5f43181712965e5e891c9d2b0bc1137cd2c36a0dcf",
-          "source": "src/models/granite.cpp",
-          "tier": "experimental"
-        },
-        "metadata": {
-          "granite.block_count": 64,
-          "granite.context_length": 131072,
-          "granite.embedding_length": 4096,
-          "granite.feed_forward_length": 32768,
-          "granite.attention.head_count": 32,
-          "granite.attention.head_count_kv": 8,
-          "granite.rope.freq_base": 50000000.0,
-          "granite.attention.layer_norm_rms_epsilon": 9.999999747378752e-06,
-          "granite.vocab_size": 100352,
-          "granite.rope.dimension_count": 128,
-          "granite.attention.scale": 0.0078125,
-          "granite.embedding_scale": 12.0,
-          "granite.residual_scale": 0.17499999701976776,
-          "granite.logit_scale": 16.0
-        },
-        "tensor_count": 578,
-        "representative_tensors": [
-          {
-            "name": "output_norm.weight",
-            "dimensions": [
-              4096
-            ],
-            "ggml_type": 0
-          },
-          {
-            "name": "token_embd.weight",
-            "dimensions": [
-              4096,
-              100352
-            ],
-            "ggml_type": 14
-          },
-          {
-            "name": "blk.0.attn_k.weight",
-            "dimensions": [
-              4096,
-              1024
-            ],
-            "ggml_type": 12
-          },
-          {
-            "name": "blk.0.attn_norm.weight",
-            "dimensions": [
-              4096
-            ],
-            "ggml_type": 0
-          },
-          {
-            "name": "blk.0.attn_output.weight",
-            "dimensions": [
-              4096,
-              4096
-            ],
-            "ggml_type": 12
-          },
-          {
-            "name": "blk.0.attn_q.weight",
-            "dimensions": [
-              4096,
-              4096
-            ],
-            "ggml_type": 12
-          },
-          {
-            "name": "blk.0.attn_v.weight",
-            "dimensions": [
-              4096,
-              1024
-            ],
-            "ggml_type": 14
-          },
-          {
-            "name": "blk.0.ffn_down.weight",
-            "dimensions": [
-              32768,
-              4096
-            ],
-            "ggml_type": 14
-          },
-          {
-            "name": "blk.0.ffn_gate.weight",
-            "dimensions": [
-              4096,
-              32768
-            ],
-            "ggml_type": 12
-          },
-          {
-            "name": "blk.0.ffn_norm.weight",
-            "dimensions": [
-              4096
-            ],
-            "ggml_type": 0
-          },
-          {
-            "name": "blk.0.ffn_up.weight",
-            "dimensions": [
-              4096,
-              32768
-            ],
-            "ggml_type": 12
-          }
-        ],
-        "runtime_revision": "0893ec98f5eafad36a43a72cd1c3723d72b0d03a",
-        "patch_sha256": "d4506c79258f07b66b0a720122a9efb2f874a478286dc2d1448b1e9c732f6860",
-        "reasons": [],
-        "failures": [],
-        "profile_failures": [
-          {
-            "passes": 2,
-            "profile": {
-              "passes": 2,
-              "anchor": 0.5,
-              "mode": "block",
-              "cache": "first",
-              "start": 30,
-              "end": 34
-            },
-            "status": "smoke_failed",
-            "anchor_identity": {
-              "passed": true,
-              "max_logprob_error": 0.0
-            },
-            "loop_smoke": {
-              "passed": false,
-              "finite": true,
-              "repeat_stable": false,
-              "repeat_max_logprob_error": 0.12701892852783203,
-              "changed_from_baseline": true,
-              "same_sequence_logprob_difference": 0.1738882064819336
-            }
-          },
-          {
-            "passes": 3,
-            "profile": {
-              "passes": 3,
-              "anchor": 0.5,
-              "mode": "block",
-              "cache": "first",
-              "start": 30,
-              "end": 34
-            },
-            "status": "smoke_failed",
-            "anchor_identity": {
-              "passed": true,
-              "max_logprob_error": 0.0
-            },
-            "loop_smoke": {
-              "passed": false,
-              "finite": true,
-              "repeat_stable": false,
-              "repeat_max_logprob_error": 0.06316041946411133,
-              "changed_from_baseline": true,
-              "same_sequence_logprob_difference": 0.28290557861328125
-            }
-          },
-          {
-            "passes": 4,
-            "profile": {
-              "passes": 4,
-              "anchor": 0.5,
-              "mode": "block",
-              "cache": "first",
-              "start": 30,
-              "end": 34
-            },
-            "status": "smoke_failed",
-            "anchor_identity": {
-              "passed": true,
-              "max_logprob_error": 0.0
-            },
-            "loop_smoke": {
-              "passed": false,
-              "finite": true,
-              "repeat_stable": false,
-              "repeat_max_logprob_error": 0.0704948902130127,
-              "changed_from_baseline": true,
-              "same_sequence_logprob_difference": 0.2529287338256836
-            }
-          }
-        ],
-        "reproduce": "python -m looplab explore granite4-1-30b-e82a09f0 --no-resume",
-        "next_steps": [
-          "Check the pinned native model loader and original graph before changing metadata or tensor names.",
-          "For an unrecognized but similar graph, extend runtime/auto_adapters.py and preserve its original layer body.",
-          "For recurrent, MLA, shared, or convolution state, implement and test the state snapshot/restore semantics explicitly.",
-          "For MoE, retain the first expert IDs and mixture weights through the shared routing helper.",
-          "For repeat-request instability, inspect cache clearing, graph reuse and backend numerical behavior with cache_prompt=false.",
-          "Rebuild, pass the independent native reference tests, then rerun this exact model and its K=2/3/4 probes.",
-          "Treat successful smoke tests as experimental compatibility, never proof of quality gains or full paper reproduction."
-        ]
-      },
-      "seconds": 85.02002938999794,
+      "seconds": 66.76525164500345,
       "storage_before": {
-        "time": 1793767496.3047917,
-        "free_bytes": 520837758976,
-        "state_bytes": 2742232,
+        "time": 1793811585.9401155,
+        "free_bytes": 520596766720,
+        "state_bytes": 5438265,
         "model_weight_bytes_written": 0
       },
       "storage_after": {
-        "time": 1793767581.324164,
-        "free_bytes": 520835690496,
-        "state_bytes": 2803521,
+        "time": 1793811716.211375,
+        "free_bytes": 520595349504,
+        "state_bytes": 5431583,
         "model_weight_bytes_written": 0
+      },
+      "backend_recovery": {
+        "version": "looplab-precision-recovery-v1",
+        "selected": "cpu",
+        "attempts": [
+          {
+            "mode": "vulkan_f32",
+            "status": "partially_compatible",
+            "execution_policy": {
+              "context": 2048,
+              "gpu_layers": 999,
+              "kv_type": "f16",
+              "flash_attention": false,
+              "vulkan_fusion": false,
+              "prefix_cache": false,
+              "swa_full": true,
+              "cpu_above_gib": 32,
+              "runner_version": "0.2.0",
+              "vulkan_f16": false
+            },
+            "profiles": [
+              {
+                "passes": 2,
+                "profile": {
+                  "passes": 2,
+                  "anchor": 0.5,
+                  "mode": "block",
+                  "cache": "first",
+                  "start": 30,
+                  "end": 34
+                },
+                "status": "compatible_experimental",
+                "anchor_identity": {
+                  "passed": true,
+                  "max_logprob_error": 0.0
+                },
+                "loop_smoke": {
+                  "passed": true,
+                  "finite": true,
+                  "repeat_stable": true,
+                  "repeat_max_logprob_error": 0.0,
+                  "changed_from_baseline": true,
+                  "same_sequence_logprob_difference": 0.3521895408630371
+                }
+              },
+              {
+                "passes": 3,
+                "profile": {
+                  "passes": 3,
+                  "anchor": 0.5,
+                  "mode": "block",
+                  "cache": "first",
+                  "start": 30,
+                  "end": 34
+                },
+                "status": "smoke_failed",
+                "anchor_identity": {
+                  "passed": true,
+                  "max_logprob_error": 0.0
+                },
+                "loop_smoke": {
+                  "passed": false,
+                  "finite": true,
+                  "repeat_stable": false,
+                  "repeat_max_logprob_error": 0.08027935028076172,
+                  "changed_from_baseline": true,
+                  "same_sequence_logprob_difference": 0.2131943702697754
+                }
+              },
+              {
+                "passes": 4,
+                "profile": {
+                  "passes": 4,
+                  "anchor": 0.5,
+                  "mode": "block",
+                  "cache": "first",
+                  "start": 30,
+                  "end": 34
+                },
+                "status": "compatible_experimental",
+                "anchor_identity": {
+                  "passed": true,
+                  "max_logprob_error": 0.0
+                },
+                "loop_smoke": {
+                  "passed": true,
+                  "finite": true,
+                  "repeat_stable": true,
+                  "repeat_max_logprob_error": 0.0,
+                  "changed_from_baseline": true,
+                  "same_sequence_logprob_difference": 0.22250652313232422
+                }
+              }
+            ]
+          },
+          {
+            "mode": "cpu",
+            "status": "compatible_experimental",
+            "execution_policy": {
+              "context": 2048,
+              "gpu_layers": 999,
+              "kv_type": "f16",
+              "flash_attention": false,
+              "vulkan_fusion": false,
+              "prefix_cache": false,
+              "swa_full": true,
+              "cpu_above_gib": 32,
+              "runner_version": "0.2.0",
+              "cpu_offload_disabled": true,
+              "auto_fit": false
+            },
+            "profiles": [
+              {
+                "passes": 2,
+                "profile": {
+                  "passes": 2,
+                  "anchor": 0.5,
+                  "mode": "block",
+                  "cache": "first",
+                  "start": 30,
+                  "end": 34
+                },
+                "status": "compatible_experimental",
+                "anchor_identity": {
+                  "passed": true,
+                  "max_logprob_error": 0.0
+                },
+                "loop_smoke": {
+                  "passed": true,
+                  "finite": true,
+                  "repeat_stable": true,
+                  "repeat_max_logprob_error": 0.0,
+                  "changed_from_baseline": true,
+                  "same_sequence_logprob_difference": 0.2789030075073242
+                }
+              },
+              {
+                "passes": 3,
+                "profile": {
+                  "passes": 3,
+                  "anchor": 0.5,
+                  "mode": "block",
+                  "cache": "first",
+                  "start": 30,
+                  "end": 34
+                },
+                "status": "compatible_experimental",
+                "anchor_identity": {
+                  "passed": true,
+                  "max_logprob_error": 0.0
+                },
+                "loop_smoke": {
+                  "passed": true,
+                  "finite": true,
+                  "repeat_stable": true,
+                  "repeat_max_logprob_error": 0.0,
+                  "changed_from_baseline": true,
+                  "same_sequence_logprob_difference": 0.47904253005981445
+                }
+              },
+              {
+                "passes": 4,
+                "profile": {
+                  "passes": 4,
+                  "anchor": 0.5,
+                  "mode": "block",
+                  "cache": "first",
+                  "start": 30,
+                  "end": 34
+                },
+                "status": "compatible_experimental",
+                "anchor_identity": {
+                  "passed": true,
+                  "max_logprob_error": 0.0
+                },
+                "loop_smoke": {
+                  "passed": true,
+                  "finite": true,
+                  "repeat_stable": true,
+                  "repeat_max_logprob_error": 0.0,
+                  "changed_from_baseline": true,
+                  "same_sequence_logprob_difference": 0.4628129005432129
+                }
+              }
+            ]
+          }
+        ]
       },
       "runtime": {
         "llama_cpp_revision": "0893ec98f5eafad36a43a72cd1c3723d72b0d03a",
@@ -12119,7 +12320,9 @@
           "prefix_cache": false,
           "swa_full": true,
           "cpu_above_gib": 32,
-          "runner_version": "0.2.0"
+          "runner_version": "0.2.0",
+          "cpu_offload_disabled": true,
+          "auto_fit": false
         }
       }
     },
@@ -13466,7 +13669,7 @@
     {
       "schema": 1,
       "suite": "looplab-explore-v1",
-      "status": "conformance_failed",
+      "status": "compatible_experimental",
       "model": {
         "id": "qwen3-coder-30b-0fd305b1",
         "name": "qwen3-coder-30b",
@@ -13513,18 +13716,18 @@
             "start": 22,
             "end": 26
           },
-          "status": "smoke_failed",
+          "status": "compatible_experimental",
           "anchor_identity": {
             "passed": true,
             "max_logprob_error": 0.0
           },
           "loop_smoke": {
-            "passed": false,
+            "passed": true,
             "finite": true,
-            "repeat_stable": false,
-            "repeat_max_logprob_error": 0.013093948364257812,
+            "repeat_stable": true,
+            "repeat_max_logprob_error": 0.0,
             "changed_from_baseline": true,
-            "same_sequence_logprob_difference": 0.7045207023620605
+            "same_sequence_logprob_difference": 0.76776123046875
           }
         },
         {
@@ -13537,18 +13740,18 @@
             "start": 22,
             "end": 26
           },
-          "status": "smoke_failed",
+          "status": "compatible_experimental",
           "anchor_identity": {
             "passed": true,
             "max_logprob_error": 0.0
           },
           "loop_smoke": {
-            "passed": false,
+            "passed": true,
             "finite": true,
-            "repeat_stable": false,
-            "repeat_max_logprob_error": 0.7732219696044922,
+            "repeat_stable": true,
+            "repeat_max_logprob_error": 0.0,
             "changed_from_baseline": true,
-            "same_sequence_logprob_difference": 1.5073070526123047
+            "same_sequence_logprob_difference": 0.8014168739318848
           }
         },
         {
@@ -13561,276 +13764,221 @@
             "start": 22,
             "end": 26
           },
-          "status": "smoke_failed",
+          "status": "compatible_experimental",
           "anchor_identity": {
             "passed": true,
             "max_logprob_error": 0.0
           },
           "loop_smoke": {
-            "passed": false,
+            "passed": true,
             "finite": true,
-            "repeat_stable": false,
-            "repeat_max_logprob_error": 0.0847940444946289,
+            "repeat_stable": true,
+            "repeat_max_logprob_error": 0.0,
             "changed_from_baseline": true,
-            "same_sequence_logprob_difference": 1.4731159210205078
+            "same_sequence_logprob_difference": 0.9549684524536133
           }
         }
       ],
       "paper_reproduction": false,
       "quality_tested": false,
       "recommended_profile": "baseline",
-      "repair": {
-        "model_id": "qwen3-coder-30b-0fd305b1",
-        "architecture": "qwen3moe",
-        "status": "conformance_failed",
-        "adapter": {
-          "family": "moe",
-          "cache_interfaces": [
-            "kv"
-          ],
-          "strategy": "preserve_native_layer_body",
-          "source_sha256": "0de78fd5efbd10e0fd851b85cba5f70f130681fac9569aafcfba0ce3ef00bf2d",
-          "source": "src/models/qwen3moe.cpp",
-          "tier": "reference_validated"
-        },
-        "metadata": {
-          "qwen3moe.attention.head_count": 32,
-          "qwen3moe.attention.head_count_kv": 4,
-          "qwen3moe.attention.key_length": 128,
-          "qwen3moe.attention.layer_norm_rms_epsilon": 9.999999974752427e-07,
-          "qwen3moe.attention.value_length": 128,
-          "qwen3moe.block_count": 48,
-          "qwen3moe.context_length": 262144,
-          "qwen3moe.embedding_length": 2048,
-          "qwen3moe.expert_count": 128,
-          "qwen3moe.expert_feed_forward_length": 768,
-          "qwen3moe.expert_shared_feed_forward_length": 0,
-          "qwen3moe.expert_used_count": 8,
-          "qwen3moe.feed_forward_length": 5472,
-          "qwen3moe.rope.freq_base": 10000000.0
-        },
-        "tensor_count": 579,
-        "representative_tensors": [
-          {
-            "name": "blk.0.attn_k.weight",
-            "dimensions": [
-              2048,
-              512
-            ],
-            "ggml_type": 12
-          },
-          {
-            "name": "blk.0.attn_k_norm.weight",
-            "dimensions": [
-              128
-            ],
-            "ggml_type": 0
-          },
-          {
-            "name": "blk.0.attn_norm.weight",
-            "dimensions": [
-              2048
-            ],
-            "ggml_type": 0
-          },
-          {
-            "name": "blk.0.attn_output.weight",
-            "dimensions": [
-              4096,
-              2048
-            ],
-            "ggml_type": 12
-          },
-          {
-            "name": "blk.0.attn_q.weight",
-            "dimensions": [
-              2048,
-              4096
-            ],
-            "ggml_type": 12
-          },
-          {
-            "name": "blk.0.attn_q_norm.weight",
-            "dimensions": [
-              128
-            ],
-            "ggml_type": 0
-          },
-          {
-            "name": "blk.0.attn_v.weight",
-            "dimensions": [
-              2048,
-              512
-            ],
-            "ggml_type": 14
-          },
-          {
-            "name": "blk.0.ffn_down_exps.weight",
-            "dimensions": [
-              768,
-              2048,
-              128
-            ],
-            "ggml_type": 14
-          },
-          {
-            "name": "blk.0.ffn_gate_exps.weight",
-            "dimensions": [
-              2048,
-              768,
-              128
-            ],
-            "ggml_type": 12
-          },
-          {
-            "name": "blk.0.ffn_gate_inp.weight",
-            "dimensions": [
-              2048,
-              128
-            ],
-            "ggml_type": 0
-          },
-          {
-            "name": "blk.0.ffn_norm.weight",
-            "dimensions": [
-              2048
-            ],
-            "ggml_type": 0
-          },
-          {
-            "name": "blk.0.ffn_up_exps.weight",
-            "dimensions": [
-              2048,
-              768,
-              128
-            ],
-            "ggml_type": 12
-          },
-          {
-            "name": "output.weight",
-            "dimensions": [
-              2048,
-              151936
-            ],
-            "ggml_type": 14
-          },
-          {
-            "name": "output_norm.weight",
-            "dimensions": [
-              2048
-            ],
-            "ggml_type": 0
-          },
-          {
-            "name": "token_embd.weight",
-            "dimensions": [
-              2048,
-              151936
-            ],
-            "ggml_type": 12
-          }
-        ],
-        "runtime_revision": "0893ec98f5eafad36a43a72cd1c3723d72b0d03a",
-        "patch_sha256": "d4506c79258f07b66b0a720122a9efb2f874a478286dc2d1448b1e9c732f6860",
-        "reasons": [],
-        "failures": [],
-        "profile_failures": [
-          {
-            "passes": 2,
-            "profile": {
-              "passes": 2,
-              "anchor": 0.5,
-              "mode": "layer",
-              "cache": "first",
-              "start": 22,
-              "end": 26
-            },
-            "status": "smoke_failed",
-            "anchor_identity": {
-              "passed": true,
-              "max_logprob_error": 0.0
-            },
-            "loop_smoke": {
-              "passed": false,
-              "finite": true,
-              "repeat_stable": false,
-              "repeat_max_logprob_error": 0.013093948364257812,
-              "changed_from_baseline": true,
-              "same_sequence_logprob_difference": 0.7045207023620605
-            }
-          },
-          {
-            "passes": 3,
-            "profile": {
-              "passes": 3,
-              "anchor": 0.5,
-              "mode": "layer",
-              "cache": "first",
-              "start": 22,
-              "end": 26
-            },
-            "status": "smoke_failed",
-            "anchor_identity": {
-              "passed": true,
-              "max_logprob_error": 0.0
-            },
-            "loop_smoke": {
-              "passed": false,
-              "finite": true,
-              "repeat_stable": false,
-              "repeat_max_logprob_error": 0.7732219696044922,
-              "changed_from_baseline": true,
-              "same_sequence_logprob_difference": 1.5073070526123047
-            }
-          },
-          {
-            "passes": 4,
-            "profile": {
-              "passes": 4,
-              "anchor": 0.5,
-              "mode": "layer",
-              "cache": "first",
-              "start": 22,
-              "end": 26
-            },
-            "status": "smoke_failed",
-            "anchor_identity": {
-              "passed": true,
-              "max_logprob_error": 0.0
-            },
-            "loop_smoke": {
-              "passed": false,
-              "finite": true,
-              "repeat_stable": false,
-              "repeat_max_logprob_error": 0.0847940444946289,
-              "changed_from_baseline": true,
-              "same_sequence_logprob_difference": 1.4731159210205078
-            }
-          }
-        ],
-        "reproduce": "python -m looplab explore qwen3-coder-30b-0fd305b1 --no-resume",
-        "next_steps": [
-          "Check the pinned native model loader and original graph before changing metadata or tensor names.",
-          "For an unrecognized but similar graph, extend runtime/auto_adapters.py and preserve its original layer body.",
-          "For recurrent, MLA, shared, or convolution state, implement and test the state snapshot/restore semantics explicitly.",
-          "For MoE, retain the first expert IDs and mixture weights through the shared routing helper.",
-          "For repeat-request instability, inspect cache clearing, graph reuse and backend numerical behavior with cache_prompt=false.",
-          "Rebuild, pass the independent native reference tests, then rerun this exact model and its K=2/3/4 probes.",
-          "Treat successful smoke tests as experimental compatibility, never proof of quality gains or full paper reproduction."
-        ]
-      },
-      "seconds": 56.73961991399119,
+      "seconds": 30.263996510999277,
       "storage_before": {
-        "time": 1793767582.0248575,
-        "free_bytes": 520835690496,
-        "state_bytes": 2956769,
+        "time": 1793811263.1176941,
+        "free_bytes": 520595013632,
+        "state_bytes": 0,
         "model_weight_bytes_written": 0
       },
       "storage_after": {
-        "time": 1793767638.7636728,
-        "free_bytes": 520835760128,
-        "state_bytes": 3019039,
+        "time": 1793811293.3815758,
+        "free_bytes": 520594862080,
+        "state_bytes": 57213,
         "model_weight_bytes_written": 0
+      },
+      "backend_recovery": {
+        "version": "looplab-precision-recovery-v1",
+        "selected": "vulkan_f32",
+        "attempts": [
+          {
+            "mode": "default",
+            "status": "conformance_failed",
+            "execution_policy": {
+              "context": 2048,
+              "gpu_layers": 999,
+              "kv_type": "f16",
+              "flash_attention": false,
+              "vulkan_fusion": false,
+              "prefix_cache": false,
+              "swa_full": true,
+              "cpu_above_gib": 32,
+              "runner_version": "0.2.0"
+            },
+            "profiles": [
+              {
+                "passes": 2,
+                "profile": {
+                  "passes": 2,
+                  "anchor": 0.5,
+                  "mode": "layer",
+                  "cache": "first",
+                  "start": 22,
+                  "end": 26
+                },
+                "status": "smoke_failed",
+                "anchor_identity": {
+                  "passed": true,
+                  "max_logprob_error": 0.0
+                },
+                "loop_smoke": {
+                  "passed": false,
+                  "finite": true,
+                  "repeat_stable": false,
+                  "repeat_max_logprob_error": 0.013093948364257812,
+                  "changed_from_baseline": true,
+                  "same_sequence_logprob_difference": 0.7045207023620605
+                }
+              },
+              {
+                "passes": 3,
+                "profile": {
+                  "passes": 3,
+                  "anchor": 0.5,
+                  "mode": "layer",
+                  "cache": "first",
+                  "start": 22,
+                  "end": 26
+                },
+                "status": "smoke_failed",
+                "anchor_identity": {
+                  "passed": true,
+                  "max_logprob_error": 0.0
+                },
+                "loop_smoke": {
+                  "passed": false,
+                  "finite": true,
+                  "repeat_stable": false,
+                  "repeat_max_logprob_error": 0.7732219696044922,
+                  "changed_from_baseline": true,
+                  "same_sequence_logprob_difference": 1.5073070526123047
+                }
+              },
+              {
+                "passes": 4,
+                "profile": {
+                  "passes": 4,
+                  "anchor": 0.5,
+                  "mode": "layer",
+                  "cache": "first",
+                  "start": 22,
+                  "end": 26
+                },
+                "status": "smoke_failed",
+                "anchor_identity": {
+                  "passed": true,
+                  "max_logprob_error": 0.0
+                },
+                "loop_smoke": {
+                  "passed": false,
+                  "finite": true,
+                  "repeat_stable": false,
+                  "repeat_max_logprob_error": 0.0847940444946289,
+                  "changed_from_baseline": true,
+                  "same_sequence_logprob_difference": 1.4731159210205078
+                }
+              }
+            ]
+          },
+          {
+            "mode": "vulkan_f32",
+            "status": "compatible_experimental",
+            "execution_policy": {
+              "context": 2048,
+              "gpu_layers": 999,
+              "kv_type": "f16",
+              "flash_attention": false,
+              "vulkan_fusion": false,
+              "prefix_cache": false,
+              "swa_full": true,
+              "cpu_above_gib": 32,
+              "runner_version": "0.2.0",
+              "vulkan_f16": false
+            },
+            "profiles": [
+              {
+                "passes": 2,
+                "profile": {
+                  "passes": 2,
+                  "anchor": 0.5,
+                  "mode": "layer",
+                  "cache": "first",
+                  "start": 22,
+                  "end": 26
+                },
+                "status": "compatible_experimental",
+                "anchor_identity": {
+                  "passed": true,
+                  "max_logprob_error": 0.0
+                },
+                "loop_smoke": {
+                  "passed": true,
+                  "finite": true,
+                  "repeat_stable": true,
+                  "repeat_max_logprob_error": 0.0,
+                  "changed_from_baseline": true,
+                  "same_sequence_logprob_difference": 0.76776123046875
+                }
+              },
+              {
+                "passes": 3,
+                "profile": {
+                  "passes": 3,
+                  "anchor": 0.5,
+                  "mode": "layer",
+                  "cache": "first",
+                  "start": 22,
+                  "end": 26
+                },
+                "status": "compatible_experimental",
+                "anchor_identity": {
+                  "passed": true,
+                  "max_logprob_error": 0.0
+                },
+                "loop_smoke": {
+                  "passed": true,
+                  "finite": true,
+                  "repeat_stable": true,
+                  "repeat_max_logprob_error": 0.0,
+                  "changed_from_baseline": true,
+                  "same_sequence_logprob_difference": 0.8014168739318848
+                }
+              },
+              {
+                "passes": 4,
+                "profile": {
+                  "passes": 4,
+                  "anchor": 0.5,
+                  "mode": "layer",
+                  "cache": "first",
+                  "start": 22,
+                  "end": 26
+                },
+                "status": "compatible_experimental",
+                "anchor_identity": {
+                  "passed": true,
+                  "max_logprob_error": 0.0
+                },
+                "loop_smoke": {
+                  "passed": true,
+                  "finite": true,
+                  "repeat_stable": true,
+                  "repeat_max_logprob_error": 0.0,
+                  "changed_from_baseline": true,
+                  "same_sequence_logprob_difference": 0.9549684524536133
+                }
+              }
+            ]
+          }
+        ]
       },
       "runtime": {
         "llama_cpp_revision": "0893ec98f5eafad36a43a72cd1c3723d72b0d03a",
@@ -13844,7 +13992,8 @@
           "prefix_cache": false,
           "swa_full": true,
           "cpu_above_gib": 32,
-          "runner_version": "0.2.0"
+          "runner_version": "0.2.0",
+          "vulkan_f16": false
         }
       }
     },
@@ -17628,7 +17777,7 @@
     {
       "schema": 1,
       "suite": "looplab-explore-v1",
-      "status": "partially_compatible",
+      "status": "compatible_experimental",
       "model": {
         "id": "laguna-xs-2-1-q4-k-m-42838490",
         "name": "laguna-xs-2.1-q4_K_M",
@@ -17723,17 +17872,17 @@
             "start": 18,
             "end": 22
           },
-          "status": "smoke_failed",
+          "status": "compatible_experimental",
           "anchor_identity": {
             "passed": true,
             "max_logprob_error": 0.0
           },
           "loop_smoke": {
-            "passed": false,
+            "passed": true,
             "finite": true,
             "repeat_stable": true,
             "repeat_max_logprob_error": 0.0,
-            "changed_from_baseline": false,
+            "changed_from_baseline": true,
             "same_sequence_logprob_difference": null
           }
         }
@@ -17741,220 +17890,17 @@
       "paper_reproduction": false,
       "quality_tested": false,
       "recommended_profile": "baseline",
-      "repair": {
-        "model_id": "laguna-xs-2-1-q4-k-m-42838490",
-        "architecture": "laguna",
-        "status": "partially_compatible",
-        "adapter": {
-          "family": "moe",
-          "cache_interfaces": [
-            "kv",
-            "kv_iswa"
-          ],
-          "strategy": "preserve_native_layer_body",
-          "source_sha256": "0a14c3d27cc0a1284a2dbb6c0fee2f5e7a99866e3367a0cb2a31fbb026834acb",
-          "source": "src/models/laguna.cpp",
-          "tier": "experimental"
-        },
-        "metadata": {
-          "laguna.block_count": 40,
-          "laguna.context_length": 262144,
-          "laguna.embedding_length": 2048,
-          "laguna.feed_forward_length": 8192,
-          "laguna.attention.head_count_kv": 8,
-          "laguna.rope.scaling.factor": 32.0,
-          "laguna.rope.scaling.original_context_length": 8192,
-          "laguna.rope.scaling.yarn_attn_factor": 1.0,
-          "laguna.rope.scaling.yarn_beta_fast": 64.0,
-          "laguna.rope.scaling.yarn_beta_slow": 1.0,
-          "laguna.rope.freq_base": 500000.0,
-          "laguna.rope.freq_base_swa": 10000.0,
-          "laguna.attention.layer_norm_rms_epsilon": 9.999999974752427e-07,
-          "laguna.expert_count": 256,
-          "laguna.expert_used_count": 8,
-          "laguna.attention.key_length": 128,
-          "laguna.attention.value_length": 128,
-          "laguna.vocab_size": 100352,
-          "laguna.attention.sliding_window": 512,
-          "laguna.expert_feed_forward_length": 512,
-          "laguna.expert_shared_feed_forward_length": 512,
-          "laguna.expert_weights_norm": true,
-          "laguna.expert_weights_scale": 2.5,
-          "laguna.expert_gating_func": 2,
-          "laguna.leading_dense_block_count": 1,
-          "laguna.rope.dimension_count": 64,
-          "laguna.rope.dimension_count_swa": 128
-        },
-        "tensor_count": 678,
-        "representative_tensors": [
-          {
-            "name": "output.weight",
-            "dimensions": [
-              2048,
-              100352
-            ],
-            "ggml_type": 14
-          },
-          {
-            "name": "output_norm.weight",
-            "dimensions": [
-              2048
-            ],
-            "ggml_type": 0
-          },
-          {
-            "name": "token_embd.weight",
-            "dimensions": [
-              2048,
-              100352
-            ],
-            "ggml_type": 12
-          },
-          {
-            "name": "blk.0.attn_gate.weight",
-            "dimensions": [
-              2048,
-              48
-            ],
-            "ggml_type": 12
-          },
-          {
-            "name": "blk.0.attn_k.weight",
-            "dimensions": [
-              2048,
-              1024
-            ],
-            "ggml_type": 12
-          },
-          {
-            "name": "blk.0.attn_k_norm.weight",
-            "dimensions": [
-              128
-            ],
-            "ggml_type": 0
-          },
-          {
-            "name": "blk.0.attn_norm.weight",
-            "dimensions": [
-              2048
-            ],
-            "ggml_type": 0
-          },
-          {
-            "name": "blk.0.attn_output.weight",
-            "dimensions": [
-              6144,
-              2048
-            ],
-            "ggml_type": 12
-          },
-          {
-            "name": "blk.0.attn_q.weight",
-            "dimensions": [
-              2048,
-              6144
-            ],
-            "ggml_type": 12
-          },
-          {
-            "name": "blk.0.attn_q_norm.weight",
-            "dimensions": [
-              128
-            ],
-            "ggml_type": 0
-          },
-          {
-            "name": "blk.0.attn_v.weight",
-            "dimensions": [
-              2048,
-              1024
-            ],
-            "ggml_type": 14
-          },
-          {
-            "name": "blk.0.ffn_down.weight",
-            "dimensions": [
-              8192,
-              2048
-            ],
-            "ggml_type": 14
-          },
-          {
-            "name": "blk.0.ffn_gate.weight",
-            "dimensions": [
-              2048,
-              8192
-            ],
-            "ggml_type": 12
-          },
-          {
-            "name": "blk.0.ffn_norm.weight",
-            "dimensions": [
-              2048
-            ],
-            "ggml_type": 0
-          },
-          {
-            "name": "blk.0.ffn_up.weight",
-            "dimensions": [
-              2048,
-              8192
-            ],
-            "ggml_type": 12
-          }
-        ],
-        "runtime_revision": "0893ec98f5eafad36a43a72cd1c3723d72b0d03a",
-        "patch_sha256": "d4506c79258f07b66b0a720122a9efb2f874a478286dc2d1448b1e9c732f6860",
-        "reasons": [],
-        "failures": [],
-        "profile_failures": [
-          {
-            "passes": 4,
-            "profile": {
-              "passes": 4,
-              "anchor": 0.5,
-              "mode": "layer",
-              "cache": "first",
-              "start": 18,
-              "end": 22
-            },
-            "status": "smoke_failed",
-            "anchor_identity": {
-              "passed": true,
-              "max_logprob_error": 0.0
-            },
-            "loop_smoke": {
-              "passed": false,
-              "finite": true,
-              "repeat_stable": true,
-              "repeat_max_logprob_error": 0.0,
-              "changed_from_baseline": false,
-              "same_sequence_logprob_difference": null
-            }
-          }
-        ],
-        "reproduce": "python -m looplab explore laguna-xs-2-1-q4-k-m-42838490 --no-resume",
-        "next_steps": [
-          "Check the pinned native model loader and original graph before changing metadata or tensor names.",
-          "For an unrecognized but similar graph, extend runtime/auto_adapters.py and preserve its original layer body.",
-          "For recurrent, MLA, shared, or convolution state, implement and test the state snapshot/restore semantics explicitly.",
-          "For MoE, retain the first expert IDs and mixture weights through the shared routing helper.",
-          "For repeat-request instability, inspect cache clearing, graph reuse and backend numerical behavior with cache_prompt=false.",
-          "Rebuild, pass the independent native reference tests, then rerun this exact model and its K=2/3/4 probes.",
-          "Treat successful smoke tests as experimental compatibility, never proof of quality gains or full paper reproduction."
-        ]
-      },
-      "seconds": 60.67116460100806,
+      "seconds": 73.19237549998797,
       "storage_before": {
-        "time": 1793767891.3696551,
-        "free_bytes": 520837996544,
-        "state_bytes": 3716414,
+        "time": 1793811716.2159455,
+        "free_bytes": 520595349504,
+        "state_bytes": 5428394,
         "model_weight_bytes_written": 0
       },
       "storage_after": {
-        "time": 1793767952.0394995,
-        "free_bytes": 520837349376,
-        "state_bytes": 3781003,
+        "time": 1793811789.406756,
+        "free_bytes": 520594460672,
+        "state_bytes": 5429253,
         "model_weight_bytes_written": 0
       },
       "runtime": {
@@ -24957,17 +24903,17 @@
       "paper_reproduction": false,
       "quality_tested": false,
       "recommended_profile": "baseline",
-      "seconds": 239.93941588800226,
+      "seconds": 254.41795112099499,
       "storage_before": {
-        "time": 1793768658.6273315,
-        "free_bytes": 520624488448,
-        "state_bytes": 5288261,
+        "time": 1793806126.812146,
+        "free_bytes": 520615309312,
+        "state_bytes": 5425709,
         "model_weight_bytes_written": 0
       },
       "storage_after": {
-        "time": 1793768898.5653913,
-        "free_bytes": 520623185920,
-        "state_bytes": 5283886,
+        "time": 1793806381.229281,
+        "free_bytes": 520613548032,
+        "state_bytes": 5423727,
         "model_weight_bytes_written": 0
       },
       "runtime": {
@@ -28532,9 +28478,9 @@
   ],
   "discovery_errors": [],
   "storage_audit": {
-    "time": 1793768977.462601,
-    "free_bytes": 520624181248,
-    "state_bytes": 5412609,
+    "time": 1793819031.1448479,
+    "free_bytes": 520603357184,
+    "state_bytes": 5473798,
     "model_weight_bytes_written": 0,
     "test_crash_dump_bytes": 211216673,
     "test_crash_dumps_retained": 3,
@@ -28542,7 +28488,7 @@
     "test_crash_dumps_required_for_inference": false,
     "test_crash_dumps_cleanup_requires_admin": true,
     "test_crash_dumps_cleanup_note": "Safe to delete: disposable debugging snapshots from failed test processes. Deletion only removes those crash snapshots; model files, LoopLab and evaluation reports are unaffected.",
-    "additional_runtime_allocated_bytes": 578588672
+    "additional_runtime_allocated_bytes": 578596864
   },
   "source_verification": {
     "method": "Re-read GGUF header hash, file size and nanosecond modification time after testing; not a full weight hash",
@@ -28551,16 +28497,19 @@
   },
   "inference_attempts": 45,
   "conformance_gate_audit": {
-    "passing_profiles_allowed": 37,
-    "failed_or_untested_profiles_blocked": 125
+    "passing_profiles_allowed": 51,
+    "failed_or_untested_profiles_blocked": 111
   },
   "validation": {
-    "python_tests_passed": 20,
+    "python_tests_passed": 33,
     "node_tests_passed": 9,
     "native_cpu_checks_passed": 24,
     "native_vulkan_checks_passed": 24,
     "live_gemma4_12b_loop2_chat_passed": true,
-    "ci": "https://github.com/bouldinnathan/lmstudio-looplab/actions/runs/41776316816",
-    "code_commit": "8f7677032dc945514f7bb2541fbe887746d4140c"
+    "ci": "https://github.com/bouldinnathan/lmstudio-looplab/actions/runs/41874166540",
+    "code_commit": "92042e4c53f635f971aa972eca40326eebc1670c",
+    "native_cpu_repeated_checks_passed": 24,
+    "native_vulkan_f32_checks_passed": 24,
+    "ci_status": "success"
   }
 }

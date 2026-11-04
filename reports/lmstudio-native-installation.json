@@ -3,7 +3,7 @@
   "source_stat_changes": [],
   "profiles": 37,
   "models": 14,
-  "descriptor_bytes": 284692,
+  "descriptor_bytes": 374700,
   "weight_bytes_copied": 0,
   "runtime_files_shared": 15,
   "runtime_bytes_shared": 74159560,
@@ -12,7 +12,7 @@
   "lmstudio_version": "0.4.25+1",
   "runtime_alias": "looplab-linux-x86_64@2.69.0",
   "bridge_version": "0.3.0",
-  "api_profiles_listed": 37,
+  "api_profiles_listed": 51,
   "entries": [
     {
       "model_key": "reader-lm-1-5b-looped-2x",
@@ -26,7 +26,8 @@
         "start": 12,
         "end": 16
       },
-      "descriptor_bytes": 1732
+      "descriptor_bytes": 1732,
+      "execution_mode": "cpu"
     },
     {
       "model_key": "reader-lm-1-5b-looped-4x",
@@ -40,7 +41,8 @@
         "start": 12,
         "end": 16
       },
-      "descriptor_bytes": 1732
+      "descriptor_bytes": 1732,
+      "execution_mode": "cpu"
     },
     {
       "model_key": "bespoke-minicheck-latest-looped-2x",
@@ -54,7 +56,8 @@
         "start": 14,
         "end": 18
       },
-      "descriptor_bytes": 1540
+      "descriptor_bytes": 1540,
+      "execution_mode": "default"
     },
     {
       "model_key": "bespoke-minicheck-latest-looped-3x",
@@ -68,7 +71,8 @@
         "start": 14,
         "end": 18
       },
-      "descriptor_bytes": 1540
+      "descriptor_bytes": 1540,
+      "execution_mode": "default"
     },
     {
       "model_key": "bespoke-minicheck-latest-looped-4x",
@@ -82,7 +86,8 @@
         "start": 14,
         "end": 18
       },
-      "descriptor_bytes": 1540
+      "descriptor_bytes": 1540,
+      "execution_mode": "default"
     },
     {
       "model_key": "command-r-35b-looped-2x",
@@ -96,7 +101,8 @@
         "start": 18,
         "end": 22
       },
-      "descriptor_bytes": 2756
+      "descriptor_bytes": 2756,
+      "execution_mode": "default"
     },
     {
       "model_key": "command-r-35b-looped-3x",
@@ -110,7 +116,8 @@
         "start": 18,
         "end": 22
       },
-      "descriptor_bytes": 2756
+      "descriptor_bytes": 2756,
+      "execution_mode": "default"
     },
     {
       "model_key": "command-r-35b-looped-4x",
@@ -124,7 +131,8 @@
         "start": 18,
         "end": 22
       },
-      "descriptor_bytes": 2756
+      "descriptor_bytes": 2756,
+      "execution_mode": "default"
     },
     {
       "model_key": "command-r-plus-latest-looped-2x",
@@ -138,7 +146,8 @@
         "start": 30,
         "end": 34
       },
-      "descriptor_bytes": 2788
+      "descriptor_bytes": 2788,
+      "execution_mode": "cpu"
     },
     {
       "model_key": "command-r-plus-latest-looped-3x",
@@ -152,7 +161,8 @@
         "start": 30,
         "end": 34
       },
-      "descriptor_bytes": 2788
+      "descriptor_bytes": 2788,
+      "execution_mode": "cpu"
     },
     {
       "model_key": "command-r-plus-latest-looped-4x",
@@ -166,7 +176,8 @@
         "start": 30,
         "end": 34
       },
-      "descriptor_bytes": 2788
+      "descriptor_bytes": 2788,
+      "execution_mode": "cpu"
     },
     {
       "model_key": "deepcoder-14b-looped-2x",
@@ -180,7 +191,8 @@
         "start": 22,
         "end": 26
       },
-      "descriptor_bytes": 4644
+      "descriptor_bytes": 4644,
+      "execution_mode": "default"
     },
     {
       "model_key": "deepcoder-14b-looped-3x",
@@ -194,7 +206,8 @@
         "start": 22,
         "end": 26
       },
-      "descriptor_bytes": 4644
+      "descriptor_bytes": 4644,
+      "execution_mode": "default"
     },
     {
       "model_key": "deepcoder-14b-looped-4x",
@@ -208,7 +221,8 @@
         "start": 22,
         "end": 26
       },
-      "descriptor_bytes": 4644
+      "descriptor_bytes": 4644,
+      "execution_mode": "default"
     },
     {
       "model_key": "deepseek-r1-32b-looped-2x",
@@ -222,7 +236,8 @@
         "start": 30,
         "end": 34
       },
-      "descriptor_bytes": 3428
+      "descriptor_bytes": 3428,
+      "execution_mode": "default"
     },
     {
       "model_key": "deepseek-r1-32b-looped-3x",
@@ -236,7 +251,8 @@
         "start": 30,
         "end": 34
       },
-      "descriptor_bytes": 3428
+      "descriptor_bytes": 3428,
+      "execution_mode": "default"
     },
     {
       "model_key": "deepseek-r1-32b-looped-4x",
@@ -250,7 +266,8 @@
         "start": 30,
         "end": 34
       },
-      "descriptor_bytes": 3428
+      "descriptor_bytes": 3428,
+      "execution_mode": "default"
     },
     {
       "model_key": "devstral-24b-looped-2x",
@@ -264,7 +281,8 @@
         "start": 18,
         "end": 22
       },
-      "descriptor_bytes": 3684
+      "descriptor_bytes": 3684,
+      "execution_mode": "default"
     },
     {
       "model_key": "devstral-24b-looped-3x",
@@ -278,7 +296,8 @@
         "start": 18,
         "end": 22
       },
-      "descriptor_bytes": 3684
+      "descriptor_bytes": 3684,
+      "execution_mode": "default"
     },
     {
       "model_key": "devstral-24b-looped-4x",
@@ -292,7 +311,8 @@
         "start": 18,
         "end": 22
       },
-      "descriptor_bytes": 3684
+      "descriptor_bytes": 3684,
+      "execution_mode": "default"
     },
     {
       "model_key": "gemma4-12b-looped-2x",
@@ -306,7 +326,8 @@
         "start": 22,
         "end": 26
       },
-      "descriptor_bytes": 19908
+      "descriptor_bytes": 19908,
+      "execution_mode": "default"
     },
     {
       "model_key": "gemma4-12b-looped-3x",
@@ -320,7 +341,8 @@
         "start": 22,
         "end": 26
       },
-      "descriptor_bytes": 19908
+      "descriptor_bytes": 19908,
+      "execution_mode": "default"
     },
     {
       "model_key": "gemma4-12b-looped-4x",
@@ -334,7 +356,8 @@
         "start": 22,
         "end": 26
       },
-      "descriptor_bytes": 19908
+      "descriptor_bytes": 19908,
+      "execution_mode": "default"
     },
     {
       "model_key": "gpt-oss-120b-abliterated-latest-looped-2x",
@@ -348,7 +371,8 @@
         "start": 16,
         "end": 20
       },
-      "descriptor_bytes": 19556
+      "descriptor_bytes": 19556,
+      "execution_mode": "cpu"
     },
     {
       "model_key": "gpt-oss-120b-abliterated-latest-looped-3x",
@@ -362,7 +386,8 @@
         "start": 16,
         "end": 20
       },
-      "descriptor_bytes": 19556
+      "descriptor_bytes": 19556,
+      "execution_mode": "cpu"
     },
     {
       "model_key": "gpt-oss-120b-abliterated-latest-looped-4x",
@@ -376,7 +401,8 @@
         "start": 16,
         "end": 20
       },
-      "descriptor_bytes": 19556
+      "descriptor_bytes": 19556,
+      "execution_mode": "cpu"
     },
     {
       "model_key": "granite4-1-3b-looped-2x",
@@ -390,7 +416,8 @@
         "start": 18,
         "end": 22
       },
-      "descriptor_bytes": 7524
+      "descriptor_bytes": 7524,
+      "execution_mode": "vulkan_f32"
     },
     {
       "model_key": "granite4-1-guardian-8b-k-m-looped-2x",
@@ -404,7 +431,8 @@
         "start": 18,
         "end": 22
       },
-      "descriptor_bytes": 8004
+      "descriptor_bytes": 8004,
+      "execution_mode": "cpu"
     },
     {
       "model_key": "granite4-1-guardian-8b-k-m-looped-4x",
@@ -418,7 +446,8 @@
         "start": 18,
         "end": 22
       },
-      "descriptor_bytes": 8004
+      "descriptor_bytes": 8004,
+      "execution_mode": "cpu"
     },
     {
       "model_key": "laguna-xs-2-1-k-m-looped-2x",
@@ -432,7 +461,8 @@
         "start": 18,
         "end": 22
       },
-      "descriptor_bytes": 6436
+      "descriptor_bytes": 6436,
+      "execution_mode": "default"
     },
     {
       "model_key": "laguna-xs-2-1-k-m-looped-3x",
@@ -446,7 +476,8 @@
         "start": 18,
         "end": 22
       },
-      "descriptor_bytes": 6436
+      "descriptor_bytes": 6436,
+      "execution_mode": "default"
     },
     {
       "model_key": "muse-glimmer-30b-looped-2x",
@@ -460,7 +491,8 @@
         "start": 24,
         "end": 28
       },
-      "descriptor_bytes": 8708
+      "descriptor_bytes": 8708,
+      "execution_mode": "default"
     },
     {
       "model_key": "muse-glimmer-30b-looped-3x",
@@ -474,7 +506,8 @@
         "start": 24,
         "end": 28
       },
-      "descriptor_bytes": 8708
+      "descriptor_bytes": 8708,
+      "execution_mode": "default"
     },
     {
       "model_key": "muse-glimmer-30b-looped-4x",
@@ -488,7 +521,8 @@
         "start": 24,
         "end": 28
       },
-      "descriptor_bytes": 8708
+      "descriptor_bytes": 8708,
+      "execution_mode": "default"
     },
     {
       "model_key": "north-mini-code-1-0-k-m-looped-2x",
@@ -502,7 +536,8 @@
         "start": 22,
         "end": 26
       },
-      "descriptor_bytes": 14596
+      "descriptor_bytes": 14596,
+      "execution_mode": "default"
     },
     {
       "model_key": "north-mini-code-1-0-k-m-looped-3x",
@@ -516,7 +551,8 @@
         "start": 22,
         "end": 26
       },
-      "descriptor_bytes": 14596
+      "descriptor_bytes": 14596,
+      "execution_mode": "default"
     },
     {
       "model_key": "north-mini-code-1-0-k-m-looped-4x",
@@ -530,7 +566,218 @@
         "start": 22,
         "end": 26
       },
-      "descriptor_bytes": 14596
+      "descriptor_bytes": 14596,
+      "execution_mode": "default"
+    },
+    {
+      "model_key": "granite4-1-30b-looped-2x",
+      "display_name": "Granite4 1 30B Looped 2x",
+      "model_id": "granite4-1-30b-e82a09f0",
+      "profile": {
+        "passes": 2,
+        "anchor": 0.5,
+        "mode": "block",
+        "cache": "first",
+        "start": 30,
+        "end": 34
+      },
+      "descriptor_bytes": 7556,
+      "execution_mode": "cpu"
+    },
+    {
+      "model_key": "granite4-1-30b-looped-3x",
+      "display_name": "Granite4 1 30B Looped 3x",
+      "model_id": "granite4-1-30b-e82a09f0",
+      "profile": {
+        "passes": 3,
+        "anchor": 0.5,
+        "mode": "block",
+        "cache": "first",
+        "start": 30,
+        "end": 34
+      },
+      "descriptor_bytes": 7556,
+      "execution_mode": "cpu"
+    },
+    {
+      "model_key": "granite4-1-30b-looped-4x",
+      "display_name": "Granite4 1 30B Looped 4x",
+      "model_id": "granite4-1-30b-e82a09f0",
+      "profile": {
+        "passes": 4,
+        "anchor": 0.5,
+        "mode": "block",
+        "cache": "first",
+        "start": 30,
+        "end": 34
+      },
+      "descriptor_bytes": 7556,
+      "execution_mode": "cpu"
+    },
+    {
+      "model_key": "granite4-1-3b-looped-3x",
+      "display_name": "Granite4 1 3B Looped 3x",
+      "model_id": "granite4-1-3b-72064317",
+      "profile": {
+        "passes": 3,
+        "anchor": 0.5,
+        "mode": "block",
+        "cache": "first",
+        "start": 18,
+        "end": 22
+      },
+      "descriptor_bytes": 7524,
+      "execution_mode": "vulkan_f32"
+    },
+    {
+      "model_key": "granite4-1-3b-looped-4x",
+      "display_name": "Granite4 1 3B Looped 4x",
+      "model_id": "granite4-1-3b-72064317",
+      "profile": {
+        "passes": 4,
+        "anchor": 0.5,
+        "mode": "block",
+        "cache": "first",
+        "start": 18,
+        "end": 22
+      },
+      "descriptor_bytes": 7524,
+      "execution_mode": "vulkan_f32"
+    },
+    {
+      "model_key": "granite4-1-guardian-8b-k-m-looped-3x",
+      "display_name": "Granite4 1 Guardian 8B K M Looped 3x",
+      "model_id": "granite4-1-guardian-8b-q4-k-m-9b16f68b",
+      "profile": {
+        "passes": 3,
+        "anchor": 0.5,
+        "mode": "block",
+        "cache": "first",
+        "start": 18,
+        "end": 22
+      },
+      "descriptor_bytes": 8004,
+      "execution_mode": "cpu"
+    },
+    {
+      "model_key": "laguna-xs-2-1-k-m-looped-4x",
+      "display_name": "Laguna Xs 2 1 K M Looped 4x",
+      "model_id": "laguna-xs-2-1-q4-k-m-42838490",
+      "profile": {
+        "passes": 4,
+        "anchor": 0.5,
+        "mode": "layer",
+        "cache": "first",
+        "start": 18,
+        "end": 22
+      },
+      "descriptor_bytes": 6436,
+      "execution_mode": "default"
+    },
+    {
+      "model_key": "phi4-reasoning-plus-looped-2x",
+      "display_name": "Phi4 Reasoning Plus Looped 2x",
+      "model_id": "phi4-reasoning-plus-1b770441",
+      "profile": {
+        "passes": 2,
+        "anchor": 0.5,
+        "mode": "block",
+        "cache": "first",
+        "start": 18,
+        "end": 22
+      },
+      "descriptor_bytes": 3556,
+      "execution_mode": "vulkan_f32"
+    },
+    {
+      "model_key": "phi4-reasoning-plus-looped-3x",
+      "display_name": "Phi4 Reasoning Plus Looped 3x",
+      "model_id": "phi4-reasoning-plus-1b770441",
+      "profile": {
+        "passes": 3,
+        "anchor": 0.5,
+        "mode": "block",
+        "cache": "first",
+        "start": 18,
+        "end": 22
+      },
+      "descriptor_bytes": 3556,
+      "execution_mode": "vulkan_f32"
+    },
+    {
+      "model_key": "phi4-reasoning-plus-looped-4x",
+      "display_name": "Phi4 Reasoning Plus Looped 4x",
+      "model_id": "phi4-reasoning-plus-1b770441",
+      "profile": {
+        "passes": 4,
+        "anchor": 0.5,
+        "mode": "block",
+        "cache": "first",
+        "start": 18,
+        "end": 22
+      },
+      "descriptor_bytes": 3556,
+      "execution_mode": "vulkan_f32"
+    },
+    {
+      "model_key": "qwen3-coder-30b-looped-2x",
+      "display_name": "Qwen3 Coder 30B Looped 2x",
+      "model_id": "qwen3-coder-30b-0fd305b1",
+      "profile": {
+        "passes": 2,
+        "anchor": 0.5,
+        "mode": "layer",
+        "cache": "first",
+        "start": 22,
+        "end": 26
+      },
+      "descriptor_bytes": 8484,
+      "execution_mode": "vulkan_f32"
+    },
+    {
+      "model_key": "qwen3-coder-30b-looped-3x",
+      "display_name": "Qwen3 Coder 30B Looped 3x",
+      "model_id": "qwen3-coder-30b-0fd305b1",
+      "profile": {
+        "passes": 3,
+        "anchor": 0.5,
+        "mode": "layer",
+        "cache": "first",
+        "start": 22,
+        "end": 26
+      },
+      "descriptor_bytes": 8484,
+      "execution_mode": "vulkan_f32"
+    },
+    {
+      "model_key": "qwen3-coder-30b-looped-4x",
+      "display_name": "Qwen3 Coder 30B Looped 4x",
+      "model_id": "qwen3-coder-30b-0fd305b1",
+      "profile": {
+        "passes": 4,
+        "anchor": 0.5,
+        "mode": "layer",
+        "cache": "first",
+        "start": 22,
+        "end": 26
+      },
+      "descriptor_bytes": 8484,
+      "execution_mode": "vulkan_f32"
+    },
+    {
+      "model_key": "reader-lm-1-5b-looped-3x",
+      "display_name": "Reader Lm 1 5B Looped 3x",
+      "model_id": "reader-lm-1-5b-faf34a76",
+      "profile": {
+        "passes": 3,
+        "anchor": 0.5,
+        "mode": "block",
+        "cache": "first",
+        "start": 12,
+        "end": 16
+      },
+      "descriptor_bytes": 1732,
+      "execution_mode": "cpu"
     }
   ],
   "old_crash_dumps_deletable": true,
@@ -540,5 +787,7 @@
     "source_model": "reader-lm-1.5b",
     "response_received": true
   },
-  "runtime_distinct_files_shared": 13
+  "runtime_distinct_files_shared": 13,
+  "verified_utc": "2026-11-04T19:03:51.058193+00:00",
+  "looplab_version": "0.3.1"
 }

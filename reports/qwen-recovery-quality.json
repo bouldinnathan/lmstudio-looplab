@@ -1,0 +1,314 @@
+{
+  "schema": 1,
+  "suite": "looplab-diagnostic-v3",
+  "suite_sha256": "8b2d60609aa5dccdb5e0c5680251a16ec3bfec3417ffacd99656b426bf7f848b",
+  "quick": true,
+  "status": "tested",
+  "evaluation_policy": {
+    "temperature": 0,
+    "seed": 1729,
+    "max_tokens": 192,
+    "cache_prompt": false,
+    "reasoning_effort": "none",
+    "reasoning_budget_tokens": 0,
+    "add_generation_prompt": false,
+    "continue_final_message": "content",
+    "response_format": {
+      "type": "json_object"
+    },
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    },
+    "assistant_prefill": "{\"answer\":"
+  },
+  "paper_reproduction": false,
+  "recommended_profile": "baseline",
+  "recommendation": {
+    "wins": 0,
+    "losses": 0,
+    "one_sided_sign_test_p": 1.0,
+    "recommend_loop": false,
+    "verdict": "quick_screen_only"
+  },
+  "limitations": [
+    "Quantized checkpoints and a small local diagnostic suite differ from the paper's BF16 benchmarks.",
+    "Held-out tasks are public diagnostics, not a general capability guarantee.",
+    "Prompt-prefix reuse is disabled by default; a cache probe is reported separately."
+  ],
+  "model": {
+    "id": "qwen3-coder-30b-0fd305b1",
+    "name": "qwen3-coder-30b",
+    "architecture": "qwen3moe",
+    "layers": 48,
+    "size_bytes": 18556688736,
+    "header_sha256": "a5f27181f754e5f03d366f8d9360eacd2d5239ae64d36dbbc2176a445cbf2b39",
+    "eligible": true,
+    "reasons": [],
+    "mode": "layer"
+  },
+  "runtime": {
+    "llama_cpp_revision": "0893ec98f5eafad36a43a72cd1c3723d72b0d03a",
+    "patch_sha256": "d4506c79258f07b66b0a720122a9efb2f874a478286dc2d1448b1e9c732f6860",
+    "method": "anchored_damped_euler",
+    "architectures": [
+      "afmoe",
+      "apertus",
+      "arcee",
+      "arctic",
+      "bailingmoe",
+      "bailingmoe2",
+      "bitnet",
+      "bloom",
+      "chameleon",
+      "chatglm",
+      "codeshell",
+      "cogvlm",
+      "cohere2",
+      "cohere2moe",
+      "command-r",
+      "dbrx",
+      "deepseek",
+      "dots1",
+      "ernie4_5",
+      "ernie4_5-moe",
+      "exaone",
+      "exaone-moe",
+      "exaone4",
+      "falcon",
+      "flint",
+      "gemma",
+      "gemma2",
+      "gemma3",
+      "gemma3n",
+      "gemma4",
+      "glm4",
+      "glm4moe",
+      "gpt-oss",
+      "gpt2",
+      "granite",
+      "granite_swa",
+      "graniteswitch",
+      "grok",
+      "grovemoe",
+      "hunyuan-moe",
+      "hunyuan_vl",
+      "hy_v3",
+      "internlm2",
+      "jais",
+      "k2-horizon",
+      "laguna",
+      "llama",
+      "llama4",
+      "maincoder",
+      "maion-coder",
+      "maple",
+      "mellum",
+      "mimo2",
+      "minicpm3",
+      "minimax-m2",
+      "mistral3",
+      "mpt",
+      "muse-glimmer",
+      "muse-spark",
+      "nemotron",
+      "olmo",
+      "olmo2",
+      "olmoe",
+      "openelm",
+      "orion",
+      "paddleocr",
+      "pangu-embedded",
+      "phi2",
+      "phi3",
+      "plamo",
+      "plamo3",
+      "plm",
+      "pockettts",
+      "qwen",
+      "qwen2",
+      "qwen2moe",
+      "qwen2vl",
+      "qwen3",
+      "qwen3moe",
+      "qwen3vl",
+      "qwen3vlmoe",
+      "refact",
+      "seed_oss",
+      "sensenova_u1",
+      "smallthinker",
+      "smollm3",
+      "spark2_5",
+      "stablelm",
+      "starcoder",
+      "starcoder2",
+      "step35",
+      "talkie",
+      "xverse"
+    ],
+    "cache": [
+      "first",
+      "last"
+    ],
+    "moe_routing": "pinned_ids_and_weights",
+    "version": 2,
+    "backend": "vulkan",
+    "execution_policy": {
+      "context": 2048,
+      "gpu_layers": 999,
+      "kv_type": "f16",
+      "flash_attention": false,
+      "vulkan_fusion": false,
+      "prefix_cache": false,
+      "swa_full": true,
+      "cpu_above_gib": 32,
+      "runner_version": "0.2.0",
+      "vulkan_f16": false
+    }
+  },
+  "profiles": [
+    {
+      "passes": 2,
+      "status": "tested",
+      "anchor_identity": {
+        "passed": true,
+        "max_logprob_error": 0.0
+      },
+      "loop_smoke": {
+        "passed": true,
+        "finite": true,
+        "repeat_stable": true,
+        "repeat_max_logprob_error": 0.0,
+        "changed_from_baseline": true,
+        "same_sequence_logprob_difference": 0.76776123046875
+      },
+      "cache_probe": {
+        "same_tokens": true,
+        "tokens_cached": 16,
+        "max_logprob_error": 0.6476325988769531,
+        "enabled_by_default": false
+      },
+      "selection_passed": 3,
+      "selection_total": 4,
+      "holdout_passed": 3,
+      "holdout_total": 4,
+      "selection_metrics": {
+        "passed": 3,
+        "total": 4,
+        "truncated": 0,
+        "format_errors": 0,
+        "seconds": 6.934244032017887,
+        "completion_tokens": 53
+      },
+      "holdout_metrics": {
+        "passed": 3,
+        "total": 4,
+        "truncated": 0,
+        "format_errors": 0,
+        "seconds": 6.959580204973463,
+        "completion_tokens": 49
+      }
+    },
+    {
+      "passes": 3,
+      "status": "tested",
+      "anchor_identity": {
+        "passed": true,
+        "max_logprob_error": 0.0
+      },
+      "loop_smoke": {
+        "passed": true,
+        "finite": true,
+        "repeat_stable": true,
+        "repeat_max_logprob_error": 0.0,
+        "changed_from_baseline": true,
+        "same_sequence_logprob_difference": 0.8014168739318848
+      },
+      "cache_probe": {
+        "same_tokens": true,
+        "tokens_cached": 16,
+        "max_logprob_error": 1.1326863765716553,
+        "enabled_by_default": false
+      },
+      "selection_passed": 3,
+      "selection_total": 4,
+      "holdout_passed": 0,
+      "holdout_total": 0,
+      "selection_metrics": {
+        "passed": 3,
+        "total": 4,
+        "truncated": 0,
+        "format_errors": 0,
+        "seconds": 7.102488614007598,
+        "completion_tokens": 55
+      },
+      "holdout_metrics": {
+        "passed": 0,
+        "total": 0,
+        "truncated": 0,
+        "format_errors": 0,
+        "seconds": 0,
+        "completion_tokens": 0
+      }
+    },
+    {
+      "passes": 4,
+      "status": "tested",
+      "anchor_identity": {
+        "passed": true,
+        "max_logprob_error": 0.0
+      },
+      "loop_smoke": {
+        "passed": true,
+        "finite": true,
+        "repeat_stable": true,
+        "repeat_max_logprob_error": 0.0,
+        "changed_from_baseline": true,
+        "same_sequence_logprob_difference": 0.9549684524536133
+      },
+      "cache_probe": {
+        "same_tokens": true,
+        "tokens_cached": 16,
+        "max_logprob_error": 1.1249818801879883,
+        "enabled_by_default": false
+      },
+      "selection_passed": 3,
+      "selection_total": 4,
+      "holdout_passed": 0,
+      "holdout_total": 0,
+      "selection_metrics": {
+        "passed": 3,
+        "total": 4,
+        "truncated": 0,
+        "format_errors": 0,
+        "seconds": 7.461733624979388,
+        "completion_tokens": 55
+      },
+      "holdout_metrics": {
+        "passed": 0,
+        "total": 0,
+        "truncated": 0,
+        "format_errors": 0,
+        "seconds": 0,
+        "completion_tokens": 0
+      }
+    }
+  ],
+  "baseline": {
+    "selection": {
+      "passed": 3,
+      "total": 4,
+      "truncated": 0,
+      "format_errors": 0,
+      "seconds": 7.857828603999224,
+      "completion_tokens": 53
+    },
+    "holdout": {
+      "passed": 3,
+      "total": 4,
+      "truncated": 0,
+      "format_errors": 0,
+      "seconds": 7.457766772975447,
+      "completion_tokens": 49
+    }
+  }
+}

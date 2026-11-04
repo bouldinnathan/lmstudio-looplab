@@ -1,0 +1,2424 @@
+{
+  "verified_utc": "2026-11-04T19:03:51.058193+00:00",
+  "native_operator_changed": false,
+  "model_weight_bytes_written": 0,
+  "descriptor_bytes_added": 90008,
+  "descriptor_bytes_total": 374700,
+  "passing_profiles_before": 37,
+  "passing_profiles_after": 51,
+  "models_with_passing_profiles": 17,
+  "recovered_models": [
+    {
+      "model_id": "reader-lm-1-5b-faf34a76",
+      "name": "reader-lm-1.5b",
+      "previous_passing_counts": [
+        2,
+        4
+      ],
+      "passing_counts": [
+        2,
+        3,
+        4
+      ],
+      "execution_mode": "cpu",
+      "report": {
+        "schema": 1,
+        "suite": "looplab-explore-v1",
+        "status": "compatible_experimental",
+        "model": {
+          "id": "reader-lm-1-5b-faf34a76",
+          "name": "reader-lm-1.5b",
+          "architecture": "qwen2",
+          "layers": 28,
+          "size_bytes": 934952416,
+          "header_sha256": "9d55b489f2d0940977236a333a0de5fbc8cdf9c61290d9f0ad776558c3110e44",
+          "eligible": true,
+          "reasons": [],
+          "mode": "block",
+          "tier": "reference_validated",
+          "role": "generation",
+          "adapter": {
+            "family": "dense",
+            "cache_interfaces": [
+              "kv"
+            ],
+            "strategy": "preserve_native_layer_body",
+            "source_sha256": "7f7f9df9bdaaf7c8aaab900fe046c97936b67d656f66dea445735f1beec695f4",
+            "source": "src/models/qwen2.cpp",
+            "tier": "reference_validated"
+          },
+          "aliases": [
+            "reader-lm-1.5b",
+            "library/reader-lm/1.5b"
+          ],
+          "loadable": true,
+          "load_reasons": []
+        },
+        "baseline_check": {
+          "passed": true,
+          "tokens": 12,
+          "effective_gpu_layers": 0
+        },
+        "profiles": [
+          {
+            "passes": 2,
+            "profile": {
+              "passes": 2,
+              "anchor": 0.5,
+              "mode": "block",
+              "cache": "first",
+              "start": 12,
+              "end": 16
+            },
+            "status": "compatible_experimental",
+            "anchor_identity": {
+              "passed": true,
+              "max_logprob_error": 0.0
+            },
+            "loop_smoke": {
+              "passed": true,
+              "finite": true,
+              "repeat_stable": true,
+              "repeat_max_logprob_error": 0.0,
+              "changed_from_baseline": true,
+              "same_sequence_logprob_difference": null
+            }
+          },
+          {
+            "passes": 3,
+            "profile": {
+              "passes": 3,
+              "anchor": 0.5,
+              "mode": "block",
+              "cache": "first",
+              "start": 12,
+              "end": 16
+            },
+            "status": "compatible_experimental",
+            "anchor_identity": {
+              "passed": true,
+              "max_logprob_error": 0.0
+            },
+            "loop_smoke": {
+              "passed": true,
+              "finite": true,
+              "repeat_stable": true,
+              "repeat_max_logprob_error": 0.0,
+              "changed_from_baseline": true,
+              "same_sequence_logprob_difference": null
+            }
+          },
+          {
+            "passes": 4,
+            "profile": {
+              "passes": 4,
+              "anchor": 0.5,
+              "mode": "block",
+              "cache": "first",
+              "start": 12,
+              "end": 16
+            },
+            "status": "compatible_experimental",
+            "anchor_identity": {
+              "passed": true,
+              "max_logprob_error": 0.0
+            },
+            "loop_smoke": {
+              "passed": true,
+              "finite": true,
+              "repeat_stable": true,
+              "repeat_max_logprob_error": 0.0,
+              "changed_from_baseline": true,
+              "same_sequence_logprob_difference": null
+            }
+          }
+        ],
+        "paper_reproduction": false,
+        "quality_tested": false,
+        "recommended_profile": "baseline",
+        "seconds": 5.280067882005824,
+        "storage_before": {
+          "time": 1793811301.7297044,
+          "free_bytes": 520594862080,
+          "state_bytes": 0,
+          "model_weight_bytes_written": 0
+        },
+        "storage_after": {
+          "time": 1793811307.0095935,
+          "free_bytes": 520594862080,
+          "state_bytes": 57152,
+          "model_weight_bytes_written": 0
+        },
+        "backend_recovery": {
+          "version": "looplab-precision-recovery-v1",
+          "selected": "cpu",
+          "attempts": [
+            {
+              "mode": "default",
+              "status": "partially_compatible",
+              "execution_policy": {
+                "context": 2048,
+                "gpu_layers": 999,
+                "kv_type": "f16",
+                "flash_attention": false,
+                "vulkan_fusion": false,
+                "prefix_cache": false,
+                "swa_full": true,
+                "cpu_above_gib": 32,
+                "runner_version": "0.2.0"
+              },
+              "profiles": [
+                {
+                  "passes": 2,
+                  "profile": {
+                    "passes": 2,
+                    "anchor": 0.5,
+                    "mode": "block",
+                    "cache": "first",
+                    "start": 12,
+                    "end": 16
+                  },
+                  "status": "compatible_experimental",
+                  "anchor_identity": {
+                    "passed": true,
+                    "max_logprob_error": 0.0
+                  },
+                  "loop_smoke": {
+                    "passed": true,
+                    "finite": true,
+                    "repeat_stable": true,
+                    "repeat_max_logprob_error": 0.0,
+                    "changed_from_baseline": true,
+                    "same_sequence_logprob_difference": null
+                  }
+                },
+                {
+                  "passes": 3,
+                  "profile": {
+                    "passes": 3,
+                    "anchor": 0.5,
+                    "mode": "block",
+                    "cache": "first",
+                    "start": 12,
+                    "end": 16
+                  },
+                  "status": "smoke_failed",
+                  "anchor_identity": {
+                    "passed": true,
+                    "max_logprob_error": 0.0
+                  },
+                  "loop_smoke": {
+                    "passed": false,
+                    "finite": true,
+                    "repeat_stable": false,
+                    "repeat_max_logprob_error": 0.05538225173950195,
+                    "changed_from_baseline": true,
+                    "same_sequence_logprob_difference": null
+                  }
+                },
+                {
+                  "passes": 4,
+                  "profile": {
+                    "passes": 4,
+                    "anchor": 0.5,
+                    "mode": "block",
+                    "cache": "first",
+                    "start": 12,
+                    "end": 16
+                  },
+                  "status": "compatible_experimental",
+                  "anchor_identity": {
+                    "passed": true,
+                    "max_logprob_error": 0.0
+                  },
+                  "loop_smoke": {
+                    "passed": true,
+                    "finite": true,
+                    "repeat_stable": true,
+                    "repeat_max_logprob_error": 0.0,
+                    "changed_from_baseline": true,
+                    "same_sequence_logprob_difference": null
+                  }
+                }
+              ]
+            },
+            {
+              "mode": "vulkan_f32",
+              "status": "partially_compatible",
+              "execution_policy": {
+                "context": 2048,
+                "gpu_layers": 999,
+                "kv_type": "f16",
+                "flash_attention": false,
+                "vulkan_fusion": false,
+                "prefix_cache": false,
+                "swa_full": true,
+                "cpu_above_gib": 32,
+                "runner_version": "0.2.0",
+                "vulkan_f16": false
+              },
+              "profiles": [
+                {
+                  "passes": 2,
+                  "profile": {
+                    "passes": 2,
+                    "anchor": 0.5,
+                    "mode": "block",
+                    "cache": "first",
+                    "start": 12,
+                    "end": 16
+                  },
+                  "status": "smoke_failed",
+                  "anchor_identity": {
+                    "passed": true,
+                    "max_logprob_error": 0.0
+                  },
+                  "loop_smoke": {
+                    "passed": false,
+                    "finite": true,
+                    "repeat_stable": false,
+                    "repeat_max_logprob_error": 0.039929866790771484,
+                    "changed_from_baseline": true,
+                    "same_sequence_logprob_difference": null
+                  }
+                },
+                {
+                  "passes": 3,
+                  "profile": {
+                    "passes": 3,
+                    "anchor": 0.5,
+                    "mode": "block",
+                    "cache": "first",
+                    "start": 12,
+                    "end": 16
+                  },
+                  "status": "compatible_experimental",
+                  "anchor_identity": {
+                    "passed": true,
+                    "max_logprob_error": 0.0
+                  },
+                  "loop_smoke": {
+                    "passed": true,
+                    "finite": true,
+                    "repeat_stable": true,
+                    "repeat_max_logprob_error": 0.0,
+                    "changed_from_baseline": true,
+                    "same_sequence_logprob_difference": null
+                  }
+                },
+                {
+                  "passes": 4,
+                  "profile": {
+                    "passes": 4,
+                    "anchor": 0.5,
+                    "mode": "block",
+                    "cache": "first",
+                    "start": 12,
+                    "end": 16
+                  },
+                  "status": "compatible_experimental",
+                  "anchor_identity": {
+                    "passed": true,
+                    "max_logprob_error": 0.0
+                  },
+                  "loop_smoke": {
+                    "passed": true,
+                    "finite": true,
+                    "repeat_stable": true,
+                    "repeat_max_logprob_error": 0.0,
+                    "changed_from_baseline": true,
+                    "same_sequence_logprob_difference": null
+                  }
+                }
+              ]
+            },
+            {
+              "mode": "cpu",
+              "status": "compatible_experimental",
+              "execution_policy": {
+                "context": 2048,
+                "gpu_layers": 999,
+                "kv_type": "f16",
+                "flash_attention": false,
+                "vulkan_fusion": false,
+                "prefix_cache": false,
+                "swa_full": true,
+                "cpu_above_gib": 32,
+                "runner_version": "0.2.0",
+                "cpu_offload_disabled": true,
+                "auto_fit": false
+              },
+              "profiles": [
+                {
+                  "passes": 2,
+                  "profile": {
+                    "passes": 2,
+                    "anchor": 0.5,
+                    "mode": "block",
+                    "cache": "first",
+                    "start": 12,
+                    "end": 16
+                  },
+                  "status": "compatible_experimental",
+                  "anchor_identity": {
+                    "passed": true,
+                    "max_logprob_error": 0.0
+                  },
+                  "loop_smoke": {
+                    "passed": true,
+                    "finite": true,
+                    "repeat_stable": true,
+                    "repeat_max_logprob_error": 0.0,
+                    "changed_from_baseline": true,
+                    "same_sequence_logprob_difference": null
+                  }
+                },
+                {
+                  "passes": 3,
+                  "profile": {
+                    "passes": 3,
+                    "anchor": 0.5,
+                    "mode": "block",
+                    "cache": "first",
+                    "start": 12,
+                    "end": 16
+                  },
+                  "status": "compatible_experimental",
+                  "anchor_identity": {
+                    "passed": true,
+                    "max_logprob_error": 0.0
+                  },
+                  "loop_smoke": {
+                    "passed": true,
+                    "finite": true,
+                    "repeat_stable": true,
+                    "repeat_max_logprob_error": 0.0,
+                    "changed_from_baseline": true,
+                    "same_sequence_logprob_difference": null
+                  }
+                },
+                {
+                  "passes": 4,
+                  "profile": {
+                    "passes": 4,
+                    "anchor": 0.5,
+                    "mode": "block",
+                    "cache": "first",
+                    "start": 12,
+                    "end": 16
+                  },
+                  "status": "compatible_experimental",
+                  "anchor_identity": {
+                    "passed": true,
+                    "max_logprob_error": 0.0
+                  },
+                  "loop_smoke": {
+                    "passed": true,
+                    "finite": true,
+                    "repeat_stable": true,
+                    "repeat_max_logprob_error": 0.0,
+                    "changed_from_baseline": true,
+                    "same_sequence_logprob_difference": null
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "runtime": {
+          "llama_cpp_revision": "0893ec98f5eafad36a43a72cd1c3723d72b0d03a",
+          "patch_sha256": "d4506c79258f07b66b0a720122a9efb2f874a478286dc2d1448b1e9c732f6860",
+          "execution_policy": {
+            "context": 2048,
+            "gpu_layers": 999,
+            "kv_type": "f16",
+            "flash_attention": false,
+            "vulkan_fusion": false,
+            "prefix_cache": false,
+            "swa_full": true,
+            "cpu_above_gib": 32,
+            "runner_version": "0.2.0",
+            "cpu_offload_disabled": true,
+            "auto_fit": false
+          }
+        }
+      }
+    },
+    {
+      "model_id": "granite4-1-3b-72064317",
+      "name": "granite4.1-3b",
+      "previous_passing_counts": [
+        2
+      ],
+      "passing_counts": [
+        2,
+        3,
+        4
+      ],
+      "execution_mode": "vulkan_f32",
+      "report": {
+        "schema": 1,
+        "suite": "looplab-explore-v1",
+        "status": "compatible_experimental",
+        "model": {
+          "id": "granite4-1-3b-72064317",
+          "name": "granite4.1-3b",
+          "architecture": "granite",
+          "layers": 40,
+          "size_bytes": 2099501664,
+          "header_sha256": "f0cc8d96956e01eb806e88ce1ca80b43fd08968afd5d593d4358c2993b349c02",
+          "eligible": true,
+          "reasons": [],
+          "mode": "block",
+          "tier": "experimental",
+          "role": "generation",
+          "adapter": {
+            "family": "moe",
+            "cache_interfaces": [
+              "kv"
+            ],
+            "strategy": "preserve_native_layer_body",
+            "source_sha256": "8601bb092790b0ba1f81ed5f43181712965e5e891c9d2b0bc1137cd2c36a0dcf",
+            "source": "src/models/granite.cpp",
+            "tier": "experimental"
+          },
+          "aliases": [
+            "granite4.1-3b",
+            "library/granite4.1/3b"
+          ],
+          "loadable": true,
+          "load_reasons": []
+        },
+        "baseline_check": {
+          "passed": true,
+          "tokens": 12,
+          "effective_gpu_layers": 999
+        },
+        "profiles": [
+          {
+            "passes": 2,
+            "profile": {
+              "passes": 2,
+              "anchor": 0.5,
+              "mode": "block",
+              "cache": "first",
+              "start": 18,
+              "end": 22
+            },
+            "status": "compatible_experimental",
+            "anchor_identity": {
+              "passed": true,
+              "max_logprob_error": 0.0
+            },
+            "loop_smoke": {
+              "passed": true,
+              "finite": true,
+              "repeat_stable": true,
+              "repeat_max_logprob_error": 0.0,
+              "changed_from_baseline": true,
+              "same_sequence_logprob_difference": 0.42874741554260254
+            }
+          },
+          {
+            "passes": 3,
+            "profile": {
+              "passes": 3,
+              "anchor": 0.5,
+              "mode": "block",
+              "cache": "first",
+              "start": 18,
+              "end": 22
+            },
+            "status": "compatible_experimental",
+            "anchor_identity": {
+              "passed": true,
+              "max_logprob_error": 0.0
+            },
+            "loop_smoke": {
+              "passed": true,
+              "finite": true,
+              "repeat_stable": true,
+              "repeat_max_logprob_error": 0.0,
+              "changed_from_baseline": true,
+              "same_sequence_logprob_difference": 0.6236417293548584
+            }
+          },
+          {
+            "passes": 4,
+            "profile": {
+              "passes": 4,
+              "anchor": 0.5,
+              "mode": "block",
+              "cache": "first",
+              "start": 18,
+              "end": 22
+            },
+            "status": "compatible_experimental",
+            "anchor_identity": {
+              "passed": true,
+              "max_logprob_error": 0.0
+            },
+            "loop_smoke": {
+              "passed": true,
+              "finite": true,
+              "repeat_stable": true,
+              "repeat_max_logprob_error": 0.0,
+              "changed_from_baseline": true,
+              "same_sequence_logprob_difference": 0.40978217124938965
+            }
+          }
+        ],
+        "paper_reproduction": false,
+        "quality_tested": false,
+        "recommended_profile": "baseline",
+        "seconds": 13.959551192005165,
+        "storage_before": {
+          "time": 1793811307.0180118,
+          "free_bytes": 520594862080,
+          "state_bytes": 0,
+          "model_weight_bytes_written": 0
+        },
+        "storage_after": {
+          "time": 1793811320.9774294,
+          "free_bytes": 520594862080,
+          "state_bytes": 57149,
+          "model_weight_bytes_written": 0
+        },
+        "backend_recovery": {
+          "version": "looplab-precision-recovery-v1",
+          "selected": "vulkan_f32",
+          "attempts": [
+            {
+              "mode": "default",
+              "status": "partially_compatible",
+              "execution_policy": {
+                "context": 2048,
+                "gpu_layers": 999,
+                "kv_type": "f16",
+                "flash_attention": false,
+                "vulkan_fusion": false,
+                "prefix_cache": false,
+                "swa_full": true,
+                "cpu_above_gib": 32,
+                "runner_version": "0.2.0"
+              },
+              "profiles": [
+                {
+                  "passes": 2,
+                  "profile": {
+                    "passes": 2,
+                    "anchor": 0.5,
+                    "mode": "block",
+                    "cache": "first",
+                    "start": 18,
+                    "end": 22
+                  },
+                  "status": "compatible_experimental",
+                  "anchor_identity": {
+                    "passed": true,
+                    "max_logprob_error": 0.0
+                  },
+                  "loop_smoke": {
+                    "passed": true,
+                    "finite": true,
+                    "repeat_stable": true,
+                    "repeat_max_logprob_error": 0.0,
+                    "changed_from_baseline": true,
+                    "same_sequence_logprob_difference": null
+                  }
+                },
+                {
+                  "passes": 3,
+                  "profile": {
+                    "passes": 3,
+                    "anchor": 0.5,
+                    "mode": "block",
+                    "cache": "first",
+                    "start": 18,
+                    "end": 22
+                  },
+                  "status": "smoke_failed",
+                  "anchor_identity": {
+                    "passed": true,
+                    "max_logprob_error": 0.0
+                  },
+                  "loop_smoke": {
+                    "passed": false,
+                    "finite": true,
+                    "repeat_stable": false,
+                    "repeat_max_logprob_error": 0.05869722366333008,
+                    "changed_from_baseline": true,
+                    "same_sequence_logprob_difference": null
+                  }
+                },
+                {
+                  "passes": 4,
+                  "profile": {
+                    "passes": 4,
+                    "anchor": 0.5,
+                    "mode": "block",
+                    "cache": "first",
+                    "start": 18,
+                    "end": 22
+                  },
+                  "status": "smoke_failed",
+                  "anchor_identity": {
+                    "passed": true,
+                    "max_logprob_error": 0.0
+                  },
+                  "loop_smoke": {
+                    "passed": false,
+                    "finite": true,
+                    "repeat_stable": false,
+                    "repeat_max_logprob_error": null,
+                    "changed_from_baseline": true,
+                    "same_sequence_logprob_difference": null
+                  }
+                }
+              ]
+            },
+            {
+              "mode": "vulkan_f32",
+              "status": "compatible_experimental",
+              "execution_policy": {
+                "context": 2048,
+                "gpu_layers": 999,
+                "kv_type": "f16",
+                "flash_attention": false,
+                "vulkan_fusion": false,
+                "prefix_cache": false,
+                "swa_full": true,
+                "cpu_above_gib": 32,
+                "runner_version": "0.2.0",
+                "vulkan_f16": false
+              },
+              "profiles": [
+                {
+                  "passes": 2,
+                  "profile": {
+                    "passes": 2,
+                    "anchor": 0.5,
+                    "mode": "block",
+                    "cache": "first",
+                    "start": 18,
+                    "end": 22
+                  },
+                  "status": "compatible_experimental",
+                  "anchor_identity": {
+                    "passed": true,
+                    "max_logprob_error": 0.0
+                  },
+                  "loop_smoke": {
+                    "passed": true,
+                    "finite": true,
+                    "repeat_stable": true,
+                    "repeat_max_logprob_error": 0.0,
+                    "changed_from_baseline": true,
+                    "same_sequence_logprob_difference": 0.42874741554260254
+                  }
+                },
+                {
+                  "passes": 3,
+                  "profile": {
+                    "passes": 3,
+                    "anchor": 0.5,
+                    "mode": "block",
+                    "cache": "first",
+                    "start": 18,
+                    "end": 22
+                  },
+                  "status": "compatible_experimental",
+                  "anchor_identity": {
+                    "passed": true,
+                    "max_logprob_error": 0.0
+                  },
+                  "loop_smoke": {
+                    "passed": true,
+                    "finite": true,
+                    "repeat_stable": true,
+                    "repeat_max_logprob_error": 0.0,
+                    "changed_from_baseline": true,
+                    "same_sequence_logprob_difference": 0.6236417293548584
+                  }
+                },
+                {
+                  "passes": 4,
+                  "profile": {
+                    "passes": 4,
+                    "anchor": 0.5,
+                    "mode": "block",
+                    "cache": "first",
+                    "start": 18,
+                    "end": 22
+                  },
+                  "status": "compatible_experimental",
+                  "anchor_identity": {
+                    "passed": true,
+                    "max_logprob_error": 0.0
+                  },
+                  "loop_smoke": {
+                    "passed": true,
+                    "finite": true,
+                    "repeat_stable": true,
+                    "repeat_max_logprob_error": 0.0,
+                    "changed_from_baseline": true,
+                    "same_sequence_logprob_difference": 0.40978217124938965
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "runtime": {
+          "llama_cpp_revision": "0893ec98f5eafad36a43a72cd1c3723d72b0d03a",
+          "patch_sha256": "d4506c79258f07b66b0a720122a9efb2f874a478286dc2d1448b1e9c732f6860",
+          "execution_policy": {
+            "context": 2048,
+            "gpu_layers": 999,
+            "kv_type": "f16",
+            "flash_attention": false,
+            "vulkan_fusion": false,
+            "prefix_cache": false,
+            "swa_full": true,
+            "cpu_above_gib": 32,
+            "runner_version": "0.2.0",
+            "vulkan_f16": false
+          }
+        }
+      }
+    },
+    {
+      "model_id": "granite4-1-guardian-8b-q4-k-m-9b16f68b",
+      "name": "granite4.1-guardian-8b-q4_K_M",
+      "previous_passing_counts": [
+        2,
+        4
+      ],
+      "passing_counts": [
+        2,
+        3,
+        4
+      ],
+      "execution_mode": "cpu",
+      "report": {
+        "schema": 1,
+        "suite": "looplab-explore-v1",
+        "status": "compatible_experimental",
+        "model": {
+          "id": "granite4-1-guardian-8b-q4-k-m-9b16f68b",
+          "name": "granite4.1-guardian-8b-q4_K_M",
+          "architecture": "granite",
+          "layers": 40,
+          "size_bytes": 5116703808,
+          "header_sha256": "1a1ee67a7eaf5c00dc09142c049e3fd0cda1552c94b6dd62adbe9fb0d13a1bb0",
+          "eligible": true,
+          "reasons": [],
+          "mode": "block",
+          "tier": "experimental",
+          "role": "generation",
+          "adapter": {
+            "family": "moe",
+            "cache_interfaces": [
+              "kv"
+            ],
+            "strategy": "preserve_native_layer_body",
+            "source_sha256": "8601bb092790b0ba1f81ed5f43181712965e5e891c9d2b0bc1137cd2c36a0dcf",
+            "source": "src/models/granite.cpp",
+            "tier": "experimental"
+          },
+          "aliases": [
+            "granite4.1-guardian-8b-q4_K_M",
+            "library/granite4.1-guardian/8b-q4_K_M"
+          ],
+          "loadable": true,
+          "load_reasons": []
+        },
+        "baseline_check": {
+          "passed": true,
+          "tokens": 12,
+          "effective_gpu_layers": 0
+        },
+        "profiles": [
+          {
+            "passes": 2,
+            "profile": {
+              "passes": 2,
+              "anchor": 0.5,
+              "mode": "block",
+              "cache": "first",
+              "start": 18,
+              "end": 22
+            },
+            "status": "compatible_experimental",
+            "anchor_identity": {
+              "passed": true,
+              "max_logprob_error": 0.0
+            },
+            "loop_smoke": {
+              "passed": true,
+              "finite": true,
+              "repeat_stable": true,
+              "repeat_max_logprob_error": 0.0,
+              "changed_from_baseline": true,
+              "same_sequence_logprob_difference": 0.23971176147460938
+            }
+          },
+          {
+            "passes": 3,
+            "profile": {
+              "passes": 3,
+              "anchor": 0.5,
+              "mode": "block",
+              "cache": "first",
+              "start": 18,
+              "end": 22
+            },
+            "status": "compatible_experimental",
+            "anchor_identity": {
+              "passed": true,
+              "max_logprob_error": 0.0
+            },
+            "loop_smoke": {
+              "passed": true,
+              "finite": true,
+              "repeat_stable": true,
+              "repeat_max_logprob_error": 0.0,
+              "changed_from_baseline": true,
+              "same_sequence_logprob_difference": 0.28432631492614746
+            }
+          },
+          {
+            "passes": 4,
+            "profile": {
+              "passes": 4,
+              "anchor": 0.5,
+              "mode": "block",
+              "cache": "first",
+              "start": 18,
+              "end": 22
+            },
+            "status": "compatible_experimental",
+            "anchor_identity": {
+              "passed": true,
+              "max_logprob_error": 0.0
+            },
+            "loop_smoke": {
+              "passed": true,
+              "finite": true,
+              "repeat_stable": true,
+              "repeat_max_logprob_error": 0.0,
+              "changed_from_baseline": true,
+              "same_sequence_logprob_difference": 0.27678346633911133
+            }
+          }
+        ],
+        "paper_reproduction": false,
+        "quality_tested": false,
+        "recommended_profile": "baseline",
+        "seconds": 20.142048203008017,
+        "storage_before": {
+          "time": 1793811347.2452137,
+          "free_bytes": 520594059264,
+          "state_bytes": 0,
+          "model_weight_bytes_written": 0
+        },
+        "storage_after": {
+          "time": 1793811367.387154,
+          "free_bytes": 520593973248,
+          "state_bytes": 57245,
+          "model_weight_bytes_written": 0
+        },
+        "backend_recovery": {
+          "version": "looplab-precision-recovery-v1",
+          "selected": "cpu",
+          "attempts": [
+            {
+              "mode": "default",
+              "status": "partially_compatible",
+              "execution_policy": {
+                "context": 2048,
+                "gpu_layers": 999,
+                "kv_type": "f16",
+                "flash_attention": false,
+                "vulkan_fusion": false,
+                "prefix_cache": false,
+                "swa_full": true,
+                "cpu_above_gib": 32,
+                "runner_version": "0.2.0"
+              },
+              "profiles": [
+                {
+                  "passes": 2,
+                  "profile": {
+                    "passes": 2,
+                    "anchor": 0.5,
+                    "mode": "block",
+                    "cache": "first",
+                    "start": 18,
+                    "end": 22
+                  },
+                  "status": "compatible_experimental",
+                  "anchor_identity": {
+                    "passed": true,
+                    "max_logprob_error": 0.0
+                  },
+                  "loop_smoke": {
+                    "passed": true,
+                    "finite": true,
+                    "repeat_stable": true,
+                    "repeat_max_logprob_error": 0.0,
+                    "changed_from_baseline": true,
+                    "same_sequence_logprob_difference": 0.2765984535217285
+                  }
+                },
+                {
+                  "passes": 3,
+                  "profile": {
+                    "passes": 3,
+                    "anchor": 0.5,
+                    "mode": "block",
+                    "cache": "first",
+                    "start": 18,
+                    "end": 22
+                  },
+                  "status": "smoke_failed",
+                  "anchor_identity": {
+                    "passed": true,
+                    "max_logprob_error": 0.0
+                  },
+                  "loop_smoke": {
+                    "passed": false,
+                    "finite": true,
+                    "repeat_stable": false,
+                    "repeat_max_logprob_error": 0.08347225189208984,
+                    "changed_from_baseline": true,
+                    "same_sequence_logprob_difference": 0.3284783363342285
+                  }
+                },
+                {
+                  "passes": 4,
+                  "profile": {
+                    "passes": 4,
+                    "anchor": 0.5,
+                    "mode": "block",
+                    "cache": "first",
+                    "start": 18,
+                    "end": 22
+                  },
+                  "status": "compatible_experimental",
+                  "anchor_identity": {
+                    "passed": true,
+                    "max_logprob_error": 0.0
+                  },
+                  "loop_smoke": {
+                    "passed": true,
+                    "finite": true,
+                    "repeat_stable": true,
+                    "repeat_max_logprob_error": 0.0,
+                    "changed_from_baseline": true,
+                    "same_sequence_logprob_difference": 0.36089372634887695
+                  }
+                }
+              ]
+            },
+            {
+              "mode": "vulkan_f32",
+              "status": "partially_compatible",
+              "execution_policy": {
+                "context": 2048,
+                "gpu_layers": 999,
+                "kv_type": "f16",
+                "flash_attention": false,
+                "vulkan_fusion": false,
+                "prefix_cache": false,
+                "swa_full": true,
+                "cpu_above_gib": 32,
+                "runner_version": "0.2.0",
+                "vulkan_f16": false
+              },
+              "profiles": [
+                {
+                  "passes": 2,
+                  "profile": {
+                    "passes": 2,
+                    "anchor": 0.5,
+                    "mode": "block",
+                    "cache": "first",
+                    "start": 18,
+                    "end": 22
+                  },
+                  "status": "smoke_failed",
+                  "anchor_identity": {
+                    "passed": true,
+                    "max_logprob_error": 0.0
+                  },
+                  "loop_smoke": {
+                    "passed": false,
+                    "finite": true,
+                    "repeat_stable": true,
+                    "repeat_max_logprob_error": 0.0,
+                    "changed_from_baseline": false,
+                    "same_sequence_logprob_difference": null
+                  }
+                },
+                {
+                  "passes": 3,
+                  "profile": {
+                    "passes": 3,
+                    "anchor": 0.5,
+                    "mode": "block",
+                    "cache": "first",
+                    "start": 18,
+                    "end": 22
+                  },
+                  "status": "smoke_failed",
+                  "anchor_identity": {
+                    "passed": true,
+                    "max_logprob_error": 0.0
+                  },
+                  "loop_smoke": {
+                    "passed": false,
+                    "finite": true,
+                    "repeat_stable": true,
+                    "repeat_max_logprob_error": 0.0,
+                    "changed_from_baseline": false,
+                    "same_sequence_logprob_difference": null
+                  }
+                },
+                {
+                  "passes": 4,
+                  "profile": {
+                    "passes": 4,
+                    "anchor": 0.5,
+                    "mode": "block",
+                    "cache": "first",
+                    "start": 18,
+                    "end": 22
+                  },
+                  "status": "compatible_experimental",
+                  "anchor_identity": {
+                    "passed": true,
+                    "max_logprob_error": 0.0
+                  },
+                  "loop_smoke": {
+                    "passed": true,
+                    "finite": true,
+                    "repeat_stable": true,
+                    "repeat_max_logprob_error": 0.0,
+                    "changed_from_baseline": true,
+                    "same_sequence_logprob_difference": 0.3564472198486328
+                  }
+                }
+              ]
+            },
+            {
+              "mode": "cpu",
+              "status": "compatible_experimental",
+              "execution_policy": {
+                "context": 2048,
+                "gpu_layers": 999,
+                "kv_type": "f16",
+                "flash_attention": false,
+                "vulkan_fusion": false,
+                "prefix_cache": false,
+                "swa_full": true,
+                "cpu_above_gib": 32,
+                "runner_version": "0.2.0",
+                "cpu_offload_disabled": true,
+                "auto_fit": false
+              },
+              "profiles": [
+                {
+                  "passes": 2,
+                  "profile": {
+                    "passes": 2,
+                    "anchor": 0.5,
+                    "mode": "block",
+                    "cache": "first",
+                    "start": 18,
+                    "end": 22
+                  },
+                  "status": "compatible_experimental",
+                  "anchor_identity": {
+                    "passed": true,
+                    "max_logprob_error": 0.0
+                  },
+                  "loop_smoke": {
+                    "passed": true,
+                    "finite": true,
+                    "repeat_stable": true,
+                    "repeat_max_logprob_error": 0.0,
+                    "changed_from_baseline": true,
+                    "same_sequence_logprob_difference": 0.23971176147460938
+                  }
+                },
+                {
+                  "passes": 3,
+                  "profile": {
+                    "passes": 3,
+                    "anchor": 0.5,
+                    "mode": "block",
+                    "cache": "first",
+                    "start": 18,
+                    "end": 22
+                  },
+                  "status": "compatible_experimental",
+                  "anchor_identity": {
+                    "passed": true,
+                    "max_logprob_error": 0.0
+                  },
+                  "loop_smoke": {
+                    "passed": true,
+                    "finite": true,
+                    "repeat_stable": true,
+                    "repeat_max_logprob_error": 0.0,
+                    "changed_from_baseline": true,
+                    "same_sequence_logprob_difference": 0.28432631492614746
+                  }
+                },
+                {
+                  "passes": 4,
+                  "profile": {
+                    "passes": 4,
+                    "anchor": 0.5,
+                    "mode": "block",
+                    "cache": "first",
+                    "start": 18,
+                    "end": 22
+                  },
+                  "status": "compatible_experimental",
+                  "anchor_identity": {
+                    "passed": true,
+                    "max_logprob_error": 0.0
+                  },
+                  "loop_smoke": {
+                    "passed": true,
+                    "finite": true,
+                    "repeat_stable": true,
+                    "repeat_max_logprob_error": 0.0,
+                    "changed_from_baseline": true,
+                    "same_sequence_logprob_difference": 0.27678346633911133
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "runtime": {
+          "llama_cpp_revision": "0893ec98f5eafad36a43a72cd1c3723d72b0d03a",
+          "patch_sha256": "d4506c79258f07b66b0a720122a9efb2f874a478286dc2d1448b1e9c732f6860",
+          "execution_policy": {
+            "context": 2048,
+            "gpu_layers": 999,
+            "kv_type": "f16",
+            "flash_attention": false,
+            "vulkan_fusion": false,
+            "prefix_cache": false,
+            "swa_full": true,
+            "cpu_above_gib": 32,
+            "runner_version": "0.2.0",
+            "cpu_offload_disabled": true,
+            "auto_fit": false
+          }
+        }
+      }
+    },
+    {
+      "model_id": "phi4-reasoning-plus-1b770441",
+      "name": "phi4-reasoning-plus",
+      "previous_passing_counts": [],
+      "passing_counts": [
+        2,
+        3,
+        4
+      ],
+      "execution_mode": "vulkan_f32",
+      "report": {
+        "schema": 1,
+        "suite": "looplab-explore-v1",
+        "status": "compatible_experimental",
+        "model": {
+          "id": "phi4-reasoning-plus-1b770441",
+          "name": "phi4-reasoning-plus",
+          "architecture": "phi3",
+          "layers": 40,
+          "size_bytes": 11117500000,
+          "header_sha256": "9e8de560ef21221276f6002d31edae3095092890f1797ba78bb182b51cb29533",
+          "eligible": true,
+          "reasons": [],
+          "mode": "block",
+          "tier": "experimental",
+          "role": "generation",
+          "adapter": {
+            "family": "moe",
+            "cache_interfaces": [
+              "kv",
+              "kv_iswa"
+            ],
+            "strategy": "preserve_native_layer_body",
+            "source_sha256": "dd957f5ae2526482a6620cff8b4abc727f9e77fe56342f124f3f4c6b01fdc502",
+            "source": "src/models/phi3.cpp",
+            "tier": "experimental"
+          },
+          "aliases": [
+            "phi4-reasoning-plus",
+            "library/phi4-reasoning/plus"
+          ],
+          "loadable": true,
+          "load_reasons": []
+        },
+        "baseline_check": {
+          "passed": true,
+          "tokens": 9,
+          "effective_gpu_layers": 999
+        },
+        "profiles": [
+          {
+            "passes": 2,
+            "profile": {
+              "passes": 2,
+              "anchor": 0.5,
+              "mode": "block",
+              "cache": "first",
+              "start": 18,
+              "end": 22
+            },
+            "status": "compatible_experimental",
+            "anchor_identity": {
+              "passed": true,
+              "max_logprob_error": 0.0
+            },
+            "loop_smoke": {
+              "passed": true,
+              "finite": true,
+              "repeat_stable": true,
+              "repeat_max_logprob_error": 0.0,
+              "changed_from_baseline": true,
+              "same_sequence_logprob_difference": 0.1578061580657959
+            }
+          },
+          {
+            "passes": 3,
+            "profile": {
+              "passes": 3,
+              "anchor": 0.5,
+              "mode": "block",
+              "cache": "first",
+              "start": 18,
+              "end": 22
+            },
+            "status": "compatible_experimental",
+            "anchor_identity": {
+              "passed": true,
+              "max_logprob_error": 0.0
+            },
+            "loop_smoke": {
+              "passed": true,
+              "finite": true,
+              "repeat_stable": true,
+              "repeat_max_logprob_error": 0.0,
+              "changed_from_baseline": true,
+              "same_sequence_logprob_difference": 0.20092988014221191
+            }
+          },
+          {
+            "passes": 4,
+            "profile": {
+              "passes": 4,
+              "anchor": 0.5,
+              "mode": "block",
+              "cache": "first",
+              "start": 18,
+              "end": 22
+            },
+            "status": "compatible_experimental",
+            "anchor_identity": {
+              "passed": true,
+              "max_logprob_error": 0.0
+            },
+            "loop_smoke": {
+              "passed": true,
+              "finite": true,
+              "repeat_stable": true,
+              "repeat_max_logprob_error": 0.0,
+              "changed_from_baseline": true,
+              "same_sequence_logprob_difference": 0.2341160774230957
+            }
+          }
+        ],
+        "paper_reproduction": false,
+        "quality_tested": false,
+        "recommended_profile": "baseline",
+        "seconds": 40.276945908000926,
+        "storage_before": {
+          "time": 1793811367.3999066,
+          "free_bytes": 520593973248,
+          "state_bytes": 0,
+          "model_weight_bytes_written": 0
+        },
+        "storage_after": {
+          "time": 1793811407.6767156,
+          "free_bytes": 520595521536,
+          "state_bytes": 57183,
+          "model_weight_bytes_written": 0
+        },
+        "backend_recovery": {
+          "version": "looplab-precision-recovery-v1",
+          "selected": "vulkan_f32",
+          "attempts": [
+            {
+              "mode": "default",
+              "status": "conformance_failed",
+              "execution_policy": {
+                "context": 2048,
+                "gpu_layers": 999,
+                "kv_type": "f16",
+                "flash_attention": false,
+                "vulkan_fusion": false,
+                "prefix_cache": false,
+                "swa_full": true,
+                "cpu_above_gib": 32,
+                "runner_version": "0.2.0"
+              },
+              "profiles": [
+                {
+                  "passes": 2,
+                  "profile": {
+                    "passes": 2,
+                    "anchor": 0.5,
+                    "mode": "block",
+                    "cache": "first",
+                    "start": 18,
+                    "end": 22
+                  },
+                  "status": "smoke_failed",
+                  "anchor_identity": {
+                    "passed": true,
+                    "max_logprob_error": 0.0
+                  },
+                  "loop_smoke": {
+                    "passed": false,
+                    "finite": true,
+                    "repeat_stable": false,
+                    "repeat_max_logprob_error": 0.017964601516723633,
+                    "changed_from_baseline": true,
+                    "same_sequence_logprob_difference": 0.1788496971130371
+                  }
+                },
+                {
+                  "passes": 3,
+                  "profile": {
+                    "passes": 3,
+                    "anchor": 0.5,
+                    "mode": "block",
+                    "cache": "first",
+                    "start": 18,
+                    "end": 22
+                  },
+                  "status": "smoke_failed",
+                  "anchor_identity": {
+                    "passed": true,
+                    "max_logprob_error": 0.0
+                  },
+                  "loop_smoke": {
+                    "passed": false,
+                    "finite": true,
+                    "repeat_stable": false,
+                    "repeat_max_logprob_error": 0.016317367553710938,
+                    "changed_from_baseline": true,
+                    "same_sequence_logprob_difference": 0.22777295112609863
+                  }
+                },
+                {
+                  "passes": 4,
+                  "profile": {
+                    "passes": 4,
+                    "anchor": 0.5,
+                    "mode": "block",
+                    "cache": "first",
+                    "start": 18,
+                    "end": 22
+                  },
+                  "status": "smoke_failed",
+                  "anchor_identity": {
+                    "passed": true,
+                    "max_logprob_error": 0.0
+                  },
+                  "loop_smoke": {
+                    "passed": false,
+                    "finite": true,
+                    "repeat_stable": false,
+                    "repeat_max_logprob_error": 0.01507711410522461,
+                    "changed_from_baseline": true,
+                    "same_sequence_logprob_difference": 0.24732255935668945
+                  }
+                }
+              ]
+            },
+            {
+              "mode": "vulkan_f32",
+              "status": "compatible_experimental",
+              "execution_policy": {
+                "context": 2048,
+                "gpu_layers": 999,
+                "kv_type": "f16",
+                "flash_attention": false,
+                "vulkan_fusion": false,
+                "prefix_cache": false,
+                "swa_full": true,
+                "cpu_above_gib": 32,
+                "runner_version": "0.2.0",
+                "vulkan_f16": false
+              },
+              "profiles": [
+                {
+                  "passes": 2,
+                  "profile": {
+                    "passes": 2,
+                    "anchor": 0.5,
+                    "mode": "block",
+                    "cache": "first",
+                    "start": 18,
+                    "end": 22
+                  },
+                  "status": "compatible_experimental",
+                  "anchor_identity": {
+                    "passed": true,
+                    "max_logprob_error": 0.0
+                  },
+                  "loop_smoke": {
+                    "passed": true,
+                    "finite": true,
+                    "repeat_stable": true,
+                    "repeat_max_logprob_error": 0.0,
+                    "changed_from_baseline": true,
+                    "same_sequence_logprob_difference": 0.1578061580657959
+                  }
+                },
+                {
+                  "passes": 3,
+                  "profile": {
+                    "passes": 3,
+                    "anchor": 0.5,
+                    "mode": "block",
+                    "cache": "first",
+                    "start": 18,
+                    "end": 22
+                  },
+                  "status": "compatible_experimental",
+                  "anchor_identity": {
+                    "passed": true,
+                    "max_logprob_error": 0.0
+                  },
+                  "loop_smoke": {
+                    "passed": true,
+                    "finite": true,
+                    "repeat_stable": true,
+                    "repeat_max_logprob_error": 0.0,
+                    "changed_from_baseline": true,
+                    "same_sequence_logprob_difference": 0.20092988014221191
+                  }
+                },
+                {
+                  "passes": 4,
+                  "profile": {
+                    "passes": 4,
+                    "anchor": 0.5,
+                    "mode": "block",
+                    "cache": "first",
+                    "start": 18,
+                    "end": 22
+                  },
+                  "status": "compatible_experimental",
+                  "anchor_identity": {
+                    "passed": true,
+                    "max_logprob_error": 0.0
+                  },
+                  "loop_smoke": {
+                    "passed": true,
+                    "finite": true,
+                    "repeat_stable": true,
+                    "repeat_max_logprob_error": 0.0,
+                    "changed_from_baseline": true,
+                    "same_sequence_logprob_difference": 0.2341160774230957
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "runtime": {
+          "llama_cpp_revision": "0893ec98f5eafad36a43a72cd1c3723d72b0d03a",
+          "patch_sha256": "d4506c79258f07b66b0a720122a9efb2f874a478286dc2d1448b1e9c732f6860",
+          "execution_policy": {
+            "context": 2048,
+            "gpu_layers": 999,
+            "kv_type": "f16",
+            "flash_attention": false,
+            "vulkan_fusion": false,
+            "prefix_cache": false,
+            "swa_full": true,
+            "cpu_above_gib": 32,
+            "runner_version": "0.2.0",
+            "vulkan_f16": false
+          }
+        }
+      }
+    },
+    {
+      "model_id": "granite4-1-30b-e82a09f0",
+      "name": "granite4.1-30b",
+      "previous_passing_counts": [],
+      "passing_counts": [
+        2,
+        3,
+        4
+      ],
+      "execution_mode": "cpu",
+      "report": {
+        "schema": 1,
+        "suite": "looplab-explore-v1",
+        "status": "compatible_experimental",
+        "model": {
+          "id": "granite4-1-30b-e82a09f0",
+          "name": "granite4.1-30b",
+          "architecture": "granite",
+          "layers": 64,
+          "size_bytes": 17490240736,
+          "header_sha256": "7a811e7af6ff949cf43bf8c1ce78635351d89dcabcd250546f1a2ddbb6a3a1df",
+          "eligible": true,
+          "reasons": [],
+          "mode": "block",
+          "tier": "experimental",
+          "role": "generation",
+          "adapter": {
+            "family": "moe",
+            "cache_interfaces": [
+              "kv"
+            ],
+            "strategy": "preserve_native_layer_body",
+            "source_sha256": "8601bb092790b0ba1f81ed5f43181712965e5e891c9d2b0bc1137cd2c36a0dcf",
+            "source": "src/models/granite.cpp",
+            "tier": "experimental"
+          },
+          "aliases": [
+            "granite4.1-30b",
+            "library/granite4.1/30b"
+          ],
+          "loadable": true,
+          "load_reasons": []
+        },
+        "baseline_check": {
+          "passed": true,
+          "tokens": 12,
+          "effective_gpu_layers": 0
+        },
+        "profiles": [
+          {
+            "passes": 2,
+            "profile": {
+              "passes": 2,
+              "anchor": 0.5,
+              "mode": "block",
+              "cache": "first",
+              "start": 30,
+              "end": 34
+            },
+            "status": "compatible_experimental",
+            "anchor_identity": {
+              "passed": true,
+              "max_logprob_error": 0.0
+            },
+            "loop_smoke": {
+              "passed": true,
+              "finite": true,
+              "repeat_stable": true,
+              "repeat_max_logprob_error": 0.0,
+              "changed_from_baseline": true,
+              "same_sequence_logprob_difference": 0.2789030075073242
+            }
+          },
+          {
+            "passes": 3,
+            "profile": {
+              "passes": 3,
+              "anchor": 0.5,
+              "mode": "block",
+              "cache": "first",
+              "start": 30,
+              "end": 34
+            },
+            "status": "compatible_experimental",
+            "anchor_identity": {
+              "passed": true,
+              "max_logprob_error": 0.0
+            },
+            "loop_smoke": {
+              "passed": true,
+              "finite": true,
+              "repeat_stable": true,
+              "repeat_max_logprob_error": 0.0,
+              "changed_from_baseline": true,
+              "same_sequence_logprob_difference": 0.47904253005981445
+            }
+          },
+          {
+            "passes": 4,
+            "profile": {
+              "passes": 4,
+              "anchor": 0.5,
+              "mode": "block",
+              "cache": "first",
+              "start": 30,
+              "end": 34
+            },
+            "status": "compatible_experimental",
+            "anchor_identity": {
+              "passed": true,
+              "max_logprob_error": 0.0
+            },
+            "loop_smoke": {
+              "passed": true,
+              "finite": true,
+              "repeat_stable": true,
+              "repeat_max_logprob_error": 0.0,
+              "changed_from_baseline": true,
+              "same_sequence_logprob_difference": 0.4628129005432129
+            }
+          }
+        ],
+        "paper_reproduction": false,
+        "quality_tested": false,
+        "recommended_profile": "baseline",
+        "seconds": 66.76525164500345,
+        "storage_before": {
+          "time": 1793811585.9401155,
+          "free_bytes": 520596766720,
+          "state_bytes": 5438265,
+          "model_weight_bytes_written": 0
+        },
+        "storage_after": {
+          "time": 1793811716.211375,
+          "free_bytes": 520595349504,
+          "state_bytes": 5431583,
+          "model_weight_bytes_written": 0
+        },
+        "backend_recovery": {
+          "version": "looplab-precision-recovery-v1",
+          "selected": "cpu",
+          "attempts": [
+            {
+              "mode": "vulkan_f32",
+              "status": "partially_compatible",
+              "execution_policy": {
+                "context": 2048,
+                "gpu_layers": 999,
+                "kv_type": "f16",
+                "flash_attention": false,
+                "vulkan_fusion": false,
+                "prefix_cache": false,
+                "swa_full": true,
+                "cpu_above_gib": 32,
+                "runner_version": "0.2.0",
+                "vulkan_f16": false
+              },
+              "profiles": [
+                {
+                  "passes": 2,
+                  "profile": {
+                    "passes": 2,
+                    "anchor": 0.5,
+                    "mode": "block",
+                    "cache": "first",
+                    "start": 30,
+                    "end": 34
+                  },
+                  "status": "compatible_experimental",
+                  "anchor_identity": {
+                    "passed": true,
+                    "max_logprob_error": 0.0
+                  },
+                  "loop_smoke": {
+                    "passed": true,
+                    "finite": true,
+                    "repeat_stable": true,
+                    "repeat_max_logprob_error": 0.0,
+                    "changed_from_baseline": true,
+                    "same_sequence_logprob_difference": 0.3521895408630371
+                  }
+                },
+                {
+                  "passes": 3,
+                  "profile": {
+                    "passes": 3,
+                    "anchor": 0.5,
+                    "mode": "block",
+                    "cache": "first",
+                    "start": 30,
+                    "end": 34
+                  },
+                  "status": "smoke_failed",
+                  "anchor_identity": {
+                    "passed": true,
+                    "max_logprob_error": 0.0
+                  },
+                  "loop_smoke": {
+                    "passed": false,
+                    "finite": true,
+                    "repeat_stable": false,
+                    "repeat_max_logprob_error": 0.08027935028076172,
+                    "changed_from_baseline": true,
+                    "same_sequence_logprob_difference": 0.2131943702697754
+                  }
+                },
+                {
+                  "passes": 4,
+                  "profile": {
+                    "passes": 4,
+                    "anchor": 0.5,
+                    "mode": "block",
+                    "cache": "first",
+                    "start": 30,
+                    "end": 34
+                  },
+                  "status": "compatible_experimental",
+                  "anchor_identity": {
+                    "passed": true,
+                    "max_logprob_error": 0.0
+                  },
+                  "loop_smoke": {
+                    "passed": true,
+                    "finite": true,
+                    "repeat_stable": true,
+                    "repeat_max_logprob_error": 0.0,
+                    "changed_from_baseline": true,
+                    "same_sequence_logprob_difference": 0.22250652313232422
+                  }
+                }
+              ]
+            },
+            {
+              "mode": "cpu",
+              "status": "compatible_experimental",
+              "execution_policy": {
+                "context": 2048,
+                "gpu_layers": 999,
+                "kv_type": "f16",
+                "flash_attention": false,
+                "vulkan_fusion": false,
+                "prefix_cache": false,
+                "swa_full": true,
+                "cpu_above_gib": 32,
+                "runner_version": "0.2.0",
+                "cpu_offload_disabled": true,
+                "auto_fit": false
+              },
+              "profiles": [
+                {
+                  "passes": 2,
+                  "profile": {
+                    "passes": 2,
+                    "anchor": 0.5,
+                    "mode": "block",
+                    "cache": "first",
+                    "start": 30,
+                    "end": 34
+                  },
+                  "status": "compatible_experimental",
+                  "anchor_identity": {
+                    "passed": true,
+                    "max_logprob_error": 0.0
+                  },
+                  "loop_smoke": {
+                    "passed": true,
+                    "finite": true,
+                    "repeat_stable": true,
+                    "repeat_max_logprob_error": 0.0,
+                    "changed_from_baseline": true,
+                    "same_sequence_logprob_difference": 0.2789030075073242
+                  }
+                },
+                {
+                  "passes": 3,
+                  "profile": {
+                    "passes": 3,
+                    "anchor": 0.5,
+                    "mode": "block",
+                    "cache": "first",
+                    "start": 30,
+                    "end": 34
+                  },
+                  "status": "compatible_experimental",
+                  "anchor_identity": {
+                    "passed": true,
+                    "max_logprob_error": 0.0
+                  },
+                  "loop_smoke": {
+                    "passed": true,
+                    "finite": true,
+                    "repeat_stable": true,
+                    "repeat_max_logprob_error": 0.0,
+                    "changed_from_baseline": true,
+                    "same_sequence_logprob_difference": 0.47904253005981445
+                  }
+                },
+                {
+                  "passes": 4,
+                  "profile": {
+                    "passes": 4,
+                    "anchor": 0.5,
+                    "mode": "block",
+                    "cache": "first",
+                    "start": 30,
+                    "end": 34
+                  },
+                  "status": "compatible_experimental",
+                  "anchor_identity": {
+                    "passed": true,
+                    "max_logprob_error": 0.0
+                  },
+                  "loop_smoke": {
+                    "passed": true,
+                    "finite": true,
+                    "repeat_stable": true,
+                    "repeat_max_logprob_error": 0.0,
+                    "changed_from_baseline": true,
+                    "same_sequence_logprob_difference": 0.4628129005432129
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "runtime": {
+          "llama_cpp_revision": "0893ec98f5eafad36a43a72cd1c3723d72b0d03a",
+          "patch_sha256": "d4506c79258f07b66b0a720122a9efb2f874a478286dc2d1448b1e9c732f6860",
+          "execution_policy": {
+            "context": 2048,
+            "gpu_layers": 999,
+            "kv_type": "f16",
+            "flash_attention": false,
+            "vulkan_fusion": false,
+            "prefix_cache": false,
+            "swa_full": true,
+            "cpu_above_gib": 32,
+            "runner_version": "0.2.0",
+            "cpu_offload_disabled": true,
+            "auto_fit": false
+          }
+        }
+      }
+    },
+    {
+      "model_id": "qwen3-coder-30b-0fd305b1",
+      "name": "qwen3-coder-30b",
+      "previous_passing_counts": [],
+      "passing_counts": [
+        2,
+        3,
+        4
+      ],
+      "execution_mode": "vulkan_f32",
+      "report": {
+        "schema": 1,
+        "suite": "looplab-explore-v1",
+        "status": "compatible_experimental",
+        "model": {
+          "id": "qwen3-coder-30b-0fd305b1",
+          "name": "qwen3-coder-30b",
+          "architecture": "qwen3moe",
+          "layers": 48,
+          "size_bytes": 18556688736,
+          "header_sha256": "a5f27181f754e5f03d366f8d9360eacd2d5239ae64d36dbbc2176a445cbf2b39",
+          "eligible": true,
+          "reasons": [],
+          "mode": "layer",
+          "tier": "reference_validated",
+          "role": "generation",
+          "adapter": {
+            "family": "moe",
+            "cache_interfaces": [
+              "kv"
+            ],
+            "strategy": "preserve_native_layer_body",
+            "source_sha256": "0de78fd5efbd10e0fd851b85cba5f70f130681fac9569aafcfba0ce3ef00bf2d",
+            "source": "src/models/qwen3moe.cpp",
+            "tier": "reference_validated"
+          },
+          "aliases": [
+            "qwen3-coder-30b",
+            "library/qwen3-coder/30b",
+            "library/qwen3-coder/30b-a3b-q4_K_M"
+          ],
+          "loadable": true,
+          "load_reasons": []
+        },
+        "baseline_check": {
+          "passed": true,
+          "tokens": 12,
+          "effective_gpu_layers": 999
+        },
+        "profiles": [
+          {
+            "passes": 2,
+            "profile": {
+              "passes": 2,
+              "anchor": 0.5,
+              "mode": "layer",
+              "cache": "first",
+              "start": 22,
+              "end": 26
+            },
+            "status": "compatible_experimental",
+            "anchor_identity": {
+              "passed": true,
+              "max_logprob_error": 0.0
+            },
+            "loop_smoke": {
+              "passed": true,
+              "finite": true,
+              "repeat_stable": true,
+              "repeat_max_logprob_error": 0.0,
+              "changed_from_baseline": true,
+              "same_sequence_logprob_difference": 0.76776123046875
+            }
+          },
+          {
+            "passes": 3,
+            "profile": {
+              "passes": 3,
+              "anchor": 0.5,
+              "mode": "layer",
+              "cache": "first",
+              "start": 22,
+              "end": 26
+            },
+            "status": "compatible_experimental",
+            "anchor_identity": {
+              "passed": true,
+              "max_logprob_error": 0.0
+            },
+            "loop_smoke": {
+              "passed": true,
+              "finite": true,
+              "repeat_stable": true,
+              "repeat_max_logprob_error": 0.0,
+              "changed_from_baseline": true,
+              "same_sequence_logprob_difference": 0.8014168739318848
+            }
+          },
+          {
+            "passes": 4,
+            "profile": {
+              "passes": 4,
+              "anchor": 0.5,
+              "mode": "layer",
+              "cache": "first",
+              "start": 22,
+              "end": 26
+            },
+            "status": "compatible_experimental",
+            "anchor_identity": {
+              "passed": true,
+              "max_logprob_error": 0.0
+            },
+            "loop_smoke": {
+              "passed": true,
+              "finite": true,
+              "repeat_stable": true,
+              "repeat_max_logprob_error": 0.0,
+              "changed_from_baseline": true,
+              "same_sequence_logprob_difference": 0.9549684524536133
+            }
+          }
+        ],
+        "paper_reproduction": false,
+        "quality_tested": false,
+        "recommended_profile": "baseline",
+        "seconds": 30.263996510999277,
+        "storage_before": {
+          "time": 1793811263.1176941,
+          "free_bytes": 520595013632,
+          "state_bytes": 0,
+          "model_weight_bytes_written": 0
+        },
+        "storage_after": {
+          "time": 1793811293.3815758,
+          "free_bytes": 520594862080,
+          "state_bytes": 57213,
+          "model_weight_bytes_written": 0
+        },
+        "backend_recovery": {
+          "version": "looplab-precision-recovery-v1",
+          "selected": "vulkan_f32",
+          "attempts": [
+            {
+              "mode": "default",
+              "status": "conformance_failed",
+              "execution_policy": {
+                "context": 2048,
+                "gpu_layers": 999,
+                "kv_type": "f16",
+                "flash_attention": false,
+                "vulkan_fusion": false,
+                "prefix_cache": false,
+                "swa_full": true,
+                "cpu_above_gib": 32,
+                "runner_version": "0.2.0"
+              },
+              "profiles": [
+                {
+                  "passes": 2,
+                  "profile": {
+                    "passes": 2,
+                    "anchor": 0.5,
+                    "mode": "layer",
+                    "cache": "first",
+                    "start": 22,
+                    "end": 26
+                  },
+                  "status": "smoke_failed",
+                  "anchor_identity": {
+                    "passed": true,
+                    "max_logprob_error": 0.0
+                  },
+                  "loop_smoke": {
+                    "passed": false,
+                    "finite": true,
+                    "repeat_stable": false,
+                    "repeat_max_logprob_error": 0.013093948364257812,
+                    "changed_from_baseline": true,
+                    "same_sequence_logprob_difference": 0.7045207023620605
+                  }
+                },
+                {
+                  "passes": 3,
+                  "profile": {
+                    "passes": 3,
+                    "anchor": 0.5,
+                    "mode": "layer",
+                    "cache": "first",
+                    "start": 22,
+                    "end": 26
+                  },
+                  "status": "smoke_failed",
+                  "anchor_identity": {
+                    "passed": true,
+                    "max_logprob_error": 0.0
+                  },
+                  "loop_smoke": {
+                    "passed": false,
+                    "finite": true,
+                    "repeat_stable": false,
+                    "repeat_max_logprob_error": 0.7732219696044922,
+                    "changed_from_baseline": true,
+                    "same_sequence_logprob_difference": 1.5073070526123047
+                  }
+                },
+                {
+                  "passes": 4,
+                  "profile": {
+                    "passes": 4,
+                    "anchor": 0.5,
+                    "mode": "layer",
+                    "cache": "first",
+                    "start": 22,
+                    "end": 26
+                  },
+                  "status": "smoke_failed",
+                  "anchor_identity": {
+                    "passed": true,
+                    "max_logprob_error": 0.0
+                  },
+                  "loop_smoke": {
+                    "passed": false,
+                    "finite": true,
+                    "repeat_stable": false,
+                    "repeat_max_logprob_error": 0.0847940444946289,
+                    "changed_from_baseline": true,
+                    "same_sequence_logprob_difference": 1.4731159210205078
+                  }
+                }
+              ]
+            },
+            {
+              "mode": "vulkan_f32",
+              "status": "compatible_experimental",
+              "execution_policy": {
+                "context": 2048,
+                "gpu_layers": 999,
+                "kv_type": "f16",
+                "flash_attention": false,
+                "vulkan_fusion": false,
+                "prefix_cache": false,
+                "swa_full": true,
+                "cpu_above_gib": 32,
+                "runner_version": "0.2.0",
+                "vulkan_f16": false
+              },
+              "profiles": [
+                {
+                  "passes": 2,
+                  "profile": {
+                    "passes": 2,
+                    "anchor": 0.5,
+                    "mode": "layer",
+                    "cache": "first",
+                    "start": 22,
+                    "end": 26
+                  },
+                  "status": "compatible_experimental",
+                  "anchor_identity": {
+                    "passed": true,
+                    "max_logprob_error": 0.0
+                  },
+                  "loop_smoke": {
+                    "passed": true,
+                    "finite": true,
+                    "repeat_stable": true,
+                    "repeat_max_logprob_error": 0.0,
+                    "changed_from_baseline": true,
+                    "same_sequence_logprob_difference": 0.76776123046875
+                  }
+                },
+                {
+                  "passes": 3,
+                  "profile": {
+                    "passes": 3,
+                    "anchor": 0.5,
+                    "mode": "layer",
+                    "cache": "first",
+                    "start": 22,
+                    "end": 26
+                  },
+                  "status": "compatible_experimental",
+                  "anchor_identity": {
+                    "passed": true,
+                    "max_logprob_error": 0.0
+                  },
+                  "loop_smoke": {
+                    "passed": true,
+                    "finite": true,
+                    "repeat_stable": true,
+                    "repeat_max_logprob_error": 0.0,
+                    "changed_from_baseline": true,
+                    "same_sequence_logprob_difference": 0.8014168739318848
+                  }
+                },
+                {
+                  "passes": 4,
+                  "profile": {
+                    "passes": 4,
+                    "anchor": 0.5,
+                    "mode": "layer",
+                    "cache": "first",
+                    "start": 22,
+                    "end": 26
+                  },
+                  "status": "compatible_experimental",
+                  "anchor_identity": {
+                    "passed": true,
+                    "max_logprob_error": 0.0
+                  },
+                  "loop_smoke": {
+                    "passed": true,
+                    "finite": true,
+                    "repeat_stable": true,
+                    "repeat_max_logprob_error": 0.0,
+                    "changed_from_baseline": true,
+                    "same_sequence_logprob_difference": 0.9549684524536133
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "runtime": {
+          "llama_cpp_revision": "0893ec98f5eafad36a43a72cd1c3723d72b0d03a",
+          "patch_sha256": "d4506c79258f07b66b0a720122a9efb2f874a478286dc2d1448b1e9c732f6860",
+          "execution_policy": {
+            "context": 2048,
+            "gpu_layers": 999,
+            "kv_type": "f16",
+            "flash_attention": false,
+            "vulkan_fusion": false,
+            "prefix_cache": false,
+            "swa_full": true,
+            "cpu_above_gib": 32,
+            "runner_version": "0.2.0",
+            "vulkan_f16": false
+          }
+        }
+      }
+    },
+    {
+      "model_id": "laguna-xs-2-1-q4-k-m-42838490",
+      "name": "laguna-xs-2.1-q4_K_M",
+      "previous_passing_counts": [
+        2,
+        3
+      ],
+      "passing_counts": [
+        2,
+        3,
+        4
+      ],
+      "execution_mode": "default",
+      "report": {
+        "schema": 1,
+        "suite": "looplab-explore-v1",
+        "status": "compatible_experimental",
+        "model": {
+          "id": "laguna-xs-2-1-q4-k-m-42838490",
+          "name": "laguna-xs-2.1-q4_K_M",
+          "architecture": "laguna",
+          "layers": 40,
+          "size_bytes": 20274300032,
+          "header_sha256": "d36b09464ac9dae3f61d995e5c5c1dad791ce41d0387d311604e9cf2f763e140",
+          "eligible": true,
+          "reasons": [],
+          "mode": "layer",
+          "tier": "experimental",
+          "role": "generation",
+          "adapter": {
+            "family": "moe",
+            "cache_interfaces": [
+              "kv",
+              "kv_iswa"
+            ],
+            "strategy": "preserve_native_layer_body",
+            "source_sha256": "0a14c3d27cc0a1284a2dbb6c0fee2f5e7a99866e3367a0cb2a31fbb026834acb",
+            "source": "src/models/laguna.cpp",
+            "tier": "experimental"
+          },
+          "aliases": [
+            "laguna-xs-2.1-q4_K_M",
+            "library/laguna-xs-2.1/q4_K_M"
+          ],
+          "loadable": true,
+          "load_reasons": []
+        },
+        "baseline_check": {
+          "passed": true,
+          "tokens": 12,
+          "effective_gpu_layers": 999
+        },
+        "profiles": [
+          {
+            "passes": 2,
+            "profile": {
+              "passes": 2,
+              "anchor": 0.5,
+              "mode": "layer",
+              "cache": "first",
+              "start": 18,
+              "end": 22
+            },
+            "status": "compatible_experimental",
+            "anchor_identity": {
+              "passed": true,
+              "max_logprob_error": 0.0
+            },
+            "loop_smoke": {
+              "passed": true,
+              "finite": true,
+              "repeat_stable": true,
+              "repeat_max_logprob_error": 0.0,
+              "changed_from_baseline": true,
+              "same_sequence_logprob_difference": 1.6801519393920898
+            }
+          },
+          {
+            "passes": 3,
+            "profile": {
+              "passes": 3,
+              "anchor": 0.5,
+              "mode": "layer",
+              "cache": "first",
+              "start": 18,
+              "end": 22
+            },
+            "status": "compatible_experimental",
+            "anchor_identity": {
+              "passed": true,
+              "max_logprob_error": 0.0
+            },
+            "loop_smoke": {
+              "passed": true,
+              "finite": true,
+              "repeat_stable": true,
+              "repeat_max_logprob_error": 0.0,
+              "changed_from_baseline": true,
+              "same_sequence_logprob_difference": 1.4493474960327148
+            }
+          },
+          {
+            "passes": 4,
+            "profile": {
+              "passes": 4,
+              "anchor": 0.5,
+              "mode": "layer",
+              "cache": "first",
+              "start": 18,
+              "end": 22
+            },
+            "status": "compatible_experimental",
+            "anchor_identity": {
+              "passed": true,
+              "max_logprob_error": 0.0
+            },
+            "loop_smoke": {
+              "passed": true,
+              "finite": true,
+              "repeat_stable": true,
+              "repeat_max_logprob_error": 0.0,
+              "changed_from_baseline": true,
+              "same_sequence_logprob_difference": null
+            }
+          }
+        ],
+        "paper_reproduction": false,
+        "quality_tested": false,
+        "recommended_profile": "baseline",
+        "seconds": 73.19237549998797,
+        "storage_before": {
+          "time": 1793811716.2159455,
+          "free_bytes": 520595349504,
+          "state_bytes": 5428394,
+          "model_weight_bytes_written": 0
+        },
+        "storage_after": {
+          "time": 1793811789.406756,
+          "free_bytes": 520594460672,
+          "state_bytes": 5429253,
+          "model_weight_bytes_written": 0
+        },
+        "runtime": {
+          "llama_cpp_revision": "0893ec98f5eafad36a43a72cd1c3723d72b0d03a",
+          "patch_sha256": "d4506c79258f07b66b0a720122a9efb2f874a478286dc2d1448b1e9c732f6860",
+          "execution_policy": {
+            "context": 2048,
+            "gpu_layers": 999,
+            "kv_type": "f16",
+            "flash_attention": false,
+            "vulkan_fusion": false,
+            "prefix_cache": false,
+            "swa_full": true,
+            "cpu_above_gib": 32,
+            "runner_version": "0.2.0"
+          }
+        }
+      }
+    }
+  ],
+  "native_reference": {
+    "cpu_checks": 24,
+    "vulkan_f32_checks": 24
+  },
+  "ci": "https://github.com/bouldinnathan/lmstudio-looplab/actions/runs/41874166540",
+  "known_limitations": [
+    "Qwen 3.5/3.6 and Next recurrent-state adapters remain unavailable; several local GGUFs also have loader incompatibilities.",
+    "Compatibility and transport checks do not demonstrate a general quality improvement.",
+    "One LoopLab worker is shared by testing and LM Studio; unload a manually loaded loop profile before testing or loading another."
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "transport": "LM Studio HTTP API",
+  "checks": [
+    {
+      "model": "granite4-1-30b-looped-2x",
+      "content": "391",
+      "stream": false,
+      "seconds": 15.908,
+      "passed": true
+    },
+    {
+      "model": "granite4-1-30b-looped-2x",
+      "content": "300",
+      "stream": true,
+      "seconds": 3.667,
+      "passed": true
+    },
+    {
+      "model": "granite4-1-30b-looped-3x",
+      "content": "391",
+      "stream": true,
+      "seconds": 11.723,
+      "passed": true
+    },
+    {
+      "model": "granite4-1-30b-looped-4x",
+      "content": "391",
+      "stream": true,
+      "seconds": 11.963,
+      "passed": true
+    }
+  ],
+  "passed": true
+}

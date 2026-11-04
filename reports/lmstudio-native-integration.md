@@ -2,7 +2,7 @@
 
 Verified on 2026-11-04 with LM Studio **0.4.25+1**, LoopLab bridge **0.3.0**, and the separately named **looplab-linux-x86_64@2.69.0** runtime. This test used the real LM Studio HTTP server, model index and just-in-time loader.
 
-**37 tested profiles across 14 checkpoints** are installed as ordinary model entries. All 37 were found in both `lms ls` and LM Studio's `/v1/models`. They can be selected in the ordinary model dropdown and requested by API model key. The generator plugin remains available separately for discovery, testing and reports.
+The initial integration installed **37 tested profiles across 14 checkpoints**. The subsequent [Qwen and related-model recovery](qwen-other-recovery.md) expands this to **51 profiles across 17 checkpoints**; the installation JSON linked below reflects that current set. All 37 initial profiles were found in both `lms ls` and LM Studio's `/v1/models`. They can be selected in the ordinary model dropdown and requested by API model key. The generator plugin remains available separately for discovery, testing and reports.
 
 | Requested model / check | Transport | Answer | Seconds, including any loading |
 |---|---|---|---:|
@@ -15,7 +15,7 @@ Requests went to LM Studio's normal `http://127.0.0.1:1234/v1/chat/completions` 
 
 A separate two-pass Reader-LM check also returned text through LM Studio using the Vulkan worker. The original, unmodified Reader-LM entry then loaded and returned text through the same selected runtime's official-engine passthrough. These are integration smoke tests; they do not establish an answer-quality improvement.
 
-The installed model-entry files total **284,692 bytes (278.0 KiB)**. No weights were copied. Official runtime libraries and executables share their existing file inodes; only the custom launcher and metadata are new. All 54 original checkpoint headers and sizes matched the earlier complete survey. The three old crash dumps, **211,216,673 bytes (201.4 MiB)**, remain marked deletable; no new crash dumps were created.
+The initial model-entry files totaled **284,692 bytes (278.0 KiB)**; the current 51-profile set totals **374,700 bytes (365.9 KiB)**. No weights were copied. Official runtime libraries and executables share their existing file inodes; only the custom launcher and metadata are new. All 54 original checkpoint headers and sizes matched the earlier complete survey. The three old crash dumps, **211,216,673 bytes (201.4 MiB)**, remain marked deletable; no new crash dumps were created.
 
 The entries are small descriptors with no usable model tensors. A direct stock-runtime load of a descriptor failed during vocabulary loading, confirming that selecting a stock engine cannot silently run a baseline model under a looped name. The custom launcher verifies descriptor ownership, source identity, the native build fingerprint and current per-profile conformance before loading the real source file.
 

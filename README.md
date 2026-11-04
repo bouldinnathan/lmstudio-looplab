@@ -48,9 +48,11 @@ Use the plugin's **Find models**, **Auto-test selected model**, **Auto-test all 
 
 For broad, best-effort compatibility, use **Explore all models, including experimental adapters**. It discovers LM Studio files, Ollama manifest blobs and locally cached Hugging Face GGUFs, deduplicates shared files, and tests every loadable original checkpoint. Embedding checkpoints get finite-vector tests. Vision projectors, old static-repeat variants, split files and models beyond the memory budget get explicit outcomes.
 
-The [local model survey](reports/all-local-survey.md) lists every discovered file, its baseline result and which loop counts passed. Adding another checkpoint of a recognized family only requires running exploration again; each new job refreshes discovery.
+The [local model survey](reports/all-local-survey.md) lists every discovered file, its baseline result and which loop counts passed. The [Qwen and related-model recovery report](reports/qwen-other-recovery.md) records the current precision settings, quality-screen results and real LM Studio API checks. Adding another checkpoint of a recognized family only requires running exploration again; each new job refreshes discovery.
 
 Exploration tests baseline generation, then K=2/3/4 anchor identity, finite looped output, a measurable change from baseline and repeat-request stability. A successful profile becomes manually selectable and stays labeled experimental. It never changes the recommended profile or claims a quality gain. A partially compatible model can expose only its passing profiles. These checks are intentionally much lighter than the quality evaluation below.
+
+When numerical checks fail on Vulkan, exploration automatically retries with F32 compute and then strict CPU execution. Each retry repeats the baseline, identity and loop checks at the original tolerance. A setting is adopted only if it adds passing profiles while preserving every profile that already passed; a partial improvement can be followed by a CPU trial. Ordinary **Auto-test** also runs this compatibility stage before quality tests. Successful settings are saved per checkpoint and native-build fingerprint in `~/.local/state/looplab/workers/execution-overrides.json`, and both the companion and LM Studio runtime use them on subsequent loads. Unaffected models keep their existing settings. This changes computation, not the quantized weights or on-disk model size.
 
 After installing the ordinary-model integration below, completed CLI and plugin test jobs automatically synchronize its model entries. Passing profiles appear without another engine installation. Profiles whose tests become invalid are removed during synchronization and are rejected at load time even before synchronization.
 
@@ -73,7 +75,7 @@ The small public diagnostic suite covers code tracing, sorting, intervals and si
 
 The 2/3/4-pass sweep is a bounded starting point, not an established upper limit on useful recurrence. The native integrator supports up to eight passes; the plugin deliberately exposes only candidates covered by its automatic sweep.
 
-An independent NumPy test generates tiny F32 GGUF networks and compares full next-token distributions across prefill and autoregressive decode. It covers RMSNorm, RoPE, causal attention, SwiGLU, MoE routing, both cache policies and the anchor identity for the four reference-validated architectures. No pretrained weights are downloaded for this test.
+An independent NumPy test generates tiny F32 GGUF networks and compares full next-token distributions across prefill, autoregressive decode and repeated requests. It covers RMSNorm, RoPE, causal attention, SwiGLU, MoE routing, both cache policies and the anchor identity for the four reference-validated architectures. No pretrained weights are downloaded for this test.
 
 ## Install on Linux
 
@@ -135,9 +137,9 @@ Use `lms ls` or `GET /v1/models` for exact API model keys. LM Studio can normali
 
 The model entries are small GGUF **descriptors**, not copies of the weights. They contain descriptive metadata and a dummy tensor. The LoopLab runtime checks their registry, source fingerprint and current conformance report, then loads the original checkpoint with the selected loop profile. A stock engine rejects these descriptors instead of silently answering without loops. LM Studio displays the descriptor's small file size; actual RAM and disk requirements still include the original checkpoint.
 
-The integration registers **37 passing profiles across 14 local models** in the published development-machine survey. Their descriptor files total **284,692 bytes (278.0 KiB)**, with no weight copies. Runtime libraries are hard-linked from the installed official pack on the same filesystem. The source pack is unchanged, and those links survive removal of its original directory.
+The integration registers **51 passing profiles across 17 local models** in the published development-machine survey. Their descriptor files total **374,700 bytes (365.9 KiB)**, with no weight copies. Runtime libraries are hard-linked from the installed official pack on the same filesystem. The source pack is unchanged, and those links survive removal of its original directory.
 
-Looped entries use the tested **2,048-token context**, **one concurrent prediction**, F16 KV and disabled flash attention. Models above 32 GiB use strict CPU mode. Context or parallelism changes are rejected; the other load knobs do not override the tested execution policy. Cross-request prefix reuse is disabled at the transport boundary. Ordinary models pass through to the pinned official runtime with their normal arguments.
+Looped entries use the tested **2,048-token context**, **one concurrent prediction**, F16 KV and disabled flash attention. Models above 32 GiB use strict CPU mode; smaller models can also use a tested per-model CPU fallback. Models with a successful Vulkan precision retry retain GPU acceleration with F32 compute. Context or parallelism changes are rejected; the other load knobs do not override the tested execution policy. Cross-request prefix reuse is disabled at the transport boundary. Ordinary models pass through to the pinned official runtime with their normal arguments.
 
 Only one LoopLab profile can be loaded at a time, shared with the companion and test jobs. LM Studio's **Only Keep Last JIT Loaded Model** setting supports automatic switching between API model IDs. Unload a manually loaded LoopLab model before loading another profile or starting evaluation.
 
