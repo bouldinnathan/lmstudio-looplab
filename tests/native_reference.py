@@ -16,6 +16,7 @@ import gguf
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from looplab.models import inspect, Profile, atomic_json
+from looplab.benchmark import distribution_difference
 from looplab.worker import Worker
 
 D, H, HD, FF, VOCAB, LAYERS = 32, 2, 16, 48, 32, 8
@@ -175,7 +176,7 @@ class Reference:
         return (norm(x)*self.w["output_norm.weight"])@self.w["output.weight"].T
 
 
-def validate(binary=None, gpu_layers=0, output=None):
+def validate(binary=None, gpu_layers=0, output=None, execution_mode=None):
     results=[]
     with tempfile.TemporaryDirectory(prefix="looplab-numerics-") as directory:
         root=Path(directory)
@@ -187,12 +188,20 @@ def validate(binary=None, gpu_layers=0, output=None):
                 path=folder/"fixture.gguf"
                 weights=fixture(path,arch)
                 model=inspect(path)
+                if execution_mode:
+                    worker.remember_execution_mode(model, execution_mode)
+                runtime_info=worker.build_info(model)
                 for passes,beta,cache in [(1,0.5,"first"),(2,0.5,"first"),(3,0,"first"),(4,0.5,"first"),(2,1,"first"),(2,0.5,"last")]:
                     profile=Profile.for_model(model,passes,beta,cache)
                     ref=Reference(weights,arch,profile)
                     with worker.use(model,profile):
-                        data=worker.json("/completion",{"prompt":[3,7,5],"n_predict":4,"temperature":-1,
-                            "return_tokens":True,"n_probs":VOCAB,"cache_prompt":False,"seed":17})
+                        request={"prompt":[3,7,5],"n_predict":4,"temperature":-1,
+                            "return_tokens":True,"n_probs":VOCAB,"cache_prompt":False,"seed":17}
+                        data=worker.json("/completion",request)
+                        repeated=worker.json("/completion",request)
+                    repeat_delta=distribution_difference(data,repeated)
+                    if data['tokens'] != repeated['tokens'] or repeat_delta is None or repeat_delta >= .005:
+                        raise AssertionError(f"Repeated request differs: {arch} {profile.id}: {repeat_delta}")
                     predictions=data["completion_probabilities"]
                     logits=ref.forward([3,7,5])[-1]
                     errors=[]
@@ -207,7 +216,8 @@ def validate(binary=None, gpu_layers=0, output=None):
                             raise AssertionError(f"Argmax differs: {arch} {profile.id}")
                         logits=ref.forward([prediction["id"]])[-1]
                     row={"architecture":arch,"profile":profile.id,"decode_steps":len(predictions),
-                         "max_logprob_error":max(errors),"passed":max(errors)<0.005}
+                         "max_logprob_error":max(errors),"repeat_max_logprob_error":repeat_delta,
+                         "passed":max(errors)<0.005}
                     print(json.dumps(row),flush=True)
                     results.append(row)
                     if not row["passed"]:
@@ -215,7 +225,7 @@ def validate(binary=None, gpu_layers=0, output=None):
         finally:
             worker.close()
     report={"reference":"independent_numpy_f32_v1","gpu_layers":gpu_layers,
-            "runtime":worker.build_info(),"passed":all(r["passed"] for r in results),"checks":results}
+            "runtime":runtime_info,"passed":all(r["passed"] for r in results),"checks":results}
     if output: atomic_json(output,report)
     return report
 
@@ -225,5 +235,6 @@ if __name__=="__main__":
     p.add_argument("--binary",type=Path)
     p.add_argument("--gpu-layers",type=int,default=0)
     p.add_argument("--output",type=Path)
+    p.add_argument("--execution-mode",choices=['vulkan_f32','cpu'])
     args=p.parse_args()
-    validate(args.binary,args.gpu_layers,args.output)
+    validate(args.binary,args.gpu_layers,args.output,args.execution_mode)

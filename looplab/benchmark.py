@@ -13,7 +13,7 @@ import time
 
 from .models import Profile, atomic_json, storage_snapshot
 
-SUITE_VERSION = "looplab-diagnostic-v2"
+SUITE_VERSION = "looplab-diagnostic-v3"
 EVALUATION_POLICY = {"temperature": 0, "seed": 1729, "max_tokens": 192,
                      "cache_prompt": False, "reasoning_effort": "none", "reasoning_budget_tokens": 0,
                      "add_generation_prompt": False, "continue_final_message": "content",
@@ -146,6 +146,16 @@ def evaluate_cases(worker, cases, cancel=None, progress=None):
 
 
 def test_model(worker, model, state, passes=(2,3,4), quick=False, cancel=None, progress=None):
+    compatibility = {}
+    if model.eligible:
+        # The ordinary Auto-test action uses the same backend recovery and
+        # repeatability gate as broad exploration before comparing quality.
+        from .explore import explore_model
+        checked = explore_model(worker, model, state, cancel=cancel, progress=progress)
+        compatibility = {p['passes']: p for p in checked.get('profiles', [])}
+        if checked['status'] == 'cancelled' or not any(
+                compatibility.get(k, {}).get('loop_smoke', {}).get('passed') for k in passes):
+            return checked
     # Refuse a competing run before it can overwrite another run's report.
     if model.eligible:
         worker.claim()
@@ -179,6 +189,12 @@ def test_model(worker, model, state, passes=(2,3,4), quick=False, cancel=None, p
         save()
         for count in passes:
             check_cancel(cancel)
+            checked_profile = compatibility.get(count, {})
+            if not checked_profile.get('loop_smoke', {}).get('passed'):
+                report['profiles'].append({**checked_profile, 'passes': count,
+                    'profile': asdict(Profile.for_model(model, count)), 'status': 'conformance_failed',
+                    'anchor_identity': checked_profile.get('anchor_identity', {'passed': False}), 'selection': []})
+                continue
             if progress:
                 progress(f"{model.name}: {count} passes, anchor identity check")
             identity_profile = Profile.for_model(model, count, anchor=1.0)
@@ -189,6 +205,7 @@ def test_model(worker, model, state, passes=(2,3,4), quick=False, cancel=None, p
                            and delta is not None and delta < 0.005)
             entry = {"profile": asdict(Profile.for_model(model, count)), "passes": count,
                      "anchor_identity": {"passed": identity_ok, "max_logprob_error": delta},
+                     "loop_smoke": checked_profile['loop_smoke'],
                      "selection": [], "status": "conformance_failed"}
             if identity_ok:
                 profile = Profile.for_model(model, count)
@@ -252,7 +269,7 @@ def public_summary(report):
                 "seconds": sum(r.get("seconds", 0) for r in rows),
                 "completion_tokens": sum(r.get("usage", {}).get("completion_tokens", 0) for r in rows)}
     result["profiles"] = [{"passes": p["passes"], "status": p["status"],
-                            "anchor_identity": p["anchor_identity"], "cache_probe": p.get("cache_probe"),
+                            "anchor_identity": p["anchor_identity"], "loop_smoke": p.get('loop_smoke'), "cache_probe": p.get("cache_probe"),
                             "selection_passed": sum(r["passed"] for r in p.get("selection", [])),
                             "selection_total": len(p.get("selection", [])),
                             "holdout_passed": sum(r["passed"] for r in p.get("holdout", [])),

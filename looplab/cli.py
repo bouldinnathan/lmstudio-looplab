@@ -51,6 +51,8 @@ def main():
     elif args.command == 'explore':
         models = list(app.models.values()) if args.model == 'all' else [app.model(args.model)]
         survey = {'suite': 'looplab-all-local-v1', 'models': [], 'discovery_errors': app.errors}
+        survey_path = args.state / ('all-local-survey.json' if args.model == 'all'
+                                    else f'survey-{models[0].id}.json')
         try:
             for index, model in enumerate(sorted(models, key=lambda m: m.size_bytes), 1):
                 report = explore_model(app.worker, model, args.state, resume=not args.no_resume,
@@ -58,7 +60,7 @@ def main():
                 summary = public_exploration(report)
                 survey['models'].append(summary)
                 print(f'[{index}/{len(models)}] {model.name}: {report["status"]}', flush=True)
-                atomic_json(args.state / 'all-local-survey.json', survey)
+                atomic_json(survey_path, survey)
                 if args.output: atomic_json(args.output, survey)
             integration = app.sync_lmstudio()
             if integration is not None:

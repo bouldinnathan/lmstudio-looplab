@@ -5,6 +5,7 @@ import json
 import math
 from pathlib import Path
 import re
+import tempfile
 import time
 
 from loop_gguf import GGUF
@@ -12,6 +13,8 @@ from .benchmark import Cancelled, check_cancel, distribution_difference, probe
 from .models import Profile, atomic_json, resource_reason, storage_snapshot
 
 VERSION = 'looplab-explore-v1'
+RECOVERY_VERSION = 'looplab-precision-recovery-v1'
+EFFECT_VERSION = 'shared-token-probability-v1'
 
 
 def clean_error(text, model, worker):
@@ -37,6 +40,22 @@ def finite_probe(value):
     return bool(value.get('tokens')) and bool(probabilities) and all(
         row.get('top_logprobs') and all(isinstance(p.get('logprob'), (float, int)) and math.isfinite(p['logprob'])
         for p in row['top_logprobs']) for row in probabilities)
+
+
+def distribution_changed(baseline, looped):
+    """Find a measured loop effect even when the top-k token set changes.
+
+    The strict comparator remains mandatory for identity and repeatability.
+    Here, one shared token with a changed probability establishes an effect.
+    """
+    if baseline.get('tokens') != looped.get('tokens'):
+        return True
+    for a, b in zip(baseline.get('completion_probabilities', []), looped.get('completion_probabilities', [])):
+        left = {p['id']: p['logprob'] for p in a['top_logprobs']}
+        right = {p['id']: p['logprob'] for p in b['top_logprobs']}
+        if any(abs(left[token] - right[token]) > 1e-6 for token in left.keys() & right.keys()):
+            return True
+    return False
 
 
 def repair_handoff(model, report):
@@ -69,7 +88,10 @@ def repair_handoff(model, report):
 
 
 def current(report, model, info):
-    return (report.get('suite') == VERSION and report.get('status') not in {'running', 'cancelled', 'resource_skipped', 'preflight_skipped'}
+    stale_effect_check = report.get('effect_check_version') != EFFECT_VERSION and any(
+        p.get('loop_smoke', {}).get('finite') and p['loop_smoke'].get('repeat_stable') and
+        not p['loop_smoke'].get('changed_from_baseline') for p in report.get('profiles', []))
+    return (not stale_effect_check and report.get('suite') == VERSION and report.get('status') not in {'running', 'cancelled', 'resource_skipped', 'preflight_skipped'}
             and report.get('model', {}).get('header_sha256') == model.header_sha256
             and report.get('model', {}).get('size_bytes') == model.size_bytes
             and report.get('source_mtime_ns') == model.mtime_ns
@@ -80,7 +102,7 @@ def current(report, model, info):
 def public_exploration(report):
     keys = ('schema', 'suite', 'status', 'reasons', 'diagnostic', 'error_type', 'model', 'baseline_check',
             'profiles', 'paper_reproduction', 'quality_tested', 'recommended_profile', 'repair', 'seconds',
-            'storage_before', 'storage_after')
+            'storage_before', 'storage_after', 'backend_recovery', 'effect_check_version')
     result = {key: report[key] for key in keys if key in report}
     if 'runtime' in report:
         result['runtime'] = {key: report['runtime'][key] for key in ('llama_cpp_revision', 'patch_sha256', 'execution_policy')
@@ -88,7 +110,62 @@ def public_exploration(report):
     return result
 
 
+def passing_counts(report):
+    return {p['passes'] for p in report.get('profiles', []) if p.get('status') == 'compatible_experimental'}
+
+
 def explore_model(worker, model, state, cancel=None, progress=None, resume=True):
+    """Retry numerical failures without weakening checks or replacing good profiles."""
+    report = _explore_once(worker, model, state, cancel, progress, resume)
+    recoverable = any(not p.get('anchor_identity', {}).get('passed') or
+                      (p.get('loop_smoke', {}).get('finite') and not p['loop_smoke'].get('repeat_stable'))
+                      for p in report.get('profiles', []))
+    if (not recoverable or report['status'] == 'cancelled' or not model.eligible or
+            not report.get('baseline_check', {}).get('passed') or worker.cpu_mode(model) or
+            (resume and report.get('backend_recovery', {}).get('version') == RECOVERY_VERSION)):
+        return report
+    state = Path(state)
+    target = state / 'exploration' / f'{model.id}.json'
+    modes = ['vulkan_f32', 'cpu'] if worker.execution_mode(model) == 'default' else ['cpu']
+    recovery = {'version': RECOVERY_VERSION, 'selected': worker.execution_mode(model), 'attempts': []}
+    def record_attempt(value, mode):
+        recovery['attempts'].append({'mode': mode, 'status': value['status'],
+            'execution_policy': value.get('runtime', {}).get('execution_policy'),
+            'profiles': value.get('profiles', []),
+            **({'diagnostic': value['diagnostic']} if 'diagnostic' in value else {})})
+    record_attempt(report, worker.execution_mode(model))
+    for mode in modes:
+        if cancel and cancel.is_set():
+            return {**report, 'status': 'cancelled'}
+        if progress: progress(f'{model.name}: retrying numerical checks with {mode}')
+        # Failed trials cannot replace an existing report or expose untested settings.
+        with tempfile.TemporaryDirectory(prefix='precision-trial-', dir=state) as directory:
+            with worker.execution_trial(model, mode):
+                candidate = _explore_once(worker, model, Path(directory), cancel, progress, resume=False)
+        if candidate['status'] == 'cancelled' or (cancel and cancel.is_set()):
+            return {**report, 'status': 'cancelled'}
+        record_attempt(candidate, mode)
+        if passing_counts(candidate) > passing_counts(report):
+            recovery['selected'] = mode
+            candidate['backend_recovery'] = recovery
+            candidate['storage_before'] = report['storage_before']
+            candidate['storage_after'] = storage_snapshot(state)
+            worker.remember_execution_mode(model, mode)
+            atomic_json(target, candidate)
+            repair = state / 'repairs' / f'{model.id}.json'
+            if candidate.get('repair'):
+                atomic_json(repair, candidate['repair'])
+            else:
+                repair.unlink(missing_ok=True)
+            report = candidate
+            if passing_counts(candidate) == {2, 3, 4}:
+                return candidate
+    report['backend_recovery'] = recovery
+    atomic_json(target, report)
+    return report
+
+
+def _explore_once(worker, model, state, cancel=None, progress=None, resume=True):
     state = Path(state)
     target = state / 'exploration' / f'{model.id}.json'
     info = worker.build_info(model)
@@ -97,8 +174,14 @@ def explore_model(worker, model, state, cancel=None, progress=None, resume=True)
         if current(previous, model, info):
             if progress: progress(f'{model.name}: reused completed {previous["status"]} result')
             return previous
+    # A competing process must not overwrite the active model's report with a
+    # spurious startup failure. Refuse it before writing any report.
+    worker.close()
+    if model.loadable:
+        worker.claim()
     started = time.monotonic()
     report = {'schema': 1, 'suite': VERSION, 'status': 'running', 'model': model.public(),
+              'effect_check_version': EFFECT_VERSION,
               'source_mtime_ns': model.mtime_ns, 'runtime': info, 'profiles': [], 'paper_reproduction': False,
               'quality_tested': False, 'recommended_profile': 'baseline', 'storage_before': storage_snapshot(state)}
     def save():
@@ -106,7 +189,6 @@ def explore_model(worker, model, state, cancel=None, progress=None, resume=True)
         atomic_json(target, report)
     try:
         check_cancel(cancel)
-        worker.close()
         if not model.loadable:
             report.update(status='not_applicable' if model.role == 'projector' else 'preflight_skipped', reasons=model.load_reasons)
             return report
@@ -124,7 +206,7 @@ def explore_model(worker, model, state, cancel=None, progress=None, resume=True)
                 return report
             baseline = probe(worker)
             report['baseline_check'] = {'passed': finite_probe(baseline), 'tokens': len(baseline.get('tokens', [])),
-                                        'effective_gpu_layers': 0 if model.size_bytes > 32 * 1024**3 else worker.gpu_layers}
+                                        'effective_gpu_layers': 0 if worker.cpu_mode(model) else worker.gpu_layers}
             if not report['baseline_check']['passed']:
                 report.update(status='baseline_failed', reasons=['No finite token probability distribution'])
                 return report
@@ -152,7 +234,7 @@ def explore_model(worker, model, state, cancel=None, progress=None, resume=True)
                     repeat_delta = distribution_difference(looped, repeat)
                     stable = looped.get('tokens') == repeat.get('tokens') and repeat_delta is not None and repeat_delta < .005
                     effect = distribution_difference(baseline, looped)
-                    changed = baseline.get('tokens') != looped.get('tokens') or (effect is not None and effect > 1e-6)
+                    changed = distribution_changed(baseline, looped)
                     entry['loop_smoke'] = {'passed': finite and stable and changed, 'finite': finite,
                         'repeat_stable': stable, 'repeat_max_logprob_error': repeat_delta,
                         'changed_from_baseline': changed, 'same_sequence_logprob_difference': effect}

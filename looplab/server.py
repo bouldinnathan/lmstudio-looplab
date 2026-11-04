@@ -10,7 +10,7 @@ from urllib.error import HTTPError
 from urllib.parse import unquote
 
 from . import __version__
-from .benchmark import public_summary, test_model
+from .benchmark import public_summary, test_model, SUITE_VERSION
 from .models import Profile, atomic_json, discover, storage_snapshot
 from .worker import Worker
 from .explore import explore_model, VERSION as EXPLORE_VERSION
@@ -74,7 +74,8 @@ class App:
         tested = tested and report.get("runtime", {}).get("execution_policy") == info.get("execution_policy")
         tested = tested and any(p["passes"] == passes and p.get("profile") == asdict(profile)
                                 and p.get("anchor_identity", {}).get("passed")
-                                and (report.get('suite') != EXPLORE_VERSION or p.get('loop_smoke', {}).get('passed'))
+                                and (report.get('suite') not in {EXPLORE_VERSION, SUITE_VERSION}
+                                     or p.get('loop_smoke', {}).get('passed'))
                                 for p in report.get("profiles", []))
         if not tested:
             raise ValueError("This loop profile has no current conformance pass. Run Auto-test first.")

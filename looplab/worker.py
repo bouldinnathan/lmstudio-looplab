@@ -15,7 +15,7 @@ import time
 from urllib.error import URLError
 from urllib.request import Request, urlopen
 
-from .models import ROOT, Profile, resource_reason, runtime_binary
+from .models import ROOT, Profile, atomic_json, resource_reason, runtime_binary
 
 MIN_FREE_BYTES = 2 * 1024**3
 MAX_LOG_BYTES = 8 * 1024**2
@@ -37,9 +37,61 @@ class Worker:
         self.token = secrets.token_urlsafe(24)
         self.base = None
         self.last_used = time.monotonic()
+        self._trial_modes = {}
+
+    def _execution_identity(self, model):
+        marker = json.loads((self.binary.parent / 'looplab-build.json').read_text())
+        return {'header_sha256': model.header_sha256, 'size_bytes': model.size_bytes,
+                'mtime_ns': model.mtime_ns, 'patch_sha256': marker['patch_sha256']}
+
+    def _execution_records(self):
+        path = self.state / 'execution-overrides.json'
+        if not path.exists():
+            return {}
+        value = json.loads(path.read_text())
+        if value.get('schema') != 1 or not isinstance(value.get('models'), dict):
+            raise ValueError('Invalid per-model execution settings')
+        return value['models']
+
+    def execution_mode(self, model=None):
+        if self.gpu_layers == 0 or (model is not None and model.size_bytes > 32 * 1024**3):
+            return 'cpu'
+        if model is None:
+            return 'default'
+        if model.id in self._trial_modes:
+            return self._trial_modes[model.id]
+        record = self._execution_records().get(model.id, {})
+        if record and all(record.get(k) == v for k, v in self._execution_identity(model).items()):
+            if record.get('mode') not in {'vulkan_f32', 'cpu'}:
+                raise ValueError('Unknown per-model execution mode')
+            return record['mode']
+        return 'default'
+
+    def remember_execution_mode(self, model, mode):
+        if mode not in {'vulkan_f32', 'cpu'}:
+            raise ValueError('Unknown per-model execution mode')
+        records = self._execution_records()
+        records[model.id] = {**self._execution_identity(model), 'mode': mode}
+        atomic_json(self.state / 'execution-overrides.json', {'schema': 1, 'models': records})
+
+    @contextmanager
+    def execution_trial(self, model, mode):
+        if mode not in {'vulkan_f32', 'cpu'}:
+            raise ValueError('Unknown per-model execution mode')
+        with self.lock:
+            previous = self._trial_modes.get(model.id)
+            self.close()
+            self._trial_modes[model.id] = mode
+            try:
+                yield
+            finally:
+                self.close()
+                self._trial_modes.pop(model.id, None)
+                if previous is not None:
+                    self._trial_modes[model.id] = previous
 
     def cpu_mode(self, model=None):
-        return self.gpu_layers == 0 or (model is not None and model.size_bytes > 32 * 1024**3)
+        return self.execution_mode(model) == 'cpu'
 
     def build_info(self, model=None):
         marker = self.binary.parent / "looplab-build.json"
@@ -52,7 +104,8 @@ class Worker:
                 "kv_type": "f16", "flash_attention": False, "vulkan_fusion": False,
                 "prefix_cache": False, "swa_full": info.get('version') == 2,
                 "cpu_above_gib": 32, "runner_version": "0.2.0",
-                **({'cpu_offload_disabled': True, 'auto_fit': False} if self.cpu_mode(model) else {})}}
+                **({'cpu_offload_disabled': True, 'auto_fit': False} if self.cpu_mode(model) else {}),
+                **({'vulkan_f16': False} if self.execution_mode(model) == 'vulkan_f32' else {})}}
 
     def _stop_process(self):
         if self.process:
@@ -127,7 +180,8 @@ class Worker:
             raise ValueError("Model changed since discovery; refresh the inventory")
         self.check_storage()
         self.claim()
-        key = (model.id, model.header_sha256, profile, self.context, info["patch_sha256"])
+        key = (model.id, model.header_sha256, profile, self.context, info["patch_sha256"],
+               json.dumps(info['execution_policy'], sort_keys=True))
         if self.key == key and self.process and self.process.poll() is None:
             return
         self._stop_process()
@@ -150,6 +204,10 @@ class Worker:
         # Fusion changes the quantized anchor identity when intermediate K/V are retained.
         # Keep the same unfused kernels for baseline, conformance probes, and chat.
         env["GGML_VK_DISABLE_FUSION"] = "1"
+        # Precision choices must match the recorded per-model conformance policy.
+        env.pop('GGML_VK_DISABLE_F16', None)
+        if self.execution_mode(model) == 'vulkan_f32':
+            env['GGML_VK_DISABLE_F16'] = '1'
         env["LLAMA_API_KEY"] = self.token
         args = [str(self.binary), "-m", model.path, "--host", "127.0.0.1", "--port", str(port),
                 "--alias", model.id, "-ngl", str(0 if self.cpu_mode(model) else self.gpu_layers),

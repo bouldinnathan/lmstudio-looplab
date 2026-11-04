@@ -11,7 +11,7 @@ spec = importlib.util.spec_from_file_location('auto_adapters', Path(__file__).re
 adapters = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(adapters)
 transform = adapters.transform
-from looplab import explore, models
+from looplab import benchmark, explore, models
 from looplab.models import Model, Profile, atomic_json
 from looplab.server import App
 from looplab.worker import Worker
@@ -108,6 +108,8 @@ class FakeWorker:
     def __init__(self): self.profile = None; self.calls = 0
     def build_info(self, model=None): return {'patch_sha256': 'build', 'execution_policy': {'context': 2048}}
     def close(self): pass
+    def claim(self): pass
+    def cpu_mode(self, model=None): return True
     @contextmanager
     def use(self, m, p, diagnostic=False):
         self.profile = p
@@ -150,3 +152,110 @@ def test_experimental_chat_requires_actual_loop_smoke(tmp_path):
     report['profiles'][0]['loop_smoke']['passed'] = True
     atomic_json(tmp_path / 'exploration/tiny.json', report)
     assert app.profile(m, 'loop2').passes == 2
+
+
+def test_precision_choice_persists_and_invalidates_changed_sources(tmp_path):
+    binary = tmp_path / 'llama-server'
+    binary.touch()
+    marker = {'method': 'anchored_damped_euler', 'version': 2, 'patch_sha256': 'build'}
+    atomic_json(tmp_path / 'looplab-build.json', marker)
+    worker = Worker(tmp_path / 'workers', binary)
+    m = model()
+    default = worker.build_info(m)['execution_policy']
+    with worker.execution_trial(m, 'vulkan_f32'):
+        assert worker.build_info(m)['execution_policy']['vulkan_f16'] is False
+    assert worker.build_info(m)['execution_policy'] == default
+    worker.remember_execution_mode(m, 'vulkan_f32')
+    fresh = Worker(worker.state, binary)
+    assert fresh.execution_mode(m) == 'vulkan_f32'
+    m.mtime_ns += 1
+    assert fresh.build_info(m)['execution_policy'] == default
+    m.mtime_ns -= 1
+    atomic_json(tmp_path / 'looplab-build.json', {**marker, 'patch_sha256': 'new-build'})
+    assert fresh.build_info(m)['execution_policy'] == default
+
+
+class RecoveryWorker(FakeWorker):
+    def __init__(self):
+        super().__init__()
+        self.mode = 'default'
+        self.remembered = None
+    def cpu_mode(self, model=None): return self.mode == 'cpu'
+    def execution_mode(self, model=None): return self.mode
+    def remember_execution_mode(self, model, mode): self.remembered = self.mode = mode
+    @contextmanager
+    def execution_trial(self, model, mode):
+        previous = self.mode
+        self.mode = mode
+        try: yield
+        finally: self.mode = previous
+
+
+@pytest.mark.parametrize('recovered', [True, False])
+def test_recovery_keeps_passed_profiles_and_only_publishes_tested_modes(tmp_path, monkeypatch, recovered):
+    worker = RecoveryWorker()
+    m = model()
+    def result(counts):
+        return {'status': 'partially_compatible', 'storage_before': {}, 'baseline_check': {'passed': True}, 'profiles': [
+            {'passes': k, 'anchor_identity': {'passed': True},
+             'loop_smoke': {'finite': True, 'repeat_stable': k in counts},
+             'status': 'compatible_experimental' if k in counts else 'smoke_failed'} for k in (2, 3, 4)]}
+    original = result({2, 4})
+    target = tmp_path / 'exploration/tiny.json'
+    atomic_json(target, original)
+    def trial(worker, model, state, *args, **kwargs):
+        if worker.mode == 'default': return original.copy()
+        # Two different passing profiles must not displace the original two.
+        if worker.mode == 'vulkan_f32': return result({2, 3})
+        return result({2, 3, 4} if recovered else {2})
+    monkeypatch.setattr(explore, '_explore_once', trial)
+    report = explore.explore_model(worker, m, tmp_path)
+    assert worker.remembered == ('cpu' if recovered else None)
+    assert explore.passing_counts(report) == ({2, 3, 4} if recovered else {2, 4})
+    assert json.loads(target.read_text()) == report
+    assert len(report['backend_recovery']['attempts']) == 3
+
+
+def test_cancelled_recovery_preserves_active_settings_and_report(tmp_path, monkeypatch):
+    worker = RecoveryWorker()
+    original = {'status': 'conformance_failed', 'baseline_check': {'passed': True},
+                'profiles': [{'passes': 2, 'anchor_identity': {'passed': False}}]}
+    target = tmp_path / 'exploration/tiny.json'
+    atomic_json(target, original)
+    monkeypatch.setattr(explore, '_explore_once', lambda worker, *a, **k:
+                        original.copy() if worker.mode == 'default' else {'status': 'cancelled'})
+    assert explore.explore_model(worker, model(), tmp_path)['status'] == 'cancelled'
+    assert worker.remembered is None and worker.mode == 'default'
+    assert json.loads(target.read_text()) == original
+
+
+def test_changed_topk_still_detects_measured_loop_effect():
+    def probe(probabilities):
+        return {'tokens': [1], 'completion_probabilities': [{'id': 1,
+            'top_logprobs': [{'id': token, 'logprob': value} for token, value in probabilities]}]}
+    baseline = probe([(1, -.2), (2, -2), (3, -3)])
+    looped = probe([(1, -.3), (4, -2), (5, -3)])
+    assert explore.distribution_difference(baseline, looped) is None
+    assert explore.distribution_changed(baseline, looped)
+    assert not explore.distribution_changed(baseline, baseline)
+
+
+def test_quality_tests_reuse_recovery_and_skip_failed_loop_profiles(tmp_path, monkeypatch):
+    worker = FakeWorker()
+    checked = {'status': 'partially_compatible', 'profiles': [
+        {'passes': k, 'anchor_identity': {'passed': True}, 'loop_smoke': {'passed': k == 2}}
+        for k in (2, 3)]}
+    calls = []
+    monkeypatch.setattr(explore, 'explore_model', lambda *a, **k: calls.append('preflight') or checked)
+    monkeypatch.setattr(benchmark, 'evaluate_cases', lambda *a, **k: [{'passed': True}])
+    report = benchmark.test_model(worker, model(), tmp_path, passes=(2, 3), quick=True)
+    assert calls == ['preflight'] and report['status'] == 'tested'
+    assert report['profiles'][0]['loop_smoke']['passed']
+    assert report['profiles'][1]['status'] == 'conformance_failed'
+    # FakeWorker raises if K=3 inference is attempted; the failed profile stays blocked.
+    assert report['recommended_profile'] == 'baseline'
+    app = App(tmp_path, roots=[tmp_path / 'absent'])
+    app.worker.build_info = worker.build_info
+    assert app.profile(model(), 'loop2').passes == 2
+    with pytest.raises(ValueError, match='conformance'):
+        app.profile(model(), 'loop3')
