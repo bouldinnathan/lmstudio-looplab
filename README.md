@@ -1,11 +1,14 @@
 # LoopLab for LM Studio
 
-LoopLab adds an LM Studio generator plugin, a local inference companion, and automatic tests for training-free latent recurrence. It uses the original GGUF weights through a separately installed, pinned llama.cpp build. LM Studio's bundled runtimes stay independent of this project.
+LoopLab adds ordinary LM Studio model entries for tested loop profiles, a generator plugin for testing and chat, and a local inference companion. It implements training-free latent recurrence using the original GGUF weights through a separately installed, pinned llama.cpp build.
 
 **Experimental research software.** Passing a compatibility or numerical test does not demonstrate improved model quality. The recommended profile stays on the original model unless a selected loop configuration improves a separate held-out diagnostic set with sufficient paired evidence.
 
 ```mermaid
 flowchart LR
+    Client[External API client] --> LMS[LM Studio server and model dropdown]
+    LMS --> Bridge[LoopLab Engine Protocol runtime]
+    Bridge --> Runtime
     Chat[LM Studio chat] --> Plugin[LoopLab generator plugin]
     Plugin --> API[Authenticated local companion]
     API --> Runtime[Pinned loop-enabled llama-server]
@@ -48,6 +51,8 @@ For broad, best-effort compatibility, use **Explore all models, including experi
 The [local model survey](reports/all-local-survey.md) lists every discovered file, its baseline result and which loop counts passed. Adding another checkpoint of a recognized family only requires running exploration again; each new job refreshes discovery.
 
 Exploration tests baseline generation, then K=2/3/4 anchor identity, finite looped output, a measurable change from baseline and repeat-request stability. A successful profile becomes manually selectable and stays labeled experimental. It never changes the recommended profile or claims a quality gain. A partially compatible model can expose only its passing profiles. These checks are intentionally much lighter than the quality evaluation below.
+
+After installing the ordinary-model integration below, completed CLI and plugin test jobs automatically synchronize its model entries. Passing profiles appear without another engine installation. Profiles whose tests become invalid are removed during synchronization and are rejected at load time even before synchronization.
 
 Unrecognized graphs and failed models produce local repair handoffs under `~/.local/state/looplab/repairs/`: metadata, representative tensor names/shapes, native-source information, sanitized errors and a reproduction command. A later coding LLM can use them to extend the adapter. LoopLab does not send weights or reports to an external LLM. Completed exploration results are reused only for matching model and runtime fingerprints; `--no-resume` forces a rerun.
 
@@ -102,7 +107,49 @@ systemctl --user status looplab
 .venv/bin/python scripts/service.py remove
 ```
 
-Install the generator in a second terminal:
+### Normal model dropdown and LM Studio API
+
+This integration makes passing profiles available in **Chat**, **Developer / Local Server**, **My Models**, `lms load`, and LM Studio's API. It was tested with LM Studio 0.4.25+1 on Linux x86_64, using its enabled Engine Protocol and official Vulkan runtime 2.69.0.
+
+After building the LoopLab runtime and testing your models, install and select the separate runtime:
+
+```sh
+.venv/bin/python -m looplab.lmstudio \
+  --source-backend ~/.lmstudio/extensions/backends/llama.cpp-linux-x86_64-vulkan-avx2-2.69.0
+lms runtime select 'looplab-linux-x86_64@2.69.0'
+```
+
+If the newly installed runtime is not indexed immediately, wait a few seconds and run `lms runtime ls` before selecting it. The installer supports `--model MODEL_ID` to install only one model's passing profiles and `--model-root PATH` for a custom LM Studio model directory.
+
+Select entries published by **looplab**, such as **GPT-OSS 120B Abliterated Latest Looped 2x**. The API uses the corresponding model key:
+
+```sh
+curl http://127.0.0.1:1234/v1/chat/completions \
+  -H 'Content-Type: application/json' \
+  -d '{"model":"gpt-oss-120b-abliterated-latest-looped-2x","messages":[{"role":"user","content":"What is 17 multiplied by 23?"}]}'
+```
+
+Use LM Studio's normal API token if authentication is enabled. Other devices use the existing LM Studio network address when network serving is enabled. Installation preserves the current network and authentication settings.
+
+Use `lms ls` or `GET /v1/models` for exact API model keys. LM Studio can normalize names by removing quantization tags; the API key is not always identical to the descriptor filename.
+
+The model entries are small GGUF **descriptors**, not copies of the weights. They contain descriptive metadata and a dummy tensor. The LoopLab runtime checks their registry, source fingerprint and current conformance report, then loads the original checkpoint with the selected loop profile. A stock engine rejects these descriptors instead of silently answering without loops. LM Studio displays the descriptor's small file size; actual RAM and disk requirements still include the original checkpoint.
+
+The integration registers **37 passing profiles across 14 local models** in the published development-machine survey. Their descriptor files total **284,692 bytes (278.0 KiB)**, with no weight copies. Runtime libraries are hard-linked from the installed official pack on the same filesystem. The source pack is unchanged, and those links survive removal of its original directory.
+
+Looped entries use the tested **2,048-token context**, **one concurrent prediction**, F16 KV and disabled flash attention. Models above 32 GiB use strict CPU mode. Context or parallelism changes are rejected; the other load knobs do not override the tested execution policy. Cross-request prefix reuse is disabled at the transport boundary. Ordinary models pass through to the pinned official runtime with their normal arguments.
+
+Only one LoopLab profile can be loaded at a time, shared with the companion and test jobs. LM Studio's **Only Keep Last JIT Loaded Model** setting supports automatic switching between API model IDs. Unload a manually loaded LoopLab model before loading another profile or starting evaluation.
+
+Rollback restores the original runtime selection, unloads idle LoopLab instances, and removes managed descriptors and unchanged defaults. Edited defaults and original weights are preserved:
+
+```sh
+.venv/bin/python -m looplab.lmstudio --remove
+```
+
+### Optional generator plugin
+
+The generator provides discovery, automatic testing, reports and chat controls. Install it in a second terminal:
 
 ```sh
 cd plugin
@@ -113,7 +160,7 @@ lms dev --install --yes
 
 Open LM Studio's **Chat** page, open the model picker at the top, and search for **looplab**. Select **bouldinnathan/looplab** under **Your Generators**. Set the action to **Find models** and send a message. Enter a returned model name or ID in the plugin settings, choose an action/profile, and send another message. Blank model selection also lists models.
 
-If LoopLab seems missing, check which picker is open. In LM Studio 0.4.25+1, the **Developer/server** model picker does not display generators. **My Models** lists model files; LoopLab does not create additional GGUF entries. Generator plugins also appear in the Chat model picker rather than the ordinary tools-plugin list, as described in [LM Studio's generator documentation](https://lmstudio.ai/docs/typescript/plugins/generator). Search for `looplab` in that picker, then enter the underlying model name in LoopLab's settings. Searching the picker for `gpt-oss` finds the original model, not the shared LoopLab generator.
+If the generator seems missing, check which picker is open. In LM Studio 0.4.25+1, **Developer / Local Server** does not display generators. Generator plugins appear in the Chat model picker rather than the ordinary tools-plugin list, as described in [LM Studio's generator documentation](https://lmstudio.ai/docs/typescript/plugins/generator). The separate ordinary-model integration above supplies the `*-looped-Nx` entries that can be loaded and served through the API.
 
 The companion listens only on `127.0.0.1:7341`. The plugin reads the local token from `$XDG_STATE_HOME/looplab/token` or `~/.local/state/looplab/token`; no copy/paste is needed for the standard installation. An explicitly configured token is also supported. Custom state directories require that token setting.
 
@@ -152,7 +199,7 @@ The original model-library entries keep their existing names. In **Chat → mode
 
 The default file-size ceiling is 80 GiB, with an additional available-RAM check: estimated weights/working memory plus an 8 GiB reserve must fit. Models above 32 GiB use CPU inference to avoid large GPU allocations. This estimate cannot guarantee that every graph fits; failures are recorded. There is one worker and a 2,048-token context. Override the file ceiling with `--max-model-gib`.
 
-The companion unloads an idle worker after five minutes. Inference stops if the state filesystem has less than 2 GiB free. Worker logs rotate at 8 MiB, with at most 64 log files retained. Models are never downloaded, modified, reflinked or copied by this workflow. Source/build files and reports still consume disk space. Full tests can take a long time on larger dense models; cancellation takes effect between requests.
+The companion unloads an idle worker after five minutes; LM Studio controls the lifetime of its loaded profiles. Inference stops if the state filesystem has less than 2 GiB free. Worker logs rotate at 8 MiB, with at most 64 log files retained. Original weights are never downloaded, modified, reflinked or copied by this workflow. Descriptors, source/build files and reports still consume disk space. Full tests can take a long time on larger dense models; cancellation takes effect between requests.
 
 CLI and companion instances using the same state directory share a process lock, preventing competing model loads. The companion also serializes jobs and rejects chat requests while it evaluates. Different state directories have independent locks.
 
@@ -160,7 +207,9 @@ Default discovery includes `$OLLAMA_MODELS`, `~/.ollama/models`, and `/usr/share
 
 ## Updating LM Studio
 
-The plugin uses LM Studio's documented generator API, and the engine is installed under this repository's `.runtime/` directory. Updating an LM Studio runtime pack therefore does not replace this engine. A future incompatible plugin API change may require an adapter update; the SDK labels plugin APIs experimental.
+The plugin uses LM Studio's documented generator API. The ordinary-model integration uses a separately named `looplab-linux-x86_64` runtime pack and the Engine Protocol. Its launcher points to this repository's pinned `.runtime/` build and retains independent links to the official native bindings. Official runtime updates therefore do not overwrite the LoopLab engine. Keep this repository and its virtual environment at their installed paths.
+
+Keep the LoopLab runtime selected for the looped model entries. A future incompatible Engine Protocol or plugin API change may require a bridge update; this is not a promise of compatibility with every future LM Studio version. New passing model profiles do not require rebuilding or modifying an LM Studio engine.
 
 The llama.cpp revision, development-header revisions, plugin dependencies and build patch fingerprint are pinned. Model test records include the original header hash, file size/modification time, exact loop configuration, patch fingerprint, context and execution settings. Changing these invalidates the corresponding loop-profile approval. The header hash is not a full hash of every weight byte; deliberately preserving all file metadata while replacing weights is outside this check.
 
@@ -173,7 +222,7 @@ The expanded runtime lives in `.runtime/auto/`; an earlier `.runtime/build/` ins
 - Kimi/DeepSeek MLA and hybrid/recurrent state still need explicit adapters. Exploration can run their baseline if the pinned loader supports the checkpoint and it fits memory.
 - Generated adapters are best-effort candidates. Checkpoint format differences can fail before looping even begins; repair reports distinguish loader, state-adapter and conformance failures.
 - Some multimodal architectures can run their text component, but the plugin accepts text/tool messages only. Projectors are inventoried separately.
-- The companion currently manages one loaded profile. Switching profiles restarts the worker and invalidates KV state.
+- The companion and LM Studio runtime integration share one loaded LoopLab profile. Switching profiles restarts the worker and invalidates KV state.
 - The graphical plugin, companion and native runtime are separate components. Installing only the plugin does not add loop support to LM Studio's bundled engine.
 - Dependency status and local API boundaries are documented in [SECURITY.md](SECURITY.md).
 
@@ -183,6 +232,8 @@ The expanded runtime lives in `.runtime/auto/`; an earlier `.runtime/build/` ins
 .venv/bin/python -m pytest -q
 npm --prefix plugin test
 .venv/bin/python tests/native_reference.py
+# Optional real-model smoke test against the running LM Studio server:
+.venv/bin/python scripts/check_lmstudio_api.py --output reports/local/lmstudio-api.json
 ```
 
 GitHub Actions runs application tests, plugin tests, and a CPU native-reference build using synthetic fixtures. Published numerical and model summaries live in [`reports/`](reports/). Private model inventories, logs, full outputs and access tokens are kept outside Git.

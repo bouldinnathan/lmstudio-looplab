@@ -60,6 +60,9 @@ def main():
                 print(f'[{index}/{len(models)}] {model.name}: {report["status"]}', flush=True)
                 atomic_json(args.state / 'all-local-survey.json', survey)
                 if args.output: atomic_json(args.output, survey)
+            integration = app.sync_lmstudio()
+            if integration is not None:
+                print(json.dumps({'lmstudio': integration}), flush=True)
         except KeyboardInterrupt:
             print('Survey interrupted; completed results can be resumed.', flush=True)
         finally:
@@ -73,6 +76,9 @@ def main():
                 report = test_model(app.worker, model, args.state, args.passes, args.quick,
                                     progress=lambda message: print(message, flush=True))
                 print(json.dumps(public_summary(report), indent=2), flush=True)
+            integration = app.sync_lmstudio()
+            if integration is not None:
+                print(json.dumps({'lmstudio': integration}), flush=True)
         except KeyboardInterrupt:
             print("Evaluation cancelled.", flush=True)
         finally:

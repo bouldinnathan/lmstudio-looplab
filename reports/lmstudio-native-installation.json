@@ -1,0 +1,544 @@
+{
+  "source_files_checked": 54,
+  "source_stat_changes": [],
+  "profiles": 37,
+  "models": 14,
+  "descriptor_bytes": 284692,
+  "weight_bytes_copied": 0,
+  "runtime_files_shared": 15,
+  "runtime_bytes_shared": 74159560,
+  "source_headers_compared_with_original_survey": 54,
+  "source_header_changes": [],
+  "lmstudio_version": "0.4.25+1",
+  "runtime_alias": "looplab-linux-x86_64@2.69.0",
+  "bridge_version": "0.3.0",
+  "api_profiles_listed": 37,
+  "entries": [
+    {
+      "model_key": "reader-lm-1-5b-looped-2x",
+      "display_name": "Reader Lm 1 5B Looped 2x",
+      "model_id": "reader-lm-1-5b-faf34a76",
+      "profile": {
+        "passes": 2,
+        "anchor": 0.5,
+        "mode": "block",
+        "cache": "first",
+        "start": 12,
+        "end": 16
+      },
+      "descriptor_bytes": 1732
+    },
+    {
+      "model_key": "reader-lm-1-5b-looped-4x",
+      "display_name": "Reader Lm 1 5B Looped 4x",
+      "model_id": "reader-lm-1-5b-faf34a76",
+      "profile": {
+        "passes": 4,
+        "anchor": 0.5,
+        "mode": "block",
+        "cache": "first",
+        "start": 12,
+        "end": 16
+      },
+      "descriptor_bytes": 1732
+    },
+    {
+      "model_key": "bespoke-minicheck-latest-looped-2x",
+      "display_name": "Bespoke Minicheck Latest Looped 2x",
+      "model_id": "bespoke-minicheck-latest-319d66d3",
+      "profile": {
+        "passes": 2,
+        "anchor": 0.5,
+        "mode": "block",
+        "cache": "first",
+        "start": 14,
+        "end": 18
+      },
+      "descriptor_bytes": 1540
+    },
+    {
+      "model_key": "bespoke-minicheck-latest-looped-3x",
+      "display_name": "Bespoke Minicheck Latest Looped 3x",
+      "model_id": "bespoke-minicheck-latest-319d66d3",
+      "profile": {
+        "passes": 3,
+        "anchor": 0.5,
+        "mode": "block",
+        "cache": "first",
+        "start": 14,
+        "end": 18
+      },
+      "descriptor_bytes": 1540
+    },
+    {
+      "model_key": "bespoke-minicheck-latest-looped-4x",
+      "display_name": "Bespoke Minicheck Latest Looped 4x",
+      "model_id": "bespoke-minicheck-latest-319d66d3",
+      "profile": {
+        "passes": 4,
+        "anchor": 0.5,
+        "mode": "block",
+        "cache": "first",
+        "start": 14,
+        "end": 18
+      },
+      "descriptor_bytes": 1540
+    },
+    {
+      "model_key": "command-r-35b-looped-2x",
+      "display_name": "Command R 35B Looped 2x",
+      "model_id": "command-r-35b-ccae6f9d",
+      "profile": {
+        "passes": 2,
+        "anchor": 0.5,
+        "mode": "block",
+        "cache": "first",
+        "start": 18,
+        "end": 22
+      },
+      "descriptor_bytes": 2756
+    },
+    {
+      "model_key": "command-r-35b-looped-3x",
+      "display_name": "Command R 35B Looped 3x",
+      "model_id": "command-r-35b-ccae6f9d",
+      "profile": {
+        "passes": 3,
+        "anchor": 0.5,
+        "mode": "block",
+        "cache": "first",
+        "start": 18,
+        "end": 22
+      },
+      "descriptor_bytes": 2756
+    },
+    {
+      "model_key": "command-r-35b-looped-4x",
+      "display_name": "Command R 35B Looped 4x",
+      "model_id": "command-r-35b-ccae6f9d",
+      "profile": {
+        "passes": 4,
+        "anchor": 0.5,
+        "mode": "block",
+        "cache": "first",
+        "start": 18,
+        "end": 22
+      },
+      "descriptor_bytes": 2756
+    },
+    {
+      "model_key": "command-r-plus-latest-looped-2x",
+      "display_name": "Command R Plus Latest Looped 2x",
+      "model_id": "command-r-plus-latest-dedf06e5",
+      "profile": {
+        "passes": 2,
+        "anchor": 0.5,
+        "mode": "block",
+        "cache": "first",
+        "start": 30,
+        "end": 34
+      },
+      "descriptor_bytes": 2788
+    },
+    {
+      "model_key": "command-r-plus-latest-looped-3x",
+      "display_name": "Command R Plus Latest Looped 3x",
+      "model_id": "command-r-plus-latest-dedf06e5",
+      "profile": {
+        "passes": 3,
+        "anchor": 0.5,
+        "mode": "block",
+        "cache": "first",
+        "start": 30,
+        "end": 34
+      },
+      "descriptor_bytes": 2788
+    },
+    {
+      "model_key": "command-r-plus-latest-looped-4x",
+      "display_name": "Command R Plus Latest Looped 4x",
+      "model_id": "command-r-plus-latest-dedf06e5",
+      "profile": {
+        "passes": 4,
+        "anchor": 0.5,
+        "mode": "block",
+        "cache": "first",
+        "start": 30,
+        "end": 34
+      },
+      "descriptor_bytes": 2788
+    },
+    {
+      "model_key": "deepcoder-14b-looped-2x",
+      "display_name": "Deepcoder 14B Looped 2x",
+      "model_id": "deepcoder-14b-ca299227",
+      "profile": {
+        "passes": 2,
+        "anchor": 0.5,
+        "mode": "block",
+        "cache": "first",
+        "start": 22,
+        "end": 26
+      },
+      "descriptor_bytes": 4644
+    },
+    {
+      "model_key": "deepcoder-14b-looped-3x",
+      "display_name": "Deepcoder 14B Looped 3x",
+      "model_id": "deepcoder-14b-ca299227",
+      "profile": {
+        "passes": 3,
+        "anchor": 0.5,
+        "mode": "block",
+        "cache": "first",
+        "start": 22,
+        "end": 26
+      },
+      "descriptor_bytes": 4644
+    },
+    {
+      "model_key": "deepcoder-14b-looped-4x",
+      "display_name": "Deepcoder 14B Looped 4x",
+      "model_id": "deepcoder-14b-ca299227",
+      "profile": {
+        "passes": 4,
+        "anchor": 0.5,
+        "mode": "block",
+        "cache": "first",
+        "start": 22,
+        "end": 26
+      },
+      "descriptor_bytes": 4644
+    },
+    {
+      "model_key": "deepseek-r1-32b-looped-2x",
+      "display_name": "Deepseek R1 32B Looped 2x",
+      "model_id": "deepseek-r1-32b-608cec8c",
+      "profile": {
+        "passes": 2,
+        "anchor": 0.5,
+        "mode": "block",
+        "cache": "first",
+        "start": 30,
+        "end": 34
+      },
+      "descriptor_bytes": 3428
+    },
+    {
+      "model_key": "deepseek-r1-32b-looped-3x",
+      "display_name": "Deepseek R1 32B Looped 3x",
+      "model_id": "deepseek-r1-32b-608cec8c",
+      "profile": {
+        "passes": 3,
+        "anchor": 0.5,
+        "mode": "block",
+        "cache": "first",
+        "start": 30,
+        "end": 34
+      },
+      "descriptor_bytes": 3428
+    },
+    {
+      "model_key": "deepseek-r1-32b-looped-4x",
+      "display_name": "Deepseek R1 32B Looped 4x",
+      "model_id": "deepseek-r1-32b-608cec8c",
+      "profile": {
+        "passes": 4,
+        "anchor": 0.5,
+        "mode": "block",
+        "cache": "first",
+        "start": 30,
+        "end": 34
+      },
+      "descriptor_bytes": 3428
+    },
+    {
+      "model_key": "devstral-24b-looped-2x",
+      "display_name": "Devstral 24B Looped 2x",
+      "model_id": "devstral-24b-3d18ea49",
+      "profile": {
+        "passes": 2,
+        "anchor": 0.5,
+        "mode": "block",
+        "cache": "first",
+        "start": 18,
+        "end": 22
+      },
+      "descriptor_bytes": 3684
+    },
+    {
+      "model_key": "devstral-24b-looped-3x",
+      "display_name": "Devstral 24B Looped 3x",
+      "model_id": "devstral-24b-3d18ea49",
+      "profile": {
+        "passes": 3,
+        "anchor": 0.5,
+        "mode": "block",
+        "cache": "first",
+        "start": 18,
+        "end": 22
+      },
+      "descriptor_bytes": 3684
+    },
+    {
+      "model_key": "devstral-24b-looped-4x",
+      "display_name": "Devstral 24B Looped 4x",
+      "model_id": "devstral-24b-3d18ea49",
+      "profile": {
+        "passes": 4,
+        "anchor": 0.5,
+        "mode": "block",
+        "cache": "first",
+        "start": 18,
+        "end": 22
+      },
+      "descriptor_bytes": 3684
+    },
+    {
+      "model_key": "gemma4-12b-looped-2x",
+      "display_name": "Gemma4 12B Looped 2x",
+      "model_id": "gemma4-12b-f9d28dfc",
+      "profile": {
+        "passes": 2,
+        "anchor": 0.5,
+        "mode": "block",
+        "cache": "first",
+        "start": 22,
+        "end": 26
+      },
+      "descriptor_bytes": 19908
+    },
+    {
+      "model_key": "gemma4-12b-looped-3x",
+      "display_name": "Gemma4 12B Looped 3x",
+      "model_id": "gemma4-12b-f9d28dfc",
+      "profile": {
+        "passes": 3,
+        "anchor": 0.5,
+        "mode": "block",
+        "cache": "first",
+        "start": 22,
+        "end": 26
+      },
+      "descriptor_bytes": 19908
+    },
+    {
+      "model_key": "gemma4-12b-looped-4x",
+      "display_name": "Gemma4 12B Looped 4x",
+      "model_id": "gemma4-12b-f9d28dfc",
+      "profile": {
+        "passes": 4,
+        "anchor": 0.5,
+        "mode": "block",
+        "cache": "first",
+        "start": 22,
+        "end": 26
+      },
+      "descriptor_bytes": 19908
+    },
+    {
+      "model_key": "gpt-oss-120b-abliterated-latest-looped-2x",
+      "display_name": "GPT-OSS 120B Abliterated Latest Looped 2x",
+      "model_id": "gpt-oss-120b-abliterated-latest-39fc8033",
+      "profile": {
+        "passes": 2,
+        "anchor": 0.5,
+        "mode": "layer",
+        "cache": "first",
+        "start": 16,
+        "end": 20
+      },
+      "descriptor_bytes": 19556
+    },
+    {
+      "model_key": "gpt-oss-120b-abliterated-latest-looped-3x",
+      "display_name": "GPT-OSS 120B Abliterated Latest Looped 3x",
+      "model_id": "gpt-oss-120b-abliterated-latest-39fc8033",
+      "profile": {
+        "passes": 3,
+        "anchor": 0.5,
+        "mode": "layer",
+        "cache": "first",
+        "start": 16,
+        "end": 20
+      },
+      "descriptor_bytes": 19556
+    },
+    {
+      "model_key": "gpt-oss-120b-abliterated-latest-looped-4x",
+      "display_name": "GPT-OSS 120B Abliterated Latest Looped 4x",
+      "model_id": "gpt-oss-120b-abliterated-latest-39fc8033",
+      "profile": {
+        "passes": 4,
+        "anchor": 0.5,
+        "mode": "layer",
+        "cache": "first",
+        "start": 16,
+        "end": 20
+      },
+      "descriptor_bytes": 19556
+    },
+    {
+      "model_key": "granite4-1-3b-looped-2x",
+      "display_name": "Granite4 1 3B Looped 2x",
+      "model_id": "granite4-1-3b-72064317",
+      "profile": {
+        "passes": 2,
+        "anchor": 0.5,
+        "mode": "block",
+        "cache": "first",
+        "start": 18,
+        "end": 22
+      },
+      "descriptor_bytes": 7524
+    },
+    {
+      "model_key": "granite4-1-guardian-8b-k-m-looped-2x",
+      "display_name": "Granite4 1 Guardian 8B K M Looped 2x",
+      "model_id": "granite4-1-guardian-8b-q4-k-m-9b16f68b",
+      "profile": {
+        "passes": 2,
+        "anchor": 0.5,
+        "mode": "block",
+        "cache": "first",
+        "start": 18,
+        "end": 22
+      },
+      "descriptor_bytes": 8004
+    },
+    {
+      "model_key": "granite4-1-guardian-8b-k-m-looped-4x",
+      "display_name": "Granite4 1 Guardian 8B K M Looped 4x",
+      "model_id": "granite4-1-guardian-8b-q4-k-m-9b16f68b",
+      "profile": {
+        "passes": 4,
+        "anchor": 0.5,
+        "mode": "block",
+        "cache": "first",
+        "start": 18,
+        "end": 22
+      },
+      "descriptor_bytes": 8004
+    },
+    {
+      "model_key": "laguna-xs-2-1-k-m-looped-2x",
+      "display_name": "Laguna Xs 2 1 K M Looped 2x",
+      "model_id": "laguna-xs-2-1-q4-k-m-42838490",
+      "profile": {
+        "passes": 2,
+        "anchor": 0.5,
+        "mode": "layer",
+        "cache": "first",
+        "start": 18,
+        "end": 22
+      },
+      "descriptor_bytes": 6436
+    },
+    {
+      "model_key": "laguna-xs-2-1-k-m-looped-3x",
+      "display_name": "Laguna Xs 2 1 K M Looped 3x",
+      "model_id": "laguna-xs-2-1-q4-k-m-42838490",
+      "profile": {
+        "passes": 3,
+        "anchor": 0.5,
+        "mode": "layer",
+        "cache": "first",
+        "start": 18,
+        "end": 22
+      },
+      "descriptor_bytes": 6436
+    },
+    {
+      "model_key": "muse-glimmer-30b-looped-2x",
+      "display_name": "Muse Glimmer 30B Looped 2x",
+      "model_id": "muse-glimmer-30b-0ae8d41f",
+      "profile": {
+        "passes": 2,
+        "anchor": 0.5,
+        "mode": "block",
+        "cache": "first",
+        "start": 24,
+        "end": 28
+      },
+      "descriptor_bytes": 8708
+    },
+    {
+      "model_key": "muse-glimmer-30b-looped-3x",
+      "display_name": "Muse Glimmer 30B Looped 3x",
+      "model_id": "muse-glimmer-30b-0ae8d41f",
+      "profile": {
+        "passes": 3,
+        "anchor": 0.5,
+        "mode": "block",
+        "cache": "first",
+        "start": 24,
+        "end": 28
+      },
+      "descriptor_bytes": 8708
+    },
+    {
+      "model_key": "muse-glimmer-30b-looped-4x",
+      "display_name": "Muse Glimmer 30B Looped 4x",
+      "model_id": "muse-glimmer-30b-0ae8d41f",
+      "profile": {
+        "passes": 4,
+        "anchor": 0.5,
+        "mode": "block",
+        "cache": "first",
+        "start": 24,
+        "end": 28
+      },
+      "descriptor_bytes": 8708
+    },
+    {
+      "model_key": "north-mini-code-1-0-k-m-looped-2x",
+      "display_name": "North Mini Code 1 0 K M Looped 2x",
+      "model_id": "north-mini-code-1-0-q4-k-m-898ef3fc",
+      "profile": {
+        "passes": 2,
+        "anchor": 0.5,
+        "mode": "layer",
+        "cache": "first",
+        "start": 22,
+        "end": 26
+      },
+      "descriptor_bytes": 14596
+    },
+    {
+      "model_key": "north-mini-code-1-0-k-m-looped-3x",
+      "display_name": "North Mini Code 1 0 K M Looped 3x",
+      "model_id": "north-mini-code-1-0-q4-k-m-898ef3fc",
+      "profile": {
+        "passes": 3,
+        "anchor": 0.5,
+        "mode": "layer",
+        "cache": "first",
+        "start": 22,
+        "end": 26
+      },
+      "descriptor_bytes": 14596
+    },
+    {
+      "model_key": "north-mini-code-1-0-k-m-looped-4x",
+      "display_name": "North Mini Code 1 0 K M Looped 4x",
+      "model_id": "north-mini-code-1-0-q4-k-m-898ef3fc",
+      "profile": {
+        "passes": 4,
+        "anchor": 0.5,
+        "mode": "layer",
+        "cache": "first",
+        "start": 22,
+        "end": 26
+      },
+      "descriptor_bytes": 14596
+    }
+  ],
+  "old_crash_dumps_deletable": true,
+  "old_crash_dump_bytes": 211216673,
+  "stock_engine_rejects_descriptors": true,
+  "standard_model_passthrough": {
+    "source_model": "reader-lm-1.5b",
+    "response_received": true
+  },
+  "runtime_distinct_files_shared": 13
+}

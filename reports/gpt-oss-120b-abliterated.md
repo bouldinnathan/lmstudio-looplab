@@ -2,6 +2,8 @@
 
 Completed 2026-11-04 UTC for `gpt-oss-120b-abliterated-latest`. **All 2-, 3- and 4-loop compatibility and live-chat checks passed.**
 
+The later [ordinary-model integration check](lmstudio-native-integration.md) also passed all three profiles through LM Studio's real HTTP server, including streaming and automatic model switching. With that integration installed, choose **GPT-OSS 120B Abliterated Latest Looped 2x**, **3x**, or **4x** in the normal model dropdown, or use API keys `gpt-oss-120b-abliterated-latest-looped-2x` / `3x` / `4x`. The generator-based checks below describe the earlier, separate path.
+
 The original 59.0 GiB checkpoint ran in strict CPU mode with a 2,048-token context. The loop configuration uses the middle four layers (indices 16–19), layer mode, beta=0.5, first-pass KV restoration and pinned MoE routing. No checkpoint conversion or weight copy was needed.
 
 | Loop count | Baseline-identity error | Repeat-request error | Live chat |

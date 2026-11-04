@@ -17,4 +17,7 @@ The build can download Khronos Vulkan-Headers and SPIRV-Headers.
 Their upstream licenses and notices are retained in their checkouts.
 
 The plugin uses @lmstudio/sdk and its dependencies under their respective licenses.
+The optional Engine Protocol installer locally hard-links an already installed
+official LM Studio runtime. No LM Studio binaries or proprietary source are
+redistributed in this repository. Those installed components retain their terms.
 This repository does not include pretrained model weights or grant rights to them.

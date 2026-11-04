@@ -111,7 +111,10 @@ def inspect(path, max_model_bytes=80 * 1024**3, catalog=None, decisions=None, na
         adapter['tier'] = 'experimental'
     reasons, load_reasons = [], []
     role = 'generation'
-    if model.arch in {'clip', 'siglip', 'whisper'} or model.layers == 0:
+    if model.values.get('looplab.descriptor_version'):
+        role = 'looplab_profile'
+        load_reasons.append('LoopLab profile descriptor; test the original checkpoint')
+    elif model.arch in {'clip', 'siglip', 'whisper'} or model.layers == 0:
         role = 'projector'
         load_reasons.append('Auxiliary vision/audio component; not a standalone language model')
     elif 'embed' in name.lower() or model.arch in {'bert', 'nomic-bert', 'jina-bert-v2'} or model.values.get(f'{model.arch}.pooling_type', -1) not in (-1, None):
@@ -175,6 +178,8 @@ def discover(roots=None, max_model_bytes=80 * 1024**3, binary=None):
                         seen[key].aliases.append(alias)
                     continue
                 row = inspect(path, max_model_bytes, catalog, decisions, alias)
+                if row.role == 'looplab_profile':
+                    continue
                 rows.append(row)
                 seen[key] = row
             except (ValueError, OSError, KeyError) as exc:

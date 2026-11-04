@@ -88,6 +88,15 @@ class App:
         with self.jobs_lock:
             return [self.job(j) for j in self.jobs]
 
+    def sync_lmstudio(self):
+        # Opt in by installing the native integration once. Later tests update
+        # its ordinary model entries automatically; no engine rebuild is needed.
+        try:
+            from .lmstudio import sync_if_installed
+            return sync_if_installed(self)
+        except Exception as exc:
+            return {'error': str(exc)}
+
     def start_job(self, selection, quick=False, explore=False):
         with self.jobs_lock:
             if self.busy():
@@ -116,6 +125,10 @@ class App:
                         job["reports"].append(public_summary(report))
                     job["status"] = "cancelled" if cancel.is_set() else "complete"
                     job["progress"] = "Finished"
+                    if not cancel.is_set():
+                        integration = self.sync_lmstudio()
+                        if integration is not None:
+                            job['lmstudio'] = integration
                 except Exception as exc:
                     job.update(status="failed", progress=str(exc))
                 finally:

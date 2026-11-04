@@ -1,5 +1,7 @@
 # Validation records
 
+The [ordinary-model integration](lmstudio-native-integration.md) verifies 37 loop profiles in LM Studio's normal model index and HTTP API. GPT-OSS 120B passed 2-, 3- and 4-pass chat, streaming, a follow-up and automatic profile switching through LM Studio's actual server. Its [installation audit](lmstudio-native-installation.json) records exact API keys, unchanged source headers and descriptor storage; [API results](lmstudio-api-check.json) contain the arithmetic smoke checks.
+
 The latest [all-local compatibility survey](all-local-survey.md) covers the expanded runtime and its generated experimental adapters. Its [JSON record](all-local-survey.json) includes loader errors, per-profile identity and repeatability checks, resource outcomes, and repair handoffs. It is a compatibility survey, not a quality evaluation. Profiles can pass anchor identity yet fail repeat-request stability; those exploration profiles remain unavailable for chat.
 
 `native-auto-cpu.json` and `native-auto-vulkan.json` cover the expanded runtime with 24 independent-reference checks each. The CPU run explicitly disables device, operation and KV-cache offloading and automatic device fitting. Only four architectures have independent mathematical references; generated architecture candidates retain the experimental tier.
