@@ -6,6 +6,8 @@ The latest [all-local compatibility survey](all-local-survey.md) covers the expa
 
 The expanded generator also passed a live 2-pass chat with Gemma 4 12B through the real companion and Vulkan worker; see [`integration-auto.json`](integration-auto.json). The controller was a test harness, so this does not independently verify LM Studio's graphical plugin host. The final application checks passed 20 Python tests and 9 Node tests; [GitHub CI](https://github.com/bouldinnathan/lmstudio-looplab/actions/runs/41776316816) is green.
 
+A [fresh GPT-OSS 120B abliterated check](gpt-oss-120b-abliterated.md) passed all 2-, 3- and 4-loop compatibility checks and live chat through the generator/companion, including a follow-up message. This checkpoint uses strict CPU mode. Its detailed report includes response timing, source-file verification and the graphical-host limitation.
+
 `native-cpu.json` and `native-vulkan.json` contain 24 checks each against an independent NumPy implementation. They compare full next-token distributions through prefill and four autoregressive steps, covering four architectures, damping, anchoring, and both cache policies. The maximum allowed log-probability error is 0.005; the small tolerance accommodates F16 KV storage and different floating-point execution orders.
 
 These checks establish numerical behavior on synthetic tiny F32 networks. Real quantized checkpoints additionally need their own anchor-identity check. A compatibility pass does not establish improved answer quality.

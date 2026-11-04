@@ -1,0 +1,173 @@
+{
+  "suite": "looplab-single-model-recheck-v1",
+  "models": [
+    {
+      "schema": 1,
+      "suite": "looplab-explore-v1",
+      "status": "compatible_experimental",
+      "model": {
+        "id": "gpt-oss-120b-abliterated-latest-39fc8033",
+        "name": "gpt-oss-120b-abliterated-latest",
+        "architecture": "gpt-oss",
+        "layers": 36,
+        "size_bytes": 63387347264,
+        "header_sha256": "9e385efe99fe840f9d44004a7b8a6a83e2ddf00d4cf417c07f86cc9531a5b100",
+        "eligible": true,
+        "reasons": [],
+        "mode": "layer",
+        "tier": "experimental",
+        "role": "generation",
+        "adapter": {
+          "family": "moe",
+          "cache_interfaces": [
+            "kv_iswa"
+          ],
+          "strategy": "preserve_native_layer_body",
+          "source_sha256": "1e72822e506c534f111762e71ae282dbc20d9d9a26b12bfa6aeae384dbb027c0",
+          "source": "src/models/openai-moe.cpp",
+          "tier": "experimental"
+        },
+        "aliases": [
+          "gpt-oss-120b-abliterated-latest",
+          "mradermacher/gpt-oss-120b-abliterated-GGUF/gpt-oss-120b-abliterated.MXFP4_MOE.gguf",
+          "library/gpt-oss-120b-abliterated/latest"
+        ],
+        "loadable": true,
+        "load_reasons": []
+      },
+      "baseline_check": {
+        "passed": true,
+        "tokens": 12,
+        "effective_gpu_layers": 0
+      },
+      "profiles": [
+        {
+          "passes": 2,
+          "profile": {
+            "passes": 2,
+            "anchor": 0.5,
+            "mode": "layer",
+            "cache": "first",
+            "start": 16,
+            "end": 20
+          },
+          "status": "compatible_experimental",
+          "anchor_identity": {
+            "passed": true,
+            "max_logprob_error": 0.0
+          },
+          "loop_smoke": {
+            "passed": true,
+            "finite": true,
+            "repeat_stable": true,
+            "repeat_max_logprob_error": 0.0,
+            "changed_from_baseline": true,
+            "same_sequence_logprob_difference": 0.19941508769989014
+          }
+        },
+        {
+          "passes": 3,
+          "profile": {
+            "passes": 3,
+            "anchor": 0.5,
+            "mode": "layer",
+            "cache": "first",
+            "start": 16,
+            "end": 20
+          },
+          "status": "compatible_experimental",
+          "anchor_identity": {
+            "passed": true,
+            "max_logprob_error": 0.0
+          },
+          "loop_smoke": {
+            "passed": true,
+            "finite": true,
+            "repeat_stable": true,
+            "repeat_max_logprob_error": 0.0,
+            "changed_from_baseline": true,
+            "same_sequence_logprob_difference": 0.3153228759765625
+          }
+        },
+        {
+          "passes": 4,
+          "profile": {
+            "passes": 4,
+            "anchor": 0.5,
+            "mode": "layer",
+            "cache": "first",
+            "start": 16,
+            "end": 20
+          },
+          "status": "compatible_experimental",
+          "anchor_identity": {
+            "passed": true,
+            "max_logprob_error": 0.0
+          },
+          "loop_smoke": {
+            "passed": true,
+            "finite": true,
+            "repeat_stable": true,
+            "repeat_max_logprob_error": 0.0,
+            "changed_from_baseline": true,
+            "same_sequence_logprob_difference": 0.46314573287963867
+          }
+        }
+      ],
+      "paper_reproduction": false,
+      "quality_tested": false,
+      "recommended_profile": "baseline",
+      "seconds": 254.41795112099499,
+      "storage_before": {
+        "time": 1793806126.812146,
+        "free_bytes": 520615309312,
+        "state_bytes": 5425709,
+        "model_weight_bytes_written": 0
+      },
+      "storage_after": {
+        "time": 1793806381.229281,
+        "free_bytes": 520613548032,
+        "state_bytes": 5423727,
+        "model_weight_bytes_written": 0
+      },
+      "runtime": {
+        "llama_cpp_revision": "0893ec98f5eafad36a43a72cd1c3723d72b0d03a",
+        "patch_sha256": "d4506c79258f07b66b0a720122a9efb2f874a478286dc2d1448b1e9c732f6860",
+        "execution_policy": {
+          "context": 2048,
+          "gpu_layers": 999,
+          "kv_type": "f16",
+          "flash_attention": false,
+          "vulkan_fusion": false,
+          "prefix_cache": false,
+          "swa_full": true,
+          "cpu_above_gib": 32,
+          "runner_version": "0.2.0",
+          "cpu_offload_disabled": true,
+          "auto_fit": false
+        }
+      }
+    }
+  ],
+  "discovery_errors": [],
+  "requested_model": "gpt-oss-120b-abliterated-latest",
+  "source_verification": {
+    "header_sha256_unchanged": true,
+    "size_bytes_unchanged": true,
+    "mtime_ns_unchanged": true,
+    "method": "Re-read original GGUF header hash, file size and nanosecond modification time after the compatibility run",
+    "verified_after_live_chat": true
+  },
+  "limitations": [
+    "Compatibility and simple integration checks do not establish a quality improvement.",
+    "This checkpoint is tested with strict CPU fallback and a 2048-token context."
+  ],
+  "completed_utc": "2026-11-04T15:39:48.792884+00:00",
+  "storage_after_live_chat": {
+    "time": 1793806788.7973163,
+    "free_bytes": 520610578432,
+    "state_bytes": 4638562,
+    "model_weight_bytes_written": 0
+  },
+  "new_crash_dumps_observed": 0
+}

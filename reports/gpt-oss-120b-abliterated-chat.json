@@ -1,0 +1,83 @@
+{
+  "model": "gpt-oss-120b-abliterated-latest",
+  "started_utc": "2026-11-04T15:34:23.226Z",
+  "plugin": "bouldinnathan/looplab",
+  "controller": "test harness invoking the real SDK and generator",
+  "companion": "real local HTTP service",
+  "runtime_backend": "CPU with device, operation and KV-cache offloading disabled",
+  "lmstudio_graphical_host": "not verified; this checks the generator and companion, not the graphical plugin host",
+  "purpose": "Live chat integration and simple answer checks; not a quality benchmark",
+  "status": "passed",
+  "checks": [
+    {
+      "profile": "baseline",
+      "case": "arithmetic",
+      "prompt": "What is 17 multiplied by 23? Reply with only the integer.",
+      "expected": "391",
+      "answer": "391",
+      "label": "**LoopLab · original model**",
+      "label_passed": true,
+      "answer_passed": true,
+      "seconds_including_load": 37.082425208000004,
+      "time_to_first_model_fragment_seconds": 33.299995795,
+      "reasoning_characters": 159
+    },
+    {
+      "profile": "loop2",
+      "case": "arithmetic",
+      "prompt": "What is 17 multiplied by 23? Reply with only the integer.",
+      "expected": "391",
+      "answer": "391",
+      "label": "**LoopLab · 2 passes (experimental)**",
+      "label_passed": true,
+      "answer_passed": true,
+      "seconds_including_load": 37.180896022,
+      "time_to_first_model_fragment_seconds": 33.257256864,
+      "reasoning_characters": 133
+    },
+    {
+      "profile": "loop2",
+      "case": "follow_up",
+      "prompt": "Subtract 91 from your previous answer. Reply with only the integer.",
+      "expected": "300",
+      "answer": "300",
+      "label": "**LoopLab · 2 passes (experimental)**",
+      "label_passed": true,
+      "answer_passed": true,
+      "seconds_including_load": 4.980436581999995,
+      "time_to_first_model_fragment_seconds": 2.7883481109999995,
+      "reasoning_characters": 89
+    },
+    {
+      "profile": "loop3",
+      "case": "arithmetic",
+      "prompt": "What is 17 multiplied by 23? Reply with only the integer.",
+      "expected": "391",
+      "answer": "391",
+      "label": "**LoopLab · 3 passes (experimental)**",
+      "label_passed": true,
+      "answer_passed": true,
+      "seconds_including_load": 41.26824257799999,
+      "time_to_first_model_fragment_seconds": 36.16864498899999,
+      "reasoning_characters": 162
+    },
+    {
+      "profile": "loop4",
+      "case": "arithmetic",
+      "prompt": "What is 17 multiplied by 23? Reply with only the integer.",
+      "expected": "391",
+      "answer": "391",
+      "label": "**LoopLab · 4 passes (experimental)**",
+      "label_passed": true,
+      "answer_passed": true,
+      "seconds_including_load": 35.83788362200001,
+      "time_to_first_model_fragment_seconds": 31.756031466,
+      "reasoning_characters": 102
+    }
+  ],
+  "model_id": "gpt-oss-120b-abliterated-latest-39fc8033",
+  "header_sha256": "9e385efe99fe840f9d44004a7b8a6a83e2ddf00d4cf417c07f86cc9531a5b100",
+  "size_bytes": 63387347264,
+  "finished_utc": "2026-11-04T15:36:59.617Z",
+  "passed": true
+}
