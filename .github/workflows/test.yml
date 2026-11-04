@@ -1,0 +1,35 @@
+name: Tests
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  application:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-python@v7.1.0
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v7.1.0
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: plugin/package-lock.json
+      - run: python -m pip install pytest
+      - run: python -m pytest -q
+      - run: npm ci
+        working-directory: plugin
+      - run: npm test
+        working-directory: plugin
+  native-reference:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-python@v7.1.0
+        with:
+          python-version: '3.12'
+      - run: python -m pip install cmake ninja numpy
+      - run: python scripts/build_runtime.py --cpu --jobs 2
+      - run: python -m pip install -e .runtime/llama.cpp/gguf-py
+      - run: python tests/native_reference.py --output reports/ci-native-reference.json

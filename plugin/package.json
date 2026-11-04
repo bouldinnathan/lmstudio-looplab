@@ -1,0 +1,21 @@
+{
+  "name": "lmstudio-looplab-plugin",
+  "version": "0.1.0",
+  "description": "Local paper-style recurrence experiments and automatic model checks for LM Studio",
+  "main": "dist/index.js",
+  "license": "AGPL-3.0-or-later",
+  "author": "bouldinnathan",
+  "scripts": {
+    "build": "tsc",
+    "test": "npm run build && node --test test/*.test.cjs",
+    "dev": "lms dev",
+    "install:lmstudio": "lms dev --install --yes"
+  },
+  "dependencies": {
+    "@lmstudio/sdk": "2.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.0",
+    "typescript": "5.9.3"
+  }
+}

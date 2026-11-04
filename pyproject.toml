@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lmstudio-looplab"
+version = "0.1.0"
+description = "Local LM Studio generator and auditable training-free recurrence experiments"
+requires-python = ">=3.10"
+license = "AGPL-3.0-or-later"
+readme = "README.md"
+authors = [{name = "bouldinnathan"}]
+dependencies = []
+
+[project.scripts]
+looplab = "looplab.cli:main"
+
+[tool.setuptools]
+packages = ["looplab"]
+py-modules = ["loop_gguf"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

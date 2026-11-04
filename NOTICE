@@ -1,0 +1,20 @@
+LoopLab
+Copyright (C) 2026 bouldinnathan
+SPDX-License-Identifier: AGPL-3.0-or-later
+
+The recurrence implementation is independently written from the equations in:
+Training-Free Looped Transformers, Lizhang Chen et al., arXiv:2605.23872.
+https://arxiv.org/html/2605.23872v1
+No code from the paper's unavailable reference repository is included.
+
+The build downloads and modifies a separate copy of llama.cpp:
+https://github.com/ggml-org/llama.cpp
+Its original source retains its MIT license and original notices.
+The local runtime adapter and patching script are AGPL-3.0-or-later.
+Distributions of a combined modified runtime must preserve all applicable notices.
+
+The build can download Khronos Vulkan-Headers and SPIRV-Headers.
+Their upstream licenses and notices are retained in their checkouts.
+
+The plugin uses @lmstudio/sdk and its dependencies under their respective licenses.
+This repository does not include pretrained model weights or grant rights to them.

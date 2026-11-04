@@ -1,0 +1,205 @@
+{
+  "reference": "independent_numpy_f32_v1",
+  "gpu_layers": 0,
+  "passed": true,
+  "checks": [
+    {
+      "architecture": "llama",
+      "profile": "baseline",
+      "decode_steps": 4,
+      "max_logprob_error": 0.0009929396678760583,
+      "passed": true
+    },
+    {
+      "architecture": "llama",
+      "profile": "k2-a0.5-block-first-2-6",
+      "decode_steps": 4,
+      "max_logprob_error": 0.0009222886189581558,
+      "passed": true
+    },
+    {
+      "architecture": "llama",
+      "profile": "k3-a0-block-first-2-6",
+      "decode_steps": 4,
+      "max_logprob_error": 0.0008651695708148388,
+      "passed": true
+    },
+    {
+      "architecture": "llama",
+      "profile": "k4-a0.5-block-first-2-6",
+      "decode_steps": 4,
+      "max_logprob_error": 0.0009219800240698461,
+      "passed": true
+    },
+    {
+      "architecture": "llama",
+      "profile": "k2-a1-block-first-2-6",
+      "decode_steps": 4,
+      "max_logprob_error": 0.0009929396678760583,
+      "passed": true
+    },
+    {
+      "architecture": "llama",
+      "profile": "k2-a0.5-block-last-2-6",
+      "decode_steps": 4,
+      "max_logprob_error": 0.0011045622949543699,
+      "passed": true
+    },
+    {
+      "architecture": "qwen2",
+      "profile": "baseline",
+      "decode_steps": 4,
+      "max_logprob_error": 0.0010427089155937708,
+      "passed": true
+    },
+    {
+      "architecture": "qwen2",
+      "profile": "k2-a0.5-block-first-2-6",
+      "decode_steps": 4,
+      "max_logprob_error": 0.001116455787593118,
+      "passed": true
+    },
+    {
+      "architecture": "qwen2",
+      "profile": "k3-a0-block-first-2-6",
+      "decode_steps": 4,
+      "max_logprob_error": 0.0008046275759747701,
+      "passed": true
+    },
+    {
+      "architecture": "qwen2",
+      "profile": "k4-a0.5-block-first-2-6",
+      "decode_steps": 4,
+      "max_logprob_error": 0.0010594268765666826,
+      "passed": true
+    },
+    {
+      "architecture": "qwen2",
+      "profile": "k2-a1-block-first-2-6",
+      "decode_steps": 4,
+      "max_logprob_error": 0.0010427089155937708,
+      "passed": true
+    },
+    {
+      "architecture": "qwen2",
+      "profile": "k2-a0.5-block-last-2-6",
+      "decode_steps": 4,
+      "max_logprob_error": 0.001116455787593118,
+      "passed": true
+    },
+    {
+      "architecture": "qwen3",
+      "profile": "baseline",
+      "decode_steps": 4,
+      "max_logprob_error": 0.0009227818905852558,
+      "passed": true
+    },
+    {
+      "architecture": "qwen3",
+      "profile": "k2-a0.5-block-first-2-6",
+      "decode_steps": 4,
+      "max_logprob_error": 0.0009092580930891714,
+      "passed": true
+    },
+    {
+      "architecture": "qwen3",
+      "profile": "k3-a0-block-first-2-6",
+      "decode_steps": 4,
+      "max_logprob_error": 0.0009015572223813884,
+      "passed": true
+    },
+    {
+      "architecture": "qwen3",
+      "profile": "k4-a0.5-block-first-2-6",
+      "decode_steps": 4,
+      "max_logprob_error": 0.0009337568466252222,
+      "passed": true
+    },
+    {
+      "architecture": "qwen3",
+      "profile": "k2-a1-block-first-2-6",
+      "decode_steps": 4,
+      "max_logprob_error": 0.0009227818905852558,
+      "passed": true
+    },
+    {
+      "architecture": "qwen3",
+      "profile": "k2-a0.5-block-last-2-6",
+      "decode_steps": 4,
+      "max_logprob_error": 0.0013104893602648993,
+      "passed": true
+    },
+    {
+      "architecture": "qwen3moe",
+      "profile": "baseline",
+      "decode_steps": 4,
+      "max_logprob_error": 0.0010361592021039812,
+      "passed": true
+    },
+    {
+      "architecture": "qwen3moe",
+      "profile": "k2-a0.5-layer-first-2-6",
+      "decode_steps": 4,
+      "max_logprob_error": 0.0011367398928530115,
+      "passed": true
+    },
+    {
+      "architecture": "qwen3moe",
+      "profile": "k3-a0-layer-first-2-6",
+      "decode_steps": 4,
+      "max_logprob_error": 0.0012108043828114035,
+      "passed": true
+    },
+    {
+      "architecture": "qwen3moe",
+      "profile": "k4-a0.5-layer-first-2-6",
+      "decode_steps": 4,
+      "max_logprob_error": 0.0008968796816235525,
+      "passed": true
+    },
+    {
+      "architecture": "qwen3moe",
+      "profile": "k2-a1-layer-first-2-6",
+      "decode_steps": 4,
+      "max_logprob_error": 0.0010361592021039812,
+      "passed": true
+    },
+    {
+      "architecture": "qwen3moe",
+      "profile": "k2-a0.5-layer-last-2-6",
+      "decode_steps": 4,
+      "max_logprob_error": 0.0011367398928530115,
+      "passed": true
+    }
+  ],
+  "runtime": {
+    "llama_cpp_revision": "0893ec98f5eafad36a43a72cd1c3723d72b0d03a",
+    "patch_sha256": "deb36000184f565ff563db72ec829095e6aa892b432738d69439dc9e32d77893",
+    "method": "anchored_damped_euler",
+    "architectures": [
+      "llama",
+      "qwen2",
+      "qwen3",
+      "qwen3moe"
+    ],
+    "cache": [
+      "first",
+      "last"
+    ],
+    "moe_routing": "pinned_ids_and_weights",
+    "version": 1,
+    "backend": "vulkan",
+    "dependencies": {
+      "vulkan_headers": "9fbc2a782ee3f8a4db64e7d991e23da75e893f44",
+      "spirv_headers": "71747ddd16f20e9b379ce293dba2954931d3b3c1"
+    },
+    "execution_policy": {
+      "context": 512,
+      "gpu_layers": 0,
+      "kv_type": "f16",
+      "flash_attention": false,
+      "vulkan_fusion": false,
+      "prefix_cache": false
+    }
+  }
+}
