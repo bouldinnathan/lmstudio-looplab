@@ -79,8 +79,40 @@
   "hardware": {
     "cpu": "AMD Ryzen AI 9 HX 370",
     "gpu": "AMD Radeon 890M (integrated, shared RAM)",
-    "logical_cpus": 24
+    "logical_cpus": 24,
+    "memory_total_bytes": 100484222976
   },
   "inference": "local only; existing original GGUF weights",
-  "model_weights_downloaded_or_copied": 0
+  "model_weights_downloaded_or_copied": 0,
+  "models": [
+    {
+      "id": "deepcoder-14b-ca299227",
+      "name": "DeepCoder 14B Preview",
+      "gguf_file_type": 15,
+      "quantization": "Q4_K_M",
+      "quantization_version": 2
+    },
+    {
+      "id": "deepseek-r1-32b-608cec8c",
+      "name": "DeepSeek R1 Distill Qwen 32B",
+      "gguf_file_type": 15,
+      "quantization": "Q4_K_M",
+      "quantization_version": 2
+    },
+    {
+      "id": "qwen3-coder-30b-0fd305b1",
+      "name": "Qwen3 Coder 30B A3B Instruct",
+      "gguf_file_type": 15,
+      "quantization": "Q4_K_M",
+      "quantization_version": 2
+    },
+    {
+      "id": "reader-lm-1-5b-faf34a76",
+      "name": "Qwen2 1.5b Reader",
+      "gguf_file_type": 2,
+      "quantization": "Q4_0",
+      "quantization_version": 2
+    }
+  ],
+  "native_binary_sha256": "e9a00ef0e53c13f84d0779c3c7a82ab21c65290b49eb2e9580b8be7c314f4e07"
 }
