@@ -1,0 +1,2 @@
+# Optional evaluation-only environment; inference uses LoopLab's local runtime.
+lm-eval[api]==0.4.13

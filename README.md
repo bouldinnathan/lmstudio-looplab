@@ -69,13 +69,29 @@ The evaluator performs:
 5. **Holdout:** evaluate only the selected candidate on 12 different tasks. Promotion requires a one-sided paired sign-test p-value at most 0.05 and more wins than losses. Ties prefer fewer passes. Quick mode never promotes.
 6. **Cache and storage probes:** report prompt reuse separately and record free space, report size and model bytes written. Generated text is parsed as JSON; it is never executed.
 
-All quality runs use the same constrained JSON answer prefix, a 192-token answer budget, greedy decoding and disabled explicit reasoning. This avoids spending the whole diagnostic budget inside a reasoning block. These settings are recorded and hashed with the task suite. Truncations, format failures, token counts and elapsed time are reported alongside accuracy.
+The built-in diagnostic runs use the same constrained JSON answer prefix, a 192-token answer budget, greedy decoding and disabled explicit reasoning. This avoids spending the whole diagnostic budget inside a reasoning block. These settings are recorded and hashed with the task suite. Truncations, format failures, token counts and elapsed time are reported alongside accuracy.
 
 The small public diagnostic suite covers code tracing, sorting, intervals and simple reasoning. It can detect regressions, but it is not a substitute for a large coding benchmark or your own workloads. Selection results and held-out results are reported separately. A model that loads successfully is not automatically called paper-compatible or better.
 
 The 2/3/4-pass sweep is a bounded starting point, not an established upper limit on useful recurrence. The native integrator supports up to eight passes; the plugin deliberately exposes only candidates covered by its automatic sweep.
 
 An independent NumPy test generates tiny F32 GGUF networks and compares full next-token distributions across prefill, autoregressive decode and repeated requests. It covers RMSNorm, RoPE, causal attention, SwiGLU, MoE routing, both cache policies and the anchor identity for the four reference-validated architectures. No pretrained weights are downloaded for this test.
+
+### Optional public-task Qwen comparison
+
+[`scripts/benchmark_qwen.py`](scripts/benchmark_qwen.py) runs the existing Qwen-family checkpoints against their current passing 2/3/4-loop profiles using [EleutherAI's evaluation harness](https://github.com/EleutherAI/lm-evaluation-harness). It downloads evaluation software and small text datasets, then performs inference locally with the existing weights. Install its optional API dependencies in a separate environment:
+
+```sh
+python -m venv .runtime/eval-venv
+.runtime/eval-venv/bin/pip install -r requirements-eval.txt
+.runtime/eval-venv/bin/python scripts/benchmark_qwen.py
+```
+
+The default comparison has 100 fixed random test questions per profile: 50 GSM8K, 25 BIG-Bench Hard Boolean expressions and 25 BBH five-object logical deductions. It uses the harness's zero-shot chain-of-thought tasks, the checkpoint's chat template, greedy decoding, a 768-token output limit and a 2,048-token context. There is no assistant answer prefix. A non-thinking template is requested where supported. The same runtime, per-model precision settings, questions and decoding policy apply to baseline and all loop counts; profile order is randomized with a fixed seed. Model loading and warm-up are excluded from timings, and prompt-cache reuse is disabled.
+
+Scores use the harness's flexible final-answer extraction. GSM8K answers additionally receive exact decimal normalization so `$7.00` and `7` are equal; the harness's original scores are also saved. Truncated answers count as wrong. Reports include per-task accuracy, paired wins/losses, stratified bootstrap intervals, two-sided paired tests with Holm correction across loop/model comparisons, token rates, latency and truncations. This is a limited comparison, not a full benchmark score, a coding evaluation or a reproduction of the paper. Reader-LM is a specialized HTML conversion model; math and logic are outside its intended task.
+
+Results, request payloads, responses and a fixed protocol are saved under `~/.local/state/looplab/benchmarks/qwen-lm-eval-v1/`. Rerunning the same command resumes matching responses; changed protocols require a new `--output` directory. Use `--model qwen3-coder-30b` to select one checkpoint, or `--gsm8k 2 --bbh 1 --passes 1 2 --output /path/to/pilot` for a four-question integration check. Unsupported architectures and profiles without current conformance passes are listed in `excluded.json`. This comparison does not change the model picker's profiles or automatic recommendations.
 
 ## Install on Linux
 

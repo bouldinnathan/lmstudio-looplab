@@ -21,3 +21,8 @@ The optional Engine Protocol installer locally hard-links an already installed
 official LM Studio runtime. No LM Studio binaries or proprietary source are
 redistributed in this repository. Those installed components retain their terms.
 This repository does not include pretrained model weights or grant rights to them.
+
+The optional public-task benchmark uses the separately installed EleutherAI
+lm-evaluation-harness and GSM8K / BIG-Bench Hard datasets. Their upstream
+licenses apply. This repository does not redistribute the evaluation datasets
+or the third-party evaluation software.
