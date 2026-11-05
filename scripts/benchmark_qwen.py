@@ -208,6 +208,9 @@ def main():
     if importlib.metadata.version('lm_eval') != HARNESS_VERSION:
         parser.error(f'This runner requires lm-eval[api]=={HARNESS_VERSION}')
     app = App(args.state)
+    # Large dense checkpoints can take more than the worker's normal five-minute
+    # HTTP deadline to use this token budget. This changes waiting, not decoding.
+    app.worker.timeout = 1800
     destination = args.output or args.state / 'benchmarks/qwen-lm-eval-v1'
     destination.mkdir(parents=True, exist_ok=True, mode=0o700)
     models, excluded = [], []
