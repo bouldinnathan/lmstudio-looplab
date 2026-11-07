@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "model": {
+    "id": "glm-4-7-flash-q4-k-m-6c142648",
+    "name": "glm-4.7-flash-q4_K_M",
+    "architecture": "glm4moelite",
+    "layers": 47,
+    "size_bytes": 19019269280,
+    "header_sha256": "560e57bb778ff41ac7df4c18c672706e157025d2868611bfff7f1715e9108871",
+    "eligible": false,
+    "reasons": [
+      "No validated native adapter for glm4moelite",
+      "This MoE variant has no routing-reuse adapter"
+    ],
+    "mode": "block"
+  },
+  "started": 1793764674.5093956,
+  "status": "unsupported",
+  "suite": "looplab-diagnostic-v2",
+  "suite_sha256": "8b2d60609aa5dccdb5e0c5680251a16ec3bfec3417ffacd99656b426bf7f848b",
+  "quick": false,
+  "evaluation_policy": {
+    "temperature": 0,
+    "seed": 1729,
+    "max_tokens": 192,
+    "cache_prompt": false,
+    "reasoning_effort": "none",
+    "reasoning_budget_tokens": 0,
+    "add_generation_prompt": false,
+    "continue_final_message": "content",
+    "response_format": {
+      "type": "json_object"
+    },
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    },
+    "assistant_prefill": "{\"answer\":"
+  },
+  "paper_reproduction": false,
+  "recommended_profile": "baseline",
+  "profiles": [],
+  "limitations": [
+    "Quantized checkpoints and a small local diagnostic suite differ from the paper's BF16 benchmarks.",
+    "Held-out tasks are public diagnostics, not a general capability guarantee.",
+    "Prompt-prefix reuse is disabled by default; a cache probe is reported separately."
+  ],
+  "storage_before": {
+    "time": 1793764674.5096948,
+    "free_bytes": 520989089792,
+    "state_bytes": 605216,
+    "model_weight_bytes_written": 0
+  },
+  "reasons": [
+    "No validated native adapter for glm4moelite",
+    "This MoE variant has no routing-reuse adapter"
+  ]
+}

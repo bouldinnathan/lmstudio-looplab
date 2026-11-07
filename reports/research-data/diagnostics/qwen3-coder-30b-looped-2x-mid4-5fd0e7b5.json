@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "model": {
+    "id": "qwen3-coder-30b-looped-2x-mid4-5fd0e7b5",
+    "name": "qwen3-coder-30b-looped-2x-mid4",
+    "architecture": "qwen3moe",
+    "layers": 52,
+    "size_bytes": 20014553440,
+    "header_sha256": "3ea12a93bf55f242e258120cc8b35de7e343eb73ec60d96988c0fa04bbc8a6ed",
+    "eligible": false,
+    "reasons": [
+      "Static repeated-layer conversion; select the original checkpoint"
+    ],
+    "mode": "layer"
+  },
+  "started": 1793765327.084637,
+  "status": "unsupported",
+  "suite": "looplab-diagnostic-v2",
+  "suite_sha256": "8b2d60609aa5dccdb5e0c5680251a16ec3bfec3417ffacd99656b426bf7f848b",
+  "quick": false,
+  "evaluation_policy": {
+    "temperature": 0,
+    "seed": 1729,
+    "max_tokens": 192,
+    "cache_prompt": false,
+    "reasoning_effort": "none",
+    "reasoning_budget_tokens": 0,
+    "add_generation_prompt": false,
+    "continue_final_message": "content",
+    "response_format": {
+      "type": "json_object"
+    },
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    },
+    "assistant_prefill": "{\"answer\":"
+  },
+  "paper_reproduction": false,
+  "recommended_profile": "baseline",
+  "profiles": [],
+  "limitations": [
+    "Quantized checkpoints and a small local diagnostic suite differ from the paper's BF16 benchmarks.",
+    "Held-out tasks are public diagnostics, not a general capability guarantee.",
+    "Prompt-prefix reuse is disabled by default; a cache probe is reported separately."
+  ],
+  "storage_before": {
+    "time": 1793765327.0851824,
+    "free_bytes": 520991514624,
+    "state_bytes": 742980,
+    "model_weight_bytes_written": 0
+  },
+  "reasons": [
+    "Static repeated-layer conversion; select the original checkpoint"
+  ]
+}

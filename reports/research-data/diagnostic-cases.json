@@ -1,0 +1,225 @@
+{
+  "suite_sha256": "8b2d60609aa5dccdb5e0c5680251a16ec3bfec3417ffacd99656b426bf7f848b",
+  "cases": [
+    [
+      "sort",
+      "Sort [8, -2, 4, 4, 0] numerically in ascending order.",
+      [
+        -2,
+        0,
+        4,
+        4,
+        8
+      ]
+    ],
+    [
+      "dedupe",
+      "Remove duplicate integers from [3,1,3,2,1,4], preserving first occurrence order.",
+      [
+        3,
+        1,
+        2,
+        4
+      ]
+    ],
+    [
+      "trace",
+      "Python: a=[1,2]; b=a; b.append(3). What is a?",
+      [
+        1,
+        2,
+        3
+      ]
+    ],
+    [
+      "overlap",
+      "Merge overlapping closed intervals [[1,4],[2,6],[9,10],[10,12]].",
+      [
+        [
+          1,
+          6
+        ],
+        [
+          9,
+          12
+        ]
+      ]
+    ],
+    [
+      "modulo",
+      "What is the integer value of Python's (-17) % 5?",
+      3
+    ],
+    [
+      "count",
+      "How many substrings equal to 'aa' occur in 'aaaaa', allowing overlaps?",
+      4
+    ],
+    [
+      "fibonacci",
+      "Given F(0)=0,F(1)=1,F(n)=F(n-1)+F(n-2), what is F(10)?",
+      55
+    ],
+    [
+      "path",
+      "Undirected edges: A-B, B-C, A-D, D-E, E-C. Minimum number of edges from A to C?",
+      2
+    ],
+    [
+      "bisect",
+      "Return the zero-based insertion index for 4 in [1,3,4,4,8], before existing equal values.",
+      2
+    ],
+    [
+      "unicode",
+      "Reverse the string 'ab12CD' character by character.",
+      "DC21ba"
+    ],
+    [
+      "inclusion",
+      "How many integers from 1 through 30 inclusive are divisible by 3 or 5?",
+      14
+    ],
+    [
+      "rle",
+      "Run-length encode 'aaabbcaaaa' as a list of [character,count] pairs.",
+      [
+        [
+          "a",
+          3
+        ],
+        [
+          "b",
+          2
+        ],
+        [
+          "c",
+          1
+        ],
+        [
+          "a",
+          4
+        ]
+      ]
+    ],
+    [
+      "hold-sort",
+      "Sort [12,-5,0,12,3,-1] numerically in descending order.",
+      [
+        12,
+        12,
+        3,
+        0,
+        -1,
+        -5
+      ]
+    ],
+    [
+      "hold-dedupe",
+      "Remove duplicate letters from 'cabacbd', preserving first occurrence order. Return a string.",
+      "cabd"
+    ],
+    [
+      "hold-trace",
+      "Python: a=[1,2]; b=a[:]; b.append(3). What is a?",
+      [
+        1,
+        2
+      ]
+    ],
+    [
+      "hold-overlap",
+      "Merge overlapping closed intervals [[5,7],[1,2],[2,4],[8,9]], and sort by start.",
+      [
+        [
+          1,
+          4
+        ],
+        [
+          5,
+          7
+        ],
+        [
+          8,
+          9
+        ]
+      ]
+    ],
+    [
+      "hold-division",
+      "What is the integer value of Python's (-19) // 4?",
+      -5
+    ],
+    [
+      "hold-count",
+      "How many substrings equal to 'aba' occur in 'abababa', allowing overlaps?",
+      3
+    ],
+    [
+      "hold-fibonacci",
+      "Given F(0)=0,F(1)=1,F(n)=F(n-1)+F(n-2), what is F(12)?",
+      144
+    ],
+    [
+      "hold-path",
+      "Directed edges: A->B, B->D, A->C, C->E, E->D. Minimum edges from A to D?",
+      2
+    ],
+    [
+      "hold-bisect",
+      "Return the zero-based insertion index for 6 in [2,6,6,9], after all existing equal values.",
+      3
+    ],
+    [
+      "hold-reverse",
+      "Reverse the string 'z9X20' character by character.",
+      "02X9z"
+    ],
+    [
+      "hold-inclusion",
+      "How many integers from 1 through 40 inclusive are divisible by 4 or 6?",
+      13
+    ],
+    [
+      "hold-rle",
+      "Run-length encode 'bbbaacbbb' as a list of [character,count] pairs.",
+      [
+        [
+          "b",
+          3
+        ],
+        [
+          "a",
+          2
+        ],
+        [
+          "c",
+          1
+        ],
+        [
+          "b",
+          3
+        ]
+      ]
+    ]
+  ],
+  "evaluation_policy": {
+    "temperature": 0,
+    "seed": 1729,
+    "max_tokens": 192,
+    "cache_prompt": false,
+    "reasoning_effort": "none",
+    "reasoning_budget_tokens": 0,
+    "add_generation_prompt": false,
+    "continue_final_message": "content",
+    "response_format": {
+      "type": "json_object"
+    },
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    }
+  },
+  "assistant_prefill": "{\"answer\":",
+  "system_message": "Answer precisely. Return only a JSON object with one key, answer. No explanation or reasoning text.",
+  "provenance": "Case definitions exported from source; suite hash matches all five retained tested diagnostic records. These are not saved HTTP request bodies."
+}

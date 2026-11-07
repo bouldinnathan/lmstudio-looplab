@@ -24,5 +24,10 @@ This repository does not include pretrained model weights or grant rights to the
 
 The optional public-task benchmark uses the separately installed EleutherAI
 lm-evaluation-harness and GSM8K / BIG-Bench Hard datasets. Their upstream
-licenses apply. This repository does not redistribute the evaluation datasets
-or the third-party evaluation software.
+licenses apply. Public experiment records include the selected input questions,
+reference answers and task configurations, with MIT notices retained under
+reports/research-data/upstream-licenses/. Full upstream datasets and evaluation
+software are linked rather than bundled. LoopLab-generated outputs, measurements
+and annotations are distinguished from these inputs in the data documentation.
+Original project data and figures use AGPL-3.0-or-later to the extent copyright
+applies; this does not relicense upstream material or pretrained models.

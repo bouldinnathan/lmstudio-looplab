@@ -1,0 +1,203 @@
+{
+  "model_id": "laguna-xs-2-1-q4-k-m-42838490",
+  "architecture": "laguna",
+  "status": "partially_compatible",
+  "adapter": {
+    "family": "moe",
+    "cache_interfaces": [
+      "kv",
+      "kv_iswa"
+    ],
+    "strategy": "preserve_native_layer_body",
+    "source_sha256": "0a14c3d27cc0a1284a2dbb6c0fee2f5e7a99866e3367a0cb2a31fbb026834acb",
+    "source": "src/models/laguna.cpp",
+    "tier": "experimental"
+  },
+  "metadata": {
+    "laguna.block_count": 40,
+    "laguna.context_length": 262144,
+    "laguna.embedding_length": 2048,
+    "laguna.feed_forward_length": 8192,
+    "laguna.attention.head_count_kv": 8,
+    "laguna.rope.scaling.factor": 32.0,
+    "laguna.rope.scaling.original_context_length": 8192,
+    "laguna.rope.scaling.yarn_attn_factor": 1.0,
+    "laguna.rope.scaling.yarn_beta_fast": 64.0,
+    "laguna.rope.scaling.yarn_beta_slow": 1.0,
+    "laguna.rope.freq_base": 500000.0,
+    "laguna.rope.freq_base_swa": 10000.0,
+    "laguna.attention.layer_norm_rms_epsilon": 9.999999974752427e-07,
+    "laguna.expert_count": 256,
+    "laguna.expert_used_count": 8,
+    "laguna.attention.key_length": 128,
+    "laguna.attention.value_length": 128,
+    "laguna.vocab_size": 100352,
+    "laguna.attention.sliding_window": 512,
+    "laguna.expert_feed_forward_length": 512,
+    "laguna.expert_shared_feed_forward_length": 512,
+    "laguna.expert_weights_norm": true,
+    "laguna.expert_weights_scale": 2.5,
+    "laguna.expert_gating_func": 2,
+    "laguna.leading_dense_block_count": 1,
+    "laguna.rope.dimension_count": 64,
+    "laguna.rope.dimension_count_swa": 128
+  },
+  "tensor_count": 678,
+  "representative_tensors": [
+    {
+      "name": "output.weight",
+      "dimensions": [
+        2048,
+        100352
+      ],
+      "ggml_type": 14
+    },
+    {
+      "name": "output_norm.weight",
+      "dimensions": [
+        2048
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "token_embd.weight",
+      "dimensions": [
+        2048,
+        100352
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "blk.0.attn_gate.weight",
+      "dimensions": [
+        2048,
+        48
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "blk.0.attn_k.weight",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "blk.0.attn_k_norm.weight",
+      "dimensions": [
+        128
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.attn_norm.weight",
+      "dimensions": [
+        2048
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.attn_output.weight",
+      "dimensions": [
+        6144,
+        2048
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "blk.0.attn_q.weight",
+      "dimensions": [
+        2048,
+        6144
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "blk.0.attn_q_norm.weight",
+      "dimensions": [
+        128
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.attn_v.weight",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "ggml_type": 14
+    },
+    {
+      "name": "blk.0.ffn_down.weight",
+      "dimensions": [
+        8192,
+        2048
+      ],
+      "ggml_type": 14
+    },
+    {
+      "name": "blk.0.ffn_gate.weight",
+      "dimensions": [
+        2048,
+        8192
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "blk.0.ffn_norm.weight",
+      "dimensions": [
+        2048
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.ffn_up.weight",
+      "dimensions": [
+        2048,
+        8192
+      ],
+      "ggml_type": 12
+    }
+  ],
+  "runtime_revision": "0893ec98f5eafad36a43a72cd1c3723d72b0d03a",
+  "patch_sha256": "d4506c79258f07b66b0a720122a9efb2f874a478286dc2d1448b1e9c732f6860",
+  "reasons": [],
+  "failures": [],
+  "profile_failures": [
+    {
+      "passes": 4,
+      "profile": {
+        "passes": 4,
+        "anchor": 0.5,
+        "mode": "layer",
+        "cache": "first",
+        "start": 18,
+        "end": 22
+      },
+      "status": "smoke_failed",
+      "anchor_identity": {
+        "passed": true,
+        "max_logprob_error": 0.0
+      },
+      "loop_smoke": {
+        "passed": false,
+        "finite": true,
+        "repeat_stable": true,
+        "repeat_max_logprob_error": 0.0,
+        "changed_from_baseline": false,
+        "same_sequence_logprob_difference": null
+      }
+    }
+  ],
+  "reproduce": "python -m looplab explore laguna-xs-2-1-q4-k-m-42838490 --no-resume",
+  "next_steps": [
+    "Check the pinned native model loader and original graph before changing metadata or tensor names.",
+    "For an unrecognized but similar graph, extend runtime/auto_adapters.py and preserve its original layer body.",
+    "For recurrent, MLA, shared, or convolution state, implement and test the state snapshot/restore semantics explicitly.",
+    "For MoE, retain the first expert IDs and mixture weights through the shared routing helper.",
+    "For repeat-request instability, inspect cache clearing, graph reuse and backend numerical behavior with cache_prompt=false.",
+    "Rebuild, pass the independent native reference tests, then rerun this exact model and its K=2/3/4 probes.",
+    "Treat successful smoke tests as experimental compatibility, never proof of quality gains or full paper reproduction."
+  ]
+}

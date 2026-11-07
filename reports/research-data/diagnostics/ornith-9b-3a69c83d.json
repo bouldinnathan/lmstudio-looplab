@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "model": {
+    "id": "ornith-9b-3a69c83d",
+    "name": "ornith-9b",
+    "architecture": "qwen35",
+    "layers": 32,
+    "size_bytes": 5629108640,
+    "header_sha256": "5817730fafbc2b5fe41218f3415f28638839723bfef4a919557aad5c1ccb771d",
+    "eligible": false,
+    "reasons": [
+      "No validated native adapter for qwen35"
+    ],
+    "mode": "block"
+  },
+  "started": 1793763832.573271,
+  "status": "unsupported",
+  "suite": "looplab-diagnostic-v2",
+  "suite_sha256": "8b2d60609aa5dccdb5e0c5680251a16ec3bfec3417ffacd99656b426bf7f848b",
+  "quick": false,
+  "evaluation_policy": {
+    "temperature": 0,
+    "seed": 1729,
+    "max_tokens": 192,
+    "cache_prompt": false,
+    "reasoning_effort": "none",
+    "reasoning_budget_tokens": 0,
+    "add_generation_prompt": false,
+    "continue_final_message": "content",
+    "response_format": {
+      "type": "json_object"
+    },
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    },
+    "assistant_prefill": "{\"answer\":"
+  },
+  "paper_reproduction": false,
+  "recommended_profile": "baseline",
+  "profiles": [],
+  "limitations": [
+    "Quantized checkpoints and a small local diagnostic suite differ from the paper's BF16 benchmarks.",
+    "Held-out tasks are public diagnostics, not a general capability guarantee.",
+    "Prompt-prefix reuse is disabled by default; a cache probe is reported separately."
+  ],
+  "storage_before": {
+    "time": 1793763832.573522,
+    "free_bytes": 520991645696,
+    "state_bytes": 197004,
+    "model_weight_bytes_written": 0
+  },
+  "reasons": [
+    "No validated native adapter for qwen35"
+  ]
+}

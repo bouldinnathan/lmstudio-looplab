@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "model": {
+    "id": "phi4-reasoning-plus-1b770441",
+    "name": "phi4-reasoning-plus",
+    "architecture": "phi3",
+    "layers": 40,
+    "size_bytes": 11117500000,
+    "header_sha256": "9e8de560ef21221276f6002d31edae3095092890f1797ba78bb182b51cb29533",
+    "eligible": false,
+    "reasons": [
+      "No validated native adapter for phi3"
+    ],
+    "mode": "block"
+  },
+  "started": 1793764184.5537112,
+  "status": "unsupported",
+  "suite": "looplab-diagnostic-v2",
+  "suite_sha256": "8b2d60609aa5dccdb5e0c5680251a16ec3bfec3417ffacd99656b426bf7f848b",
+  "quick": false,
+  "evaluation_policy": {
+    "temperature": 0,
+    "seed": 1729,
+    "max_tokens": 192,
+    "cache_prompt": false,
+    "reasoning_effort": "none",
+    "reasoning_budget_tokens": 0,
+    "add_generation_prompt": false,
+    "continue_final_message": "content",
+    "response_format": {
+      "type": "json_object"
+    },
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    },
+    "assistant_prefill": "{\"answer\":"
+  },
+  "paper_reproduction": false,
+  "recommended_profile": "baseline",
+  "profiles": [],
+  "limitations": [
+    "Quantized checkpoints and a small local diagnostic suite differ from the paper's BF16 benchmarks.",
+    "Held-out tasks are public diagnostics, not a general capability guarantee.",
+    "Prompt-prefix reuse is disabled by default; a cache probe is reported separately."
+  ],
+  "storage_before": {
+    "time": 1793764184.554013,
+    "free_bytes": 520987308032,
+    "state_bytes": 329303,
+    "model_weight_bytes_written": 0
+  },
+  "reasons": [
+    "No validated native adapter for phi3"
+  ]
+}

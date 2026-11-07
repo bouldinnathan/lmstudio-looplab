@@ -1,0 +1,29 @@
+{
+  "protocol_sha256": "0efeffde66cd0ca1e6902755cb3c69511471976f20ecd060f03ac645da166d30",
+  "model_header_sha256": "d55596a4b817a098dff2c5bfcac0bbc4ed0cf2ee2169f52e98333180aa3af57b",
+  "size_bytes": 8988111168,
+  "mtime_ns": 1786599646105831006,
+  "runtime": {
+    "llama_cpp_revision": "0893ec98f5eafad36a43a72cd1c3723d72b0d03a",
+    "patch_sha256": "d4506c79258f07b66b0a720122a9efb2f874a478286dc2d1448b1e9c732f6860",
+    "execution_policy": {
+      "context": 2048,
+      "gpu_layers": 999,
+      "kv_type": "f16",
+      "flash_attention": false,
+      "vulkan_fusion": false,
+      "prefix_cache": false,
+      "swa_full": true,
+      "cpu_above_gib": 32,
+      "runner_version": "0.2.0"
+    }
+  },
+  "profile": {
+    "passes": 2,
+    "anchor": 0.5,
+    "mode": "block",
+    "cache": "first",
+    "start": 22,
+    "end": 26
+  }
+}

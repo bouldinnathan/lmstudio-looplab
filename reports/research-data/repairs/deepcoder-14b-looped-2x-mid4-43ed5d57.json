@@ -1,0 +1,159 @@
+{
+  "model_id": "deepcoder-14b-looped-2x-mid4-43ed5d57",
+  "architecture": "qwen2",
+  "status": "preflight_skipped",
+  "adapter": {
+    "family": "dense",
+    "cache_interfaces": [
+      "kv"
+    ],
+    "strategy": "preserve_native_layer_body",
+    "source_sha256": "7f7f9df9bdaaf7c8aaab900fe046c97936b67d656f66dea445735f1beec695f4",
+    "source": "src/models/qwen2.cpp",
+    "tier": "reference_validated"
+  },
+  "metadata": {
+    "qwen2.block_count": 52,
+    "qwen2.context_length": 131072,
+    "qwen2.embedding_length": 5120,
+    "qwen2.feed_forward_length": 13824,
+    "qwen2.attention.head_count": 40,
+    "qwen2.attention.head_count_kv": 8,
+    "qwen2.rope.freq_base": 1000000.0,
+    "qwen2.attention.layer_norm_rms_epsilon": 9.999999747378752e-06
+  },
+  "tensor_count": 627,
+  "representative_tensors": [
+    {
+      "name": "output.weight",
+      "dimensions": [
+        5120,
+        152064
+      ],
+      "ggml_type": 14
+    },
+    {
+      "name": "output_norm.weight",
+      "dimensions": [
+        5120
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "token_embd.weight",
+      "dimensions": [
+        5120,
+        152064
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "blk.0.attn_k.bias",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.attn_k.weight",
+      "dimensions": [
+        5120,
+        1024
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "blk.0.attn_norm.weight",
+      "dimensions": [
+        5120
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.attn_output.weight",
+      "dimensions": [
+        5120,
+        5120
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "blk.0.attn_q.bias",
+      "dimensions": [
+        5120
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.attn_q.weight",
+      "dimensions": [
+        5120,
+        5120
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "blk.0.attn_v.bias",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.attn_v.weight",
+      "dimensions": [
+        5120,
+        1024
+      ],
+      "ggml_type": 14
+    },
+    {
+      "name": "blk.0.ffn_down.weight",
+      "dimensions": [
+        13824,
+        5120
+      ],
+      "ggml_type": 14
+    },
+    {
+      "name": "blk.0.ffn_gate.weight",
+      "dimensions": [
+        5120,
+        13824
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "blk.0.ffn_norm.weight",
+      "dimensions": [
+        5120
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.ffn_up.weight",
+      "dimensions": [
+        5120,
+        13824
+      ],
+      "ggml_type": 12
+    }
+  ],
+  "runtime_revision": "0893ec98f5eafad36a43a72cd1c3723d72b0d03a",
+  "patch_sha256": "d4506c79258f07b66b0a720122a9efb2f874a478286dc2d1448b1e9c732f6860",
+  "reasons": [
+    "Static repeated-layer conversion; select the original checkpoint"
+  ],
+  "failures": [],
+  "profile_failures": [],
+  "reproduce": "python -m looplab explore deepcoder-14b-looped-2x-mid4-43ed5d57 --no-resume",
+  "next_steps": [
+    "Check the pinned native model loader and original graph before changing metadata or tensor names.",
+    "For an unrecognized but similar graph, extend runtime/auto_adapters.py and preserve its original layer body.",
+    "For recurrent, MLA, shared, or convolution state, implement and test the state snapshot/restore semantics explicitly.",
+    "For MoE, retain the first expert IDs and mixture weights through the shared routing helper.",
+    "For repeat-request instability, inspect cache clearing, graph reuse and backend numerical behavior with cache_prompt=false.",
+    "Rebuild, pass the independent native reference tests, then rerun this exact model and its K=2/3/4 probes.",
+    "Treat successful smoke tests as experimental compatibility, never proof of quality gains or full paper reproduction."
+  ]
+}

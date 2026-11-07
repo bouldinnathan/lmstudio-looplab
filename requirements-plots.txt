@@ -1,0 +1,2 @@
+# Optional figure regeneration only; not needed to inspect or verify research data.
+matplotlib==3.11.2

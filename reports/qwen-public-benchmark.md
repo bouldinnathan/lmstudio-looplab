@@ -11,6 +11,10 @@ Completed 100 questions for each of four profiles on four local Qwen-family chec
 | deepcoder-14b | 54/100 | 50/100 | 52/100 | 50/100 |
 | deepseek-r1-32b | 72/100 | 78/100 | 75/100 | 73/100 |
 
+![Correct answers and total request time for each original and looped checkpoint.](charts/qwen-quality-performance.svg)
+
+[All-study charts](performance.md) · [Download PNG](charts/qwen-quality-performance.png) · [Full generated responses and research data](research-data/README.md)
+
 ## Results for each model
 
 Across the 12 loop-versus-original comparisons, seven scores increased, one tied and four decreased. These comparisons share questions and checkpoints; they are not 12 independent demonstrations of a general benefit. Every looped batch took longer than its original-model batch. Four loops never achieved the highest score for any of these checkpoints. Neither an accuracy increase nor a decrease was statistically significant after correction for all 12 comparisons.
@@ -116,7 +120,7 @@ Loading and warm-up are excluded. Request latency includes prompt evaluation and
 
 ## Reproduce and inspect
 
-See the [benchmark instructions](../README.md#optional-public-task-qwen-comparison) and [runner](../scripts/benchmark_qwen.py). The [JSON report](qwen-public-benchmark.json) contains all statistics, paired per-question correctness without benchmark text, exclusions, protocol and environment. Private prompts and raw responses remain under `~/.local/state/looplab/benchmarks/qwen-lm-eval-v1/`.
+See the [benchmark instructions](../README.md#optional-public-task-qwen-comparison) and [runner](../scripts/benchmark_qwen.py). The [JSON report](qwen-public-benchmark.json) contains all statistics, paired per-question correctness without benchmark text, exclusions, protocol and environment. **All 1,600 retained main-study requests and complete responses are public** in the [research data](research-data/README.md), with upstream input attribution, full grading records, timings, checksums and an offline verifier. The smaller pilot and retained diagnostic records are published separately there as well; missing older data is disclosed.
 
 The excluded Qwen 3.5/3.6/Next and incompatible VL checkpoints still lack validated looping profiles. Legacy static repeated-layer conversions were not used as numerical-loop candidates.
 

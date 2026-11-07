@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "source_repository": "https://github.com/bouldinnathan/lmstudio-looplab",
+  "repository_head_before_export": "3ada254cae620218b78a2c93852d80574306c6e3",
+  "exporter_sha256": "f12aabbe03c5a9ba68ccd43c806c0d5659193c8c097569f157ca292e20f4faea",
+  "generated_by_this_project": [
+    "Model completions and reasoning_content when returned",
+    "Request latency, native timings, token usage, finish reasons",
+    "Correctness labels, paired comparisons, compatibility and numerical checks"
+  ],
+  "third_party_inputs": {
+    "openai/gsm8k": {
+      "revision": "740312add88f781978c0658806c59bc2815b9866",
+      "url": "https://huggingface.co/datasets/openai/gsm8k/tree/740312add88f781978c0658806c59bc2815b9866",
+      "upstream": "https://github.com/openai/grade-school-math",
+      "license": "MIT",
+      "license_source": "https://raw.githubusercontent.com/openai/grade-school-math/master/LICENSE"
+    },
+    "SaylorTwift/bbh": {
+      "revision": "b5306be6f827cfafbb545ff5a51f96916029b0fd",
+      "url": "https://huggingface.co/datasets/SaylorTwift/bbh/tree/b5306be6f827cfafbb545ff5a51f96916029b0fd",
+      "upstream": "https://github.com/suzgunmirac/BIG-Bench-Hard",
+      "license": "MIT",
+      "license_source": "https://raw.githubusercontent.com/suzgunmirac/BIG-Bench-Hard/main/LICENSE"
+    },
+    "lm-evaluation-harness": {
+      "version": "0.4.13",
+      "url": "https://github.com/EleutherAI/lm-evaluation-harness/tree/v0.4.13",
+      "license": "MIT",
+      "license_source": "https://raw.githubusercontent.com/EleutherAI/lm-evaluation-harness/v0.4.13/LICENSE.md"
+    }
+  },
+  "input_output_distinction": "record.payload is benchmark input; record.response is generated output. harness.samples.doc and target are upstream benchmark data; filtered_resps and exact_match are derived grading.",
+  "storage_format": "Original request JSON objects are losslessly grouped into requests.jsonl and joined to task/doc_id. Other retained JSON values are unchanged except the documented path redactions.",
+  "missing_data": [
+    "Initial Qwen3-Coder diagnostic-v2 per-case outputs were overwritten by a diagnostic-v3 quick run. Its original scores and timings survive in ../qwen3-coder-30b.json; they are not reconstructed responses.",
+    "Small diagnostics retained final-answer text, timing and usage, not full HTTP responses or separate reasoning_content.",
+    "Warm-up responses, exact rendered chat-template token IDs, and most compatibility-probe token distributions were not retained. Available original diagnostic baseline probes are included.",
+    "Rotating worker/service logs are excluded because they can mix benchmark traffic with interactive use. No claim of complete historical logs.",
+    "Model identities use recorded size and GGUF-header hash, not a full weight hash. Full weight hashes were not recorded."
+  ],
+  "excluded_nonresearch_material": [
+    "Credentials",
+    "User chats",
+    "Model weights",
+    "Model caches",
+    "Private worker logs",
+    "Core dumps",
+    "Installed executables"
+  ],
+  "counts": {
+    "qwen-lm-eval-v1": 1600,
+    "qwen-lm-eval-pilot": 8,
+    "diagnostics_files": 54,
+    "exploration_files": 54,
+    "repairs_files": 33,
+    "diagnostic_answers": 312
+  }
+}

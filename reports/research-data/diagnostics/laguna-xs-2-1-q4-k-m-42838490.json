@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "model": {
+    "id": "laguna-xs-2-1-q4-k-m-42838490",
+    "name": "laguna-xs-2.1-q4_K_M",
+    "architecture": "laguna",
+    "layers": 40,
+    "size_bytes": 20274300032,
+    "header_sha256": "d36b09464ac9dae3f61d995e5c5c1dad791ce41d0387d311604e9cf2f763e140",
+    "eligible": false,
+    "reasons": [
+      "No validated native adapter for laguna",
+      "Sliding-window cache semantics have not been validated",
+      "This MoE variant has no routing-reuse adapter"
+    ],
+    "mode": "block"
+  },
+  "started": 1793765327.0854273,
+  "status": "unsupported",
+  "suite": "looplab-diagnostic-v2",
+  "suite_sha256": "8b2d60609aa5dccdb5e0c5680251a16ec3bfec3417ffacd99656b426bf7f848b",
+  "quick": false,
+  "evaluation_policy": {
+    "temperature": 0,
+    "seed": 1729,
+    "max_tokens": 192,
+    "cache_prompt": false,
+    "reasoning_effort": "none",
+    "reasoning_budget_tokens": 0,
+    "add_generation_prompt": false,
+    "continue_final_message": "content",
+    "response_format": {
+      "type": "json_object"
+    },
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    },
+    "assistant_prefill": "{\"answer\":"
+  },
+  "paper_reproduction": false,
+  "recommended_profile": "baseline",
+  "profiles": [],
+  "limitations": [
+    "Quantized checkpoints and a small local diagnostic suite differ from the paper's BF16 benchmarks.",
+    "Held-out tasks are public diagnostics, not a general capability guarantee.",
+    "Prompt-prefix reuse is disabled by default; a cache probe is reported separately."
+  ],
+  "storage_before": {
+    "time": 1793765327.0859551,
+    "free_bytes": 520991514624,
+    "state_bytes": 744685,
+    "model_weight_bytes_written": 0
+  },
+  "reasons": [
+    "No validated native adapter for laguna",
+    "Sliding-window cache semantics have not been validated",
+    "This MoE variant has no routing-reuse adapter"
+  ]
+}

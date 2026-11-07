@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "model": {
+    "id": "kimi-k2-7-code-c4d34eee",
+    "name": "Kimi-K2.7-Code",
+    "architecture": "deepseek2",
+    "layers": 61,
+    "size_bytes": 594544648512,
+    "header_sha256": "9f26253e5447edf33bdf274a23fe3bb0a34592f783c1d63f197eda94565d4d7a",
+    "eligible": false,
+    "reasons": [
+      "No validated native adapter for deepseek2",
+      "This MoE variant has no routing-reuse adapter",
+      "Exceeds configured model size budget"
+    ],
+    "mode": "block"
+  },
+  "started": 1793765327.0981617,
+  "status": "unsupported",
+  "suite": "looplab-diagnostic-v2",
+  "suite_sha256": "8b2d60609aa5dccdb5e0c5680251a16ec3bfec3417ffacd99656b426bf7f848b",
+  "quick": false,
+  "evaluation_policy": {
+    "temperature": 0,
+    "seed": 1729,
+    "max_tokens": 192,
+    "cache_prompt": false,
+    "reasoning_effort": "none",
+    "reasoning_budget_tokens": 0,
+    "add_generation_prompt": false,
+    "continue_final_message": "content",
+    "response_format": {
+      "type": "json_object"
+    },
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    },
+    "assistant_prefill": "{\"answer\":"
+  },
+  "paper_reproduction": false,
+  "recommended_profile": "baseline",
+  "profiles": [],
+  "limitations": [
+    "Quantized checkpoints and a small local diagnostic suite differ from the paper's BF16 benchmarks.",
+    "Held-out tasks are public diagnostics, not a general capability guarantee.",
+    "Prompt-prefix reuse is disabled by default; a cache probe is reported separately."
+  ],
+  "storage_before": {
+    "time": 1793765327.0985672,
+    "free_bytes": 520991514624,
+    "state_bytes": 773626,
+    "model_weight_bytes_written": 0
+  },
+  "reasons": [
+    "No validated native adapter for deepseek2",
+    "This MoE variant has no routing-reuse adapter",
+    "Exceeds configured model size budget"
+  ]
+}

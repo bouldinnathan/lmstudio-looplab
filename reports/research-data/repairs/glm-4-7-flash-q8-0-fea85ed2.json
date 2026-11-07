@@ -1,0 +1,181 @@
+{
+  "model_id": "glm-4-7-flash-q8-0-fea85ed2",
+  "architecture": "deepseek2",
+  "status": "baseline_only",
+  "adapter": {
+    "source": "src/models/deepseek2.cpp",
+    "reason": "Attention state is not the supported KV/SWA interface: k,kv"
+  },
+  "metadata": {
+    "deepseek2.attention.head_count": 20,
+    "deepseek2.attention.head_count_kv": 1,
+    "deepseek2.attention.key_length": 576,
+    "deepseek2.attention.key_length_mla": 256,
+    "deepseek2.attention.kv_lora_rank": 512,
+    "deepseek2.attention.layer_norm_rms_epsilon": 9.999999747378752e-06,
+    "deepseek2.attention.q_lora_rank": 768,
+    "deepseek2.attention.value_length": 512,
+    "deepseek2.attention.value_length_mla": 256,
+    "deepseek2.block_count": 47,
+    "deepseek2.context_length": 202752,
+    "deepseek2.embedding_length": 2048,
+    "deepseek2.expert_count": 64,
+    "deepseek2.expert_feed_forward_length": 1536,
+    "deepseek2.expert_gating_func": 2,
+    "deepseek2.expert_group_count": 1,
+    "deepseek2.expert_group_used_count": 1,
+    "deepseek2.expert_shared_count": 1,
+    "deepseek2.expert_used_count": 4,
+    "deepseek2.expert_weights_norm": true,
+    "deepseek2.expert_weights_scale": 1.7999999523162842,
+    "deepseek2.feed_forward_length": 10240,
+    "deepseek2.leading_dense_block_count": 1,
+    "deepseek2.rope.dimension_count": 64,
+    "deepseek2.rope.freq_base": 1000000.0
+  },
+  "tensor_count": 844,
+  "representative_tensors": [
+    {
+      "name": "output.weight",
+      "dimensions": [
+        2048,
+        154880
+      ],
+      "ggml_type": 8
+    },
+    {
+      "name": "output_norm.weight",
+      "dimensions": [
+        2048
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "token_embd.weight",
+      "dimensions": [
+        2048,
+        154880
+      ],
+      "ggml_type": 8
+    },
+    {
+      "name": "blk.0.attn_k_b.weight",
+      "dimensions": [
+        192,
+        512,
+        20
+      ],
+      "ggml_type": 8
+    },
+    {
+      "name": "blk.0.attn_kv_a_mqa.weight",
+      "dimensions": [
+        2048,
+        576
+      ],
+      "ggml_type": 8
+    },
+    {
+      "name": "blk.0.attn_kv_a_norm.weight",
+      "dimensions": [
+        512
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.attn_norm.weight",
+      "dimensions": [
+        2048
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.attn_output.weight",
+      "dimensions": [
+        5120,
+        2048
+      ],
+      "ggml_type": 8
+    },
+    {
+      "name": "blk.0.attn_q_a.weight",
+      "dimensions": [
+        2048,
+        768
+      ],
+      "ggml_type": 8
+    },
+    {
+      "name": "blk.0.attn_q_a_norm.weight",
+      "dimensions": [
+        768
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.attn_q_b.weight",
+      "dimensions": [
+        768,
+        5120
+      ],
+      "ggml_type": 8
+    },
+    {
+      "name": "blk.0.attn_v_b.weight",
+      "dimensions": [
+        512,
+        256,
+        20
+      ],
+      "ggml_type": 8
+    },
+    {
+      "name": "blk.0.ffn_down.weight",
+      "dimensions": [
+        10240,
+        2048
+      ],
+      "ggml_type": 8
+    },
+    {
+      "name": "blk.0.ffn_gate.weight",
+      "dimensions": [
+        2048,
+        10240
+      ],
+      "ggml_type": 8
+    },
+    {
+      "name": "blk.0.ffn_norm.weight",
+      "dimensions": [
+        2048
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.ffn_up.weight",
+      "dimensions": [
+        2048,
+        10240
+      ],
+      "ggml_type": 8
+    }
+  ],
+  "runtime_revision": "0893ec98f5eafad36a43a72cd1c3723d72b0d03a",
+  "patch_sha256": "d4506c79258f07b66b0a720122a9efb2f874a478286dc2d1448b1e9c732f6860",
+  "reasons": [
+    "Attention state is not the supported KV/SWA interface: k,kv"
+  ],
+  "failures": [],
+  "profile_failures": [],
+  "reproduce": "python -m looplab explore glm-4-7-flash-q8-0-fea85ed2 --no-resume",
+  "next_steps": [
+    "Check the pinned native model loader and original graph before changing metadata or tensor names.",
+    "For an unrecognized but similar graph, extend runtime/auto_adapters.py and preserve its original layer body.",
+    "For recurrent, MLA, shared, or convolution state, implement and test the state snapshot/restore semantics explicitly.",
+    "For MoE, retain the first expert IDs and mixture weights through the shared routing helper.",
+    "For repeat-request instability, inspect cache clearing, graph reuse and backend numerical behavior with cache_prompt=false.",
+    "Rebuild, pass the independent native reference tests, then rerun this exact model and its K=2/3/4 probes.",
+    "Treat successful smoke tests as experimental compatibility, never proof of quality gains or full paper reproduction."
+  ]
+}

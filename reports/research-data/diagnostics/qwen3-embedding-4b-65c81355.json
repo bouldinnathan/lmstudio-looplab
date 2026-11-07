@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "model": {
+    "id": "qwen3-embedding-4b-65c81355",
+    "name": "qwen3-embedding-4b",
+    "architecture": "qwen3",
+    "layers": 36,
+    "size_bytes": 2496703776,
+    "header_sha256": "d61f72851b7a0cee066b5e0fdc22772545bdc7e8c6d09b43be6f28972c74260d",
+    "eligible": false,
+    "reasons": [
+      "Embedding model; the generation test suite does not apply"
+    ],
+    "mode": "block"
+  },
+  "started": 1793763832.5718234,
+  "status": "unsupported",
+  "suite": "looplab-diagnostic-v2",
+  "suite_sha256": "8b2d60609aa5dccdb5e0c5680251a16ec3bfec3417ffacd99656b426bf7f848b",
+  "quick": false,
+  "evaluation_policy": {
+    "temperature": 0,
+    "seed": 1729,
+    "max_tokens": 192,
+    "cache_prompt": false,
+    "reasoning_effort": "none",
+    "reasoning_budget_tokens": 0,
+    "add_generation_prompt": false,
+    "continue_final_message": "content",
+    "response_format": {
+      "type": "json_object"
+    },
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    },
+    "assistant_prefill": "{\"answer\":"
+  },
+  "paper_reproduction": false,
+  "recommended_profile": "baseline",
+  "profiles": [],
+  "limitations": [
+    "Quantized checkpoints and a small local diagnostic suite differ from the paper's BF16 benchmarks.",
+    "Held-out tasks are public diagnostics, not a general capability guarantee.",
+    "Prompt-prefix reuse is disabled by default; a cache probe is reported separately."
+  ],
+  "storage_before": {
+    "time": 1793763832.5720756,
+    "free_bytes": 520991645696,
+    "state_bytes": 195709,
+    "model_weight_bytes_written": 0
+  },
+  "reasons": [
+    "Embedding model; the generation test suite does not apply"
+  ]
+}

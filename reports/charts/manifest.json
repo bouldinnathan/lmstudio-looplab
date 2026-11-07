@@ -1,0 +1,19 @@
+{
+  "source": "../research-data/performance.csv",
+  "source_sha256": "16d623e5c2da1df6b6602f926daf114b0c38d3151f71f453112852d337f3200d",
+  "performance_rows": 54,
+  "matplotlib_version": "3.11.2",
+  "plot_script_sha256": "f23e6a11ffafaf6357ad6684a982e97af297d5237e2300477008bc2d98bae0e9",
+  "files": {
+    "qwen-quality-performance.svg": "3a08ded4e227e4691ad84b1c10116b730664cc26cec7a0072606d38b611bcda2",
+    "qwen-quality-performance.png": "da2efc584799b2f3facb27ea917d800bba5815ea2b4251091dc063ebd97790b6",
+    "diagnostic-selection-performance.svg": "2a180967db8d198a29b3e942fb60d39d7ba6903445c50c61604566510a7eebb5",
+    "diagnostic-selection-performance.png": "92641f8fe00f31e7aa61e0fe9721d55b7172b24dc9ebae656d585375ef73c8c7",
+    "diagnostic-holdout-performance.svg": "1773b8fc070ca44f55f974717108a8dc6327523974f7bbc89f044d37115f6ea1",
+    "diagnostic-holdout-performance.png": "978f80420eb954688e559ecdf81f40552a0306fc9c5dece87b1dc194ad52e7c2",
+    "qwen-quick-performance.svg": "6b4137cf5e447845c66d92fc22c82b1f67020eef28e967c236b7e082bbe38e3b",
+    "qwen-quick-performance.png": "89a218a678df441da49289661d3e2a82e166140f72d89f773030cce23893d85c",
+    "qwen-pilot-performance.svg": "bf0eb412207799f7416016562cc4700251901433a4ffb29669e6fc90afc7b98c",
+    "qwen-pilot-performance.png": "139442e83ae17c286fcf9e80de80ae92efc4abe8922509da9403df8351bad179"
+  }
+}

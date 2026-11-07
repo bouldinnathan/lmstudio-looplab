@@ -1,0 +1,124 @@
+{
+  "model_id": "lfm2-24b-8af5614d",
+  "architecture": "lfm2moe",
+  "status": "baseline_only",
+  "adapter": {
+    "source": "src/models/lfm2moe.cpp",
+    "reason": "No single standard graph constructor"
+  },
+  "metadata": {
+    "lfm2moe.attention.head_count": 32,
+    "lfm2moe.attention.key_length": 64,
+    "lfm2moe.attention.layer_norm_rms_epsilon": 9.999999747378752e-06,
+    "lfm2moe.attention.value_length": 64,
+    "lfm2moe.block_count": 40,
+    "lfm2moe.context_length": 32768,
+    "lfm2moe.embedding_length": 2048,
+    "lfm2moe.expert_count": 64,
+    "lfm2moe.expert_feed_forward_length": 1536,
+    "lfm2moe.expert_gating_func": 2,
+    "lfm2moe.expert_used_count": 4,
+    "lfm2moe.feed_forward_length": 11776,
+    "lfm2moe.leading_dense_block_count": 2,
+    "lfm2moe.rope.freq_base": 1000000.0,
+    "lfm2moe.shortconv.l_cache": 3,
+    "lfm2moe.vocab_size": 65536
+  },
+  "tensor_count": 428,
+  "representative_tensors": [
+    {
+      "name": "blk.0.attn_norm.weight",
+      "dimensions": [
+        2048
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.ffn_down.weight",
+      "dimensions": [
+        11776,
+        2048
+      ],
+      "ggml_type": 14
+    },
+    {
+      "name": "blk.0.ffn_gate.weight",
+      "dimensions": [
+        2048,
+        11776
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "blk.0.ffn_norm.weight",
+      "dimensions": [
+        2048
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.ffn_up.weight",
+      "dimensions": [
+        2048,
+        11776
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "blk.0.shortconv.conv.weight",
+      "dimensions": [
+        3,
+        2048
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.shortconv.in_proj.weight",
+      "dimensions": [
+        2048,
+        6144
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "blk.0.shortconv.out_proj.weight",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "token_embd.weight",
+      "dimensions": [
+        2048,
+        65536
+      ],
+      "ggml_type": 14
+    },
+    {
+      "name": "token_embd_norm.weight",
+      "dimensions": [
+        2048
+      ],
+      "ggml_type": 0
+    }
+  ],
+  "runtime_revision": "0893ec98f5eafad36a43a72cd1c3723d72b0d03a",
+  "patch_sha256": "d4506c79258f07b66b0a720122a9efb2f874a478286dc2d1448b1e9c732f6860",
+  "reasons": [
+    "No single standard graph constructor"
+  ],
+  "failures": [],
+  "profile_failures": [],
+  "reproduce": "python -m looplab explore lfm2-24b-8af5614d --no-resume",
+  "next_steps": [
+    "Check the pinned native model loader and original graph before changing metadata or tensor names.",
+    "For an unrecognized but similar graph, extend runtime/auto_adapters.py and preserve its original layer body.",
+    "For recurrent, MLA, shared, or convolution state, implement and test the state snapshot/restore semantics explicitly.",
+    "For MoE, retain the first expert IDs and mixture weights through the shared routing helper.",
+    "For repeat-request instability, inspect cache clearing, graph reuse and backend numerical behavior with cache_prompt=false.",
+    "Rebuild, pass the independent native reference tests, then rerun this exact model and its K=2/3/4 probes.",
+    "Treat successful smoke tests as experimental compatibility, never proof of quality gains or full paper reproduction."
+  ]
+}

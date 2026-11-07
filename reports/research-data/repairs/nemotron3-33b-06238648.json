@@ -1,0 +1,1288 @@
+{
+  "model_id": "nemotron3-33b-06238648",
+  "architecture": "nemotron_h_omni",
+  "status": "baseline_failed",
+  "adapter": {},
+  "metadata": {
+    "nemotron_h_omni.attention.head_count": 32,
+    "nemotron_h_omni.attention.key_length": 128,
+    "nemotron_h_omni.attention.layer_norm_epsilon": 9.999999747378752e-06,
+    "nemotron_h_omni.attention.layer_norm_rms_epsilon": 9.999999747378752e-06,
+    "nemotron_h_omni.attention.value_length": 128,
+    "nemotron_h_omni.audio.attention.head_count": 8,
+    "nemotron_h_omni.audio.attention.layer_norm_epsilon": 9.999999747378752e-06,
+    "nemotron_h_omni.audio.block_count": 24,
+    "nemotron_h_omni.audio.conv_kernel_size": 9,
+    "nemotron_h_omni.audio.embedding_length": 1024,
+    "nemotron_h_omni.audio.feed_forward_length": 4096,
+    "nemotron_h_omni.audio.num_mel_bins": 128,
+    "nemotron_h_omni.audio.projection_hidden_size": 4096,
+    "nemotron_h_omni.audio.sample_rate": 16000,
+    "nemotron_h_omni.audio.scale_input": false,
+    "nemotron_h_omni.audio.sound_token_id": 27,
+    "nemotron_h_omni.audio.subsampling_conv_channels": 256,
+    "nemotron_h_omni.audio.subsampling_conv_kernel_size": 3,
+    "nemotron_h_omni.audio.subsampling_conv_stride": 2,
+    "nemotron_h_omni.audio.subsampling_factor": 8,
+    "nemotron_h_omni.block_count": 52,
+    "nemotron_h_omni.context_length": 131072,
+    "nemotron_h_omni.embedding_length": 2688,
+    "nemotron_h_omni.expert_count": 128,
+    "nemotron_h_omni.expert_feed_forward_length": 1856,
+    "nemotron_h_omni.expert_group_count": 1,
+    "nemotron_h_omni.expert_group_used_count": 1,
+    "nemotron_h_omni.expert_shared_count": 1,
+    "nemotron_h_omni.expert_shared_feed_forward_length": 3712,
+    "nemotron_h_omni.expert_used_count": 6,
+    "nemotron_h_omni.expert_weights_norm": true,
+    "nemotron_h_omni.expert_weights_scale": 2.5,
+    "nemotron_h_omni.rope.dimension_count": 128,
+    "nemotron_h_omni.rope.freq_base": 10000.0,
+    "nemotron_h_omni.ssm.conv_kernel": 4,
+    "nemotron_h_omni.ssm.group_count": 8,
+    "nemotron_h_omni.ssm.inner_size": 4096,
+    "nemotron_h_omni.ssm.state_size": 128,
+    "nemotron_h_omni.ssm.time_step_rank": 64,
+    "nemotron_h_omni.vision.attention.head_count": 16,
+    "nemotron_h_omni.vision.attention.layer_norm_epsilon": 9.999999974752427e-07,
+    "nemotron_h_omni.vision.block_count": 32,
+    "nemotron_h_omni.vision.embedding_length": 1280,
+    "nemotron_h_omni.vision.feed_forward_length": 5120,
+    "nemotron_h_omni.vision.image_end_token_id": 20,
+    "nemotron_h_omni.vision.image_size": 512,
+    "nemotron_h_omni.vision.image_start_token_id": 19,
+    "nemotron_h_omni.vision.image_token_id": 18,
+    "nemotron_h_omni.vision.max_num_patches": 13312,
+    "nemotron_h_omni.vision.max_tiles": 12,
+    "nemotron_h_omni.vision.min_num_patches": 1024,
+    "nemotron_h_omni.vision.num_channels": 3,
+    "nemotron_h_omni.vision.patch_size": 16,
+    "nemotron_h_omni.vision.projector.scale_factor": 2,
+    "nemotron_h_omni.vision.use_thumbnail": true
+  },
+  "tensor_count": 1608,
+  "representative_tensors": [
+    {
+      "name": "blk.0.attn_norm.weight",
+      "dimensions": [
+        2688
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.ssm_a",
+      "dimensions": [
+        1,
+        64
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.ssm_conv1d.bias",
+      "dimensions": [
+        6144
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.ssm_conv1d.weight",
+      "dimensions": [
+        4,
+        6144
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.ssm_d",
+      "dimensions": [
+        1,
+        64
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.ssm_dt.bias",
+      "dimensions": [
+        64
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.ssm_in.weight",
+      "dimensions": [
+        2688,
+        10304
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "blk.0.ssm_norm.weight",
+      "dimensions": [
+        512,
+        8
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.ssm_out.weight",
+      "dimensions": [
+        4096,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "a.blk.0.attn_bias_u",
+      "dimensions": [
+        128,
+        8
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.0.attn_bias_v",
+      "dimensions": [
+        128,
+        8
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.0.attn_k.weight",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.0.attn_norm.bias",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.0.attn_norm.weight",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.0.attn_out.weight",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.0.attn_q.weight",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.0.attn_rel_k.weight",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.0.attn_v.weight",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.0.conv_bn.bias",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.0.conv_bn.running_mean",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.0.conv_bn.running_var",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.0.conv_bn.weight",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.0.conv_dw.weight",
+      "dimensions": [
+        9,
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.0.conv_norm.bias",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.0.conv_norm.weight",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.0.conv_pw1.weight",
+      "dimensions": [
+        1024,
+        2048
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.0.conv_pw2.weight",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.0.ffn1_down.weight",
+      "dimensions": [
+        4096,
+        1024
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.0.ffn1_norm.bias",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.0.ffn1_norm.weight",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.0.ffn1_up.weight",
+      "dimensions": [
+        1024,
+        4096
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.0.ffn2_down.weight",
+      "dimensions": [
+        4096,
+        1024
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.0.ffn2_norm.bias",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.0.ffn2_norm.weight",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.0.ffn2_up.weight",
+      "dimensions": [
+        1024,
+        4096
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.0.out_norm.bias",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.0.out_norm.weight",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.1.attn_bias_u",
+      "dimensions": [
+        128,
+        8
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.1.attn_bias_v",
+      "dimensions": [
+        128,
+        8
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.1.attn_k.weight",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.1.attn_norm.bias",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.1.attn_norm.weight",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.1.attn_out.weight",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.1.attn_q.weight",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.1.attn_rel_k.weight",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.1.attn_v.weight",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.1.conv_bn.bias",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.1.conv_bn.running_mean",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.1.conv_bn.running_var",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.1.conv_bn.weight",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.1.conv_dw.weight",
+      "dimensions": [
+        9,
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.1.conv_norm.bias",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.1.conv_norm.weight",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.1.conv_pw1.weight",
+      "dimensions": [
+        1024,
+        2048
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.1.conv_pw2.weight",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.1.ffn1_down.weight",
+      "dimensions": [
+        4096,
+        1024
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.1.ffn1_norm.bias",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.1.ffn1_norm.weight",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.1.ffn1_up.weight",
+      "dimensions": [
+        1024,
+        4096
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.1.ffn2_down.weight",
+      "dimensions": [
+        4096,
+        1024
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.1.ffn2_norm.bias",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.1.ffn2_norm.weight",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.1.ffn2_up.weight",
+      "dimensions": [
+        1024,
+        4096
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.1.out_norm.bias",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.1.out_norm.weight",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.10.attn_bias_u",
+      "dimensions": [
+        128,
+        8
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.10.attn_bias_v",
+      "dimensions": [
+        128,
+        8
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.10.attn_k.weight",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.10.attn_norm.bias",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.10.attn_norm.weight",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.10.attn_out.weight",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.10.attn_q.weight",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.10.attn_rel_k.weight",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.10.attn_v.weight",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.10.conv_bn.bias",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.10.conv_bn.running_mean",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.10.conv_bn.running_var",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.10.conv_bn.weight",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.10.conv_dw.weight",
+      "dimensions": [
+        9,
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.10.conv_norm.bias",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.10.conv_norm.weight",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.10.conv_pw1.weight",
+      "dimensions": [
+        1024,
+        2048
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.10.conv_pw2.weight",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.10.ffn1_down.weight",
+      "dimensions": [
+        4096,
+        1024
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.10.ffn1_norm.bias",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.10.ffn1_norm.weight",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.10.ffn1_up.weight",
+      "dimensions": [
+        1024,
+        4096
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.10.ffn2_down.weight",
+      "dimensions": [
+        4096,
+        1024
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.10.ffn2_norm.bias",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.10.ffn2_norm.weight",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.10.ffn2_up.weight",
+      "dimensions": [
+        1024,
+        4096
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.10.out_norm.bias",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.10.out_norm.weight",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.11.attn_bias_u",
+      "dimensions": [
+        128,
+        8
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.11.attn_bias_v",
+      "dimensions": [
+        128,
+        8
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.11.attn_k.weight",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.11.attn_norm.bias",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.11.attn_norm.weight",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.11.attn_out.weight",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.11.attn_q.weight",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.11.attn_rel_k.weight",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.11.attn_v.weight",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.11.conv_bn.bias",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.11.conv_bn.running_mean",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.11.conv_bn.running_var",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.11.conv_bn.weight",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.11.conv_dw.weight",
+      "dimensions": [
+        9,
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.11.conv_norm.bias",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.11.conv_norm.weight",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.11.conv_pw1.weight",
+      "dimensions": [
+        1024,
+        2048
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.11.conv_pw2.weight",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.11.ffn1_down.weight",
+      "dimensions": [
+        4096,
+        1024
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.11.ffn1_norm.bias",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.11.ffn1_norm.weight",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.11.ffn1_up.weight",
+      "dimensions": [
+        1024,
+        4096
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.11.ffn2_down.weight",
+      "dimensions": [
+        4096,
+        1024
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.11.ffn2_norm.bias",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.11.ffn2_norm.weight",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.11.ffn2_up.weight",
+      "dimensions": [
+        1024,
+        4096
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.11.out_norm.bias",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.11.out_norm.weight",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.12.attn_bias_u",
+      "dimensions": [
+        128,
+        8
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.12.attn_bias_v",
+      "dimensions": [
+        128,
+        8
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.12.attn_k.weight",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.12.attn_norm.bias",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.12.attn_norm.weight",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.12.attn_out.weight",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.12.attn_q.weight",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.12.attn_rel_k.weight",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.12.attn_v.weight",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.12.conv_bn.bias",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.12.conv_bn.running_mean",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.12.conv_bn.running_var",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.12.conv_bn.weight",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.12.conv_dw.weight",
+      "dimensions": [
+        9,
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.12.conv_norm.bias",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.12.conv_norm.weight",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.12.conv_pw1.weight",
+      "dimensions": [
+        1024,
+        2048
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.12.conv_pw2.weight",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.12.ffn1_down.weight",
+      "dimensions": [
+        4096,
+        1024
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.12.ffn1_norm.bias",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.12.ffn1_norm.weight",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.12.ffn1_up.weight",
+      "dimensions": [
+        1024,
+        4096
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.12.ffn2_down.weight",
+      "dimensions": [
+        4096,
+        1024
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.12.ffn2_norm.bias",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.12.ffn2_norm.weight",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.12.ffn2_up.weight",
+      "dimensions": [
+        1024,
+        4096
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.12.out_norm.bias",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.12.out_norm.weight",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.13.attn_bias_u",
+      "dimensions": [
+        128,
+        8
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.13.attn_bias_v",
+      "dimensions": [
+        128,
+        8
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.13.attn_k.weight",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.13.attn_norm.bias",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.13.attn_norm.weight",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.13.attn_out.weight",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.13.attn_q.weight",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.13.attn_rel_k.weight",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.13.attn_v.weight",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "a.blk.13.conv_bn.bias",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "a.blk.13.conv_bn.running_mean",
+      "dimensions": [
+        1024
+      ],
+      "ggml_type": 0
+    }
+  ],
+  "runtime_revision": "0893ec98f5eafad36a43a72cd1c3723d72b0d03a",
+  "patch_sha256": "d4506c79258f07b66b0a720122a9efb2f874a478286dc2d1448b1e9c732f6860",
+  "reasons": [
+    "No generated native adapter for nemotron_h_omni"
+  ],
+  "failures": [
+    "RuntimeError: Runtime failed to start; inspect <home><path>/nemotron3-33b-06238648-baseline.log\n0.00.067.371 E llama_model_load: error loading model: unknown model architecture: 'nemotron_h_omni'\n0.00.067.377 E llama_model_load_from_file_impl: failed to load model\n0.00.067.411 E common_fit_params: encountered an error while trying to fit params to free device memory: failed to load model\n0.00.099.270 E llama_model_load: error loading model: unknown model architecture: 'nemotron_h_omni'\n0.00.099.273 E llama_model_load_from_file_impl: failed to load model\n0.00.099.279 E cmn  common_init_: failed to load model '<model.gguf>'\n0.00.099.284 E srv    load_model: failed to load model, '<model.gguf>'\n0.00.099.805 E srv  server_run_i: exiting due to model loading error"
+  ],
+  "profile_failures": [],
+  "reproduce": "python -m looplab explore nemotron3-33b-06238648 --no-resume",
+  "next_steps": [
+    "Check the pinned native model loader and original graph before changing metadata or tensor names.",
+    "For an unrecognized but similar graph, extend runtime/auto_adapters.py and preserve its original layer body.",
+    "For recurrent, MLA, shared, or convolution state, implement and test the state snapshot/restore semantics explicitly.",
+    "For MoE, retain the first expert IDs and mixture weights through the shared routing helper.",
+    "For repeat-request instability, inspect cache clearing, graph reuse and backend numerical behavior with cache_prompt=false.",
+    "Rebuild, pass the independent native reference tests, then rerun this exact model and its K=2/3/4 probes.",
+    "Treat successful smoke tests as experimental compatibility, never proof of quality gains or full paper reproduction."
+  ]
+}

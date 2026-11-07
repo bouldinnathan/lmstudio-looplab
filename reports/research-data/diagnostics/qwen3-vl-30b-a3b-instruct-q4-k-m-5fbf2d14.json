@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "model": {
+    "id": "qwen3-vl-30b-a3b-instruct-q4-k-m-5fbf2d14",
+    "name": "qwen3-vl-30b-a3b-instruct-q4_K_M",
+    "architecture": "qwen3vlmoe",
+    "layers": 48,
+    "size_bytes": 19595386816,
+    "header_sha256": "4083c611840d7c2aeab26123786f29e6377b179c85afa6ade795a19eb0eb9802",
+    "eligible": false,
+    "reasons": [
+      "No validated native adapter for qwen3vlmoe",
+      "This MoE variant has no routing-reuse adapter"
+    ],
+    "mode": "block"
+  },
+  "started": 1793764674.51029,
+  "status": "unsupported",
+  "suite": "looplab-diagnostic-v2",
+  "suite_sha256": "8b2d60609aa5dccdb5e0c5680251a16ec3bfec3417ffacd99656b426bf7f848b",
+  "quick": false,
+  "evaluation_policy": {
+    "temperature": 0,
+    "seed": 1729,
+    "max_tokens": 192,
+    "cache_prompt": false,
+    "reasoning_effort": "none",
+    "reasoning_budget_tokens": 0,
+    "add_generation_prompt": false,
+    "continue_final_message": "content",
+    "response_format": {
+      "type": "json_object"
+    },
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    },
+    "assistant_prefill": "{\"answer\":"
+  },
+  "paper_reproduction": false,
+  "recommended_profile": "baseline",
+  "profiles": [],
+  "limitations": [
+    "Quantized checkpoints and a small local diagnostic suite differ from the paper's BF16 benchmarks.",
+    "Held-out tasks are public diagnostics, not a general capability guarantee.",
+    "Prompt-prefix reuse is disabled by default; a cache probe is reported separately."
+  ],
+  "storage_before": {
+    "time": 1793764674.5105908,
+    "free_bytes": 520989089792,
+    "state_bytes": 608722,
+    "model_weight_bytes_written": 0
+  },
+  "reasons": [
+    "No validated native adapter for qwen3vlmoe",
+    "This MoE variant has no routing-reuse adapter"
+  ]
+}

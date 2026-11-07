@@ -1,0 +1,1217 @@
+{
+  "schema": 1,
+  "counts": {
+    "qwen-lm-eval-v1": 1600,
+    "qwen-lm-eval-pilot": 8,
+    "diagnostics_files": 54,
+    "exploration_files": 54,
+    "repairs_files": 33,
+    "diagnostic_answers": 312
+  },
+  "redactions": [
+    {
+      "file": "qwen-lm-eval-v1/deepcoder-14b-ca299227/baseline/harness.json",
+      "json_pointer": "/configs/bbh_cot_zeroshot_boolean_expressions/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-v1/deepcoder-14b-ca299227/baseline/harness.json",
+      "json_pointer": "/configs/bbh_cot_zeroshot_logical_deduction_five_objects/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-v1/deepcoder-14b-ca299227/baseline/harness.json",
+      "json_pointer": "/configs/gsm8k_cot_zeroshot/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-v1/deepcoder-14b-ca299227/loop2/harness.json",
+      "json_pointer": "/configs/bbh_cot_zeroshot_boolean_expressions/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-v1/deepcoder-14b-ca299227/loop2/harness.json",
+      "json_pointer": "/configs/bbh_cot_zeroshot_logical_deduction_five_objects/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-v1/deepcoder-14b-ca299227/loop2/harness.json",
+      "json_pointer": "/configs/gsm8k_cot_zeroshot/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-v1/deepcoder-14b-ca299227/loop3/harness.json",
+      "json_pointer": "/configs/bbh_cot_zeroshot_boolean_expressions/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-v1/deepcoder-14b-ca299227/loop3/harness.json",
+      "json_pointer": "/configs/bbh_cot_zeroshot_logical_deduction_five_objects/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-v1/deepcoder-14b-ca299227/loop3/harness.json",
+      "json_pointer": "/configs/gsm8k_cot_zeroshot/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-v1/deepcoder-14b-ca299227/loop4/harness.json",
+      "json_pointer": "/configs/bbh_cot_zeroshot_boolean_expressions/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-v1/deepcoder-14b-ca299227/loop4/harness.json",
+      "json_pointer": "/configs/bbh_cot_zeroshot_logical_deduction_five_objects/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-v1/deepcoder-14b-ca299227/loop4/harness.json",
+      "json_pointer": "/configs/gsm8k_cot_zeroshot/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-v1/deepseek-r1-32b-608cec8c/baseline/harness.json",
+      "json_pointer": "/configs/bbh_cot_zeroshot_boolean_expressions/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-v1/deepseek-r1-32b-608cec8c/baseline/harness.json",
+      "json_pointer": "/configs/bbh_cot_zeroshot_logical_deduction_five_objects/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-v1/deepseek-r1-32b-608cec8c/baseline/harness.json",
+      "json_pointer": "/configs/gsm8k_cot_zeroshot/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-v1/deepseek-r1-32b-608cec8c/loop2/harness.json",
+      "json_pointer": "/configs/bbh_cot_zeroshot_boolean_expressions/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-v1/deepseek-r1-32b-608cec8c/loop2/harness.json",
+      "json_pointer": "/configs/bbh_cot_zeroshot_logical_deduction_five_objects/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-v1/deepseek-r1-32b-608cec8c/loop2/harness.json",
+      "json_pointer": "/configs/gsm8k_cot_zeroshot/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-v1/deepseek-r1-32b-608cec8c/loop3/harness.json",
+      "json_pointer": "/configs/bbh_cot_zeroshot_boolean_expressions/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-v1/deepseek-r1-32b-608cec8c/loop3/harness.json",
+      "json_pointer": "/configs/bbh_cot_zeroshot_logical_deduction_five_objects/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-v1/deepseek-r1-32b-608cec8c/loop3/harness.json",
+      "json_pointer": "/configs/gsm8k_cot_zeroshot/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-v1/deepseek-r1-32b-608cec8c/loop4/harness.json",
+      "json_pointer": "/configs/bbh_cot_zeroshot_boolean_expressions/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-v1/deepseek-r1-32b-608cec8c/loop4/harness.json",
+      "json_pointer": "/configs/bbh_cot_zeroshot_logical_deduction_five_objects/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-v1/deepseek-r1-32b-608cec8c/loop4/harness.json",
+      "json_pointer": "/configs/gsm8k_cot_zeroshot/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-v1/qwen3-coder-30b-0fd305b1/baseline/harness.json",
+      "json_pointer": "/configs/bbh_cot_zeroshot_boolean_expressions/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-v1/qwen3-coder-30b-0fd305b1/baseline/harness.json",
+      "json_pointer": "/configs/bbh_cot_zeroshot_logical_deduction_five_objects/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-v1/qwen3-coder-30b-0fd305b1/baseline/harness.json",
+      "json_pointer": "/configs/gsm8k_cot_zeroshot/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-v1/qwen3-coder-30b-0fd305b1/loop2/harness.json",
+      "json_pointer": "/configs/bbh_cot_zeroshot_boolean_expressions/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-v1/qwen3-coder-30b-0fd305b1/loop2/harness.json",
+      "json_pointer": "/configs/bbh_cot_zeroshot_logical_deduction_five_objects/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-v1/qwen3-coder-30b-0fd305b1/loop2/harness.json",
+      "json_pointer": "/configs/gsm8k_cot_zeroshot/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-v1/qwen3-coder-30b-0fd305b1/loop3/harness.json",
+      "json_pointer": "/configs/bbh_cot_zeroshot_boolean_expressions/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-v1/qwen3-coder-30b-0fd305b1/loop3/harness.json",
+      "json_pointer": "/configs/bbh_cot_zeroshot_logical_deduction_five_objects/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-v1/qwen3-coder-30b-0fd305b1/loop3/harness.json",
+      "json_pointer": "/configs/gsm8k_cot_zeroshot/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-v1/qwen3-coder-30b-0fd305b1/loop4/harness.json",
+      "json_pointer": "/configs/bbh_cot_zeroshot_boolean_expressions/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-v1/qwen3-coder-30b-0fd305b1/loop4/harness.json",
+      "json_pointer": "/configs/bbh_cot_zeroshot_logical_deduction_five_objects/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-v1/qwen3-coder-30b-0fd305b1/loop4/harness.json",
+      "json_pointer": "/configs/gsm8k_cot_zeroshot/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-v1/reader-lm-1-5b-faf34a76/baseline/harness.json",
+      "json_pointer": "/configs/bbh_cot_zeroshot_boolean_expressions/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-v1/reader-lm-1-5b-faf34a76/baseline/harness.json",
+      "json_pointer": "/configs/bbh_cot_zeroshot_logical_deduction_five_objects/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-v1/reader-lm-1-5b-faf34a76/baseline/harness.json",
+      "json_pointer": "/configs/gsm8k_cot_zeroshot/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-v1/reader-lm-1-5b-faf34a76/loop2/harness.json",
+      "json_pointer": "/configs/bbh_cot_zeroshot_boolean_expressions/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-v1/reader-lm-1-5b-faf34a76/loop2/harness.json",
+      "json_pointer": "/configs/bbh_cot_zeroshot_logical_deduction_five_objects/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-v1/reader-lm-1-5b-faf34a76/loop2/harness.json",
+      "json_pointer": "/configs/gsm8k_cot_zeroshot/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-v1/reader-lm-1-5b-faf34a76/loop3/harness.json",
+      "json_pointer": "/configs/bbh_cot_zeroshot_boolean_expressions/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-v1/reader-lm-1-5b-faf34a76/loop3/harness.json",
+      "json_pointer": "/configs/bbh_cot_zeroshot_logical_deduction_five_objects/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-v1/reader-lm-1-5b-faf34a76/loop3/harness.json",
+      "json_pointer": "/configs/gsm8k_cot_zeroshot/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-v1/reader-lm-1-5b-faf34a76/loop4/harness.json",
+      "json_pointer": "/configs/bbh_cot_zeroshot_boolean_expressions/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-v1/reader-lm-1-5b-faf34a76/loop4/harness.json",
+      "json_pointer": "/configs/bbh_cot_zeroshot_logical_deduction_five_objects/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-v1/reader-lm-1-5b-faf34a76/loop4/harness.json",
+      "json_pointer": "/configs/gsm8k_cot_zeroshot/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-pilot/qwen3-coder-30b-0fd305b1/baseline/harness.json",
+      "json_pointer": "/configs/bbh_cot_zeroshot_boolean_expressions/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-pilot/qwen3-coder-30b-0fd305b1/baseline/harness.json",
+      "json_pointer": "/configs/bbh_cot_zeroshot_logical_deduction_five_objects/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-pilot/qwen3-coder-30b-0fd305b1/baseline/harness.json",
+      "json_pointer": "/configs/gsm8k_cot_zeroshot/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-pilot/qwen3-coder-30b-0fd305b1/loop2/harness.json",
+      "json_pointer": "/configs/bbh_cot_zeroshot_boolean_expressions/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-pilot/qwen3-coder-30b-0fd305b1/loop2/harness.json",
+      "json_pointer": "/configs/bbh_cot_zeroshot_logical_deduction_five_objects/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    },
+    {
+      "file": "qwen-lm-eval-pilot/qwen3-coder-30b-0fd305b1/loop2/harness.json",
+      "json_pointer": "/configs/gsm8k_cot_zeroshot/metadata/config_source",
+      "change": "Removed local installation directory; kept package-relative task path."
+    }
+  ],
+  "files": {
+    "additional/precision-recovery.json": {
+      "sha256": "9f4191bc2eea3ce4a6826f11eba3fe0a91f8c402ab441d90cd05cd9a4b213b67",
+      "bytes": 78995
+    },
+    "diagnostic-cases.json": {
+      "sha256": "2aa6bcdce718b5eb5b024239ef774722d8407d0b84fdcb52e940ce92661b9722",
+      "bytes": 4507
+    },
+    "diagnostics/bespoke-minicheck-latest-319d66d3.json": {
+      "sha256": "dccaf69b4e5b7b44b99ec6b1f7f682cd9b7d51d1169e964730943f493bdd17a9",
+      "bytes": 1648
+    },
+    "diagnostics/bge-m3-latest-5b56cc03.json": {
+      "sha256": "4a5230005c828588eeeb98dd432a501f192a8bebe59f727411f8e62ae19acc31",
+      "bytes": 1743
+    },
+    "diagnostics/command-r-35b-ccae6f9d.json": {
+      "sha256": "949bb5cfe333382ec5b3e376ca3d8b99dddcb50b0b3b499f7bd0350d129a7ac2",
+      "bytes": 1627
+    },
+    "diagnostics/command-r-plus-latest-dedf06e5.json": {
+      "sha256": "f56baa673e169411ea46b0dfe95c3f0917dad6a4b75420c1c4e68906ba16f836",
+      "bytes": 1731
+    },
+    "diagnostics/deepcoder-14b-ca299227.json": {
+      "sha256": "6a7441a0345ec1a9129d480a0a26245bd69b50d6b9ecef5625a8536c59fe7d46",
+      "bytes": 61043
+    },
+    "diagnostics/deepcoder-14b-looped-2x-mid4-43ed5d57.json": {
+      "sha256": "9c706e7c952577359babe7c958105d7f08791f4da42019ab6ff8680847c207a9",
+      "bytes": 1697
+    },
+    "diagnostics/deepseek-ocr-3b-fee40f7c.json": {
+      "sha256": "aab5bab00b0b86899dfdf5e7af919022fcb0c9e885e189a499bc171e54c3352b",
+      "bytes": 1743
+    },
+    "diagnostics/deepseek-r1-32b-608cec8c.json": {
+      "sha256": "a5d24c5af5d14722bcbda4b5cc18765674205c454c9e86d2f45a0170cf122a2e",
+      "bytes": 61319
+    },
+    "diagnostics/devstral-24b-3d18ea49.json": {
+      "sha256": "ace5734d4e82027877ac89914f44d238928b6423de84fad16f776b61d977d90e",
+      "bytes": 60514
+    },
+    "diagnostics/devstral-24b-looped-2x-mid4-c7193c24.json": {
+      "sha256": "c3e61cb0309c2caebc677efc349fa799003f9e8041f37eb8ed762dea0f259489",
+      "bytes": 1697
+    },
+    "diagnostics/devstral-small-2-24b-10160cb8.json": {
+      "sha256": "365906349777f46043dcdf89f7eec236e63e63ae825f381349ec30bacc51fd89",
+      "bytes": 1636
+    },
+    "diagnostics/embeddinggemma-latest-209f73d9.json": {
+      "sha256": "0da2114dbb876c376ac1f0619b64bf6b0c4ae15d4d630bc09fb89aaae2bc6dcd",
+      "bytes": 1889
+    },
+    "diagnostics/gemma4-12b-28bf45b0.json": {
+      "sha256": "0ec3c38d872510f934e4490dd74d208e8f0efe0ade4d7aa2b2cbdd13ff918ba0",
+      "bytes": 1726
+    },
+    "diagnostics/gemma4-12b-f9d28dfc.json": {
+      "sha256": "d6072e4dfe286a7a9aa4f5d4073c21c1e439229e89d5076987b67f673f4dec00",
+      "bytes": 1736
+    },
+    "diagnostics/gemma4-26b-e4a5da4a.json": {
+      "sha256": "53981047edc6320b8b7a583fbd61c8c314d2599a4cdc3a1fa34b532fc15fbd94",
+      "bytes": 1846
+    },
+    "diagnostics/gemma4-31b-60c73a1b.json": {
+      "sha256": "b7ad0ca2a31b928e2d2523dedba0d49e161d7be946da029ef08a60547369d418",
+      "bytes": 1736
+    },
+    "diagnostics/glm-4-7-flash-q4-k-m-6c142648.json": {
+      "sha256": "0a79f330b52312fa747d6316ddfe7c15f5207fe6ebd6ce707ac34d5004ae8dc6",
+      "bytes": 1755
+    },
+    "diagnostics/glm-4-7-flash-q8-0-fea85ed2.json": {
+      "sha256": "e7a5465a10632dac8c1e59359707da032e8b8144f138476b1daa5614171ae6ac",
+      "bytes": 1743
+    },
+    "diagnostics/glm-ocr-latest-f9fed363.json": {
+      "sha256": "5917ad1a314c05db6b932f8a22ca66436682672b63e8a96446d46bc80b9848ac",
+      "bytes": 1617
+    },
+    "diagnostics/gpt-oss-120b-5fd05fd9.json": {
+      "sha256": "94f36c423f327112be02514d0f3ee5badd672814fa875e4c5242352979cd60c1",
+      "bytes": 1940
+    },
+    "diagnostics/gpt-oss-120b-abliterated-latest-39fc8033.json": {
+      "sha256": "d34fd074ed5e46d6a2df9cab3bf31e1c758e6ce034b0ba71cdd3dc21bbf7868a",
+      "bytes": 1981
+    },
+    "diagnostics/gpt-oss-20b-8a0fa271.json": {
+      "sha256": "d8841b3e42cf55058047dff3969f0162dc72825bd4714c6ed779bcdc4a6693be",
+      "bytes": 1846
+    },
+    "diagnostics/granite4-1-30b-e82a09f0.json": {
+      "sha256": "44347804875618d1c1f44138df7276d90f5a9caa5ab289689a026a8afbe038e6",
+      "bytes": 1622
+    },
+    "diagnostics/granite4-1-3b-72064317.json": {
+      "sha256": "67ac375a12e2c3cdd4a2979d6f0d7cc2fad9cc24382f5038d53dd10f6ae8153c",
+      "bytes": 1620
+    },
+    "diagnostics/granite4-1-guardian-8b-q4-k-m-9b16f68b.json": {
+      "sha256": "5dfe995812f49c89cbd8f6a1764cca15a152d10e5e117983b6d0b4bb221f52a2",
+      "bytes": 1652
+    },
+    "diagnostics/kimi-k2-7-code-c4d34eee.json": {
+      "sha256": "b3b5bc44d002a50cccf4f604166980b1a35c4223f22c62f00f343e673319a608",
+      "bytes": 1828
+    },
+    "diagnostics/laguna-xs-2-1-q4-k-m-42838490.json": {
+      "sha256": "ab76d515cf43b9954b190526bcaedcce0e0216d7d238f61c9aa06b2147dec7ee",
+      "bytes": 1866
+    },
+    "diagnostics/lfm2-24b-8af5614d.json": {
+      "sha256": "e1c7f3c3d9f76a774f9aacbc63ecf31a50004f5d42e4289adffe2df97c88c442",
+      "bytes": 1719
+    },
+    "diagnostics/llama4-scout-b958d2fd.json": {
+      "sha256": "70a91b70d034138347b8f5ca14a4ed1b7774b593c9c8cb62c8264fabec37a6c2",
+      "bytes": 1814
+    },
+    "diagnostics/ministral-3-14b-73a245ca.json": {
+      "sha256": "537c7e9309529b86bb29c19120235810a4d223cb549cd290c3901ff5a2bf097c",
+      "bytes": 1627
+    },
+    "diagnostics/muse-glimmer-30b-0ae8d41f.json": {
+      "sha256": "7acd975ef49ffa8af3d592028b5baa4b5df30789983ced59e3f653dacce31ad7",
+      "bytes": 1768
+    },
+    "diagnostics/muse-glimmer-30b-82921179.json": {
+      "sha256": "65dedb8983a2d668835ac59fe272dfd056568074eb4426f42e151190deebee19",
+      "bytes": 1739
+    },
+    "diagnostics/nemotron-3-5-lightning-30b-2ebf402b.json": {
+      "sha256": "1ca6b2f830ed3cad04b1268074de626d894ffc5d3f9b5163ee9e426137a2cf71",
+      "bytes": 1776
+    },
+    "diagnostics/nemotron-3-super-120b-261c59d7.json": {
+      "sha256": "c795f2d9ef473af42055ce8eda7e89cb6a48e83d58b963451a4e8a16a831f30e",
+      "bytes": 1855
+    },
+    "diagnostics/nemotron3-33b-06238648.json": {
+      "sha256": "0be0175d001705567ba87395c26effd29bad20183885f1ddce120ceeb737d505",
+      "bytes": 1753
+    },
+    "diagnostics/north-mini-code-1-0-q4-k-m-898ef3fc.json": {
+      "sha256": "3aa13ef4581cbe40e007c6d5af62bb9c83bae92b4bfb3232a7784779a1cab6a4",
+      "bytes": 1890
+    },
+    "diagnostics/olmo-3-1-32b-think-5fed6048.json": {
+      "sha256": "3074bc4656c49d55efb433e740deb454f6743dc9a5c8af5ca6cde7d13d0a32d5",
+      "bytes": 1751
+    },
+    "diagnostics/ornith-35b-7a025983.json": {
+      "sha256": "3bd9f907e676ce0863c2b8e998b4d14dc4b5f087e7e0d11e329e0bb1aa1a2d17",
+      "bytes": 1729
+    },
+    "diagnostics/ornith-9b-3a69c83d.json": {
+      "sha256": "5b65737cc98b0e06d8cefc3410bac73be50007c836f82d2fa210d2384c6d0ed6",
+      "bytes": 1607
+    },
+    "diagnostics/phi4-reasoning-plus-1b770441.json": {
+      "sha256": "67d66382a350147f8a5b3d626177c6c3df3ab0b49585779dc55604f2e1c3c566",
+      "bytes": 1623
+    },
+    "diagnostics/qwen2-5vl-72b-e735731b.json": {
+      "sha256": "ded00cd5da4214df49035459211f8822aacd0856c4c82c33282b7ca4a44789b7",
+      "bytes": 1714
+    },
+    "diagnostics/qwen3-5-122b-uncensored-q4-k-p-c2e9702c.json": {
+      "sha256": "f6fd7556e994e8a4b964e9a314875967b212e49bb90ec63d736de8e0ce2abe40",
+      "bytes": 1767
+    },
+    "diagnostics/qwen3-5-122b-uncensored-q4-k-p-e906fcaa.json": {
+      "sha256": "90ea493c95d0f0a1fbfceb34e8b7a94197d7210142306e738696639b8e95a90e",
+      "bytes": 1858
+    },
+    "diagnostics/qwen3-5-35b-dee6d80d.json": {
+      "sha256": "485b1b1ebee351f98b2984d2b47422d570e31dbad5ca59781817feda8ebaed58",
+      "bytes": 1731
+    },
+    "diagnostics/qwen3-5-9b-968fd469.json": {
+      "sha256": "c3a1f214883f66c89810539e92ffb4bb519be920d90d288416d6a0862ee39e0b",
+      "bytes": 1610
+    },
+    "diagnostics/qwen3-6-35b-a3b-q4-k-m-edb2f228.json": {
+      "sha256": "86a6bb130af818114a124940a3a674d92b68e3efedb4a6cc1697181338454ccb",
+      "bytes": 1752
+    },
+    "diagnostics/qwen3-coder-30b-0fd305b1.json": {
+      "sha256": "cac702f7eb26f1bb8e7044baca1b03d5d56574dd36447d2a79d0b1618eafec5f",
+      "bytes": 92691
+    },
+    "diagnostics/qwen3-coder-30b-looped-2x-mid4-5fd0e7b5.json": {
+      "sha256": "991425b9ae32f9780607c3934561219df1dda3121fd4668d7f8890ecf0dab0cb",
+      "bytes": 1705
+    },
+    "diagnostics/qwen3-coder-next-q4-k-m-ceaa2610.json": {
+      "sha256": "e3bd3a8a4f16d5788a75e96a6312e7f2b5e5d26121527ebca99fb44b3bbf585c",
+      "bytes": 1845
+    },
+    "diagnostics/qwen3-embedding-4b-65c81355.json": {
+      "sha256": "050b9eba4acf2252ec3c2a7498cfb1d2c0a83b5f3150c52fc15f131ab52785c2",
+      "bytes": 1664
+    },
+    "diagnostics/qwen3-next-80b-a3b-thinking-3aeeae3c.json": {
+      "sha256": "de6ab53bd80cea8c22de49a98cad90b281998f6b4716dea3a3fda92a318e4fee",
+      "bytes": 1853
+    },
+    "diagnostics/qwen3-vl-30b-a3b-instruct-q4-k-m-5fbf2d14.json": {
+      "sha256": "89502ff4b04851c34cca5630c607b2c0b0f4cda72f8a3049d280c490c9980c74",
+      "bytes": 1774
+    },
+    "diagnostics/reader-lm-1-5b-faf34a76.json": {
+      "sha256": "771cef4e098e1297e4e0b46ed0dc8f3ed6ad01a6028ff1c1f456df51f4a10cd7",
+      "bytes": 67227
+    },
+    "diagnostics/translategemma-12b-6c79e0fa.json": {
+      "sha256": "70044bd5cf5d91d0f5da7d26204ddd71666b51deace13de7a004b064a50ea177",
+      "bytes": 1752
+    },
+    "exploration/bespoke-minicheck-latest-319d66d3.json": {
+      "sha256": "48d41e865e63f4c61f2336f0fca95445897aef117748b1f2087cac6c982b9d37",
+      "bytes": 57304
+    },
+    "exploration/bge-m3-latest-5b56cc03.json": {
+      "sha256": "1a9bebf98f981dfa717660be66af883b8258ca1602a343663d1324c1c6275ee2",
+      "bytes": 55510
+    },
+    "exploration/command-r-35b-ccae6f9d.json": {
+      "sha256": "9005af1c460e2ab5f173a84f6a7d75028288d6cd2de60b122679c06b3d1aab22",
+      "bytes": 57259
+    },
+    "exploration/command-r-plus-latest-dedf06e5.json": {
+      "sha256": "d02849553765a46e5765947c45a195ab9d7e75c9bf3cc0c3077a768f3a3413f5",
+      "bytes": 57367
+    },
+    "exploration/deepcoder-14b-ca299227.json": {
+      "sha256": "8d91588363deecfa898de096f394b83d517be4874639f1fb35f2be95ef276d28",
+      "bytes": 57308
+    },
+    "exploration/deepcoder-14b-looped-2x-mid4-43ed5d57.json": {
+      "sha256": "1c5688aaae4714d234c27144633842625dcc3fdbe6c5a281292be990926396b0",
+      "bytes": 59948
+    },
+    "exploration/deepseek-ocr-3b-fee40f7c.json": {
+      "sha256": "a3cc80f8706c15e082af74a95048a71cda8bc3be1b16f6ab9c41d80ba528b0aa",
+      "bytes": 81001
+    },
+    "exploration/deepseek-r1-32b-608cec8c.json": {
+      "sha256": "0ea33a6bbed2b526612c87aca30672083e3d2a33f83e0999e08dc805d52a1138",
+      "bytes": 57315
+    },
+    "exploration/devstral-24b-3d18ea49.json": {
+      "sha256": "44d47afcb35f5e86f96c6f750f7f1d8b1856409a133d7a8776d11c498bd27812",
+      "bytes": 57321
+    },
+    "exploration/devstral-24b-looped-2x-mid4-c7193c24.json": {
+      "sha256": "2f852611d0147c24467310321abbc831038f0a0625b16bc769b9d04ad0db3fd3",
+      "bytes": 59761
+    },
+    "exploration/devstral-small-2-24b-10160cb8.json": {
+      "sha256": "a4e656bb6654e77916f624453d147531e0978cf6d259d84e2330652f55037ed6",
+      "bytes": 83618
+    },
+    "exploration/embeddinggemma-latest-209f73d9.json": {
+      "sha256": "78b9e9437c809f2ff4566395990369c6cc9f139fb61149939fcbf68afdd97eb9",
+      "bytes": 61996
+    },
+    "exploration/gemma4-12b-28bf45b0.json": {
+      "sha256": "5b9e314b9cd6e4d05c39a78ddf93b7f23bcd0167e74a364f94233338469e5e59",
+      "bytes": 55565
+    },
+    "exploration/gemma4-12b-f9d28dfc.json": {
+      "sha256": "c52d12f9633877fdec07decb1a2b6a56414a0b5d56b79289256de4eec70603ef",
+      "bytes": 57244
+    },
+    "exploration/gemma4-26b-e4a5da4a.json": {
+      "sha256": "afb4503617e09f2e0a29ffa7fef1960964e7507e7bf019d8ee773bc33a7cc88e",
+      "bytes": 82862
+    },
+    "exploration/gemma4-31b-60c73a1b.json": {
+      "sha256": "08e0f95e1b0ac95b8fffc6258b077dab36a82ca359446f1f66112c101390b854",
+      "bytes": 82725
+    },
+    "exploration/glm-4-7-flash-q4-k-m-6c142648.json": {
+      "sha256": "23c0bb4149a1b0c9c2508dfae79ecce38ac340c03130279655da708a2890454a",
+      "bytes": 61746
+    },
+    "exploration/glm-4-7-flash-q8-0-fea85ed2.json": {
+      "sha256": "94df37dbdcb81a34425fd12f5c5a07271b6dd38ecc78365ab913cab4461a9e4e",
+      "bytes": 60610
+    },
+    "exploration/glm-ocr-latest-f9fed363.json": {
+      "sha256": "5b8c6eaf9d2ef41196f1c17b5aff258feb5549acd4e086634487b93164459445",
+      "bytes": 81675
+    },
+    "exploration/gpt-oss-120b-5fd05fd9.json": {
+      "sha256": "d42250b9a16c09ccc4f45e9407cf265d9a9f238598e88bf0830c3ccc527e5ed1",
+      "bytes": 61600
+    },
+    "exploration/gpt-oss-120b-abliterated-latest-39fc8033.json": {
+      "sha256": "d45eaec3d0ddccb6944df62c9fed1250d2db7a843ce797bf2043fdfdc981ec6e",
+      "bytes": 57528
+    },
+    "exploration/gpt-oss-20b-8a0fa271.json": {
+      "sha256": "514bfff4255f33620ef28f58ec5d5916c79189a1562328b0767647cd47a0168d",
+      "bytes": 62100
+    },
+    "exploration/granite4-1-30b-e82a09f0.json": {
+      "sha256": "ec0064b578d511842cbd0df110a7b29e2f2105209e9959e8767703a84c76fc4e",
+      "bytes": 62829
+    },
+    "exploration/granite4-1-3b-72064317.json": {
+      "sha256": "364b7e58f4e280df26f8392374661dddf9a111c44a862a7f882be7d81b9473c9",
+      "bytes": 62679
+    },
+    "exploration/granite4-1-guardian-8b-q4-k-m-9b16f68b.json": {
+      "sha256": "4eb3548c9f2de02f31ac469fe375a30d9ac4062c6b08f33f6402d70a54059561",
+      "bytes": 65457
+    },
+    "exploration/kimi-k2-7-code-c4d34eee.json": {
+      "sha256": "cf1f606139b175df212bf255d1498c9920c440d2b41b452f455230422ce5661f",
+      "bytes": 60918
+    },
+    "exploration/laguna-xs-2-1-q4-k-m-42838490.json": {
+      "sha256": "4860d6afcd0e9b99ecf855cae519a414d617bebac18199c93459717faad6acc9",
+      "bytes": 57326
+    },
+    "exploration/lfm2-24b-8af5614d.json": {
+      "sha256": "1f0ee7ce38433e95186b715651f7e086df7a2b9fe3f67ca5b52ba99dc54e526f",
+      "bytes": 59100
+    },
+    "exploration/llama4-scout-b958d2fd.json": {
+      "sha256": "7fe57b1198e402f4b7b18204efbfdbf756f32c581b91ec7842e3065e8b68e6ee",
+      "bytes": 81612
+    },
+    "exploration/ministral-3-14b-73a245ca.json": {
+      "sha256": "9450e5abbd32fb3a204fddd3b82023b8d8d3942c34b465af4a5912664e45697f",
+      "bytes": 83575
+    },
+    "exploration/muse-glimmer-30b-0ae8d41f.json": {
+      "sha256": "5428ffcc2a5ed7dc0b0f5dd7e0da3216ede54e4f6f0460e048df0853e96433de",
+      "bytes": 57324
+    },
+    "exploration/muse-glimmer-30b-82921179.json": {
+      "sha256": "3761e15b775fae94e38bbaed01c21d7349a72aef9f18dab6ae755864d5cb622d",
+      "bytes": 55586
+    },
+    "exploration/nemotron-3-5-lightning-30b-2ebf402b.json": {
+      "sha256": "bd6b75e3483c45000c8c3f0ad7c7220707d9b1a4d0958cd9530ff7ccd120a2a4",
+      "bytes": 60112
+    },
+    "exploration/nemotron-3-super-120b-261c59d7.json": {
+      "sha256": "ea052b90de3f17f3b3c4bb095d171b394248cf63c55c3d2dcd1c89410c4c5b28",
+      "bytes": 85269
+    },
+    "exploration/nemotron3-33b-06238648.json": {
+      "sha256": "2117ac2e40b76716faff054a661ab8c2bfcee6a35cfbe29d5a38a5919e54bf2f",
+      "bytes": 83844
+    },
+    "exploration/north-mini-code-1-0-q4-k-m-898ef3fc.json": {
+      "sha256": "e0431d0efca11b290565ed35d386e43b2549546b4056c5f65d1c621c7e50915e",
+      "bytes": 57358
+    },
+    "exploration/olmo-3-1-32b-think-5fed6048.json": {
+      "sha256": "8eef09391555f073a6b444c201648928b2c87e3f6b4383961a4d798fe14e3b11",
+      "bytes": 60921
+    },
+    "exploration/ornith-35b-7a025983.json": {
+      "sha256": "630131a780138ec3eb8d733f6a1c2b7f7fa548eaaadb12da1cb54d7f7706050d",
+      "bytes": 61230
+    },
+    "exploration/ornith-9b-3a69c83d.json": {
+      "sha256": "b774b3259e871398b28840d2df8c200e1ba97d33154c67d559db313e1c159579",
+      "bytes": 60218
+    },
+    "exploration/phi4-reasoning-plus-1b770441.json": {
+      "sha256": "c083f36c2b87058fb6f2d391f3a946dc1b57883932456a00bf8266f6ca22dd4c",
+      "bytes": 62780
+    },
+    "exploration/qwen2-5vl-72b-e735731b.json": {
+      "sha256": "a6999dda1f993df896e9fc2441f5410a4369e56e28d823611ffc62178d9b1b3d",
+      "bytes": 80817
+    },
+    "exploration/qwen3-5-122b-uncensored-q4-k-p-c2e9702c.json": {
+      "sha256": "34104214dfc6191bb9e0e0f395c825eee0bcc665e94708752a2f424efec9d462",
+      "bytes": 55625
+    },
+    "exploration/qwen3-5-122b-uncensored-q4-k-p-e906fcaa.json": {
+      "sha256": "eea868318bad5f9817d623867953ae4ada01beb8ecb0d551d188fe15bccbbbae",
+      "bytes": 61463
+    },
+    "exploration/qwen3-5-35b-dee6d80d.json": {
+      "sha256": "e95c9b19b1e09f073c9260a02a3272a90d8fbb870f0493cb5acc424524b4fd4a",
+      "bytes": 86940
+    },
+    "exploration/qwen3-5-9b-968fd469.json": {
+      "sha256": "c297fa4217fe83d1ea99853c6f9ae014b300e21e9a6c349831b3c31385265588",
+      "bytes": 82476
+    },
+    "exploration/qwen3-6-35b-a3b-q4-k-m-edb2f228.json": {
+      "sha256": "12c2d144a3e8e6669cb7dd07538e60a60f56dcf8371d209f467b59faaffcd1fc",
+      "bytes": 83114
+    },
+    "exploration/qwen3-coder-30b-0fd305b1.json": {
+      "sha256": "e2afc1e01221770da21378714ca770861c471e4ce5c68f64cf9e269220a31ec2",
+      "bytes": 62801
+    },
+    "exploration/qwen3-coder-30b-looped-2x-mid4-5fd0e7b5.json": {
+      "sha256": "d09ae25c9ce225680ee31b03378d2e072c0e219fb915739953bd12fc647a132f",
+      "bytes": 60347
+    },
+    "exploration/qwen3-coder-next-q4-k-m-ceaa2610.json": {
+      "sha256": "9b17f9627222344c889a855df077bb4e10a6798368ab53d02ae0a4484996dc9c",
+      "bytes": 62148
+    },
+    "exploration/qwen3-embedding-4b-65c81355.json": {
+      "sha256": "573eeb1747606d882b5acf52de0a23ca4a05b4a9cccdc8bfcc75386c1b2602a9",
+      "bytes": 55641
+    },
+    "exploration/qwen3-next-80b-a3b-thinking-3aeeae3c.json": {
+      "sha256": "c8d8760baeff2091bde8bac127f62319eba2e5d8e9d071d59a7834ee57ea5a1b",
+      "bytes": 61106
+    },
+    "exploration/qwen3-vl-30b-a3b-instruct-q4-k-m-5fbf2d14.json": {
+      "sha256": "cd4687f8a6ba2df580202e0fe7b293e0908304480104fe92f6082b7409daa265",
+      "bytes": 82552
+    },
+    "exploration/reader-lm-1-5b-faf34a76.json": {
+      "sha256": "9a5b3c4611d93ef84c5201a07bd9e0b7072211ab1ff0cbc3d4bf9b5b1c5ac486",
+      "bytes": 65287
+    },
+    "exploration/translategemma-12b-6c79e0fa.json": {
+      "sha256": "7dbf92873b697db9a44ccbca9fed3378c1b759d9a85fbd0fc634e4674908ed7f",
+      "bytes": 82081
+    },
+    "model-coverage.csv": {
+      "sha256": "1c51dcf9b7ae3ed2195e896615c029759fdccd131b79c4148e90500ee6bfa76e",
+      "bytes": 8189
+    },
+    "performance.csv": {
+      "sha256": "16d623e5c2da1df6b6602f926daf114b0c38d3151f71f453112852d337f3200d",
+      "bytes": 7792
+    },
+    "provenance.json": {
+      "sha256": "414ad2eb963cab8a3f4f4b130c23caa0049ca44e88f8f43c01cf382f3f9d2ed1",
+      "bytes": 3236
+    },
+    "question-metrics.csv": {
+      "sha256": "c926a14c32ca4518ff17645df094976584b4532442a4db545cb64240d51ebf60",
+      "bytes": 394887
+    },
+    "qwen-lm-eval-pilot/comparison.json": {
+      "sha256": "3295b0cbd4a5d9e3a56d3e7d010cd298b5a9b8e2b8eb5b4e684cbb3c3a6a0588",
+      "bytes": 8067
+    },
+    "qwen-lm-eval-pilot/excluded.json": {
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "bytes": 3
+    },
+    "qwen-lm-eval-pilot/protocol.json": {
+      "sha256": "037d54b2e8894e072f2e24faca5228ca8d81f49db343d32b327c77f5d6e0c8b1",
+      "bytes": 1092
+    },
+    "qwen-lm-eval-pilot/qwen3-coder-30b-0fd305b1/baseline/harness.json": {
+      "sha256": "bab3f05a9ff52787d90c7bb8ff23c8b2b9d08b8af3abba8e15e3c8c36212e875",
+      "bytes": 32559
+    },
+    "qwen-lm-eval-pilot/qwen3-coder-30b-0fd305b1/baseline/manifest.json": {
+      "sha256": "ed32a50f9a3dca8d3dcf689b80bfeab81e5640c34ec80e33ad70031eae3c2b65",
+      "bytes": 862
+    },
+    "qwen-lm-eval-pilot/qwen3-coder-30b-0fd305b1/baseline/requests.jsonl": {
+      "sha256": "51128918ee8f33cffd3ebc77f00f95406042e934d2ab2ea8483e79505d7d0100",
+      "bytes": 9364
+    },
+    "qwen-lm-eval-pilot/qwen3-coder-30b-0fd305b1/baseline/summary.json": {
+      "sha256": "4fdcb4329c6c94d7ab6ab56dde8022186a6537e29a55a7fb6d03e46a45cb0ec4",
+      "bytes": 1861
+    },
+    "qwen-lm-eval-pilot/qwen3-coder-30b-0fd305b1/loop2/harness.json": {
+      "sha256": "4a6d2610578f9115b1095b9e971b1ded717e55f1f446e31ef2950b09c3f092aa",
+      "bytes": 32696
+    },
+    "qwen-lm-eval-pilot/qwen3-coder-30b-0fd305b1/loop2/manifest.json": {
+      "sha256": "1c10c9738dbfab4172f86202ff9afc8b407bc9297ff2444394fc5614902c268e",
+      "bytes": 862
+    },
+    "qwen-lm-eval-pilot/qwen3-coder-30b-0fd305b1/loop2/requests.jsonl": {
+      "sha256": "dd7b5b0952353431425d79b07bdb457bfe29c7316eb571bc6056b10228888dfe",
+      "bytes": 9435
+    },
+    "qwen-lm-eval-pilot/qwen3-coder-30b-0fd305b1/loop2/summary.json": {
+      "sha256": "ca48665dbd92a1519d09a1c0b167c12973da6c4b0b24e05f689e71ca0ce3de72",
+      "bytes": 1862
+    },
+    "qwen-lm-eval-pilot/storage-after.json": {
+      "sha256": "f77a65283c0d495e299e4713513fc13c2cb4f9cd490f9966be9ed1b862ebb4c7",
+      "bytes": 124
+    },
+    "qwen-lm-eval-pilot/storage-before.json": {
+      "sha256": "fb78ddf41e01c77953d69d220cbde564d53371c35e9e0a57b8a05e6d263e0853",
+      "bytes": 124
+    },
+    "qwen-lm-eval-v1/comparison.json": {
+      "sha256": "fe0591e5f4e475f59502c8614c22aae56edfb1a61594859bfbfdac8d89a5f025",
+      "bytes": 55849
+    },
+    "qwen-lm-eval-v1/deepcoder-14b-ca299227/baseline/harness.json": {
+      "sha256": "7091c63ecb548ad195dbb05afaeb02241e3645431e66de5764ec06805084f8a6",
+      "bytes": 498239
+    },
+    "qwen-lm-eval-v1/deepcoder-14b-ca299227/baseline/manifest.json": {
+      "sha256": "89dbe20882e2848a1506c3118f2f0687b2a43efb00d6f157f352a4b94487553a",
+      "bytes": 834
+    },
+    "qwen-lm-eval-v1/deepcoder-14b-ca299227/baseline/requests.jsonl": {
+      "sha256": "08e539e77a334f34ca48134b2d421709349716a888d837894e8105f6910977e3",
+      "bytes": 375779
+    },
+    "qwen-lm-eval-v1/deepcoder-14b-ca299227/baseline/summary.json": {
+      "sha256": "0c2bd40df8b1e10c7e3b164546f07039b7bdb599a09090319e82f09d938c41c0",
+      "bytes": 2067
+    },
+    "qwen-lm-eval-v1/deepcoder-14b-ca299227/loop2/harness.json": {
+      "sha256": "52fb0b24b6d4f1050405bdac7a25e4b765e6444ab41a57c823fda11312dca20b",
+      "bytes": 490426
+    },
+    "qwen-lm-eval-v1/deepcoder-14b-ca299227/loop2/manifest.json": {
+      "sha256": "daeb8d1f51a461e54b1fe41b06e19011715e4ac94ea7e0dfb0bb02d4419ab715",
+      "bytes": 834
+    },
+    "qwen-lm-eval-v1/deepcoder-14b-ca299227/loop2/requests.jsonl": {
+      "sha256": "51a52d4ef10b11ead839ce56a832997efe2517e6e50e4a0abd80f68c1897cbcc",
+      "bytes": 379556
+    },
+    "qwen-lm-eval-v1/deepcoder-14b-ca299227/loop2/summary.json": {
+      "sha256": "fc1bb9235c1e9bec886a426796deeee86ec1be1e68cf3a0e0037fcaf47ff039a",
+      "bytes": 2065
+    },
+    "qwen-lm-eval-v1/deepcoder-14b-ca299227/loop3/harness.json": {
+      "sha256": "9c1668aa0a65d895f864504c084620d14ebe5948ecc8fdb2680cbbe17e12e33b",
+      "bytes": 494593
+    },
+    "qwen-lm-eval-v1/deepcoder-14b-ca299227/loop3/manifest.json": {
+      "sha256": "1fd3184029a54a7a6a2ebc99c15262f31c6779dcd4df2d0ac768fb9e65f63188",
+      "bytes": 834
+    },
+    "qwen-lm-eval-v1/deepcoder-14b-ca299227/loop3/requests.jsonl": {
+      "sha256": "bb317299c2866333201d4e61396b70d035d266f3d7f744ae883cb746c23c7853",
+      "bytes": 379574
+    },
+    "qwen-lm-eval-v1/deepcoder-14b-ca299227/loop3/summary.json": {
+      "sha256": "4c5782d1b761e585c2bf53aae0eef8a99e7894410b2bf0a13d3fea572eba1592",
+      "bytes": 2065
+    },
+    "qwen-lm-eval-v1/deepcoder-14b-ca299227/loop4/harness.json": {
+      "sha256": "d03aeaf35327e08dfbe867d00e9a9f53f8cacb487ba88bbbf9e1b5148528d45c",
+      "bytes": 489661
+    },
+    "qwen-lm-eval-v1/deepcoder-14b-ca299227/loop4/manifest.json": {
+      "sha256": "f552b1833adf3618a4b1a9b0febe1b44bfd932bdd776bb058f9540af4a20a8ca",
+      "bytes": 834
+    },
+    "qwen-lm-eval-v1/deepcoder-14b-ca299227/loop4/requests.jsonl": {
+      "sha256": "97ef00550170b281eb4b31e1553896be07796ad76d0700d21edf839f82bc4f1a",
+      "bytes": 380489
+    },
+    "qwen-lm-eval-v1/deepcoder-14b-ca299227/loop4/summary.json": {
+      "sha256": "f5513c18bed527b49df3e4b937ba4704f02f2c899e4f310aa406004262f4137f",
+      "bytes": 2063
+    },
+    "qwen-lm-eval-v1/deepseek-r1-32b-608cec8c/baseline/harness.json": {
+      "sha256": "5c14ae71106ca55a5d23bd01de1c936fb89038984a1c53ac3a66326d48ee62e2",
+      "bytes": 526899
+    },
+    "qwen-lm-eval-v1/deepseek-r1-32b-608cec8c/baseline/manifest.json": {
+      "sha256": "084ccfa40f170f8bbf32cb7c3fd9430aabac53d1bf8d104f54c217b9535648a7",
+      "bytes": 835
+    },
+    "qwen-lm-eval-v1/deepseek-r1-32b-608cec8c/baseline/requests.jsonl": {
+      "sha256": "c49d615498708687a019e9697e70f966fd9beb314b68e21f5e5ffc2f3e705fdf",
+      "bytes": 342009
+    },
+    "qwen-lm-eval-v1/deepseek-r1-32b-608cec8c/baseline/summary.json": {
+      "sha256": "bed5ce9f6867ddbe809378979c2bba225a6733a0d47ddd496020e213bf178d24",
+      "bytes": 2070
+    },
+    "qwen-lm-eval-v1/deepseek-r1-32b-608cec8c/loop2/harness.json": {
+      "sha256": "e295feb4f7d9f59a1a26dbf2ae46ce9a536bc89ab29ce674865afa8f1d1d8b83",
+      "bytes": 532992
+    },
+    "qwen-lm-eval-v1/deepseek-r1-32b-608cec8c/loop2/manifest.json": {
+      "sha256": "ed6cfe61d2c5f8dcbeac31545c25989ec121bc8e40a54b98f94fd0f803784f13",
+      "bytes": 835
+    },
+    "qwen-lm-eval-v1/deepseek-r1-32b-608cec8c/loop2/requests.jsonl": {
+      "sha256": "4995108f3c12489243d58b0019495d3e5f3e86ba893d178729db0d36ba1456db",
+      "bytes": 341968
+    },
+    "qwen-lm-eval-v1/deepseek-r1-32b-608cec8c/loop2/summary.json": {
+      "sha256": "2c916304a0a9d601f35593f71b45f95bb2e6ecf4ac0b4e61ea4f9b843cbd54da",
+      "bytes": 2070
+    },
+    "qwen-lm-eval-v1/deepseek-r1-32b-608cec8c/loop3/harness.json": {
+      "sha256": "93051623bd0fbbc97131377f9162f741664262595793f09524b8b304b33637bc",
+      "bytes": 527389
+    },
+    "qwen-lm-eval-v1/deepseek-r1-32b-608cec8c/loop3/manifest.json": {
+      "sha256": "f1c10f0619f0547eaf0d5b65143de4a9b37d9b10b772cc6038a89d40623bd500",
+      "bytes": 835
+    },
+    "qwen-lm-eval-v1/deepseek-r1-32b-608cec8c/loop3/requests.jsonl": {
+      "sha256": "36fb6ee389e649f3112aa412372b45e087de3dfce414e728c0ed658b9178b84c",
+      "bytes": 340542
+    },
+    "qwen-lm-eval-v1/deepseek-r1-32b-608cec8c/loop3/summary.json": {
+      "sha256": "291393091e8a56d12159dede6b5e05e015a32d1d989b51cfd2edb04fe5acb61a",
+      "bytes": 2069
+    },
+    "qwen-lm-eval-v1/deepseek-r1-32b-608cec8c/loop4/harness.json": {
+      "sha256": "aa08a2190c29ada2c7703cc6493831378cd608f55455717349a8dc16d3f2b664",
+      "bytes": 523988
+    },
+    "qwen-lm-eval-v1/deepseek-r1-32b-608cec8c/loop4/manifest.json": {
+      "sha256": "b044b3fcc14822cc687bd7a9696907e2fdae36c4859ab028443f6b9c97832d20",
+      "bytes": 835
+    },
+    "qwen-lm-eval-v1/deepseek-r1-32b-608cec8c/loop4/requests.jsonl": {
+      "sha256": "5d330f57e06f176f03c7deadcd0e3b38a0b8ea0025f514fa27c0fd0be1e929ff",
+      "bytes": 342673
+    },
+    "qwen-lm-eval-v1/deepseek-r1-32b-608cec8c/loop4/summary.json": {
+      "sha256": "302fb16e1eccde20900eb72bce6769c05168d38687e912a8f8dd4e484c74f5e1",
+      "bytes": 2068
+    },
+    "qwen-lm-eval-v1/excluded.json": {
+      "sha256": "e525ebcb312d85267a384b4e92b2ec9870219bf5ea9aa0b77ef314943cd9f2f2",
+      "bytes": 2425
+    },
+    "qwen-lm-eval-v1/job-status.json": {
+      "sha256": "889e153b242b357678e7f66b1bd921f8ba14b7169d75f791007ebfc5cc0a0f87",
+      "bytes": 186
+    },
+    "qwen-lm-eval-v1/protocol.json": {
+      "sha256": "0895ebc1344e5849e36c69a9e1b50ca1941f0bfc3e864ca012581df76036e53c",
+      "bytes": 2593
+    },
+    "qwen-lm-eval-v1/qwen3-coder-30b-0fd305b1/baseline/harness.json": {
+      "sha256": "1d9cecb59495fe16be1fdc2201d13e6fdde132953e4f238f1a1d56399db77755",
+      "bytes": 561546
+    },
+    "qwen-lm-eval-v1/qwen3-coder-30b-0fd305b1/baseline/manifest.json": {
+      "sha256": "106f8a29cbcdab007d152e3379eb310628790f95a00567ec48838e0436edb02c",
+      "bytes": 862
+    },
+    "qwen-lm-eval-v1/qwen3-coder-30b-0fd305b1/baseline/requests.jsonl": {
+      "sha256": "5bca393b81b8fc360a3ae32afc9c78c0136dba56176ba444304baf12db3dadf7",
+      "bytes": 251939
+    },
+    "qwen-lm-eval-v1/qwen3-coder-30b-0fd305b1/baseline/summary.json": {
+      "sha256": "1d3da1463584ba4b95304cb6cc3727f74a4ff9044ba8a6dae901532b3afb8417",
+      "bytes": 2105
+    },
+    "qwen-lm-eval-v1/qwen3-coder-30b-0fd305b1/loop2/harness.json": {
+      "sha256": "cef002164fcadeacae444c188c21829a867f61333bae681ab901ed900c2a6d27",
+      "bytes": 546394
+    },
+    "qwen-lm-eval-v1/qwen3-coder-30b-0fd305b1/loop2/manifest.json": {
+      "sha256": "26f4d4d77189a9c63c645fff6eb019838956f2aa11a0d61909234c9ba208a805",
+      "bytes": 862
+    },
+    "qwen-lm-eval-v1/qwen3-coder-30b-0fd305b1/loop2/requests.jsonl": {
+      "sha256": "52d31aba18ae3adc3685d3127a0cfac4be9435415993f0dbedde69d34bb6cce6",
+      "bytes": 255675
+    },
+    "qwen-lm-eval-v1/qwen3-coder-30b-0fd305b1/loop2/summary.json": {
+      "sha256": "2b6629b50d88fa10ace6f88b9904221fb160fbaa5b88e29dca4f6e615254b324",
+      "bytes": 2102
+    },
+    "qwen-lm-eval-v1/qwen3-coder-30b-0fd305b1/loop3/harness.json": {
+      "sha256": "f4a657394461d74ae29417dd66a90a0de420030fb6cb0a8e34c00cdb18129f4f",
+      "bytes": 559245
+    },
+    "qwen-lm-eval-v1/qwen3-coder-30b-0fd305b1/loop3/manifest.json": {
+      "sha256": "2311ac7ad3283b0c1f272daea0becc2affe62432b5ee782a25b2f58f2e167c71",
+      "bytes": 862
+    },
+    "qwen-lm-eval-v1/qwen3-coder-30b-0fd305b1/loop3/requests.jsonl": {
+      "sha256": "392083a816344b217101d9044be2dc1eb350596de69b4403870c46cc0c732fbe",
+      "bytes": 250831
+    },
+    "qwen-lm-eval-v1/qwen3-coder-30b-0fd305b1/loop3/summary.json": {
+      "sha256": "51d398d0c19ca4087b67cf348e749fae27fc35be14c14ee91db57b77d8b9decd",
+      "bytes": 2118
+    },
+    "qwen-lm-eval-v1/qwen3-coder-30b-0fd305b1/loop4/harness.json": {
+      "sha256": "146a1944dc9646ead96152bf46705c88f24b01a2f63a6a653da4acd119a1e838",
+      "bytes": 576428
+    },
+    "qwen-lm-eval-v1/qwen3-coder-30b-0fd305b1/loop4/manifest.json": {
+      "sha256": "8b2e3d1c3d3e6d35fba6a93b3d41a6f4fb93d3beefe152d4b5abd99c69db8f97",
+      "bytes": 862
+    },
+    "qwen-lm-eval-v1/qwen3-coder-30b-0fd305b1/loop4/requests.jsonl": {
+      "sha256": "97f2220723908c2102f31e3e57cfa95cd8cc3e385aca901f988cce02a4e2acdc",
+      "bytes": 254251
+    },
+    "qwen-lm-eval-v1/qwen3-coder-30b-0fd305b1/loop4/summary.json": {
+      "sha256": "a7ba7d68c6d9ff1c94edd20405126f7fe033ab4d443bf99792f3650f548f32ba",
+      "bytes": 2119
+    },
+    "qwen-lm-eval-v1/reader-lm-1-5b-faf34a76/baseline/harness.json": {
+      "sha256": "6df66d6f96bfad155a51332b1a7d56ed7f71421588f9d4cab12db58e67b42093",
+      "bytes": 418179
+    },
+    "qwen-lm-eval-v1/reader-lm-1-5b-faf34a76/baseline/manifest.json": {
+      "sha256": "e5f345f858b5773f638da39330512cc46e35202e3df52c6e34f9e1a421a11240",
+      "bytes": 894
+    },
+    "qwen-lm-eval-v1/reader-lm-1-5b-faf34a76/baseline/requests.jsonl": {
+      "sha256": "bdcbde762e45470c48f02aa00d9463a5c9d738d99bd0706f7e2b482a2e54a5ef",
+      "bytes": 172167
+    },
+    "qwen-lm-eval-v1/reader-lm-1-5b-faf34a76/baseline/summary.json": {
+      "sha256": "f008bb168a07244fdab1bf8155ca6cbb345fdc1a8d436efb88d0a4ff59df90fb",
+      "bytes": 2028
+    },
+    "qwen-lm-eval-v1/reader-lm-1-5b-faf34a76/loop2/harness.json": {
+      "sha256": "d261bb62cf1b97fdb1535d02985ffd2c3fe077ebd6ead6cb6bfaea0e3cc41eaa",
+      "bytes": 443032
+    },
+    "qwen-lm-eval-v1/reader-lm-1-5b-faf34a76/loop2/manifest.json": {
+      "sha256": "172eeda1a834688249d23829dbb35ae07803919eabdced4fb269c9b9c390e300",
+      "bytes": 894
+    },
+    "qwen-lm-eval-v1/reader-lm-1-5b-faf34a76/loop2/requests.jsonl": {
+      "sha256": "b6f2cce929d2d5884c1dcfdcb679c693f1a3fe6782b02019fc7b27e61d4cfaa3",
+      "bytes": 179636
+    },
+    "qwen-lm-eval-v1/reader-lm-1-5b-faf34a76/loop2/summary.json": {
+      "sha256": "54a4093b7957db109782d05b1de165c963b675c21f7918adf0be58d985ed8ab7",
+      "bytes": 2047
+    },
+    "qwen-lm-eval-v1/reader-lm-1-5b-faf34a76/loop3/harness.json": {
+      "sha256": "a46c1a8abc2c5701b5c46871b449448f415aa451c0bfbf1a1de38821fddec51a",
+      "bytes": 444543
+    },
+    "qwen-lm-eval-v1/reader-lm-1-5b-faf34a76/loop3/manifest.json": {
+      "sha256": "187af9b9336b56f5506810b6dfd2d3c6535ca8ac728b2111a4deca3e99a3cade",
+      "bytes": 894
+    },
+    "qwen-lm-eval-v1/reader-lm-1-5b-faf34a76/loop3/requests.jsonl": {
+      "sha256": "d8f8ebee6dfbd24f5832cf2e4796d69abeaab3f2cfc3d9df94301a0b68d15b1a",
+      "bytes": 182116
+    },
+    "qwen-lm-eval-v1/reader-lm-1-5b-faf34a76/loop3/summary.json": {
+      "sha256": "6472cc9d2670536b89619c451e53955fc2206365cf9f240319a5d335820a83b3",
+      "bytes": 2029
+    },
+    "qwen-lm-eval-v1/reader-lm-1-5b-faf34a76/loop4/harness.json": {
+      "sha256": "c264eae1993b9898f6b2b819e978131391e848150722be84c0e31aa51be916f2",
+      "bytes": 441120
+    },
+    "qwen-lm-eval-v1/reader-lm-1-5b-faf34a76/loop4/manifest.json": {
+      "sha256": "7ffac91c9cb282f423b436b2aab612c2cdbd66aa87752bdefa9672011b7ace7a",
+      "bytes": 894
+    },
+    "qwen-lm-eval-v1/reader-lm-1-5b-faf34a76/loop4/requests.jsonl": {
+      "sha256": "4bdecc611cdda0d0b136ed9761b28656a03af5965291c4485a5c740bbd0ff1f9",
+      "bytes": 181425
+    },
+    "qwen-lm-eval-v1/reader-lm-1-5b-faf34a76/loop4/summary.json": {
+      "sha256": "fb7b72eeeb419c10deaebd70010ad073cc923e7c5bf7f858b09f2320b895e25d",
+      "bytes": 2029
+    },
+    "qwen-lm-eval-v1/storage-after.json": {
+      "sha256": "df15bf34f6583833192f4fb0ecc776eb3c8e16a7353bc0ab6aac68a2cf486c5d",
+      "bytes": 124
+    },
+    "qwen-lm-eval-v1/storage-before.json": {
+      "sha256": "07eccb5f5728ff5b01341734aae091df221ea434cca30c4d8ea69a88ebbc81e6",
+      "bytes": 123
+    },
+    "repairs/deepcoder-14b-looped-2x-mid4-43ed5d57.json": {
+      "sha256": "515b247b79dd3f7eb0df21bea82b206688976180b3551d9f8444490f5711f8b5",
+      "bytes": 3898
+    },
+    "repairs/deepseek-ocr-3b-fee40f7c.json": {
+      "sha256": "2e600f5ddd02f83b40e3069bc9fb020c1c48a9ffd86453463b2d3a8f4a129f15",
+      "bytes": 22467
+    },
+    "repairs/devstral-24b-looped-2x-mid4-c7193c24.json": {
+      "sha256": "7b78790f844c4400b1a8a8e580264ce49351fe38f531cc35e499d76bc14922fa",
+      "bytes": 3727
+    },
+    "repairs/devstral-small-2-24b-10160cb8.json": {
+      "sha256": "bd5ce5ab689e10f33b809711c64eddc433dbf8bcd991ed8c5889b8ce5ab301d6",
+      "bytes": 24627
+    },
+    "repairs/embeddinggemma-latest-209f73d9.json": {
+      "sha256": "f9d23c48728b8214e5dc97520417ac8ce61a46646a60f8175d2f803d89632f55",
+      "bytes": 5176
+    },
+    "repairs/gemma4-26b-e4a5da4a.json": {
+      "sha256": "c0d841d41f7a9ca01662f9e3ed13263e9ecfb19eeb1534b2fb50b36836d053c1",
+      "bytes": 23998
+    },
+    "repairs/gemma4-31b-60c73a1b.json": {
+      "sha256": "996bbdadd29ad2c29ba4abf0aecc343a5e87858df216ac4d19aa24e3a69949db",
+      "bytes": 23869
+    },
+    "repairs/glm-4-7-flash-q4-k-m-6c142648.json": {
+      "sha256": "1e86573261cf7cc10923c474813b1ca9c3a42de7eef04a48a0a368b9c8bc84dc",
+      "bytes": 5307
+    },
+    "repairs/glm-4-7-flash-q8-0-fea85ed2.json": {
+      "sha256": "b7184168012b9aaee58f8fb95a609b9b886a463242a9f0b23f6f2027f50a6199",
+      "bytes": 4680
+    },
+    "repairs/glm-ocr-latest-f9fed363.json": {
+      "sha256": "57ad056fd5e096e5d9bb8343e89e7a8f6445159b0e2b4518a16d7983922b1168",
+      "bytes": 23153
+    },
+    "repairs/gpt-oss-120b-5fd05fd9.json": {
+      "sha256": "3b77d1e0b757e417137f5b035398af106c2d2316d421fc08d4a5509b8f18dcb2",
+      "bytes": 5312
+    },
+    "repairs/gpt-oss-20b-8a0fa271.json": {
+      "sha256": "71e57fc0681c0701c9d008b1185c10ae48c09f1977167f47e6f1b37f4f951e2e",
+      "bytes": 5589
+    },
+    "repairs/kimi-k2-7-code-c4d34eee.json": {
+      "sha256": "8b81f1701f1a09885e6014b2dcb93a53b1d3f3d989d67105bae22d11680ff9e3",
+      "bytes": 4980
+    },
+    "repairs/laguna-xs-2-1-q4-k-m-42838490.json": {
+      "sha256": "2db27860e873d5373a6e8f22520b9e1a63fdde927f2b81d1eb635e33b515da93",
+      "bytes": 5226
+    },
+    "repairs/lfm2-24b-8af5614d.json": {
+      "sha256": "905b191c57979653273d0033448f8d226ff1eeea7bb20521b05255ad24c515e3",
+      "bytes": 3398
+    },
+    "repairs/llama4-scout-b958d2fd.json": {
+      "sha256": "4bbbe03b8cbd5ee6a39200e41ec2cfc7c80ab9b50599a3a6ff8d84c28b11cf73",
+      "bytes": 23036
+    },
+    "repairs/ministral-3-14b-73a245ca.json": {
+      "sha256": "9004dba52c26468d0227a29b2fffd0ab88fcdefbfd9bf16e3ad7811a0090a588",
+      "bytes": 24611
+    },
+    "repairs/nemotron-3-5-lightning-30b-2ebf402b.json": {
+      "sha256": "0751c489712131b7869c3f0b18673a66317dbf4042384bd549fd5182a95807df",
+      "bytes": 4272
+    },
+    "repairs/nemotron-3-super-120b-261c59d7.json": {
+      "sha256": "044ead4480591cd941e37b8ff8b01b9f406b08b573d81e2bc8478c8f110061a1",
+      "bytes": 27031
+    },
+    "repairs/nemotron3-33b-06238648.json": {
+      "sha256": "c5875380930128df809bc2640b72fc6f2eb64dde3e0abd1b85523c4e0b9620e0",
+      "bytes": 25206
+    },
+    "repairs/olmo-3-1-32b-think-5fed6048.json": {
+      "sha256": "8c1b9811cf306fa38536b1c6f37ecc003aa7084906f57c5688f39d919090175b",
+      "bytes": 4513
+    },
+    "repairs/ornith-35b-7a025983.json": {
+      "sha256": "9e421b4dd4639febf24b3c67167dde5515b874d1668867699721ca097d88fa8c",
+      "bytes": 5228
+    },
+    "repairs/ornith-9b-3a69c83d.json": {
+      "sha256": "cd3201f45565223fe58cf63d3940e65d034fa53cc386b571cdd8309eb9dcb072",
+      "bytes": 4317
+    },
+    "repairs/qwen2-5vl-72b-e735731b.json": {
+      "sha256": "90f081e215294e999709817ced9be2fb6501d697a2f38cbcb103fe77eb4ce553",
+      "bytes": 22524
+    },
+    "repairs/qwen3-5-122b-uncensored-q4-k-p-e906fcaa.json": {
+      "sha256": "788f37510d459950e6e184c0c60f7206a959945b329ba348d05e1bd837b702bc",
+      "bytes": 5283
+    },
+    "repairs/qwen3-5-35b-dee6d80d.json": {
+      "sha256": "956af4bee9fb6a9479e4c84953394f7c0c6168d5a6e8aaf4ee5cafcd7c9460ba",
+      "bytes": 27914
+    },
+    "repairs/qwen3-5-9b-968fd469.json": {
+      "sha256": "752a86e99363367cbe9cc5cce755fd19c99306ea2db247d3fe219b687bfdc061",
+      "bytes": 23618
+    },
+    "repairs/qwen3-6-35b-a3b-q4-k-m-edb2f228.json": {
+      "sha256": "3bc65788900b5e83155d3a3880ff84c8565ad4d34426e4392e0e826181438c04",
+      "bytes": 24182
+    },
+    "repairs/qwen3-coder-30b-looped-2x-mid4-5fd0e7b5.json": {
+      "sha256": "931beae9f86069cfa74ad0a9b8f5eb44f4c48e03361a28a8416b7c7322690ed5",
+      "bytes": 4267
+    },
+    "repairs/qwen3-coder-next-q4-k-m-ceaa2610.json": {
+      "sha256": "5dd8b95b98e8d26a54fc60a71a63ba5cb80f3a2f077920cdbb9f768ef206e52e",
+      "bytes": 5676
+    },
+    "repairs/qwen3-next-80b-a3b-thinking-3aeeae3c.json": {
+      "sha256": "58eec33c694ca126613362215b2e6ac0ec393acf5abf70ffc1b6ed9af2ad7cca",
+      "bytes": 5007
+    },
+    "repairs/qwen3-vl-30b-a3b-instruct-q4-k-m-5fbf2d14.json": {
+      "sha256": "18627f731032b7b42bdac573b25ef8cc73201327358105d2fc05db848326ff65",
+      "bytes": 23572
+    },
+    "repairs/translategemma-12b-6c79e0fa.json": {
+      "sha256": "dd57a158745211362a6d6a2467123dc6e91bf3cf3f90925f3c260f426a9acb3a",
+      "bytes": 23168
+    },
+    "upstream-licenses/bbh-MIT.txt": {
+      "sha256": "4ef2ff4295d26ab6211235039c132697408cec5391d2c091b41e983771978db8",
+      "bytes": 1068
+    },
+    "upstream-licenses/gsm8k-MIT.txt": {
+      "sha256": "86bbb73e855821d7c401912fd4bf82e34313e6e3b6fd6f909f2b6cc9e209a53b",
+      "bytes": 1062
+    },
+    "upstream-licenses/lm-evaluation-harness-MIT.txt": {
+      "sha256": "a806e42547620dffbc2ec0333322c8b3523b4af11e059be14ef81aa5b1ae021f",
+      "bytes": 1067
+    }
+  }
+}

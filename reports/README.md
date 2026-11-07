@@ -2,6 +2,8 @@
 
 ## Current results
 
+**[Performance charts](performance.md)** show correct answers and measured time cost for every retained quality comparison, including the earlier Devstral test. **[Public research data](research-data/README.md)** provides 1,920 retained generated answers, original main/pilot API responses, per-question grades/timings, all-model coverage and offline verification. Upstream inputs are attributed separately; the older Qwen diagnostic's missing per-case outputs are explicitly marked.
+
 The completed [public-task quality comparison](qwen-public-benchmark.md) contains **1,600 responses: 100 fixed math/logic questions for each of four profiles on four checkpoints**. It has explicit conclusions for [Qwen3-Coder 30B](qwen-public-benchmark.md#qwen3-coder-30b), [DeepSeek-R1 32B](qwen-public-benchmark.md#deepseek-r1-32b), [DeepCoder 14B](qwen-public-benchmark.md#deepcoder-14b) and [Reader-LM 1.5B](qwen-public-benchmark.md#reader-lm-15b), alongside every original/2/3/4-pass score, timings, truncations and paired statistics. The [JSON record](qwen-public-benchmark.json) includes the fixed protocol, environment and per-question correctness without dataset text.
 
 Qwen3-Coder's best observed result was three loops (**84 → 88/100**); DeepSeek-R1's was two loops (**72 → 78/100**). DeepCoder scored lower with every loop count (**54 → 50/52/50**). Reader-LM scored **3 → 3/5/4**, but its intended HTML-conversion task was not tested. No gain or decrease was statistically significant after correction for all 12 comparisons. Every looped batch took longer, and the 768-token limit truncated many reasoning answers. The best observed settings are experimental candidates; automatic recommendations remain baseline.
@@ -32,7 +34,7 @@ A [fresh GPT-OSS 120B abliterated check](gpt-oss-120b-abliterated.md) passed all
 
 These checks establish numerical behavior on synthetic tiny F32 networks. Real quantized checkpoints additionally need their own anchor-identity check. A compatibility pass does not establish improved answer quality.
 
-The named model files are allowlisted exports from the automatic diagnostic suite. They contain architecture and checkpoint-header identity, runtime settings, aggregate scores, truncation counts, timing, cache probes and the recommendation. They contain no model weights, local file paths, access tokens, or complete model outputs.
+The named model summary files are allowlisted exports from the automatic diagnostic suite. They contain architecture and checkpoint-header identity, runtime settings, aggregate scores, truncation counts, timing, cache probes and the recommendation. Complete retained answer records are now published separately under [research-data](research-data/README.md), with provenance and checksums. Model weights, credentials and private user chats are excluded.
 
 The 12 selection and 12 held-out tasks are small, public diagnostics. Their scores should not be compared to the paper's benchmarks. Only one candidate reaches the held-out split; quick runs never recommend a loop profile. Prefix caching stays disabled even when one cache probe happens to agree.
 

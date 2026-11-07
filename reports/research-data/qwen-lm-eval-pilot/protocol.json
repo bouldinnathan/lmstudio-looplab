@@ -1,0 +1,45 @@
+{
+  "version": "looplab-lm-eval-comparison-v1",
+  "harness": "EleutherAI/lm-evaluation-harness",
+  "harness_version": "0.4.13",
+  "dataset_revisions": {
+    "openai/gsm8k": "740312add88f781978c0658806c59bc2815b9866",
+    "SaylorTwift/bbh": "b5306be6f827cfafbb545ff5a51f96916029b0fd"
+  },
+  "sample_ids": {
+    "gsm8k_cot_zeroshot": [
+      662,
+      890
+    ],
+    "bbh_cot_zeroshot_boolean_expressions": [
+      21
+    ],
+    "bbh_cot_zeroshot_logical_deduction_five_objects": [
+      249
+    ]
+  },
+  "questions_per_profile": 4,
+  "max_tokens": 768,
+  "context": 2048,
+  "temperature": 0,
+  "seed": 1729,
+  "num_fewshot": 0,
+  "chat_template_kwargs": {
+    "enable_thinking": false
+  },
+  "prefix_cache": false,
+  "truncated_answers_scored_incorrect": true,
+  "primary_filter": "flexible-extract",
+  "sampling": "fixed stratified random subset, identical for every profile and model",
+  "profile_order": {
+    "qwen3-coder-30b-0fd305b1": [
+      2,
+      1
+    ]
+  },
+  "model_ids": [
+    "qwen3-coder-30b-0fd305b1"
+  ],
+  "paper_reproduction": false,
+  "official_full_benchmark": false
+}

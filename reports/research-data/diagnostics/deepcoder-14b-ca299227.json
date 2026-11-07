@@ -1,0 +1,2535 @@
+{
+  "schema": 1,
+  "model": {
+    "id": "deepcoder-14b-ca299227",
+    "name": "deepcoder-14b",
+    "architecture": "qwen2",
+    "layers": 48,
+    "size_bytes": 8988111168,
+    "header_sha256": "d55596a4b817a098dff2c5bfcac0bbc4ed0cf2ee2169f52e98333180aa3af57b",
+    "eligible": true,
+    "reasons": [],
+    "mode": "block"
+  },
+  "started": 1793763832.5755992,
+  "status": "tested",
+  "suite": "looplab-diagnostic-v2",
+  "suite_sha256": "8b2d60609aa5dccdb5e0c5680251a16ec3bfec3417ffacd99656b426bf7f848b",
+  "quick": false,
+  "evaluation_policy": {
+    "temperature": 0,
+    "seed": 1729,
+    "max_tokens": 192,
+    "cache_prompt": false,
+    "reasoning_effort": "none",
+    "reasoning_budget_tokens": 0,
+    "add_generation_prompt": false,
+    "continue_final_message": "content",
+    "response_format": {
+      "type": "json_object"
+    },
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    },
+    "assistant_prefill": "{\"answer\":"
+  },
+  "paper_reproduction": false,
+  "recommended_profile": "baseline",
+  "profiles": [
+    {
+      "profile": {
+        "passes": 2,
+        "anchor": 0.5,
+        "mode": "block",
+        "cache": "first",
+        "start": 22,
+        "end": 26
+      },
+      "passes": 2,
+      "anchor_identity": {
+        "passed": true,
+        "max_logprob_error": 0.0
+      },
+      "selection": [
+        {
+          "id": "sort",
+          "passed": true,
+          "output": "{\"answer\": [-2, 0, 4, 4, 8]}",
+          "expected": [
+            -2,
+            0,
+            4,
+            4,
+            8
+          ],
+          "seconds": 4.448251061010524,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 30,
+            "prompt_tokens": 50,
+            "total_tokens": 80,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "dedupe",
+          "passed": true,
+          "output": "{\"answer\": [3,1,2,4]}",
+          "expected": [
+            3,
+            1,
+            2,
+            4
+          ],
+          "seconds": 3.6362317739985883,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 10,
+            "prompt_tokens": 50,
+            "total_tokens": 60,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "trace",
+          "passed": false,
+          "output": "{\"answer\": \"[1, 2, 3]\"}",
+          "expected": [
+            1,
+            2,
+            3
+          ],
+          "seconds": 3.94108673199662,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 11,
+            "prompt_tokens": 48,
+            "total_tokens": 59,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "overlap",
+          "passed": false,
+          "output": "{\"answer\": \"[1,6],[9,12]\"}",
+          "expected": [
+            [
+              1,
+              6
+            ],
+            [
+              9,
+              12
+            ]
+          ],
+          "seconds": 4.973489299998619,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 19,
+            "prompt_tokens": 52,
+            "total_tokens": 71,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "modulo",
+          "passed": true,
+          "output": "{\"answer\": 3}",
+          "expected": 3,
+          "seconds": 3.8403613999980735,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 10,
+            "prompt_tokens": 44,
+            "total_tokens": 54,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "count",
+          "passed": true,
+          "output": "{\"answer\": 4}",
+          "expected": 4,
+          "seconds": 2.821572022003238,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 4,
+            "prompt_tokens": 46,
+            "total_tokens": 50,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "fibonacci",
+          "passed": true,
+          "output": "{\"answer\": 55}",
+          "expected": 55,
+          "seconds": 4.716099429002497,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 19,
+            "prompt_tokens": 59,
+            "total_tokens": 78,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "path",
+          "passed": true,
+          "output": "{\"answer\": 2}",
+          "expected": 2,
+          "seconds": 5.4862160030024825,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 24,
+            "prompt_tokens": 56,
+            "total_tokens": 80,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "bisect",
+          "passed": false,
+          "output": "{\"answer\": 3}",
+          "expected": 2,
+          "seconds": 2.600183444999857,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 4,
+            "prompt_tokens": 54,
+            "total_tokens": 58,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "unicode",
+          "passed": true,
+          "output": "{\"answer\": \"DC21ba\"}",
+          "expected": "DC21ba",
+          "seconds": 2.8944924829993397,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 7,
+            "prompt_tokens": 41,
+            "total_tokens": 48,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "inclusion",
+          "passed": true,
+          "output": "{\"answer\": 14}",
+          "expected": 14,
+          "seconds": 5.411990096006775,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 23,
+            "prompt_tokens": 48,
+            "total_tokens": 71,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "rle",
+          "passed": true,
+          "output": "{\"answer\": [[\"a\",3], [\"b\",2], [\"c\",1], [\"a\",4]]}",
+          "expected": [
+            [
+              "a",
+              3
+            ],
+            [
+              "b",
+              2
+            ],
+            [
+              "c",
+              1
+            ],
+            [
+              "a",
+              4
+            ]
+          ],
+          "seconds": 7.792870050994679,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 42,
+            "prompt_tokens": 47,
+            "total_tokens": 89,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        }
+      ],
+      "status": "tested",
+      "cache_probe": {
+        "same_tokens": true,
+        "tokens_cached": 17,
+        "max_logprob_error": 0.08370828628540039,
+        "enabled_by_default": false
+      },
+      "holdout": [
+        {
+          "id": "hold-sort",
+          "passed": true,
+          "output": "{\"answer\": [12, 12, 3, 0, -1, -5]}",
+          "expected": [
+            12,
+            12,
+            3,
+            0,
+            -1,
+            -5
+          ],
+          "seconds": 5.088944581002579,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 35,
+            "prompt_tokens": 50,
+            "total_tokens": 85,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "hold-dedupe",
+          "passed": true,
+          "output": "{\"answer\": \"cabd\"}",
+          "expected": "cabd",
+          "seconds": 2.7659980010066647,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 5,
+            "prompt_tokens": 46,
+            "total_tokens": 51,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "hold-trace",
+          "passed": false,
+          "output": "{\"answer\": \"[1, 2]\"}",
+          "expected": [
+            1,
+            2
+          ],
+          "seconds": 4.0357159539998975,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 14,
+            "prompt_tokens": 49,
+            "total_tokens": 63,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "hold-overlap",
+          "passed": false,
+          "output": "{\"answer\": \"[[1,2],[2,4],[5,7],[8,9]]\"}",
+          "expected": [
+            [
+              1,
+              4
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              8,
+              9
+            ]
+          ],
+          "seconds": 6.610880574997282,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 34,
+            "prompt_tokens": 54,
+            "total_tokens": 88,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "hold-division",
+          "passed": true,
+          "output": "{\"answer\": -5}",
+          "expected": -5,
+          "seconds": 2.5369737559958594,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 4,
+            "prompt_tokens": 44,
+            "total_tokens": 48,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "hold-count",
+          "passed": true,
+          "output": "{\"answer\": 3}",
+          "expected": 3,
+          "seconds": 5.196068650999223,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 22,
+            "prompt_tokens": 47,
+            "total_tokens": 69,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "hold-fibonacci",
+          "passed": true,
+          "output": "{\"answer\": 144}",
+          "expected": 144,
+          "seconds": 4.880081405004603,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 20,
+            "prompt_tokens": 59,
+            "total_tokens": 79,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "hold-path",
+          "passed": true,
+          "output": "{\"answer\": 2}",
+          "expected": 2,
+          "seconds": 5.420772030993248,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 24,
+            "prompt_tokens": 58,
+            "total_tokens": 82,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "hold-bisect",
+          "passed": false,
+          "output": "{\"answer\": 4}",
+          "expected": 3,
+          "seconds": 2.5721157929947367,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 4,
+            "prompt_tokens": 53,
+            "total_tokens": 57,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "hold-reverse",
+          "passed": true,
+          "output": "{\"answer\": \"02X9z\"}",
+          "expected": "02X9z",
+          "seconds": 3.9910678939922946,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 14,
+            "prompt_tokens": 42,
+            "total_tokens": 56,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "hold-inclusion",
+          "passed": false,
+          "output": "{\"answer\": 14}",
+          "expected": 13,
+          "seconds": 5.367545285000233,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 23,
+            "prompt_tokens": 48,
+            "total_tokens": 71,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "hold-rle",
+          "passed": true,
+          "output": "{\"answer\": [[\"b\",3], [\"a\",2], [\"c\",1], [\"b\",3]]}",
+          "expected": [
+            [
+              "b",
+              3
+            ],
+            [
+              "a",
+              2
+            ],
+            [
+              "c",
+              1
+            ],
+            [
+              "b",
+              3
+            ]
+          ],
+          "seconds": 7.741216889000498,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 42,
+            "prompt_tokens": 47,
+            "total_tokens": 89,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "profile": {
+        "passes": 3,
+        "anchor": 0.5,
+        "mode": "block",
+        "cache": "first",
+        "start": 22,
+        "end": 26
+      },
+      "passes": 3,
+      "anchor_identity": {
+        "passed": true,
+        "max_logprob_error": 0.0
+      },
+      "selection": [
+        {
+          "id": "sort",
+          "passed": true,
+          "output": "{\"answer\": [-2, 0, 4, 4, 8]}",
+          "expected": [
+            -2,
+            0,
+            4,
+            4,
+            8
+          ],
+          "seconds": 4.729292436997639,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 30,
+            "prompt_tokens": 50,
+            "total_tokens": 80,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "dedupe",
+          "passed": true,
+          "output": "{\"answer\": [3,1,2,4]}",
+          "expected": [
+            3,
+            1,
+            2,
+            4
+          ],
+          "seconds": 3.452502459011157,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 10,
+            "prompt_tokens": 50,
+            "total_tokens": 60,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "trace",
+          "passed": false,
+          "output": "{\"answer\": \"[1, 2, 3]\"}",
+          "expected": [
+            1,
+            2,
+            3
+          ],
+          "seconds": 3.525012076992425,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 11,
+            "prompt_tokens": 48,
+            "total_tokens": 59,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "overlap",
+          "passed": false,
+          "output": "{\"answer\": \"[1,6],[9,12]\"}",
+          "expected": [
+            [
+              1,
+              6
+            ],
+            [
+              9,
+              12
+            ]
+          ],
+          "seconds": 4.820647341999575,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 19,
+            "prompt_tokens": 52,
+            "total_tokens": 71,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "modulo",
+          "passed": true,
+          "output": "{\"answer\": 3}",
+          "expected": 3,
+          "seconds": 3.5428691169945523,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 10,
+            "prompt_tokens": 44,
+            "total_tokens": 54,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "count",
+          "passed": true,
+          "output": "{\"answer\": 4}",
+          "expected": 4,
+          "seconds": 2.58601042299415,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 4,
+            "prompt_tokens": 46,
+            "total_tokens": 50,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "fibonacci",
+          "passed": true,
+          "output": "{\"answer\": 55}",
+          "expected": 55,
+          "seconds": 4.936042119006743,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 19,
+            "prompt_tokens": 59,
+            "total_tokens": 78,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "path",
+          "passed": true,
+          "output": "{\"answer\": 2}",
+          "expected": 2,
+          "seconds": 5.694107835995965,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 24,
+            "prompt_tokens": 56,
+            "total_tokens": 80,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "bisect",
+          "passed": false,
+          "output": "{\"answer\": 3}",
+          "expected": 2,
+          "seconds": 2.6338615319982637,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 4,
+            "prompt_tokens": 54,
+            "total_tokens": 58,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "unicode",
+          "passed": true,
+          "output": "{\"answer\": \"DC21ba\"}",
+          "expected": "DC21ba",
+          "seconds": 3.0291848789929645,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 7,
+            "prompt_tokens": 41,
+            "total_tokens": 48,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "inclusion",
+          "passed": true,
+          "output": "{\"answer\": 14}",
+          "expected": 14,
+          "seconds": 5.567044498995529,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 23,
+            "prompt_tokens": 48,
+            "total_tokens": 71,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "rle",
+          "passed": true,
+          "output": "{\"answer\": [[\"a\",3], [\"b\",2], [\"c\",1], [\"a\",4]]}",
+          "expected": [
+            [
+              "a",
+              3
+            ],
+            [
+              "b",
+              2
+            ],
+            [
+              "c",
+              1
+            ],
+            [
+              "a",
+              4
+            ]
+          ],
+          "seconds": 8.178020178995212,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 42,
+            "prompt_tokens": 47,
+            "total_tokens": 89,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        }
+      ],
+      "status": "tested",
+      "cache_probe": {
+        "same_tokens": true,
+        "tokens_cached": 17,
+        "max_logprob_error": 0.08499479293823242,
+        "enabled_by_default": false
+      }
+    },
+    {
+      "profile": {
+        "passes": 4,
+        "anchor": 0.5,
+        "mode": "block",
+        "cache": "first",
+        "start": 22,
+        "end": 26
+      },
+      "passes": 4,
+      "anchor_identity": {
+        "passed": true,
+        "max_logprob_error": 0.0
+      },
+      "selection": [
+        {
+          "id": "sort",
+          "passed": true,
+          "output": "{\"answer\": [-2, 0, 4, 4, 8]}",
+          "expected": [
+            -2,
+            0,
+            4,
+            4,
+            8
+          ],
+          "seconds": 5.017726614998537,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 30,
+            "prompt_tokens": 50,
+            "total_tokens": 80,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "dedupe",
+          "passed": true,
+          "output": "{\"answer\": [3,1,2,4]}",
+          "expected": [
+            3,
+            1,
+            2,
+            4
+          ],
+          "seconds": 3.6063100269966526,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 10,
+            "prompt_tokens": 50,
+            "total_tokens": 60,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "trace",
+          "passed": false,
+          "output": "{\"answer\": \"[1, 2, 3]\"}",
+          "expected": [
+            1,
+            2,
+            3
+          ],
+          "seconds": 3.7213060969952494,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 11,
+            "prompt_tokens": 48,
+            "total_tokens": 59,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "overlap",
+          "passed": false,
+          "output": "{\"answer\": \"[1,6],[9,12]\"}",
+          "expected": [
+            [
+              1,
+              6
+            ],
+            [
+              9,
+              12
+            ]
+          ],
+          "seconds": 4.994658718002029,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 19,
+            "prompt_tokens": 52,
+            "total_tokens": 71,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "modulo",
+          "passed": true,
+          "output": "{\"answer\": 3}",
+          "expected": 3,
+          "seconds": 3.6351095360005274,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 10,
+            "prompt_tokens": 44,
+            "total_tokens": 54,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "count",
+          "passed": true,
+          "output": "{\"answer\": 4}",
+          "expected": 4,
+          "seconds": 2.650993390008807,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 4,
+            "prompt_tokens": 46,
+            "total_tokens": 50,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "fibonacci",
+          "passed": true,
+          "output": "{\"answer\": 55}",
+          "expected": 55,
+          "seconds": 5.115157414998976,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 19,
+            "prompt_tokens": 59,
+            "total_tokens": 78,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "path",
+          "passed": true,
+          "output": "{\"answer\": 2}",
+          "expected": 2,
+          "seconds": 5.980819360003807,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 24,
+            "prompt_tokens": 56,
+            "total_tokens": 80,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "bisect",
+          "passed": false,
+          "output": "{\"answer\": 3}",
+          "expected": 2,
+          "seconds": 2.6657108240033267,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 4,
+            "prompt_tokens": 54,
+            "total_tokens": 58,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "unicode",
+          "passed": true,
+          "output": "{\"answer\": \"DC21ba\"}",
+          "expected": "DC21ba",
+          "seconds": 3.082598605004023,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 7,
+            "prompt_tokens": 41,
+            "total_tokens": 48,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "inclusion",
+          "passed": true,
+          "output": "{\"answer\": 14}",
+          "expected": 14,
+          "seconds": 5.826805370001239,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 23,
+            "prompt_tokens": 48,
+            "total_tokens": 71,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "rle",
+          "passed": true,
+          "output": "{\"answer\": [[\"a\",3], [\"b\",2], [\"c\",1], [\"a\",4]]}",
+          "expected": [
+            [
+              "a",
+              3
+            ],
+            [
+              "b",
+              2
+            ],
+            [
+              "c",
+              1
+            ],
+            [
+              "a",
+              4
+            ]
+          ],
+          "seconds": 8.533996030004346,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 42,
+            "prompt_tokens": 47,
+            "total_tokens": 89,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        }
+      ],
+      "status": "tested",
+      "cache_probe": {
+        "same_tokens": true,
+        "tokens_cached": 17,
+        "max_logprob_error": 0.09957635402679443,
+        "enabled_by_default": false
+      }
+    }
+  ],
+  "limitations": [
+    "Quantized checkpoints and a small local diagnostic suite differ from the paper's BF16 benchmarks.",
+    "Held-out tasks are public diagnostics, not a general capability guarantee.",
+    "Prompt-prefix reuse is disabled by default; a cache probe is reported separately."
+  ],
+  "storage_before": {
+    "time": 1793763832.5758467,
+    "free_bytes": 520991645696,
+    "state_bytes": 199157,
+    "model_weight_bytes_written": 0
+  },
+  "runtime": {
+    "llama_cpp_revision": "0893ec98f5eafad36a43a72cd1c3723d72b0d03a",
+    "patch_sha256": "deb36000184f565ff563db72ec829095e6aa892b432738d69439dc9e32d77893",
+    "method": "anchored_damped_euler",
+    "architectures": [
+      "llama",
+      "qwen2",
+      "qwen3",
+      "qwen3moe"
+    ],
+    "cache": [
+      "first",
+      "last"
+    ],
+    "moe_routing": "pinned_ids_and_weights",
+    "version": 1,
+    "backend": "vulkan",
+    "dependencies": {
+      "vulkan_headers": "9fbc2a782ee3f8a4db64e7d991e23da75e893f44",
+      "spirv_headers": "71747ddd16f20e9b379ce293dba2954931d3b3c1"
+    },
+    "execution_policy": {
+      "context": 2048,
+      "gpu_layers": 999,
+      "kv_type": "f16",
+      "flash_attention": false,
+      "vulkan_fusion": false,
+      "prefix_cache": false,
+      "runner_version": "0.1.0"
+    }
+  },
+  "baseline": {
+    "probe": {
+      "index": 0,
+      "content": " Paris. The capital of Germany is Berlin. The capital of",
+      "tokens": [
+        12095,
+        13,
+        576,
+        6722,
+        315,
+        9856,
+        374,
+        19846,
+        13,
+        576,
+        6722,
+        315
+      ],
+      "id_slot": 0,
+      "stop": true,
+      "model": "deepcoder-14b-ca299227",
+      "tokens_predicted": 12,
+      "tokens_evaluated": 6,
+      "generation_settings": {
+        "seed": 1729,
+        "temperature": 0.0,
+        "dynatemp_range": 0.0,
+        "dynatemp_exponent": 1.0,
+        "top_k": 40,
+        "top_p": 0.949999988079071,
+        "min_p": 0.05000000074505806,
+        "top_n_sigma": -1.0,
+        "xtc_probability": 0.0,
+        "xtc_threshold": 0.10000000149011612,
+        "typical_p": 1.0,
+        "repeat_last_n": 64,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0,
+        "dry_multiplier": 0.0,
+        "dry_base": 1.75,
+        "dry_allowed_length": 2,
+        "dry_penalty_last_n": 64,
+        "dry_sequence_breakers": [
+          "\n",
+          ":",
+          "\"",
+          "*"
+        ],
+        "mirostat": 0,
+        "mirostat_tau": 5.0,
+        "mirostat_eta": 0.10000000149011612,
+        "adaptive_target": -1.0,
+        "adaptive_decay": 0.8999999761581421,
+        "stop": [],
+        "max_tokens": 12,
+        "n_predict": 12,
+        "n_keep": 0,
+        "n_discard": 0,
+        "ignore_eos": false,
+        "stream": false,
+        "logit_bias": [],
+        "n_probs": 5,
+        "min_keep": 0,
+        "grammar": "",
+        "grammar_lazy": false,
+        "grammar_triggers": [],
+        "preserved_tokens": [],
+        "chat_format": "Content-only",
+        "reasoning_format": "deepseek",
+        "reasoning_in_content": false,
+        "generation_prompt": "",
+        "samplers": [
+          "penalties",
+          "dry",
+          "top_n_sigma",
+          "top_k",
+          "typ_p",
+          "top_p",
+          "min_p",
+          "xtc",
+          "temperature"
+        ],
+        "speculative.types": "none",
+        "timings_per_token": false,
+        "post_sampling_probs": false,
+        "backend_sampling": false,
+        "lora": []
+      },
+      "prompt": "<｜begin▁of▁sentence｜>The capital of France is",
+      "has_new_line": false,
+      "truncated": false,
+      "stop_type": "limit",
+      "stopping_word": "",
+      "tokens_cached": 17,
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 6,
+        "prompt_ms": 163.198,
+        "prompt_per_token_ms": 27.19966666666667,
+        "prompt_per_second": 36.76515643574063,
+        "predicted_n": 12,
+        "predicted_ms": 1403.675,
+        "predicted_per_token_ms": 127.60681818181818,
+        "predicted_per_second": 7.836571856020802
+      },
+      "completion_probabilities": [
+        {
+          "id": 12095,
+          "token": " Paris",
+          "bytes": [
+            32,
+            80,
+            97,
+            114,
+            105,
+            115
+          ],
+          "logprob": -0.31278806924819946,
+          "top_logprobs": [
+            {
+              "id": 12095,
+              "token": " Paris",
+              "bytes": [
+                32,
+                80,
+                97,
+                114,
+                105,
+                115
+              ],
+              "logprob": -0.31278806924819946
+            },
+            {
+              "id": 1304,
+              "token": " __",
+              "bytes": [
+                32,
+                95,
+                95
+              ],
+              "logprob": -3.031111717224121
+            },
+            {
+              "id": 304,
+              "token": " in",
+              "bytes": [
+                32,
+                105,
+                110
+              ],
+              "logprob": -3.5471973419189453
+            },
+            {
+              "id": 1112,
+              "token": "...",
+              "bytes": [
+                46,
+                46,
+                46
+              ],
+              "logprob": -3.5714588165283203
+            },
+            {
+              "id": 32671,
+              "token": " ______",
+              "bytes": [
+                32,
+                95,
+                95,
+                95,
+                95,
+                95,
+                95
+              ],
+              "logprob": -3.8819351196289062
+            }
+          ]
+        },
+        {
+          "id": 13,
+          "token": ".",
+          "bytes": [
+            46
+          ],
+          "logprob": -0.5947982668876648,
+          "top_logprobs": [
+            {
+              "id": 13,
+              "token": ".",
+              "bytes": [
+                46
+              ],
+              "logprob": -0.5947982668876648
+            },
+            {
+              "id": 382,
+              "token": ".\n\n",
+              "bytes": [
+                46,
+                10,
+                10
+              ],
+              "logprob": -1.5652973651885986
+            },
+            {
+              "id": 11,
+              "token": ",",
+              "bytes": [
+                44
+              ],
+              "logprob": -1.9784823656082153
+            },
+            {
+              "id": 624,
+              "token": ".\n",
+              "bytes": [
+                46,
+                10
+              ],
+              "logprob": -2.7856991291046143
+            },
+            {
+              "id": 323,
+              "token": " and",
+              "bytes": [
+                32,
+                97,
+                110,
+                100
+              ],
+              "logprob": -4.628551006317139
+            }
+          ]
+        },
+        {
+          "id": 576,
+          "token": " The",
+          "bytes": [
+            32,
+            84,
+            104,
+            101
+          ],
+          "logprob": -1.4613243341445923,
+          "top_logprobs": [
+            {
+              "id": 576,
+              "token": " The",
+              "bytes": [
+                32,
+                84,
+                104,
+                101
+              ],
+              "logprob": -1.4613243341445923
+            },
+            {
+              "id": 12095,
+              "token": " Paris",
+              "bytes": [
+                32,
+                80,
+                97,
+                114,
+                105,
+                115
+              ],
+              "logprob": -1.9582334756851196
+            },
+            {
+              "id": 15920,
+              "token": " Which",
+              "bytes": [
+                32,
+                87,
+                104,
+                105,
+                99,
+                104
+              ],
+              "logprob": -2.4827687740325928
+            },
+            {
+              "id": 2055,
+              "token": " So",
+              "bytes": [
+                32,
+                83,
+                111
+              ],
+              "logprob": -2.505103826522827
+            },
+            {
+              "id": 3555,
+              "token": " What",
+              "bytes": [
+                32,
+                87,
+                104,
+                97,
+                116
+              ],
+              "logprob": -2.5144336223602295
+            }
+          ]
+        },
+        {
+          "id": 6722,
+          "token": " capital",
+          "bytes": [
+            32,
+            99,
+            97,
+            112,
+            105,
+            116,
+            97,
+            108
+          ],
+          "logprob": -0.1809058040380478,
+          "top_logprobs": [
+            {
+              "id": 6722,
+              "token": " capital",
+              "bytes": [
+                32,
+                99,
+                97,
+                112,
+                105,
+                116,
+                97,
+                108
+              ],
+              "logprob": -0.1809058040380478
+            },
+            {
+              "id": 7042,
+              "token": " population",
+              "bytes": [
+                32,
+                112,
+                111,
+                112,
+                117,
+                108,
+                97,
+                116,
+                105,
+                111,
+                110
+              ],
+              "logprob": -2.552743434906006
+            },
+            {
+              "id": 468,
+              "token": " E",
+              "bytes": [
+                32,
+                69
+              ],
+              "logprob": -3.2719759941101074
+            },
+            {
+              "id": 3146,
+              "token": " country",
+              "bytes": [
+                32,
+                99,
+                111,
+                117,
+                110,
+                116,
+                114,
+                121
+              ],
+              "logprob": -5.033219814300537
+            },
+            {
+              "id": 3283,
+              "token": " city",
+              "bytes": [
+                32,
+                99,
+                105,
+                116,
+                121
+              ],
+              "logprob": -5.4145026206970215
+            }
+          ]
+        },
+        {
+          "id": 315,
+          "token": " of",
+          "bytes": [
+            32,
+            111,
+            102
+          ],
+          "logprob": -0.06057446077466011,
+          "top_logprobs": [
+            {
+              "id": 315,
+              "token": " of",
+              "bytes": [
+                32,
+                111,
+                102
+              ],
+              "logprob": -0.06057446077466011
+            },
+            {
+              "id": 374,
+              "token": " is",
+              "bytes": [
+                32,
+                105,
+                115
+              ],
+              "logprob": -3.7226648330688477
+            },
+            {
+              "id": 3283,
+              "token": " city",
+              "bytes": [
+                32,
+                99,
+                105,
+                116,
+                121
+              ],
+              "logprob": -4.19661808013916
+            },
+            {
+              "id": 702,
+              "token": " has",
+              "bytes": [
+                32,
+                104,
+                97,
+                115
+              ],
+              "logprob": -5.458569526672363
+            },
+            {
+              "id": 594,
+              "token": "'s",
+              "bytes": [
+                39,
+                115
+              ],
+              "logprob": -5.511812210083008
+            }
+          ]
+        },
+        {
+          "id": 9856,
+          "token": " Germany",
+          "bytes": [
+            32,
+            71,
+            101,
+            114,
+            109,
+            97,
+            110,
+            121
+          ],
+          "logprob": -0.8263486623764038,
+          "top_logprobs": [
+            {
+              "id": 9856,
+              "token": " Germany",
+              "bytes": [
+                32,
+                71,
+                101,
+                114,
+                109,
+                97,
+                110,
+                121
+              ],
+              "logprob": -0.8263486623764038
+            },
+            {
+              "id": 17689,
+              "token": " Spain",
+              "bytes": [
+                32,
+                83,
+                112,
+                97,
+                105,
+                110
+              ],
+              "logprob": -1.8623631000518799
+            },
+            {
+              "id": 9448,
+              "token": " England",
+              "bytes": [
+                32,
+                69,
+                110,
+                103,
+                108,
+                97,
+                110,
+                100
+              ],
+              "logprob": -1.9615243673324585
+            },
+            {
+              "id": 279,
+              "token": " the",
+              "bytes": [
+                32,
+                116,
+                104,
+                101
+              ],
+              "logprob": -3.055964708328247
+            },
+            {
+              "id": 6864,
+              "token": " Canada",
+              "bytes": [
+                32,
+                67,
+                97,
+                110,
+                97,
+                100,
+                97
+              ],
+              "logprob": -3.2615771293640137
+            }
+          ]
+        },
+        {
+          "id": 374,
+          "token": " is",
+          "bytes": [
+            32,
+            105,
+            115
+          ],
+          "logprob": -0.001547579769976437,
+          "top_logprobs": [
+            {
+              "id": 374,
+              "token": " is",
+              "bytes": [
+                32,
+                105,
+                115
+              ],
+              "logprob": -0.001547579769976437
+            },
+            {
+              "id": 1112,
+              "token": "...",
+              "bytes": [
+                46,
+                46,
+                46
+              ],
+              "logprob": -8.411286354064941
+            },
+            {
+              "id": 11,
+              "token": ",",
+              "bytes": [
+                44
+              ],
+              "logprob": -8.710488319396973
+            },
+            {
+              "id": 13,
+              "token": ".",
+              "bytes": [
+                46
+              ],
+              "logprob": -8.837342262268066
+            },
+            {
+              "id": 1304,
+              "token": " __",
+              "bytes": [
+                32,
+                95,
+                95
+              ],
+              "logprob": -9.21308708190918
+            }
+          ]
+        },
+        {
+          "id": 19846,
+          "token": " Berlin",
+          "bytes": [
+            32,
+            66,
+            101,
+            114,
+            108,
+            105,
+            110
+          ],
+          "logprob": -0.012290718033909798,
+          "top_logprobs": [
+            {
+              "id": 19846,
+              "token": " Berlin",
+              "bytes": [
+                32,
+                66,
+                101,
+                114,
+                108,
+                105,
+                110
+              ],
+              "logprob": -0.012290718033909798
+            },
+            {
+              "id": 1304,
+              "token": " __",
+              "bytes": [
+                32,
+                95,
+                95
+              ],
+              "logprob": -6.055698871612549
+            },
+            {
+              "id": 13481,
+              "token": " Bon",
+              "bytes": [
+                32,
+                66,
+                111,
+                110
+              ],
+              "logprob": -6.190107822418213
+            },
+            {
+              "id": 8907,
+              "token": " Ber",
+              "bytes": [
+                32,
+                66,
+                101,
+                114
+              ],
+              "logprob": -7.041062831878662
+            },
+            {
+              "id": 94409,
+              "token": "Berlin",
+              "bytes": [
+                66,
+                101,
+                114,
+                108,
+                105,
+                110
+              ],
+              "logprob": -7.174281597137451
+            }
+          ]
+        },
+        {
+          "id": 13,
+          "token": ".",
+          "bytes": [
+            46
+          ],
+          "logprob": -0.05805192142724991,
+          "top_logprobs": [
+            {
+              "id": 13,
+              "token": ".",
+              "bytes": [
+                46
+              ],
+              "logprob": -0.05805192142724991
+            },
+            {
+              "id": 382,
+              "token": ".\n\n",
+              "bytes": [
+                46,
+                10,
+                10
+              ],
+              "logprob": -3.338437795639038
+            },
+            {
+              "id": 624,
+              "token": ".\n",
+              "bytes": [
+                46,
+                10
+              ],
+              "logprob": -4.280906677246094
+            },
+            {
+              "id": 11,
+              "token": ",",
+              "bytes": [
+                44
+              ],
+              "logprob": -5.598194122314453
+            },
+            {
+              "id": 323,
+              "token": " and",
+              "bytes": [
+                32,
+                97,
+                110,
+                100
+              ],
+              "logprob": -7.395830154418945
+            }
+          ]
+        },
+        {
+          "id": 576,
+          "token": " The",
+          "bytes": [
+            32,
+            84,
+            104,
+            101
+          ],
+          "logprob": -0.19257928431034088,
+          "top_logprobs": [
+            {
+              "id": 576,
+              "token": " The",
+              "bytes": [
+                32,
+                84,
+                104,
+                101
+              ],
+              "logprob": -0.19257928431034088
+            },
+            {
+              "id": 3555,
+              "token": " What",
+              "bytes": [
+                32,
+                87,
+                104,
+                97,
+                116
+              ],
+              "logprob": -2.7225589752197266
+            },
+            {
+              "id": 15920,
+              "token": " Which",
+              "bytes": [
+                32,
+                87,
+                104,
+                105,
+                99,
+                104
+              ],
+              "logprob": -3.972972869873047
+            },
+            {
+              "id": 15277,
+              "token": " Therefore",
+              "bytes": [
+                32,
+                84,
+                104,
+                101,
+                114,
+                101,
+                102,
+                111,
+                114,
+                101
+              ],
+              "logprob": -4.032619476318359
+            },
+            {
+              "id": 2055,
+              "token": " So",
+              "bytes": [
+                32,
+                83,
+                111
+              ],
+              "logprob": -4.118683815002441
+            }
+          ]
+        },
+        {
+          "id": 6722,
+          "token": " capital",
+          "bytes": [
+            32,
+            99,
+            97,
+            112,
+            105,
+            116,
+            97,
+            108
+          ],
+          "logprob": -0.005644126329571009,
+          "top_logprobs": [
+            {
+              "id": 6722,
+              "token": " capital",
+              "bytes": [
+                32,
+                99,
+                97,
+                112,
+                105,
+                116,
+                97,
+                108
+              ],
+              "logprob": -0.005644126329571009
+            },
+            {
+              "id": 92999,
+              "token": " capitals",
+              "bytes": [
+                32,
+                99,
+                97,
+                112,
+                105,
+                116,
+                97,
+                108,
+                115
+              ],
+              "logprob": -6.519958972930908
+            },
+            {
+              "id": 198,
+              "token": "\n",
+              "bytes": [
+                10
+              ],
+              "logprob": -8.330855369567871
+            },
+            {
+              "id": 7042,
+              "token": " population",
+              "bytes": [
+                32,
+                112,
+                111,
+                112,
+                117,
+                108,
+                97,
+                116,
+                105,
+                111,
+                110
+              ],
+              "logprob": -8.588934898376465
+            },
+            {
+              "id": 65063,
+              "token": "capital",
+              "bytes": [
+                99,
+                97,
+                112,
+                105,
+                116,
+                97,
+                108
+              ],
+              "logprob": -8.810235023498535
+            }
+          ]
+        },
+        {
+          "id": 315,
+          "token": " of",
+          "bytes": [
+            32,
+            111,
+            102
+          ],
+          "logprob": -0.0009337849915027618,
+          "top_logprobs": [
+            {
+              "id": 315,
+              "token": " of",
+              "bytes": [
+                32,
+                111,
+                102
+              ],
+              "logprob": -0.0009337849915027618
+            },
+            {
+              "id": 374,
+              "token": " is",
+              "bytes": [
+                32,
+                105,
+                115
+              ],
+              "logprob": -8.349776268005371
+            },
+            {
+              "id": 9720,
+              "token": " cities",
+              "bytes": [
+                32,
+                99,
+                105,
+                116,
+                105,
+                101,
+                115
+              ],
+              "logprob": -8.827923774719238
+            },
+            {
+              "id": 3283,
+              "token": " city",
+              "bytes": [
+                32,
+                99,
+                105,
+                116,
+                121
+              ],
+              "logprob": -8.971872329711914
+            },
+            {
+              "id": 198,
+              "token": "\n",
+              "bytes": [
+                10
+              ],
+              "logprob": -9.526812553405762
+            }
+          ]
+        }
+      ]
+    },
+    "selection": [
+      {
+        "id": "sort",
+        "passed": true,
+        "output": "{\"answer\": [-2, 0, 4, 4, 8]}",
+        "expected": [
+          -2,
+          0,
+          4,
+          4,
+          8
+        ],
+        "seconds": 3.9302194440097082,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 16,
+          "prompt_tokens": 50,
+          "total_tokens": 66,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      {
+        "id": "dedupe",
+        "passed": true,
+        "output": "{\"answer\": [3,1,2,4]}",
+        "expected": [
+          3,
+          1,
+          2,
+          4
+        ],
+        "seconds": 3.2421089920098893,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 10,
+          "prompt_tokens": 50,
+          "total_tokens": 60,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      {
+        "id": "trace",
+        "passed": false,
+        "output": "{\"answer\": \"[1, 2, 3]\"}",
+        "expected": [
+          1,
+          2,
+          3
+        ],
+        "seconds": 3.3847995289979735,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 11,
+          "prompt_tokens": 48,
+          "total_tokens": 59,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      {
+        "id": "overlap",
+        "passed": false,
+        "output": "{\"answer\": \"[1,6],[9,12]\"}",
+        "expected": [
+          [
+            1,
+            6
+          ],
+          [
+            9,
+            12
+          ]
+        ],
+        "seconds": 5.4172523090092,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 19,
+          "prompt_tokens": 52,
+          "total_tokens": 71,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      {
+        "id": "modulo",
+        "passed": true,
+        "output": "{\"answer\": 3}",
+        "expected": 3,
+        "seconds": 3.2678452669933904,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 4,
+          "prompt_tokens": 44,
+          "total_tokens": 48,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      {
+        "id": "count",
+        "passed": true,
+        "output": "{\"answer\": 4}",
+        "expected": 4,
+        "seconds": 2.933009330998175,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 4,
+          "prompt_tokens": 46,
+          "total_tokens": 50,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      {
+        "id": "fibonacci",
+        "passed": true,
+        "output": "{\"answer\": 55}",
+        "expected": 55,
+        "seconds": 4.696647479999228,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 19,
+          "prompt_tokens": 59,
+          "total_tokens": 78,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      {
+        "id": "path",
+        "passed": true,
+        "output": "{\"answer\": 2}",
+        "expected": 2,
+        "seconds": 5.726804058998823,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 24,
+          "prompt_tokens": 56,
+          "total_tokens": 80,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      {
+        "id": "bisect",
+        "passed": false,
+        "output": "{\"answer\": 3}",
+        "expected": 2,
+        "seconds": 2.4453020360087976,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 4,
+          "prompt_tokens": 54,
+          "total_tokens": 58,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      {
+        "id": "unicode",
+        "passed": true,
+        "output": "{\"answer\": \"DC21ba\"}",
+        "expected": "DC21ba",
+        "seconds": 2.8094599559990456,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 7,
+          "prompt_tokens": 41,
+          "total_tokens": 48,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      {
+        "id": "inclusion",
+        "passed": true,
+        "output": "{\"answer\": 14}",
+        "expected": 14,
+        "seconds": 5.096889866006677,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 23,
+          "prompt_tokens": 48,
+          "total_tokens": 71,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      {
+        "id": "rle",
+        "passed": true,
+        "output": "{\"answer\": [[\"a\",3], [\"b\",2], [\"c\",1], [\"a\",4]]}",
+        "expected": [
+          [
+            "a",
+            3
+          ],
+          [
+            "b",
+            2
+          ],
+          [
+            "c",
+            1
+          ],
+          [
+            "a",
+            4
+          ]
+        ],
+        "seconds": 7.3327414599916665,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 42,
+          "prompt_tokens": 47,
+          "total_tokens": 89,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      }
+    ],
+    "holdout": [
+      {
+        "id": "hold-sort",
+        "passed": false,
+        "output": "{\"answer\": [-1, 0, 3, -5, 12, 12]}",
+        "expected": [
+          12,
+          12,
+          3,
+          0,
+          -1,
+          -5
+        ],
+        "seconds": 4.563389511007699,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 21,
+          "prompt_tokens": 50,
+          "total_tokens": 71,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      {
+        "id": "hold-dedupe",
+        "passed": true,
+        "output": "{\"answer\": \"cabd\"}",
+        "expected": "cabd",
+        "seconds": 2.6031644929898903,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 5,
+          "prompt_tokens": 46,
+          "total_tokens": 51,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      {
+        "id": "hold-trace",
+        "passed": false,
+        "output": "{\"answer\": \"[1, 2]\"}",
+        "expected": [
+          1,
+          2
+        ],
+        "seconds": 3.8015632860042388,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 14,
+          "prompt_tokens": 49,
+          "total_tokens": 63,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      {
+        "id": "hold-overlap",
+        "passed": false,
+        "output": "{\"answer\": \"[[1,2],[2,4],[5,7],[8,9]]\"}",
+        "expected": [
+          [
+            1,
+            4
+          ],
+          [
+            5,
+            7
+          ],
+          [
+            8,
+            9
+          ]
+        ],
+        "seconds": 6.324145168997347,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 34,
+          "prompt_tokens": 54,
+          "total_tokens": 88,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      {
+        "id": "hold-division",
+        "passed": true,
+        "output": "{\"answer\": -5}",
+        "expected": -5,
+        "seconds": 2.471439904998988,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 4,
+          "prompt_tokens": 44,
+          "total_tokens": 48,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      {
+        "id": "hold-count",
+        "passed": true,
+        "output": "{\"answer\": 3}",
+        "expected": 3,
+        "seconds": 2.474732529008179,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 4,
+          "prompt_tokens": 47,
+          "total_tokens": 51,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      {
+        "id": "hold-fibonacci",
+        "passed": true,
+        "output": "{\"answer\": 144}",
+        "expected": 144,
+        "seconds": 2.7051655030081747,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 6,
+          "prompt_tokens": 59,
+          "total_tokens": 65,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      {
+        "id": "hold-path",
+        "passed": true,
+        "output": "{\"answer\": 2}",
+        "expected": 2,
+        "seconds": 5.3559387429995695,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 24,
+          "prompt_tokens": 58,
+          "total_tokens": 82,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      {
+        "id": "hold-bisect",
+        "passed": true,
+        "output": "{\"answer\": 3}",
+        "expected": 3,
+        "seconds": 2.5148306629998842,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 4,
+          "prompt_tokens": 53,
+          "total_tokens": 57,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      {
+        "id": "hold-reverse",
+        "passed": true,
+        "output": "{\"answer\": \"02X9z\"}",
+        "expected": "02X9z",
+        "seconds": 3.779832832995453,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 14,
+          "prompt_tokens": 42,
+          "total_tokens": 56,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      {
+        "id": "hold-inclusion",
+        "passed": false,
+        "output": "{\"answer\": 14}",
+        "expected": 13,
+        "seconds": 5.125682010999299,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 23,
+          "prompt_tokens": 48,
+          "total_tokens": 71,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      {
+        "id": "hold-rle",
+        "passed": true,
+        "output": "{\"answer\": [[\"b\",3], [\"a\",2], [\"c\",1], [\"b\",3]]}",
+        "expected": [
+          [
+            "b",
+            3
+          ],
+          [
+            "a",
+            2
+          ],
+          [
+            "c",
+            1
+          ],
+          [
+            "b",
+            3
+          ]
+        ],
+        "seconds": 4.624506581996684,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 22,
+          "prompt_tokens": 47,
+          "total_tokens": 69,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      }
+    ]
+  },
+  "recommendation": {
+    "wins": 1,
+    "losses": 1,
+    "one_sided_sign_test_p": 0.75,
+    "recommend_loop": false,
+    "verdict": "no_demonstrated_improvement"
+  },
+  "finished": 1793764184.550103,
+  "storage_after": {
+    "time": 1793764184.5505838,
+    "free_bytes": 520987308032,
+    "state_bytes": 319591,
+    "model_weight_bytes_written": 0
+  },
+  "source_mtime_ns": 1786599646105831006
+}

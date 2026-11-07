@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "model": {
+    "id": "olmo-3-1-32b-think-5fed6048",
+    "name": "olmo-3.1-32b-think",
+    "architecture": "olmo3",
+    "layers": 64,
+    "size_bytes": 19482434848,
+    "header_sha256": "d2c4f81cb1d43ddd17493fdaf3af75acfa77ebb9cae0261e2f3cf0b6c6b5e874",
+    "eligible": false,
+    "reasons": [
+      "No validated native adapter for olmo3",
+      "Sliding-window cache semantics have not been validated"
+    ],
+    "mode": "block"
+  },
+  "started": 1793764674.5098536,
+  "status": "unsupported",
+  "suite": "looplab-diagnostic-v2",
+  "suite_sha256": "8b2d60609aa5dccdb5e0c5680251a16ec3bfec3417ffacd99656b426bf7f848b",
+  "quick": false,
+  "evaluation_policy": {
+    "temperature": 0,
+    "seed": 1729,
+    "max_tokens": 192,
+    "cache_prompt": false,
+    "reasoning_effort": "none",
+    "reasoning_budget_tokens": 0,
+    "add_generation_prompt": false,
+    "continue_final_message": "content",
+    "response_format": {
+      "type": "json_object"
+    },
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    },
+    "assistant_prefill": "{\"answer\":"
+  },
+  "paper_reproduction": false,
+  "recommended_profile": "baseline",
+  "profiles": [],
+  "limitations": [
+    "Quantized checkpoints and a small local diagnostic suite differ from the paper's BF16 benchmarks.",
+    "Held-out tasks are public diagnostics, not a general capability guarantee.",
+    "Prompt-prefix reuse is disabled by default; a cache probe is reported separately."
+  ],
+  "storage_before": {
+    "time": 1793764674.5101633,
+    "free_bytes": 520989089792,
+    "state_bytes": 606971,
+    "model_weight_bytes_written": 0
+  },
+  "reasons": [
+    "No validated native adapter for olmo3",
+    "Sliding-window cache semantics have not been validated"
+  ]
+}

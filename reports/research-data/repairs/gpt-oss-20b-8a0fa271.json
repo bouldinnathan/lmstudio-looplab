@@ -1,0 +1,216 @@
+{
+  "model_id": "gpt-oss-20b-8a0fa271",
+  "architecture": "gptoss",
+  "status": "baseline_failed",
+  "adapter": {},
+  "metadata": {
+    "gptoss.attention.head_count": 64,
+    "gptoss.attention.head_count_kv": 8,
+    "gptoss.attention.key_length": 64,
+    "gptoss.attention.layer_norm_rms_epsilon": 9.999999747378752e-06,
+    "gptoss.attention.sliding_window": 128,
+    "gptoss.attention.value_length": 64,
+    "gptoss.block_count": 24,
+    "gptoss.context_length": 131072,
+    "gptoss.embedding_length": 2880,
+    "gptoss.expert_count": 32,
+    "gptoss.expert_used_count": 4,
+    "gptoss.feed_forward_length": 2880,
+    "gptoss.rope.freq_base": 150000.0,
+    "gptoss.rope.scaling.factor": 32.0,
+    "gptoss.rope.scaling.original_context_length": 4096
+  },
+  "tensor_count": 459,
+  "representative_tensors": [
+    {
+      "name": "blk.0.attn_k.bias",
+      "dimensions": [
+        512
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.attn_k.weight",
+      "dimensions": [
+        2880,
+        512
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "blk.0.attn_norm.weight",
+      "dimensions": [
+        2880
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.attn_out.bias",
+      "dimensions": [
+        2880
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.attn_out.weight",
+      "dimensions": [
+        4096,
+        2880
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "blk.0.attn_q.bias",
+      "dimensions": [
+        4096
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.attn_q.weight",
+      "dimensions": [
+        2880,
+        4096
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "blk.0.attn_sinks",
+      "dimensions": [
+        64
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.attn_v.bias",
+      "dimensions": [
+        512
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.attn_v.weight",
+      "dimensions": [
+        2880,
+        512
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "blk.0.ffn_down_exps.bias",
+      "dimensions": [
+        2880,
+        32
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.ffn_down_exps.weight",
+      "dimensions": [
+        2880,
+        2880,
+        32
+      ],
+      "ggml_type": 39
+    },
+    {
+      "name": "blk.0.ffn_gate_exps.bias",
+      "dimensions": [
+        2880,
+        32
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.ffn_gate_exps.weight",
+      "dimensions": [
+        2880,
+        2880,
+        32
+      ],
+      "ggml_type": 39
+    },
+    {
+      "name": "blk.0.ffn_gate_inp.bias",
+      "dimensions": [
+        32
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.ffn_gate_inp.weight",
+      "dimensions": [
+        2880,
+        32
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.ffn_norm.weight",
+      "dimensions": [
+        2880
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.ffn_up_exps.bias",
+      "dimensions": [
+        2880,
+        32
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.ffn_up_exps.weight",
+      "dimensions": [
+        2880,
+        2880,
+        32
+      ],
+      "ggml_type": 39
+    },
+    {
+      "name": "output.weight",
+      "dimensions": [
+        2880,
+        201088
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "output_norm.weight",
+      "dimensions": [
+        2880
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "token_embd.weight",
+      "dimensions": [
+        2880,
+        201088
+      ],
+      "ggml_type": 30
+    }
+  ],
+  "runtime_revision": "0893ec98f5eafad36a43a72cd1c3723d72b0d03a",
+  "patch_sha256": "d4506c79258f07b66b0a720122a9efb2f874a478286dc2d1448b1e9c732f6860",
+  "reasons": [
+    "No generated native adapter for gptoss",
+    "Sliding-window state is not handled by this adapter"
+  ],
+  "failures": [
+    "RuntimeError: Runtime failed to start; inspect <home><path>/gpt-oss-20b-8a0fa271-baseline.log\n0.00.079.999 E llama_model_load: error loading model: unknown model architecture: 'gptoss'\n0.00.080.007 E llama_model_load_from_file_impl: failed to load model\n0.00.080.045 E common_fit_params: encountered an error while trying to fit params to free device memory: failed to load model\n0.00.132.491 E llama_model_load: error loading model: unknown model architecture: 'gptoss'\n0.00.132.496 E llama_model_load_from_file_impl: failed to load model\n0.00.132.504 E cmn  common_init_: failed to load model '<model.gguf>'\n0.00.132.509 E srv    load_model: failed to load model, '<model.gguf>'\n0.00.133.890 E srv  server_run_i: exiting due to model loading error"
+  ],
+  "profile_failures": [],
+  "reproduce": "python -m looplab explore gpt-oss-20b-8a0fa271 --no-resume",
+  "next_steps": [
+    "Check the pinned native model loader and original graph before changing metadata or tensor names.",
+    "For an unrecognized but similar graph, extend runtime/auto_adapters.py and preserve its original layer body.",
+    "For recurrent, MLA, shared, or convolution state, implement and test the state snapshot/restore semantics explicitly.",
+    "For MoE, retain the first expert IDs and mixture weights through the shared routing helper.",
+    "For repeat-request instability, inspect cache clearing, graph reuse and backend numerical behavior with cache_prompt=false.",
+    "Rebuild, pass the independent native reference tests, then rerun this exact model and its K=2/3/4 probes.",
+    "Treat successful smoke tests as experimental compatibility, never proof of quality gains or full paper reproduction."
+  ]
+}

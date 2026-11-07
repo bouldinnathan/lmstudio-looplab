@@ -1,0 +1,68 @@
+{
+  "passes": 4,
+  "profile": {
+    "passes": 4,
+    "anchor": 0.5,
+    "mode": "block",
+    "cache": "first",
+    "start": 30,
+    "end": 34
+  },
+  "questions": 100,
+  "correct": 73,
+  "accuracy": 0.73,
+  "tasks": {
+    "gsm8k_cot_zeroshot": {
+      "correct": 44,
+      "questions": 50
+    },
+    "bbh_cot_zeroshot_boolean_expressions": {
+      "correct": 22,
+      "questions": 25
+    },
+    "bbh_cot_zeroshot_logical_deduction_five_objects": {
+      "correct": 7,
+      "questions": 25
+    }
+  },
+  "official_correct": 69,
+  "numeric_normalization_changes": 4,
+  "request_seconds": 15713.834479893965,
+  "mean_request_seconds": 157.13834479893964,
+  "median_request_seconds": 148.96563856951252,
+  "completion_tokens": 51644,
+  "end_to_end_output_tokens_per_second": 3.2865307360898512,
+  "native_decode_tokens_per_second": 3.375425057879172,
+  "cached_prompt_tokens": 0,
+  "truncated": 21,
+  "empty_final_answer": 13,
+  "official_metrics": {
+    "gsm8k_cot_zeroshot": {
+      "name": "gsm8k_cot_zeroshot",
+      "alias": "gsm8k_cot_zeroshot",
+      "sample_len": 50,
+      "exact_match,strict-match": 0.0,
+      "exact_match_stderr,strict-match": 0.0,
+      "exact_match,flexible-extract": 0.8,
+      "exact_match_stderr,flexible-extract": 0.05714285714285715
+    },
+    "bbh_cot_zeroshot_boolean_expressions": {
+      "name": "bbh_cot_zeroshot_boolean_expressions",
+      "alias": "bbh_cot_zeroshot_boolean_expressions",
+      "sample_len": 25,
+      "exact_match,flexible-extract": 0.88,
+      "exact_match_stderr,flexible-extract": 0.066332495807108,
+      "exact_match,strict-match": 0.0,
+      "exact_match_stderr,strict-match": 0.0
+    },
+    "bbh_cot_zeroshot_logical_deduction_five_objects": {
+      "name": "bbh_cot_zeroshot_logical_deduction_five_objects",
+      "alias": "bbh_cot_zeroshot_logical_deduction_five_objects",
+      "sample_len": 25,
+      "exact_match,flexible-extract": 0.28,
+      "exact_match_stderr,flexible-extract": 0.09165151389911678,
+      "exact_match,strict-match": 0.0,
+      "exact_match_stderr,strict-match": 0.0
+    }
+  }
+}

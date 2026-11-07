@@ -1,0 +1,2549 @@
+{
+  "schema": 1,
+  "model": {
+    "id": "deepseek-r1-32b-608cec8c",
+    "name": "deepseek-r1-32b",
+    "architecture": "qwen2",
+    "layers": 64,
+    "size_bytes": 19851335552,
+    "header_sha256": "533302579f60ce16f72b926e5e0403e1569e7e9bba26173796cbfb24dff1c373",
+    "eligible": true,
+    "reasons": [],
+    "mode": "block"
+  },
+  "started": 1793764674.5107472,
+  "status": "tested",
+  "suite": "looplab-diagnostic-v2",
+  "suite_sha256": "8b2d60609aa5dccdb5e0c5680251a16ec3bfec3417ffacd99656b426bf7f848b",
+  "quick": false,
+  "evaluation_policy": {
+    "temperature": 0,
+    "seed": 1729,
+    "max_tokens": 192,
+    "cache_prompt": false,
+    "reasoning_effort": "none",
+    "reasoning_budget_tokens": 0,
+    "add_generation_prompt": false,
+    "continue_final_message": "content",
+    "response_format": {
+      "type": "json_object"
+    },
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    },
+    "assistant_prefill": "{\"answer\":"
+  },
+  "paper_reproduction": false,
+  "recommended_profile": "baseline",
+  "profiles": [
+    {
+      "profile": {
+        "passes": 2,
+        "anchor": 0.5,
+        "mode": "block",
+        "cache": "first",
+        "start": 30,
+        "end": 34
+      },
+      "passes": 2,
+      "anchor_identity": {
+        "passed": true,
+        "max_logprob_error": 0.0
+      },
+      "selection": [
+        {
+          "id": "sort",
+          "passed": true,
+          "output": "{\"answer\": [-2, 0, 4, 4, 8]}",
+          "expected": [
+            -2,
+            0,
+            4,
+            4,
+            8
+          ],
+          "seconds": 6.885539387993049,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 23,
+            "prompt_tokens": 50,
+            "total_tokens": 73,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "dedupe",
+          "passed": true,
+          "output": "{\"answer\": [3,1,2,4]}",
+          "expected": [
+            3,
+            1,
+            2,
+            4
+          ],
+          "seconds": 8.160162247993867,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 19,
+            "prompt_tokens": 50,
+            "total_tokens": 69,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "trace",
+          "passed": false,
+          "output": "{\"answer\": \"[1, 2, 3]\"}",
+          "expected": [
+            1,
+            2,
+            3
+          ],
+          "seconds": 5.860654528994928,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 11,
+            "prompt_tokens": 48,
+            "total_tokens": 59,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "overlap",
+          "passed": true,
+          "output": "{\"answer\": [[1,6],[9,12]]}",
+          "expected": [
+            [
+              1,
+              6
+            ],
+            [
+              9,
+              12
+            ]
+          ],
+          "seconds": 6.536250620003557,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 13,
+            "prompt_tokens": 52,
+            "total_tokens": 65,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "modulo",
+          "passed": true,
+          "output": "{\"answer\": 3}",
+          "expected": 3,
+          "seconds": 7.392193955995026,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 16,
+            "prompt_tokens": 44,
+            "total_tokens": 60,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "count",
+          "passed": true,
+          "output": "{\"answer\": 4}",
+          "expected": 4,
+          "seconds": 5.648899157997221,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 10,
+            "prompt_tokens": 46,
+            "total_tokens": 56,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "fibonacci",
+          "passed": true,
+          "output": "{\"answer\": 55}",
+          "expected": 55,
+          "seconds": 6.28272139299952,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 12,
+            "prompt_tokens": 59,
+            "total_tokens": 71,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "path",
+          "passed": true,
+          "output": "{\"answer\": 2}",
+          "expected": 2,
+          "seconds": 7.4092192059906665,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 16,
+            "prompt_tokens": 56,
+            "total_tokens": 72,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "bisect",
+          "passed": true,
+          "output": "{\"answer\": 2}",
+          "expected": 2,
+          "seconds": 7.381959459002246,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 16,
+            "prompt_tokens": 54,
+            "total_tokens": 70,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "unicode",
+          "passed": true,
+          "output": "{\"answer\": \"DC21ba\"}",
+          "expected": "DC21ba",
+          "seconds": 8.188615364997531,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 19,
+            "prompt_tokens": 41,
+            "total_tokens": 60,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "inclusion",
+          "passed": false,
+          "output": "{\"answer\": 16}",
+          "expected": 14,
+          "seconds": 6.233779834001325,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 12,
+            "prompt_tokens": 48,
+            "total_tokens": 60,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "rle",
+          "passed": true,
+          "output": "{\"answer\": [[\"a\",3],[\"b\",2],[\"c\",1],[\"a\",4]]}",
+          "expected": [
+            [
+              "a",
+              3
+            ],
+            [
+              "b",
+              2
+            ],
+            [
+              "c",
+              1
+            ],
+            [
+              "a",
+              4
+            ]
+          ],
+          "seconds": 14.772026514998288,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 43,
+            "prompt_tokens": 47,
+            "total_tokens": 90,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        }
+      ],
+      "status": "tested",
+      "cache_probe": {
+        "same_tokens": true,
+        "tokens_cached": 17,
+        "max_logprob_error": 0.10302257537841797,
+        "enabled_by_default": false
+      },
+      "holdout": [
+        {
+          "id": "hold-sort",
+          "passed": true,
+          "output": "{\"answer\": [12, 12, 3, 0, -1, -5]}",
+          "expected": [
+            12,
+            12,
+            3,
+            0,
+            -1,
+            -5
+          ],
+          "seconds": 8.210449997000978,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 28,
+            "prompt_tokens": 50,
+            "total_tokens": 78,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "hold-dedupe",
+          "passed": true,
+          "output": "{\"answer\": \"cabd\"}",
+          "expected": "cabd",
+          "seconds": 6.777371231990401,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 14,
+            "prompt_tokens": 46,
+            "total_tokens": 60,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "hold-trace",
+          "passed": false,
+          "output": "{\"answer\": \"[1, 2]\"}",
+          "expected": [
+            1,
+            2
+          ],
+          "seconds": 5.030777017003857,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 8,
+            "prompt_tokens": 49,
+            "total_tokens": 57,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "hold-overlap",
+          "passed": true,
+          "output": "{\"answer\": [[1,4],[5,7],[8,9]]}",
+          "expected": [
+            [
+              1,
+              4
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              8,
+              9
+            ]
+          ],
+          "seconds": 7.218760464995285,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 16,
+            "prompt_tokens": 54,
+            "total_tokens": 70,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "hold-division",
+          "passed": true,
+          "output": "{\"answer\": -5}",
+          "expected": -5,
+          "seconds": 7.326842854003189,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 16,
+            "prompt_tokens": 44,
+            "total_tokens": 60,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "hold-count",
+          "passed": true,
+          "output": "{\"answer\": 3}",
+          "expected": 3,
+          "seconds": 5.6432062379899435,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 10,
+            "prompt_tokens": 47,
+            "total_tokens": 57,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "hold-fibonacci",
+          "passed": true,
+          "output": "{\"answer\": 144}",
+          "expected": 144,
+          "seconds": 7.948285118996864,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 18,
+            "prompt_tokens": 59,
+            "total_tokens": 77,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "hold-path",
+          "passed": true,
+          "output": "{\"answer\": 2}",
+          "expected": 2,
+          "seconds": 7.425467086999561,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 16,
+            "prompt_tokens": 58,
+            "total_tokens": 74,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "hold-bisect",
+          "passed": true,
+          "output": "{\"answer\": 3}",
+          "expected": 3,
+          "seconds": 7.357846427010372,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 16,
+            "prompt_tokens": 53,
+            "total_tokens": 69,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "hold-reverse",
+          "passed": true,
+          "output": "{\"answer\": \"02X9z\"}",
+          "expected": "02X9z",
+          "seconds": 6.999832688001334,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 15,
+            "prompt_tokens": 42,
+            "total_tokens": 57,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "hold-inclusion",
+          "passed": false,
+          "output": "{\"answer\": 16}",
+          "expected": 13,
+          "seconds": 10.178032695999718,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 26,
+            "prompt_tokens": 48,
+            "total_tokens": 74,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "hold-rle",
+          "passed": true,
+          "output": "{\"answer\": [[\"b\",3],[\"a\",2],[\"c\",1],[\"b\",3]]}",
+          "expected": [
+            [
+              "b",
+              3
+            ],
+            [
+              "a",
+              2
+            ],
+            [
+              "c",
+              1
+            ],
+            [
+              "b",
+              3
+            ]
+          ],
+          "seconds": 12.220880954992026,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 34,
+            "prompt_tokens": 47,
+            "total_tokens": 81,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "profile": {
+        "passes": 3,
+        "anchor": 0.5,
+        "mode": "block",
+        "cache": "first",
+        "start": 30,
+        "end": 34
+      },
+      "passes": 3,
+      "anchor_identity": {
+        "passed": true,
+        "max_logprob_error": 0.0
+      },
+      "selection": [
+        {
+          "id": "sort",
+          "passed": true,
+          "output": "{\"answer\": [-2, 0, 4, 4, 8]}",
+          "expected": [
+            -2,
+            0,
+            4,
+            4,
+            8
+          ],
+          "seconds": 7.266510643006768,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 23,
+            "prompt_tokens": 50,
+            "total_tokens": 73,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "dedupe",
+          "passed": true,
+          "output": "{\"answer\": [3,1,2,4]}",
+          "expected": [
+            3,
+            1,
+            2,
+            4
+          ],
+          "seconds": 8.451573186990572,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 19,
+            "prompt_tokens": 50,
+            "total_tokens": 69,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "trace",
+          "passed": false,
+          "output": "{\"answer\": \"[1, 2, 3]\"}",
+          "expected": [
+            1,
+            2,
+            3
+          ],
+          "seconds": 6.073906366989831,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 11,
+            "prompt_tokens": 48,
+            "total_tokens": 59,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "overlap",
+          "passed": true,
+          "output": "{\"answer\": [[1,6],[9,12]]}",
+          "expected": [
+            [
+              1,
+              6
+            ],
+            [
+              9,
+              12
+            ]
+          ],
+          "seconds": 6.5923621480033034,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 13,
+            "prompt_tokens": 52,
+            "total_tokens": 65,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "modulo",
+          "passed": true,
+          "output": "{\"answer\": 3}",
+          "expected": 3,
+          "seconds": 7.594776248995913,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 16,
+            "prompt_tokens": 44,
+            "total_tokens": 60,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "count",
+          "passed": true,
+          "output": "{\"answer\": 4}",
+          "expected": 4,
+          "seconds": 5.842030743006035,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 10,
+            "prompt_tokens": 46,
+            "total_tokens": 56,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "fibonacci",
+          "passed": true,
+          "output": "{\"answer\": 55}",
+          "expected": 55,
+          "seconds": 10.708179993001977,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 26,
+            "prompt_tokens": 59,
+            "total_tokens": 85,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "path",
+          "passed": true,
+          "output": "{\"answer\": 2}",
+          "expected": 2,
+          "seconds": 7.941217768995557,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 16,
+            "prompt_tokens": 56,
+            "total_tokens": 72,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "bisect",
+          "passed": true,
+          "output": "{\"answer\": 2}",
+          "expected": 2,
+          "seconds": 7.684261311995215,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 16,
+            "prompt_tokens": 54,
+            "total_tokens": 70,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "unicode",
+          "passed": true,
+          "output": "{\"answer\": \"DC21ba\"}",
+          "expected": "DC21ba",
+          "seconds": 8.545018778997473,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 19,
+            "prompt_tokens": 41,
+            "total_tokens": 60,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "inclusion",
+          "passed": false,
+          "output": "{\"answer\": 16}",
+          "expected": 14,
+          "seconds": 6.457432155002607,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 12,
+            "prompt_tokens": 48,
+            "total_tokens": 60,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "rle",
+          "passed": true,
+          "output": "{\"answer\": [[\"a\",3],[\"b\",2],[\"c\",1],[\"a\",4]]}",
+          "expected": [
+            [
+              "a",
+              3
+            ],
+            [
+              "b",
+              2
+            ],
+            [
+              "c",
+              1
+            ],
+            [
+              "a",
+              4
+            ]
+          ],
+          "seconds": 9.49679216601362,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 23,
+            "prompt_tokens": 47,
+            "total_tokens": 70,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        }
+      ],
+      "status": "tested",
+      "cache_probe": {
+        "same_tokens": true,
+        "tokens_cached": 17,
+        "max_logprob_error": 0.08210420608520508,
+        "enabled_by_default": false
+      }
+    },
+    {
+      "profile": {
+        "passes": 4,
+        "anchor": 0.5,
+        "mode": "block",
+        "cache": "first",
+        "start": 30,
+        "end": 34
+      },
+      "passes": 4,
+      "anchor_identity": {
+        "passed": true,
+        "max_logprob_error": 0.0
+      },
+      "selection": [
+        {
+          "id": "sort",
+          "passed": true,
+          "output": "{\"answer\": [-2, 0, 4, 4, 8]}",
+          "expected": [
+            -2,
+            0,
+            4,
+            4,
+            8
+          ],
+          "seconds": 7.652852057988639,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 23,
+            "prompt_tokens": 50,
+            "total_tokens": 73,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "dedupe",
+          "passed": true,
+          "output": "{\"answer\": [3,1,2,4]}",
+          "expected": [
+            3,
+            1,
+            2,
+            4
+          ],
+          "seconds": 8.793993141996907,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 19,
+            "prompt_tokens": 50,
+            "total_tokens": 69,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "trace",
+          "passed": false,
+          "output": "{\"answer\": \"[1, 2, 3]\"}",
+          "expected": [
+            1,
+            2,
+            3
+          ],
+          "seconds": 6.221757263992913,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 11,
+            "prompt_tokens": 48,
+            "total_tokens": 59,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "overlap",
+          "passed": true,
+          "output": "{\"answer\": [[1,6],[9,12]]}",
+          "expected": [
+            [
+              1,
+              6
+            ],
+            [
+              9,
+              12
+            ]
+          ],
+          "seconds": 6.845068126000115,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 13,
+            "prompt_tokens": 52,
+            "total_tokens": 65,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "modulo",
+          "passed": true,
+          "output": "{\"answer\": 3}",
+          "expected": 3,
+          "seconds": 7.862860463996185,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 16,
+            "prompt_tokens": 44,
+            "total_tokens": 60,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "count",
+          "passed": true,
+          "output": "{\"answer\": 4}",
+          "expected": 4,
+          "seconds": 6.00816834300349,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 10,
+            "prompt_tokens": 46,
+            "total_tokens": 56,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "fibonacci",
+          "passed": true,
+          "output": "{\"answer\": 55}",
+          "expected": 55,
+          "seconds": 6.714561824002885,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 12,
+            "prompt_tokens": 59,
+            "total_tokens": 71,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "path",
+          "passed": true,
+          "output": "{\"answer\": 2}",
+          "expected": 2,
+          "seconds": 8.022086830009357,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 16,
+            "prompt_tokens": 56,
+            "total_tokens": 72,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "bisect",
+          "passed": true,
+          "output": "{\"answer\": 2}",
+          "expected": 2,
+          "seconds": 7.919510588006233,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 16,
+            "prompt_tokens": 54,
+            "total_tokens": 70,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "unicode",
+          "passed": true,
+          "output": "{\"answer\": \"DC21ba\"}",
+          "expected": "DC21ba",
+          "seconds": 8.769372602997464,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 19,
+            "prompt_tokens": 41,
+            "total_tokens": 60,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "inclusion",
+          "passed": false,
+          "output": "{\"answer\": 16}",
+          "expected": 14,
+          "seconds": 6.636857657998917,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 12,
+            "prompt_tokens": 48,
+            "total_tokens": 60,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "rle",
+          "passed": true,
+          "output": "{\"answer\": [[\"a\",3],[\"b\",2],[\"c\",1],[\"a\",4]]}",
+          "expected": [
+            [
+              "a",
+              3
+            ],
+            [
+              "b",
+              2
+            ],
+            [
+              "c",
+              1
+            ],
+            [
+              "a",
+              4
+            ]
+          ],
+          "seconds": 9.814334908005549,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 23,
+            "prompt_tokens": 47,
+            "total_tokens": 70,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        }
+      ],
+      "status": "tested",
+      "cache_probe": {
+        "same_tokens": true,
+        "tokens_cached": 17,
+        "max_logprob_error": 0.15226364135742188,
+        "enabled_by_default": false
+      }
+    }
+  ],
+  "limitations": [
+    "Quantized checkpoints and a small local diagnostic suite differ from the paper's BF16 benchmarks.",
+    "Held-out tasks are public diagnostics, not a general capability guarantee.",
+    "Prompt-prefix reuse is disabled by default; a cache probe is reported separately."
+  ],
+  "storage_before": {
+    "time": 1793764674.511052,
+    "free_bytes": 520989089792,
+    "state_bytes": 610496,
+    "model_weight_bytes_written": 0
+  },
+  "runtime": {
+    "llama_cpp_revision": "0893ec98f5eafad36a43a72cd1c3723d72b0d03a",
+    "patch_sha256": "deb36000184f565ff563db72ec829095e6aa892b432738d69439dc9e32d77893",
+    "method": "anchored_damped_euler",
+    "architectures": [
+      "llama",
+      "qwen2",
+      "qwen3",
+      "qwen3moe"
+    ],
+    "cache": [
+      "first",
+      "last"
+    ],
+    "moe_routing": "pinned_ids_and_weights",
+    "version": 1,
+    "backend": "vulkan",
+    "dependencies": {
+      "vulkan_headers": "9fbc2a782ee3f8a4db64e7d991e23da75e893f44",
+      "spirv_headers": "71747ddd16f20e9b379ce293dba2954931d3b3c1"
+    },
+    "execution_policy": {
+      "context": 2048,
+      "gpu_layers": 999,
+      "kv_type": "f16",
+      "flash_attention": false,
+      "vulkan_fusion": false,
+      "prefix_cache": false,
+      "runner_version": "0.1.0"
+    }
+  },
+  "baseline": {
+    "probe": {
+      "index": 0,
+      "content": " Paris. Paris is located in the northern part of France.",
+      "tokens": [
+        12095,
+        13,
+        12095,
+        374,
+        7407,
+        304,
+        279,
+        18172,
+        949,
+        315,
+        9625,
+        13
+      ],
+      "id_slot": 0,
+      "stop": true,
+      "model": "deepseek-r1-32b-608cec8c",
+      "tokens_predicted": 12,
+      "tokens_evaluated": 6,
+      "generation_settings": {
+        "seed": 1729,
+        "temperature": 0.0,
+        "dynatemp_range": 0.0,
+        "dynatemp_exponent": 1.0,
+        "top_k": 40,
+        "top_p": 0.949999988079071,
+        "min_p": 0.05000000074505806,
+        "top_n_sigma": -1.0,
+        "xtc_probability": 0.0,
+        "xtc_threshold": 0.10000000149011612,
+        "typical_p": 1.0,
+        "repeat_last_n": 64,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0,
+        "dry_multiplier": 0.0,
+        "dry_base": 1.75,
+        "dry_allowed_length": 2,
+        "dry_penalty_last_n": 64,
+        "dry_sequence_breakers": [
+          "\n",
+          ":",
+          "\"",
+          "*"
+        ],
+        "mirostat": 0,
+        "mirostat_tau": 5.0,
+        "mirostat_eta": 0.10000000149011612,
+        "adaptive_target": -1.0,
+        "adaptive_decay": 0.8999999761581421,
+        "stop": [],
+        "max_tokens": 12,
+        "n_predict": 12,
+        "n_keep": 0,
+        "n_discard": 0,
+        "ignore_eos": false,
+        "stream": false,
+        "logit_bias": [],
+        "n_probs": 5,
+        "min_keep": 0,
+        "grammar": "",
+        "grammar_lazy": false,
+        "grammar_triggers": [],
+        "preserved_tokens": [],
+        "chat_format": "Content-only",
+        "reasoning_format": "deepseek",
+        "reasoning_in_content": false,
+        "generation_prompt": "",
+        "samplers": [
+          "penalties",
+          "dry",
+          "top_n_sigma",
+          "top_k",
+          "typ_p",
+          "top_p",
+          "min_p",
+          "xtc",
+          "temperature"
+        ],
+        "speculative.types": "none",
+        "timings_per_token": false,
+        "post_sampling_probs": false,
+        "backend_sampling": false,
+        "lora": []
+      },
+      "prompt": "<｜begin▁of▁sentence｜>The capital of France is",
+      "has_new_line": false,
+      "truncated": false,
+      "stop_type": "limit",
+      "stopping_word": "",
+      "tokens_cached": 17,
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 6,
+        "prompt_ms": 375.107,
+        "prompt_per_token_ms": 62.517833333333336,
+        "prompt_per_second": 15.995435968936862,
+        "predicted_n": 12,
+        "predicted_ms": 3106.712,
+        "predicted_per_token_ms": 282.42836363636366,
+        "predicted_per_second": 3.5407208650174207
+      },
+      "completion_probabilities": [
+        {
+          "id": 12095,
+          "token": " Paris",
+          "bytes": [
+            32,
+            80,
+            97,
+            114,
+            105,
+            115
+          ],
+          "logprob": -0.39158371090888977,
+          "top_logprobs": [
+            {
+              "id": 12095,
+              "token": " Paris",
+              "bytes": [
+                32,
+                80,
+                97,
+                114,
+                105,
+                115
+              ],
+              "logprob": -0.39158371090888977
+            },
+            {
+              "id": 7148,
+              "token": " London",
+              "bytes": [
+                32,
+                76,
+                111,
+                110,
+                100,
+                111,
+                110
+              ],
+              "logprob": -3.440166711807251
+            },
+            {
+              "id": 1304,
+              "token": " __",
+              "bytes": [
+                32,
+                95,
+                95
+              ],
+              "logprob": -3.4957058429718018
+            },
+            {
+              "id": 19846,
+              "token": " Berlin",
+              "bytes": [
+                32,
+                66,
+                101,
+                114,
+                108,
+                105,
+                110
+              ],
+              "logprob": -3.5160458087921143
+            },
+            {
+              "id": 3881,
+              "token": " known",
+              "bytes": [
+                32,
+                107,
+                110,
+                111,
+                119,
+                110
+              ],
+              "logprob": -3.8147499561309814
+            }
+          ]
+        },
+        {
+          "id": 13,
+          "token": ".",
+          "bytes": [
+            46
+          ],
+          "logprob": -0.326876163482666,
+          "top_logprobs": [
+            {
+              "id": 13,
+              "token": ".",
+              "bytes": [
+                46
+              ],
+              "logprob": -0.326876163482666
+            },
+            {
+              "id": 11,
+              "token": ",",
+              "bytes": [
+                44
+              ],
+              "logprob": -1.9143928289413452
+            },
+            {
+              "id": 382,
+              "token": ".\n\n",
+              "bytes": [
+                46,
+                10,
+                10
+              ],
+              "logprob": -3.2122082710266113
+            },
+            {
+              "id": 624,
+              "token": ".\n",
+              "bytes": [
+                46,
+                10
+              ],
+              "logprob": -3.450806140899658
+            },
+            {
+              "id": 1189,
+              "token": ".\"",
+              "bytes": [
+                46,
+                34
+              ],
+              "logprob": -4.595861911773682
+            }
+          ]
+        },
+        {
+          "id": 12095,
+          "token": " Paris",
+          "bytes": [
+            32,
+            80,
+            97,
+            114,
+            105,
+            115
+          ],
+          "logprob": -1.277409553527832,
+          "top_logprobs": [
+            {
+              "id": 12095,
+              "token": " Paris",
+              "bytes": [
+                32,
+                80,
+                97,
+                114,
+                105,
+                115
+              ],
+              "logprob": -1.277409553527832
+            },
+            {
+              "id": 576,
+              "token": " The",
+              "bytes": [
+                32,
+                84,
+                104,
+                101
+              ],
+              "logprob": -1.599898338317871
+            },
+            {
+              "id": 3555,
+              "token": " What",
+              "bytes": [
+                32,
+                87,
+                104,
+                97,
+                116
+              ],
+              "logprob": -3.0677738189697266
+            },
+            {
+              "id": 358,
+              "token": " I",
+              "bytes": [
+                32,
+                73
+              ],
+              "logprob": -3.4291887283325195
+            },
+            {
+              "id": 1084,
+              "token": " It",
+              "bytes": [
+                32,
+                73,
+                116
+              ],
+              "logprob": -3.476228713989258
+            }
+          ]
+        },
+        {
+          "id": 374,
+          "token": " is",
+          "bytes": [
+            32,
+            105,
+            115
+          ],
+          "logprob": -0.14296123385429382,
+          "top_logprobs": [
+            {
+              "id": 374,
+              "token": " is",
+              "bytes": [
+                32,
+                105,
+                115
+              ],
+              "logprob": -0.14296123385429382
+            },
+            {
+              "id": 702,
+              "token": " has",
+              "bytes": [
+                32,
+                104,
+                97,
+                115
+              ],
+              "logprob": -2.1829965114593506
+            },
+            {
+              "id": 5380,
+              "token": "ians",
+              "bytes": [
+                105,
+                97,
+                110,
+                115
+              ],
+              "logprob": -5.408275127410889
+            },
+            {
+              "id": 11,
+              "token": ",",
+              "bytes": [
+                44
+              ],
+              "logprob": -5.477149486541748
+            },
+            {
+              "id": 572,
+              "token": " was",
+              "bytes": [
+                32,
+                119,
+                97,
+                115
+              ],
+              "logprob": -6.349610328674316
+            }
+          ]
+        },
+        {
+          "id": 7407,
+          "token": " located",
+          "bytes": [
+            32,
+            108,
+            111,
+            99,
+            97,
+            116,
+            101,
+            100
+          ],
+          "logprob": -1.2626731395721436,
+          "top_logprobs": [
+            {
+              "id": 7407,
+              "token": " located",
+              "bytes": [
+                32,
+                108,
+                111,
+                99,
+                97,
+                116,
+                101,
+                100
+              ],
+              "logprob": -1.2626731395721436
+            },
+            {
+              "id": 3881,
+              "token": " known",
+              "bytes": [
+                32,
+                107,
+                110,
+                111,
+                119,
+                110
+              ],
+              "logprob": -1.4464538097381592
+            },
+            {
+              "id": 279,
+              "token": " the",
+              "bytes": [
+                32,
+                116,
+                104,
+                101
+              ],
+              "logprob": -2.135603666305542
+            },
+            {
+              "id": 304,
+              "token": " in",
+              "bytes": [
+                32,
+                105,
+                110
+              ],
+              "logprob": -2.2946689128875732
+            },
+            {
+              "id": 264,
+              "token": " a",
+              "bytes": [
+                32,
+                97
+              ],
+              "logprob": -2.4802043437957764
+            }
+          ]
+        },
+        {
+          "id": 304,
+          "token": " in",
+          "bytes": [
+            32,
+            105,
+            110
+          ],
+          "logprob": -0.5909469723701477,
+          "top_logprobs": [
+            {
+              "id": 304,
+              "token": " in",
+              "bytes": [
+                32,
+                105,
+                110
+              ],
+              "logprob": -0.5909469723701477
+            },
+            {
+              "id": 389,
+              "token": " on",
+              "bytes": [
+                32,
+                111,
+                110
+              ],
+              "logprob": -1.224058985710144
+            },
+            {
+              "id": 3156,
+              "token": " along",
+              "bytes": [
+                32,
+                97,
+                108,
+                111,
+                110,
+                103
+              ],
+              "logprob": -2.2694480419158936
+            },
+            {
+              "id": 518,
+              "token": " at",
+              "bytes": [
+                32,
+                97,
+                116
+              ],
+              "logprob": -3.2829062938690186
+            },
+            {
+              "id": 3143,
+              "token": " near",
+              "bytes": [
+                32,
+                110,
+                101,
+                97,
+                114
+              ],
+              "logprob": -5.231200218200684
+            }
+          ]
+        },
+        {
+          "id": 279,
+          "token": " the",
+          "bytes": [
+            32,
+            116,
+            104,
+            101
+          ],
+          "logprob": -0.7745128273963928,
+          "top_logprobs": [
+            {
+              "id": 279,
+              "token": " the",
+              "bytes": [
+                32,
+                116,
+                104,
+                101
+              ],
+              "logprob": -0.7745128273963928
+            },
+            {
+              "id": 18494,
+              "token": " western",
+              "bytes": [
+                32,
+                119,
+                101,
+                115,
+                116,
+                101,
+                114,
+                110
+              ],
+              "logprob": -1.9868807792663574
+            },
+            {
+              "id": 18172,
+              "token": " northern",
+              "bytes": [
+                32,
+                110,
+                111,
+                114,
+                116,
+                104,
+                101,
+                114,
+                110
+              ],
+              "logprob": -2.1684679985046387
+            },
+            {
+              "id": 10867,
+              "token": " Western",
+              "bytes": [
+                32,
+                87,
+                101,
+                115,
+                116,
+                101,
+                114,
+                110
+              ],
+              "logprob": -2.1894640922546387
+            },
+            {
+              "id": 4505,
+              "token": " Europe",
+              "bytes": [
+                32,
+                69,
+                117,
+                114,
+                111,
+                112,
+                101
+              ],
+              "logprob": -2.732591152191162
+            }
+          ]
+        },
+        {
+          "id": 18172,
+          "token": " northern",
+          "bytes": [
+            32,
+            110,
+            111,
+            114,
+            116,
+            104,
+            101,
+            114,
+            110
+          ],
+          "logprob": -0.33679720759391785,
+          "top_logprobs": [
+            {
+              "id": 18172,
+              "token": " northern",
+              "bytes": [
+                32,
+                110,
+                111,
+                114,
+                116,
+                104,
+                101,
+                114,
+                110
+              ],
+              "logprob": -0.33679720759391785
+            },
+            {
+              "id": 10200,
+              "token": " north",
+              "bytes": [
+                32,
+                110,
+                111,
+                114,
+                116,
+                104
+              ],
+              "logprob": -1.8390517234802246
+            },
+            {
+              "id": 358,
+              "token": " I",
+              "bytes": [
+                32,
+                73
+              ],
+              "logprob": -3.021378993988037
+            },
+            {
+              "id": 5537,
+              "token": " region",
+              "bytes": [
+                32,
+                114,
+                101,
+                103,
+                105,
+                111,
+                110
+              ],
+              "logprob": -4.223275661468506
+            },
+            {
+              "id": 4787,
+              "token": " North",
+              "bytes": [
+                32,
+                78,
+                111,
+                114,
+                116,
+                104
+              ],
+              "logprob": -4.653750896453857
+            }
+          ]
+        },
+        {
+          "id": 949,
+          "token": " part",
+          "bytes": [
+            32,
+            112,
+            97,
+            114,
+            116
+          ],
+          "logprob": -0.015511087141931057,
+          "top_logprobs": [
+            {
+              "id": 949,
+              "token": " part",
+              "bytes": [
+                32,
+                112,
+                97,
+                114,
+                116
+              ],
+              "logprob": -0.015511087141931057
+            },
+            {
+              "id": 5537,
+              "token": " region",
+              "bytes": [
+                32,
+                114,
+                101,
+                103,
+                105,
+                111,
+                110
+              ],
+              "logprob": -4.459167957305908
+            },
+            {
+              "id": 8622,
+              "token": " central",
+              "bytes": [
+                32,
+                99,
+                101,
+                110,
+                116,
+                114,
+                97,
+                108
+              ],
+              "logprob": -6.640026569366455
+            },
+            {
+              "id": 68666,
+              "token": " hemisphere",
+              "bytes": [
+                32,
+                104,
+                101,
+                109,
+                105,
+                115,
+                112,
+                104,
+                101,
+                114,
+                101
+              ],
+              "logprob": -7.177450656890869
+            },
+            {
+              "id": 84081,
+              "token": "-central",
+              "bytes": [
+                45,
+                99,
+                101,
+                110,
+                116,
+                114,
+                97,
+                108
+              ],
+              "logprob": -7.3924031257629395
+            }
+          ]
+        },
+        {
+          "id": 315,
+          "token": " of",
+          "bytes": [
+            32,
+            111,
+            102
+          ],
+          "logprob": -0.0004569143638946116,
+          "top_logprobs": [
+            {
+              "id": 315,
+              "token": " of",
+              "bytes": [
+                32,
+                111,
+                102
+              ],
+              "logprob": -0.0004569143638946116
+            },
+            {
+              "id": 13,
+              "token": ".",
+              "bytes": [
+                46
+              ],
+              "logprob": -8.935235023498535
+            },
+            {
+              "id": 11,
+              "token": ",",
+              "bytes": [
+                44
+              ],
+              "logprob": -9.092421531677246
+            },
+            {
+              "id": 9625,
+              "token": " France",
+              "bytes": [
+                32,
+                70,
+                114,
+                97,
+                110,
+                99,
+                101
+              ],
+              "logprob": -10.17445182800293
+            },
+            {
+              "id": 3143,
+              "token": " near",
+              "bytes": [
+                32,
+                110,
+                101,
+                97,
+                114
+              ],
+              "logprob": -10.341617584228516
+            }
+          ]
+        },
+        {
+          "id": 9625,
+          "token": " France",
+          "bytes": [
+            32,
+            70,
+            114,
+            97,
+            110,
+            99,
+            101
+          ],
+          "logprob": -0.2587554156780243,
+          "top_logprobs": [
+            {
+              "id": 9625,
+              "token": " France",
+              "bytes": [
+                32,
+                70,
+                114,
+                97,
+                110,
+                99,
+                101
+              ],
+              "logprob": -0.2587554156780243
+            },
+            {
+              "id": 279,
+              "token": " the",
+              "bytes": [
+                32,
+                116,
+                104,
+                101
+              ],
+              "logprob": -1.5555617809295654
+            },
+            {
+              "id": 8622,
+              "token": " central",
+              "bytes": [
+                32,
+                99,
+                101,
+                110,
+                116,
+                114,
+                97,
+                108
+              ],
+              "logprob": -4.57033634185791
+            },
+            {
+              "id": 4505,
+              "token": " Europe",
+              "bytes": [
+                32,
+                69,
+                117,
+                114,
+                111,
+                112,
+                101
+              ],
+              "logprob": -5.791746616363525
+            },
+            {
+              "id": 10684,
+              "token": " Central",
+              "bytes": [
+                32,
+                67,
+                101,
+                110,
+                116,
+                114,
+                97,
+                108
+              ],
+              "logprob": -7.170055866241455
+            }
+          ]
+        },
+        {
+          "id": 13,
+          "token": ".",
+          "bytes": [
+            46
+          ],
+          "logprob": -0.3435654938220978,
+          "top_logprobs": [
+            {
+              "id": 13,
+              "token": ".",
+              "bytes": [
+                46
+              ],
+              "logprob": -0.3435654938220978
+            },
+            {
+              "id": 11,
+              "token": ",",
+              "bytes": [
+                44
+              ],
+              "logprob": -1.7161870002746582
+            },
+            {
+              "id": 323,
+              "token": " and",
+              "bytes": [
+                32,
+                97,
+                110,
+                100
+              ],
+              "logprob": -2.7053608894348145
+            },
+            {
+              "id": 389,
+              "token": " on",
+              "bytes": [
+                32,
+                111,
+                110
+              ],
+              "logprob": -4.4823384284973145
+            },
+            {
+              "id": 624,
+              "token": ".\n",
+              "bytes": [
+                46,
+                10
+              ],
+              "logprob": -4.751036167144775
+            }
+          ]
+        }
+      ]
+    },
+    "selection": [
+      {
+        "id": "sort",
+        "passed": true,
+        "output": "{\"answer\": [-2, 0, 4, 4, 8]}",
+        "expected": [
+          -2,
+          0,
+          4,
+          4,
+          8
+        ],
+        "seconds": 8.753121241999906,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 23,
+          "prompt_tokens": 50,
+          "total_tokens": 73,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      {
+        "id": "dedupe",
+        "passed": true,
+        "output": "{\"answer\": [3,1,2,4]}",
+        "expected": [
+          3,
+          1,
+          2,
+          4
+        ],
+        "seconds": 8.144504511990817,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 19,
+          "prompt_tokens": 50,
+          "total_tokens": 69,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      {
+        "id": "trace",
+        "passed": true,
+        "output": "{\"answer\": [1, 2, 3]}",
+        "expected": [
+          1,
+          2,
+          3
+        ],
+        "seconds": 5.727404119999846,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 11,
+          "prompt_tokens": 48,
+          "total_tokens": 59,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      {
+        "id": "overlap",
+        "passed": true,
+        "output": "{\"answer\": [[1,6],[9,12]]}",
+        "expected": [
+          [
+            1,
+            6
+          ],
+          [
+            9,
+            12
+          ]
+        ],
+        "seconds": 6.331317964999471,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 13,
+          "prompt_tokens": 52,
+          "total_tokens": 65,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      {
+        "id": "modulo",
+        "passed": true,
+        "output": "{\"answer\": 3}",
+        "expected": 3,
+        "seconds": 7.109827648004284,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 16,
+          "prompt_tokens": 44,
+          "total_tokens": 60,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      {
+        "id": "count",
+        "passed": true,
+        "output": "{\"answer\": 4}",
+        "expected": 4,
+        "seconds": 5.749629105004715,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 11,
+          "prompt_tokens": 46,
+          "total_tokens": 57,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      {
+        "id": "fibonacci",
+        "passed": true,
+        "output": "{\"answer\": 55}",
+        "expected": 55,
+        "seconds": 9.820835004997207,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 26,
+          "prompt_tokens": 59,
+          "total_tokens": 85,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      {
+        "id": "path",
+        "passed": true,
+        "output": "{\"answer\": 2}",
+        "expected": 2,
+        "seconds": 7.094774573997711,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 16,
+          "prompt_tokens": 56,
+          "total_tokens": 72,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      {
+        "id": "bisect",
+        "passed": true,
+        "output": "{\"answer\": 2}",
+        "expected": 2,
+        "seconds": 5.913796379987616,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 11,
+          "prompt_tokens": 54,
+          "total_tokens": 65,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      {
+        "id": "unicode",
+        "passed": true,
+        "output": "{\"answer\": \"DC21ba\"}",
+        "expected": "DC21ba",
+        "seconds": 8.321322604999295,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 19,
+          "prompt_tokens": 41,
+          "total_tokens": 60,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      {
+        "id": "inclusion",
+        "passed": false,
+        "output": "{\"answer\": 16}",
+        "expected": 14,
+        "seconds": 5.973138212997583,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 12,
+          "prompt_tokens": 48,
+          "total_tokens": 60,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      {
+        "id": "rle",
+        "passed": true,
+        "output": "{\"answer\": [[\"a\",3],[\"b\",2],[\"c\",1],[\"a\",4]]}",
+        "expected": [
+          [
+            "a",
+            3
+          ],
+          [
+            "b",
+            2
+          ],
+          [
+            "c",
+            1
+          ],
+          [
+            "a",
+            4
+          ]
+        ],
+        "seconds": 10.258946667003329,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 29,
+          "prompt_tokens": 47,
+          "total_tokens": 76,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      }
+    ],
+    "holdout": [
+      {
+        "id": "hold-sort",
+        "passed": true,
+        "output": "{\"answer\": [12, 12, 3, 0, -1, -5]}",
+        "expected": [
+          12,
+          12,
+          3,
+          0,
+          -1,
+          -5
+        ],
+        "seconds": 10.093545255003846,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 28,
+          "prompt_tokens": 50,
+          "total_tokens": 78,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      {
+        "id": "hold-dedupe",
+        "passed": true,
+        "output": "{\"answer\": \"cabd\"}",
+        "expected": "cabd",
+        "seconds": 6.060808497000835,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 12,
+          "prompt_tokens": 46,
+          "total_tokens": 58,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      {
+        "id": "hold-trace",
+        "passed": false,
+        "output": "{\"answer\": \"[1, 2]\"}",
+        "expected": [
+          1,
+          2
+        ],
+        "seconds": 4.935560539001017,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 8,
+          "prompt_tokens": 49,
+          "total_tokens": 57,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      {
+        "id": "hold-overlap",
+        "passed": true,
+        "output": "{\"answer\": [[1,4],[5,7],[8,9]]}",
+        "expected": [
+          [
+            1,
+            4
+          ],
+          [
+            5,
+            7
+          ],
+          [
+            8,
+            9
+          ]
+        ],
+        "seconds": 6.971179729007417,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 16,
+          "prompt_tokens": 54,
+          "total_tokens": 70,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      {
+        "id": "hold-division",
+        "passed": true,
+        "output": "{\"answer\": -5}",
+        "expected": -5,
+        "seconds": 7.127875756996218,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 16,
+          "prompt_tokens": 44,
+          "total_tokens": 60,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      {
+        "id": "hold-count",
+        "passed": true,
+        "output": "{\"answer\": 3}",
+        "expected": 3,
+        "seconds": 6.052176851007971,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 12,
+          "prompt_tokens": 47,
+          "total_tokens": 59,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      {
+        "id": "hold-fibonacci",
+        "passed": true,
+        "output": "{\"answer\": 144}",
+        "expected": 144,
+        "seconds": 7.655502737994539,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 18,
+          "prompt_tokens": 59,
+          "total_tokens": 77,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      {
+        "id": "hold-path",
+        "passed": true,
+        "output": "{\"answer\": 2}",
+        "expected": 2,
+        "seconds": 7.17532053499599,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 16,
+          "prompt_tokens": 58,
+          "total_tokens": 74,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      {
+        "id": "hold-bisect",
+        "passed": true,
+        "output": "{\"answer\": 3}",
+        "expected": 3,
+        "seconds": 7.135514285997488,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 16,
+          "prompt_tokens": 53,
+          "total_tokens": 69,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      {
+        "id": "hold-reverse",
+        "passed": true,
+        "output": "{\"answer\": \"02X9z\"}",
+        "expected": "02X9z",
+        "seconds": 6.739399025012972,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 15,
+          "prompt_tokens": 42,
+          "total_tokens": 57,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      {
+        "id": "hold-inclusion",
+        "passed": false,
+        "output": "{\"answer\": 16}",
+        "expected": 13,
+        "seconds": 9.911399817996426,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 26,
+          "prompt_tokens": 48,
+          "total_tokens": 74,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      {
+        "id": "hold-rle",
+        "passed": true,
+        "output": "{\"answer\": [[\"b\",3],[\"a\",2],[\"c\",1],[\"b\",3]]}",
+        "expected": [
+          [
+            "b",
+            3
+          ],
+          [
+            "a",
+            2
+          ],
+          [
+            "c",
+            1
+          ],
+          [
+            "b",
+            3
+          ]
+        ],
+        "seconds": 10.279407136011287,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 29,
+          "prompt_tokens": 47,
+          "total_tokens": 76,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      }
+    ]
+  },
+  "recommendation": {
+    "wins": 0,
+    "losses": 0,
+    "one_sided_sign_test_p": 1.0,
+    "recommend_loop": false,
+    "verdict": "no_demonstrated_improvement"
+  },
+  "finished": 1793765327.0796418,
+  "storage_after": {
+    "time": 1793765327.080954,
+    "free_bytes": 520991514624,
+    "state_bytes": 734872,
+    "model_weight_bytes_written": 0
+  },
+  "source_mtime_ns": 1786600074126933187
+}

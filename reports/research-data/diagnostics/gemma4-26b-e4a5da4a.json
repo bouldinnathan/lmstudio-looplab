@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "model": {
+    "id": "gemma4-26b-e4a5da4a",
+    "name": "gemma4-26b",
+    "architecture": "gemma4",
+    "layers": 30,
+    "size_bytes": 17987569344,
+    "header_sha256": "8670ab185b31a5acccae541661a7c33315ea8e8b985f537e6f79ec3e167e8cab",
+    "eligible": false,
+    "reasons": [
+      "No validated native adapter for gemma4",
+      "Sliding-window cache semantics have not been validated",
+      "This MoE variant has no routing-reuse adapter"
+    ],
+    "mode": "block"
+  },
+  "started": 1793764508.4330308,
+  "status": "unsupported",
+  "suite": "looplab-diagnostic-v2",
+  "suite_sha256": "8b2d60609aa5dccdb5e0c5680251a16ec3bfec3417ffacd99656b426bf7f848b",
+  "quick": false,
+  "evaluation_policy": {
+    "temperature": 0,
+    "seed": 1729,
+    "max_tokens": 192,
+    "cache_prompt": false,
+    "reasoning_effort": "none",
+    "reasoning_budget_tokens": 0,
+    "add_generation_prompt": false,
+    "continue_final_message": "content",
+    "response_format": {
+      "type": "json_object"
+    },
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    },
+    "assistant_prefill": "{\"answer\":"
+  },
+  "paper_reproduction": false,
+  "recommended_profile": "baseline",
+  "profiles": [],
+  "limitations": [
+    "Quantized checkpoints and a small local diagnostic suite differ from the paper's BF16 benchmarks.",
+    "Held-out tasks are public diagnostics, not a general capability guarantee.",
+    "Prompt-prefix reuse is disabled by default; a cache probe is reported separately."
+  ],
+  "storage_before": {
+    "time": 1793764508.4332993,
+    "free_bytes": 520989130752,
+    "state_bytes": 469979,
+    "model_weight_bytes_written": 0
+  },
+  "reasons": [
+    "No validated native adapter for gemma4",
+    "Sliding-window cache semantics have not been validated",
+    "This MoE variant has no routing-reuse adapter"
+  ]
+}

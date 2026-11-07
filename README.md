@@ -6,6 +6,8 @@ LoopLab adds ordinary LM Studio model entries for tested loop profiles, a genera
 
 **Completed test results:** the [1,600-response benchmark and per-model conclusions](reports/qwen-public-benchmark.md#results-for-each-model) show Qwen3-Coder's best observed score at three loops (84 → 88/100), DeepSeek-R1 32B's at two loops (72 → 78/100), and lower overall scores for every tested DeepCoder loop count. Reader-LM's intended HTML-conversion task was not evaluated. No quality change was statistically established; every looped batch took longer. The [report index](reports/README.md#current-results) also covers the 54-file compatibility survey, native numerical checks, LM Studio integration and earlier diagnostics.
 
+**Charts and open data:** [correct answers and time cost for every measured quality comparison](reports/performance.md), plus [1,920 retained generated answers and research records](reports/research-data/README.md). Inputs and generated outputs are labeled separately, upstream datasets are linked, and missing older raw data is disclosed. Researchers can verify the records offline without model weights.
+
 ```mermaid
 flowchart LR
     Client[External API client] --> LMS[LM Studio server and model dropdown]
@@ -81,7 +83,7 @@ An independent NumPy test generates tiny F32 GGUF networks and compares full nex
 
 ### Optional public-task Qwen comparison
 
-The completed run is published in the [human-readable report](reports/qwen-public-benchmark.md) and [detailed JSON results](reports/qwen-public-benchmark.json), with original/2/3/4-pass scores, per-model interpretations, paired statistics, truncations, timings and exclusions.
+The completed run is published in the [human-readable report](reports/qwen-public-benchmark.md) and [detailed JSON results](reports/qwen-public-benchmark.json), with original/2/3/4-pass scores, per-model interpretations, paired statistics, truncations, timings and exclusions. The [performance charts](reports/performance.md) cover all measured quality studies; [public research data](reports/research-data/README.md) includes the retained complete main/pilot responses, earlier diagnostic answers and an offline verifier.
 
 [`scripts/benchmark_qwen.py`](scripts/benchmark_qwen.py) runs the existing Qwen-family checkpoints against their current passing 2/3/4-loop profiles using [EleutherAI's evaluation harness](https://github.com/EleutherAI/lm-evaluation-harness). It downloads evaluation software and small text datasets, then performs inference locally with the existing weights. Install its optional API dependencies in a separate environment:
 

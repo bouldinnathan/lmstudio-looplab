@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "model": {
+    "id": "lfm2-24b-8af5614d",
+    "name": "lfm2-24b",
+    "architecture": "lfm2moe",
+    "layers": 40,
+    "size_bytes": 14415731328,
+    "header_sha256": "0d0c6f6b350692ecb1eeae2d387506399b6f6f6ec37aa549f501ac08f10603c2",
+    "eligible": false,
+    "reasons": [
+      "No validated native adapter for lfm2moe",
+      "This MoE variant has no routing-reuse adapter"
+    ],
+    "mode": "block"
+  },
+  "started": 1793764508.4307044,
+  "status": "unsupported",
+  "suite": "looplab-diagnostic-v2",
+  "suite_sha256": "8b2d60609aa5dccdb5e0c5680251a16ec3bfec3417ffacd99656b426bf7f848b",
+  "quick": false,
+  "evaluation_policy": {
+    "temperature": 0,
+    "seed": 1729,
+    "max_tokens": 192,
+    "cache_prompt": false,
+    "reasoning_effort": "none",
+    "reasoning_budget_tokens": 0,
+    "add_generation_prompt": false,
+    "continue_final_message": "content",
+    "response_format": {
+      "type": "json_object"
+    },
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    },
+    "assistant_prefill": "{\"answer\":"
+  },
+  "paper_reproduction": false,
+  "recommended_profile": "baseline",
+  "profiles": [],
+  "limitations": [
+    "Quantized checkpoints and a small local diagnostic suite differ from the paper's BF16 benchmarks.",
+    "Held-out tasks are public diagnostics, not a general capability guarantee.",
+    "Prompt-prefix reuse is disabled by default; a cache probe is reported separately."
+  ],
+  "storage_before": {
+    "time": 1793764508.4312534,
+    "free_bytes": 520989130752,
+    "state_bytes": 461537,
+    "model_weight_bytes_written": 0
+  },
+  "reasons": [
+    "No validated native adapter for lfm2moe",
+    "This MoE variant has no routing-reuse adapter"
+  ]
+}

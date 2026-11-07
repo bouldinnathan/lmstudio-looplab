@@ -1,0 +1,68 @@
+{
+  "passes": 1,
+  "profile": {
+    "passes": 1,
+    "anchor": 0.5,
+    "mode": "layer",
+    "cache": "first",
+    "start": 22,
+    "end": 26
+  },
+  "questions": 100,
+  "correct": 84,
+  "accuracy": 0.84,
+  "tasks": {
+    "gsm8k_cot_zeroshot": {
+      "correct": 42,
+      "questions": 50
+    },
+    "bbh_cot_zeroshot_boolean_expressions": {
+      "correct": 24,
+      "questions": 25
+    },
+    "bbh_cot_zeroshot_logical_deduction_five_objects": {
+      "correct": 18,
+      "questions": 25
+    }
+  },
+  "official_correct": 81,
+  "numeric_normalization_changes": 3,
+  "request_seconds": 1044.1795848131296,
+  "mean_request_seconds": 10.441795848131296,
+  "median_request_seconds": 7.5107002570002805,
+  "completion_tokens": 27581,
+  "end_to_end_output_tokens_per_second": 26.414038735430747,
+  "native_decode_tokens_per_second": 30.21952018911624,
+  "cached_prompt_tokens": 0,
+  "truncated": 6,
+  "empty_final_answer": 0,
+  "official_metrics": {
+    "gsm8k_cot_zeroshot": {
+      "name": "gsm8k_cot_zeroshot",
+      "alias": "gsm8k_cot_zeroshot",
+      "sample_len": 50,
+      "exact_match,strict-match": 0.16,
+      "exact_match_stderr,strict-match": 0.05237229365663815,
+      "exact_match,flexible-extract": 0.78,
+      "exact_match_stderr,flexible-extract": 0.059178043363451366
+    },
+    "bbh_cot_zeroshot_boolean_expressions": {
+      "name": "bbh_cot_zeroshot_boolean_expressions",
+      "alias": "bbh_cot_zeroshot_boolean_expressions",
+      "sample_len": 25,
+      "exact_match,flexible-extract": 0.96,
+      "exact_match_stderr,flexible-extract": 0.04000000000000002,
+      "exact_match,strict-match": 0.0,
+      "exact_match_stderr,strict-match": 0.0
+    },
+    "bbh_cot_zeroshot_logical_deduction_five_objects": {
+      "name": "bbh_cot_zeroshot_logical_deduction_five_objects",
+      "alias": "bbh_cot_zeroshot_logical_deduction_five_objects",
+      "sample_len": 25,
+      "exact_match,flexible-extract": 0.72,
+      "exact_match_stderr,flexible-extract": 0.09165151389911678,
+      "exact_match,strict-match": 0.24,
+      "exact_match_stderr,strict-match": 0.08717797887081345
+    }
+  }
+}

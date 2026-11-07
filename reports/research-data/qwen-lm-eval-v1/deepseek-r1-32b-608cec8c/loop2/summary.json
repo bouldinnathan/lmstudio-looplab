@@ -1,0 +1,68 @@
+{
+  "passes": 2,
+  "profile": {
+    "passes": 2,
+    "anchor": 0.5,
+    "mode": "block",
+    "cache": "first",
+    "start": 30,
+    "end": 34
+  },
+  "questions": 100,
+  "correct": 78,
+  "accuracy": 0.78,
+  "tasks": {
+    "gsm8k_cot_zeroshot": {
+      "correct": 44,
+      "questions": 50
+    },
+    "bbh_cot_zeroshot_boolean_expressions": {
+      "correct": 23,
+      "questions": 25
+    },
+    "bbh_cot_zeroshot_logical_deduction_five_objects": {
+      "correct": 11,
+      "questions": 25
+    }
+  },
+  "official_correct": 74,
+  "numeric_normalization_changes": 4,
+  "request_seconds": 14190.50858806289,
+  "mean_request_seconds": 141.90508588062892,
+  "median_request_seconds": 134.76454973949876,
+  "completion_tokens": 51624,
+  "end_to_end_output_tokens_per_second": 3.637924580337191,
+  "native_decode_tokens_per_second": 3.7418691730289733,
+  "cached_prompt_tokens": 0,
+  "truncated": 16,
+  "empty_final_answer": 11,
+  "official_metrics": {
+    "gsm8k_cot_zeroshot": {
+      "name": "gsm8k_cot_zeroshot",
+      "alias": "gsm8k_cot_zeroshot",
+      "sample_len": 50,
+      "exact_match,strict-match": 0.0,
+      "exact_match_stderr,strict-match": 0.0,
+      "exact_match,flexible-extract": 0.8,
+      "exact_match_stderr,flexible-extract": 0.05714285714285715
+    },
+    "bbh_cot_zeroshot_boolean_expressions": {
+      "name": "bbh_cot_zeroshot_boolean_expressions",
+      "alias": "bbh_cot_zeroshot_boolean_expressions",
+      "sample_len": 25,
+      "exact_match,flexible-extract": 0.92,
+      "exact_match_stderr,flexible-extract": 0.05537749241945382,
+      "exact_match,strict-match": 0.0,
+      "exact_match_stderr,strict-match": 0.0
+    },
+    "bbh_cot_zeroshot_logical_deduction_five_objects": {
+      "name": "bbh_cot_zeroshot_logical_deduction_five_objects",
+      "alias": "bbh_cot_zeroshot_logical_deduction_five_objects",
+      "sample_len": 25,
+      "exact_match,flexible-extract": 0.44,
+      "exact_match_stderr,flexible-extract": 0.10132456102380442,
+      "exact_match,strict-match": 0.0,
+      "exact_match_stderr,strict-match": 0.0
+    }
+  }
+}

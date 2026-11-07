@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "model": {
+    "id": "gemma4-12b-28bf45b0",
+    "name": "gemma4-12b",
+    "architecture": "clip",
+    "layers": 0,
+    "size_bytes": 175115584,
+    "header_sha256": "9a9ab3b2a1fa5c2e1087bd1d81c07edbf4b423325c2e77175521fd66660b18ff",
+    "eligible": false,
+    "reasons": [
+      "No validated native adapter for clip",
+      "Not enough decoder layers for an internal loop window"
+    ],
+    "mode": "block"
+  },
+  "started": 1793763758.820847,
+  "status": "unsupported",
+  "suite": "looplab-diagnostic-v2",
+  "suite_sha256": "8b2d60609aa5dccdb5e0c5680251a16ec3bfec3417ffacd99656b426bf7f848b",
+  "quick": false,
+  "evaluation_policy": {
+    "temperature": 0,
+    "seed": 1729,
+    "max_tokens": 192,
+    "cache_prompt": false,
+    "reasoning_effort": "none",
+    "reasoning_budget_tokens": 0,
+    "add_generation_prompt": false,
+    "continue_final_message": "content",
+    "response_format": {
+      "type": "json_object"
+    },
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    },
+    "assistant_prefill": "{\"answer\":"
+  },
+  "paper_reproduction": false,
+  "recommended_profile": "baseline",
+  "profiles": [],
+  "limitations": [
+    "Quantized checkpoints and a small local diagnostic suite differ from the paper's BF16 benchmarks.",
+    "Held-out tasks are public diagnostics, not a general capability guarantee.",
+    "Prompt-prefix reuse is disabled by default; a cache probe is reported separately."
+  ],
+  "storage_before": {
+    "time": 1793763758.8213954,
+    "free_bytes": 520991870976,
+    "state_bytes": 189391,
+    "model_weight_bytes_written": 0
+  },
+  "reasons": [
+    "No validated native adapter for clip",
+    "Not enough decoder layers for an internal loop window"
+  ]
+}

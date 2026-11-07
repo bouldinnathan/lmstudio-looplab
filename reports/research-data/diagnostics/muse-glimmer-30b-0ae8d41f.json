@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "model": {
+    "id": "muse-glimmer-30b-0ae8d41f",
+    "name": "muse-glimmer-30b",
+    "architecture": "muse-glimmer",
+    "layers": 52,
+    "size_bytes": 16756681056,
+    "header_sha256": "a5d7548a793868d386f567053bc0218cd559c3052e4a09c104ac5a2571f4085c",
+    "eligible": false,
+    "reasons": [
+      "No validated native adapter for muse-glimmer",
+      "Sliding-window cache semantics have not been validated"
+    ],
+    "mode": "block"
+  },
+  "started": 1793764508.4322882,
+  "status": "unsupported",
+  "suite": "looplab-diagnostic-v2",
+  "suite_sha256": "8b2d60609aa5dccdb5e0c5680251a16ec3bfec3417ffacd99656b426bf7f848b",
+  "quick": false,
+  "evaluation_policy": {
+    "temperature": 0,
+    "seed": 1729,
+    "max_tokens": 192,
+    "cache_prompt": false,
+    "reasoning_effort": "none",
+    "reasoning_budget_tokens": 0,
+    "add_generation_prompt": false,
+    "continue_final_message": "content",
+    "response_format": {
+      "type": "json_object"
+    },
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    },
+    "assistant_prefill": "{\"answer\":"
+  },
+  "paper_reproduction": false,
+  "recommended_profile": "baseline",
+  "profiles": [],
+  "limitations": [
+    "Quantized checkpoints and a small local diagnostic suite differ from the paper's BF16 benchmarks.",
+    "Held-out tasks are public diagnostics, not a general capability guarantee.",
+    "Prompt-prefix reuse is disabled by default; a cache probe is reported separately."
+  ],
+  "storage_before": {
+    "time": 1793764508.4325314,
+    "free_bytes": 520989130752,
+    "state_bytes": 466589,
+    "model_weight_bytes_written": 0
+  },
+  "reasons": [
+    "No validated native adapter for muse-glimmer",
+    "Sliding-window cache semantics have not been validated"
+  ]
+}

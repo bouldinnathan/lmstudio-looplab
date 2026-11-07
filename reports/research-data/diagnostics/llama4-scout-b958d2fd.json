@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "model": {
+    "id": "llama4-scout-b958d2fd",
+    "name": "llama4-scout",
+    "architecture": "llama4",
+    "layers": 48,
+    "size_bytes": 67436800960,
+    "header_sha256": "b5fe6a15ae63c52b5d878c9f19ffb55beb7d7373d404d6c881b3732dc16997b3",
+    "eligible": false,
+    "reasons": [
+      "No validated native adapter for llama4",
+      "This MoE variant has no routing-reuse adapter",
+      "Exceeds configured model size budget"
+    ],
+    "mode": "block"
+  },
+  "started": 1793765327.0950282,
+  "status": "unsupported",
+  "suite": "looplab-diagnostic-v2",
+  "suite_sha256": "8b2d60609aa5dccdb5e0c5680251a16ec3bfec3417ffacd99656b426bf7f848b",
+  "quick": false,
+  "evaluation_policy": {
+    "temperature": 0,
+    "seed": 1729,
+    "max_tokens": 192,
+    "cache_prompt": false,
+    "reasoning_effort": "none",
+    "reasoning_budget_tokens": 0,
+    "add_generation_prompt": false,
+    "continue_final_message": "content",
+    "response_format": {
+      "type": "json_object"
+    },
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    },
+    "assistant_prefill": "{\"answer\":"
+  },
+  "paper_reproduction": false,
+  "recommended_profile": "baseline",
+  "profiles": [],
+  "limitations": [
+    "Quantized checkpoints and a small local diagnostic suite differ from the paper's BF16 benchmarks.",
+    "Held-out tasks are public diagnostics, not a general capability guarantee.",
+    "Prompt-prefix reuse is disabled by default; a cache probe is reported separately."
+  ],
+  "storage_before": {
+    "time": 1793765327.0961666,
+    "free_bytes": 520991514624,
+    "state_bytes": 768099,
+    "model_weight_bytes_written": 0
+  },
+  "reasons": [
+    "No validated native adapter for llama4",
+    "This MoE variant has no routing-reuse adapter",
+    "Exceeds configured model size budget"
+  ]
+}

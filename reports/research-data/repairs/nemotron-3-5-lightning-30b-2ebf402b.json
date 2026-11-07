@@ -1,0 +1,150 @@
+{
+  "model_id": "nemotron-3-5-lightning-30b-2ebf402b",
+  "architecture": "nemotron_h_moe",
+  "status": "baseline_only",
+  "adapter": {
+    "source": "src/models/nemotron-h-moe.cpp",
+    "reason": "No single standard graph constructor"
+  },
+  "metadata": {
+    "nemotron_h_moe.block_count": 53,
+    "nemotron_h_moe.context_length": 1048576,
+    "nemotron_h_moe.embedding_length": 2688,
+    "nemotron_h_moe.attention.head_count": 32,
+    "nemotron_h_moe.rope.freq_base": 10000.0,
+    "nemotron_h_moe.attention.layer_norm_rms_epsilon": 9.999999747378752e-06,
+    "nemotron_h_moe.attention.layer_norm_epsilon": 9.999999747378752e-06,
+    "nemotron_h_moe.expert_count": 128,
+    "nemotron_h_moe.expert_used_count": 6,
+    "nemotron_h_moe.expert_group_count": 1,
+    "nemotron_h_moe.expert_group_used_count": 1,
+    "nemotron_h_moe.vocab_size": 131072,
+    "nemotron_h_moe.rope.dimension_count": 84,
+    "nemotron_h_moe.ssm.conv_kernel": 4,
+    "nemotron_h_moe.ssm.state_size": 128,
+    "nemotron_h_moe.ssm.group_count": 8,
+    "nemotron_h_moe.ssm.inner_size": 4096,
+    "nemotron_h_moe.ssm.time_step_rank": 64,
+    "nemotron_h_moe.rope.scaling.finetuned": false,
+    "nemotron_h_moe.attention.key_length": 128,
+    "nemotron_h_moe.attention.value_length": 128,
+    "nemotron_h_moe.expert_feed_forward_length": 1856,
+    "nemotron_h_moe.expert_shared_feed_forward_length": 3712,
+    "nemotron_h_moe.expert_shared_count": 1,
+    "nemotron_h_moe.expert_weights_norm": true,
+    "nemotron_h_moe.expert_weights_scale": 2.5,
+    "nemotron_h_moe.nextn_predict_layers": 1
+  },
+  "tensor_count": 417,
+  "representative_tensors": [
+    {
+      "name": "output.weight",
+      "dimensions": [
+        2688,
+        131072
+      ],
+      "ggml_type": 8
+    },
+    {
+      "name": "output_norm.weight",
+      "dimensions": [
+        2688
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "token_embd.weight",
+      "dimensions": [
+        2688,
+        131072
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "blk.0.attn_norm.weight",
+      "dimensions": [
+        2688
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.ssm_a",
+      "dimensions": [
+        1,
+        64
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.ssm_conv1d.bias",
+      "dimensions": [
+        6144
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.ssm_conv1d.weight",
+      "dimensions": [
+        4,
+        6144
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.ssm_d",
+      "dimensions": [
+        1,
+        64
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.ssm_dt.bias",
+      "dimensions": [
+        64
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.ssm_in.weight",
+      "dimensions": [
+        2688,
+        10304
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "blk.0.ssm_norm.weight",
+      "dimensions": [
+        512,
+        8
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.ssm_out.weight",
+      "dimensions": [
+        4096,
+        2688
+      ],
+      "ggml_type": 12
+    }
+  ],
+  "runtime_revision": "0893ec98f5eafad36a43a72cd1c3723d72b0d03a",
+  "patch_sha256": "d4506c79258f07b66b0a720122a9efb2f874a478286dc2d1448b1e9c732f6860",
+  "reasons": [
+    "No single standard graph constructor"
+  ],
+  "failures": [],
+  "profile_failures": [],
+  "reproduce": "python -m looplab explore nemotron-3-5-lightning-30b-2ebf402b --no-resume",
+  "next_steps": [
+    "Check the pinned native model loader and original graph before changing metadata or tensor names.",
+    "For an unrecognized but similar graph, extend runtime/auto_adapters.py and preserve its original layer body.",
+    "For recurrent, MLA, shared, or convolution state, implement and test the state snapshot/restore semantics explicitly.",
+    "For MoE, retain the first expert IDs and mixture weights through the shared routing helper.",
+    "For repeat-request instability, inspect cache clearing, graph reuse and backend numerical behavior with cache_prompt=false.",
+    "Rebuild, pass the independent native reference tests, then rerun this exact model and its K=2/3/4 probes.",
+    "Treat successful smoke tests as experimental compatibility, never proof of quality gains or full paper reproduction."
+  ]
+}

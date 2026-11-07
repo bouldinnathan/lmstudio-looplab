@@ -1,0 +1,1326 @@
+{
+  "model_id": "nemotron-3-super-120b-261c59d7",
+  "architecture": "nemotron_h_moe",
+  "status": "preflight_skipped",
+  "adapter": {
+    "source": "src/models/nemotron-h-moe.cpp",
+    "reason": "No single standard graph constructor"
+  },
+  "metadata": {
+    "nemotron_h_moe.attention.head_count": 32,
+    "nemotron_h_moe.attention.key_length": 128,
+    "nemotron_h_moe.attention.layer_norm_epsilon": 9.999999747378752e-06,
+    "nemotron_h_moe.attention.layer_norm_rms_epsilon": 9.999999747378752e-06,
+    "nemotron_h_moe.attention.value_length": 128,
+    "nemotron_h_moe.block_count": 88,
+    "nemotron_h_moe.context_length": 262144,
+    "nemotron_h_moe.embedding_length": 4096,
+    "nemotron_h_moe.expert_count": 512,
+    "nemotron_h_moe.expert_feed_forward_length": 2688,
+    "nemotron_h_moe.expert_group_count": 1,
+    "nemotron_h_moe.expert_group_used_count": 1,
+    "nemotron_h_moe.expert_shared_count": 1,
+    "nemotron_h_moe.expert_shared_feed_forward_length": 5376,
+    "nemotron_h_moe.expert_used_count": 22,
+    "nemotron_h_moe.expert_weights_norm": true,
+    "nemotron_h_moe.expert_weights_scale": 5.0,
+    "nemotron_h_moe.rope.dimension_count": 128,
+    "nemotron_h_moe.rope.freq_base": 10000.0,
+    "nemotron_h_moe.ssm.conv_kernel": 4,
+    "nemotron_h_moe.ssm.group_count": 8,
+    "nemotron_h_moe.ssm.inner_size": 8192,
+    "nemotron_h_moe.ssm.state_size": 128,
+    "nemotron_h_moe.ssm.time_step_rank": 128
+  },
+  "tensor_count": 1803,
+  "representative_tensors": [
+    {
+      "name": "blk.0.attn_norm.weight",
+      "dimensions": [
+        4096
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.ssm_a",
+      "dimensions": [
+        1,
+        128
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.ssm_conv1d.bias",
+      "dimensions": [
+        10240
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.ssm_conv1d.weight",
+      "dimensions": [
+        4,
+        10240
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.ssm_d",
+      "dimensions": [
+        1,
+        128
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.ssm_dt.bias",
+      "dimensions": [
+        128
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.ssm_in.weight",
+      "dimensions": [
+        4096,
+        18560
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "blk.0.ssm_norm.weight",
+      "dimensions": [
+        1024,
+        8
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.ssm_out.weight",
+      "dimensions": [
+        8192,
+        4096
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.0.attn_k.weight",
+      "dimensions": [
+        4096,
+        256
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.0.attn_norm.weight",
+      "dimensions": [
+        4096
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "mtp.layers.0.attn_output.weight",
+      "dimensions": [
+        4096,
+        4096
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.0.attn_q.weight",
+      "dimensions": [
+        4096,
+        4096
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.0.attn_v.weight",
+      "dimensions": [
+        4096,
+        256
+      ],
+      "ggml_type": 14
+    },
+    {
+      "name": "mtp.layers.0.eh_proj.weight",
+      "dimensions": [
+        8192,
+        4096
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.0.enorm.weight",
+      "dimensions": [
+        4096
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "mtp.layers.0.hnorm.weight",
+      "dimensions": [
+        4096
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "mtp.layers.1.attn_norm.weight",
+      "dimensions": [
+        4096
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "mtp.layers.1.exp_probs_b.bias",
+      "dimensions": [
+        512
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "mtp.layers.1.ffn_down_shexp.weight",
+      "dimensions": [
+        5376,
+        4096
+      ],
+      "ggml_type": 14
+    },
+    {
+      "name": "mtp.layers.1.ffn_gate_inp.weight",
+      "dimensions": [
+        4096,
+        512
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "mtp.layers.1.ffn_latent_in.weight",
+      "dimensions": [
+        4096,
+        1024
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.ffn_latent_out.weight",
+      "dimensions": [
+        1024,
+        4096
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.ffn_up_shexp.weight",
+      "dimensions": [
+        4096,
+        5376
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.final_layernorm.weight",
+      "dimensions": [
+        4096
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.0.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.0.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.1.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.1.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.10.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.10.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.100.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.100.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.101.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.101.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.102.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.102.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.103.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.103.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.104.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.104.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.105.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.105.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.106.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.106.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.107.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.107.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.108.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.108.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.109.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.109.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.11.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.11.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.110.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.110.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.111.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.111.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.112.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.112.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.113.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.113.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.114.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.114.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.115.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.115.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.116.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.116.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.117.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.117.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.118.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.118.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.119.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.119.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.12.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.12.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.120.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.120.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.121.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.121.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.122.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.122.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.123.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.123.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.124.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.124.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.125.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.125.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.126.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.126.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.127.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.127.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.128.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.128.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.129.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.129.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.13.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.13.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.130.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.130.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.131.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.131.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.132.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.132.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.133.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.133.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.134.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.134.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.135.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.135.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.136.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.136.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.137.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.137.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.138.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.138.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.139.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.139.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.14.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.14.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.140.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.140.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.141.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.141.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.142.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.142.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.143.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.143.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.144.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.144.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.145.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.145.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.146.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.146.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.147.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.147.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.148.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.148.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.149.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.149.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.15.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.15.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.150.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.150.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.151.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.151.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.152.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.152.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.153.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.153.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.154.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.154.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.155.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.155.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.156.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.156.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.157.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.157.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.158.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.158.up_proj.weight",
+      "dimensions": [
+        1024,
+        2688
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "mtp.layers.1.mixer.experts.159.down_proj.weight",
+      "dimensions": [
+        2688,
+        1024
+      ],
+      "ggml_type": 6
+    }
+  ],
+  "runtime_revision": "0893ec98f5eafad36a43a72cd1c3723d72b0d03a",
+  "patch_sha256": "d4506c79258f07b66b0a720122a9efb2f874a478286dc2d1448b1e9c732f6860",
+  "reasons": [
+    "Exceeds configured model size budget"
+  ],
+  "failures": [],
+  "profile_failures": [],
+  "reproduce": "python -m looplab explore nemotron-3-super-120b-261c59d7 --no-resume",
+  "next_steps": [
+    "Check the pinned native model loader and original graph before changing metadata or tensor names.",
+    "For an unrecognized but similar graph, extend runtime/auto_adapters.py and preserve its original layer body.",
+    "For recurrent, MLA, shared, or convolution state, implement and test the state snapshot/restore semantics explicitly.",
+    "For MoE, retain the first expert IDs and mixture weights through the shared routing helper.",
+    "For repeat-request instability, inspect cache clearing, graph reuse and backend numerical behavior with cache_prompt=false.",
+    "Rebuild, pass the independent native reference tests, then rerun this exact model and its K=2/3/4 probes.",
+    "Treat successful smoke tests as experimental compatibility, never proof of quality gains or full paper reproduction."
+  ]
+}

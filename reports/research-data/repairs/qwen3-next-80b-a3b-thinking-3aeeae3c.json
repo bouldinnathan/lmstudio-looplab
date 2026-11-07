@@ -1,0 +1,208 @@
+{
+  "model_id": "qwen3-next-80b-a3b-thinking-3aeeae3c",
+  "architecture": "qwen3next",
+  "status": "baseline_only",
+  "adapter": {
+    "source": "src/models/qwen3next.cpp",
+    "reason": "Recurrent/SSM/convolution state needs an explicit snapshot adapter"
+  },
+  "metadata": {
+    "qwen3next.attention.head_count": 16,
+    "qwen3next.attention.head_count_kv": 2,
+    "qwen3next.attention.key_length": 256,
+    "qwen3next.attention.layer_norm_rms_epsilon": 9.999999974752427e-07,
+    "qwen3next.attention.value_length": 256,
+    "qwen3next.block_count": 48,
+    "qwen3next.context_length": 262144,
+    "qwen3next.embedding_length": 2048,
+    "qwen3next.expert_count": 512,
+    "qwen3next.expert_feed_forward_length": 512,
+    "qwen3next.expert_shared_feed_forward_length": 512,
+    "qwen3next.expert_used_count": 10,
+    "qwen3next.feed_forward_length": 5120,
+    "qwen3next.rope.dimension_count": 64,
+    "qwen3next.rope.freq_base": 10000000.0,
+    "qwen3next.ssm.conv_kernel": 4,
+    "qwen3next.ssm.group_count": 16,
+    "qwen3next.ssm.inner_size": 4096,
+    "qwen3next.ssm.state_size": 128,
+    "qwen3next.ssm.time_step_rank": 32
+  },
+  "tensor_count": 807,
+  "representative_tensors": [
+    {
+      "name": "blk.0.attn_norm.weight",
+      "dimensions": [
+        2048
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.ffn_down_exps.weight",
+      "dimensions": [
+        512,
+        2048,
+        512
+      ],
+      "ggml_type": 14
+    },
+    {
+      "name": "blk.0.ffn_down_shexp.weight",
+      "dimensions": [
+        512,
+        2048
+      ],
+      "ggml_type": 14
+    },
+    {
+      "name": "blk.0.ffn_gate_exps.weight",
+      "dimensions": [
+        2048,
+        512,
+        512
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "blk.0.ffn_gate_inp.weight",
+      "dimensions": [
+        2048,
+        512
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.ffn_gate_inp_shexp.weight",
+      "dimensions": [
+        2048,
+        1
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "blk.0.ffn_gate_shexp.weight",
+      "dimensions": [
+        2048,
+        512
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "blk.0.ffn_up_exps.weight",
+      "dimensions": [
+        2048,
+        512,
+        512
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "blk.0.ffn_up_shexp.weight",
+      "dimensions": [
+        2048,
+        512
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "blk.0.post_attention_norm.weight",
+      "dimensions": [
+        2048
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.ssm_a",
+      "dimensions": [
+        32
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.ssm_ba.weight",
+      "dimensions": [
+        2048,
+        64
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "blk.0.ssm_conv1d.weight",
+      "dimensions": [
+        4,
+        8192
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.ssm_dt.bias",
+      "dimensions": [
+        32
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.ssm_in.weight",
+      "dimensions": [
+        2048,
+        12288
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "blk.0.ssm_norm.weight",
+      "dimensions": [
+        128
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.ssm_out.weight",
+      "dimensions": [
+        4096,
+        2048
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "output.weight",
+      "dimensions": [
+        2048,
+        151936
+      ],
+      "ggml_type": 14
+    },
+    {
+      "name": "output_norm.weight",
+      "dimensions": [
+        2048
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "token_embd.weight",
+      "dimensions": [
+        2048,
+        151936
+      ],
+      "ggml_type": 12
+    }
+  ],
+  "runtime_revision": "0893ec98f5eafad36a43a72cd1c3723d72b0d03a",
+  "patch_sha256": "d4506c79258f07b66b0a720122a9efb2f874a478286dc2d1448b1e9c732f6860",
+  "reasons": [
+    "Recurrent/SSM/convolution state needs an explicit snapshot adapter"
+  ],
+  "failures": [],
+  "profile_failures": [],
+  "reproduce": "python -m looplab explore qwen3-next-80b-a3b-thinking-3aeeae3c --no-resume",
+  "next_steps": [
+    "Check the pinned native model loader and original graph before changing metadata or tensor names.",
+    "For an unrecognized but similar graph, extend runtime/auto_adapters.py and preserve its original layer body.",
+    "For recurrent, MLA, shared, or convolution state, implement and test the state snapshot/restore semantics explicitly.",
+    "For MoE, retain the first expert IDs and mixture weights through the shared routing helper.",
+    "For repeat-request instability, inspect cache clearing, graph reuse and backend numerical behavior with cache_prompt=false.",
+    "Rebuild, pass the independent native reference tests, then rerun this exact model and its K=2/3/4 probes.",
+    "Treat successful smoke tests as experimental compatibility, never proof of quality gains or full paper reproduction."
+  ]
+}

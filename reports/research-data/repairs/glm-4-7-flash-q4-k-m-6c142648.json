@@ -1,0 +1,178 @@
+{
+  "model_id": "glm-4-7-flash-q4-k-m-6c142648",
+  "architecture": "glm4moelite",
+  "status": "baseline_failed",
+  "adapter": {},
+  "metadata": {
+    "glm4moelite.attention.head_count": 20,
+    "glm4moelite.attention.head_count_kv": 20,
+    "glm4moelite.attention.key_length": 256,
+    "glm4moelite.attention.key_length_mla": 576,
+    "glm4moelite.attention.kv_lora_rank": 512,
+    "glm4moelite.attention.layer_norm_rms_epsilon": 9.999999747378752e-06,
+    "glm4moelite.attention.q_lora_rank": 768,
+    "glm4moelite.attention.value_length": 256,
+    "glm4moelite.attention.value_length_mla": 512,
+    "glm4moelite.block_count": 47,
+    "glm4moelite.context_length": 202752,
+    "glm4moelite.embedding_length": 2048,
+    "glm4moelite.expert_count": 64,
+    "glm4moelite.expert_feed_forward_length": 1536,
+    "glm4moelite.expert_gating_func": 2,
+    "glm4moelite.expert_shared_count": 1,
+    "glm4moelite.expert_used_count": 4,
+    "glm4moelite.expert_weights_norm": true,
+    "glm4moelite.expert_weights_scale": 1.7999999523162842,
+    "glm4moelite.feed_forward_length": 10240,
+    "glm4moelite.leading_dense_block_count": 1,
+    "glm4moelite.rope.dimension_count": 64,
+    "glm4moelite.rope.freq_base": 1000000.0
+  },
+  "tensor_count": 844,
+  "representative_tensors": [
+    {
+      "name": "blk.0.attn_k_b.weight",
+      "dimensions": [
+        192,
+        512,
+        20
+      ],
+      "ggml_type": 8
+    },
+    {
+      "name": "blk.0.attn_kv_a_mqa.weight",
+      "dimensions": [
+        2048,
+        576
+      ],
+      "ggml_type": 8
+    },
+    {
+      "name": "blk.0.attn_kv_a_norm.weight",
+      "dimensions": [
+        512
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.attn_norm.weight",
+      "dimensions": [
+        2048
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.attn_output.weight",
+      "dimensions": [
+        5120,
+        2048
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "blk.0.attn_q_a.weight",
+      "dimensions": [
+        2048,
+        768
+      ],
+      "ggml_type": 8
+    },
+    {
+      "name": "blk.0.attn_q_a_norm.weight",
+      "dimensions": [
+        768
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.attn_q_b.weight",
+      "dimensions": [
+        768,
+        5120
+      ],
+      "ggml_type": 8
+    },
+    {
+      "name": "blk.0.attn_v_b.weight",
+      "dimensions": [
+        512,
+        256,
+        20
+      ],
+      "ggml_type": 8
+    },
+    {
+      "name": "blk.0.ffn_down.weight",
+      "dimensions": [
+        10240,
+        2048
+      ],
+      "ggml_type": 14
+    },
+    {
+      "name": "blk.0.ffn_gate.weight",
+      "dimensions": [
+        2048,
+        10240
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "blk.0.ffn_norm.weight",
+      "dimensions": [
+        2048
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.ffn_up.weight",
+      "dimensions": [
+        2048,
+        10240
+      ],
+      "ggml_type": 12
+    },
+    {
+      "name": "output.weight",
+      "dimensions": [
+        2048,
+        154880
+      ],
+      "ggml_type": 14
+    },
+    {
+      "name": "output_norm.weight",
+      "dimensions": [
+        2048
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "token_embd.weight",
+      "dimensions": [
+        2048,
+        154880
+      ],
+      "ggml_type": 12
+    }
+  ],
+  "runtime_revision": "0893ec98f5eafad36a43a72cd1c3723d72b0d03a",
+  "patch_sha256": "d4506c79258f07b66b0a720122a9efb2f874a478286dc2d1448b1e9c732f6860",
+  "reasons": [
+    "No generated native adapter for glm4moelite"
+  ],
+  "failures": [
+    "RuntimeError: Runtime failed to start; inspect <home><path>/glm-4-7-flash-q4-k-m-6c142648-baseline.log\n0.00.067.522 E llama_model_load: error loading model: unknown model architecture: 'glm4moelite'\n0.00.067.528 E llama_model_load_from_file_impl: failed to load model\n0.00.067.567 E common_fit_params: encountered an error while trying to fit params to free device memory: failed to load model\n0.00.109.297 E llama_model_load: error loading model: unknown model architecture: 'glm4moelite'\n0.00.109.302 E llama_model_load_from_file_impl: failed to load model\n0.00.109.309 E cmn  common_init_: failed to load model '<model.gguf>'\n0.00.109.314 E srv    load_model: failed to load model, '<model.gguf>'\n0.00.110.628 E srv  server_run_i: exiting due to model loading error"
+  ],
+  "profile_failures": [],
+  "reproduce": "python -m looplab explore glm-4-7-flash-q4-k-m-6c142648 --no-resume",
+  "next_steps": [
+    "Check the pinned native model loader and original graph before changing metadata or tensor names.",
+    "For an unrecognized but similar graph, extend runtime/auto_adapters.py and preserve its original layer body.",
+    "For recurrent, MLA, shared, or convolution state, implement and test the state snapshot/restore semantics explicitly.",
+    "For MoE, retain the first expert IDs and mixture weights through the shared routing helper.",
+    "For repeat-request instability, inspect cache clearing, graph reuse and backend numerical behavior with cache_prompt=false.",
+    "Rebuild, pass the independent native reference tests, then rerun this exact model and its K=2/3/4 probes.",
+    "Treat successful smoke tests as experimental compatibility, never proof of quality gains or full paper reproduction."
+  ]
+}

@@ -1,0 +1,1516 @@
+{
+  "schema": 1,
+  "suite": "looplab-explore-v1",
+  "status": "embedding_passed",
+  "model": {
+    "id": "bge-m3-latest-5b56cc03",
+    "name": "bge-m3-latest",
+    "architecture": "bert",
+    "layers": 24,
+    "size_bytes": 1157671200,
+    "header_sha256": "18a638b6f6876cf0f9d964caff4a9800bf31cdf788563036127aff9dcd3806ac",
+    "eligible": false,
+    "reasons": [
+      "Attention state is not the supported KV/SWA interface: no_cache",
+      "Embedding model; the generation test suite does not apply"
+    ],
+    "mode": "block",
+    "tier": "unadapted",
+    "role": "embedding",
+    "adapter": {
+      "source": "src/models/bert.cpp",
+      "reason": "Attention state is not the supported KV/SWA interface: no_cache"
+    },
+    "aliases": [
+      "bge-m3-latest",
+      "library/bge-m3/latest"
+    ],
+    "loadable": true,
+    "load_reasons": []
+  },
+  "source_mtime_ns": 1786600827984933274,
+  "runtime": {
+    "llama_cpp_revision": "0893ec98f5eafad36a43a72cd1c3723d72b0d03a",
+    "patch_sha256": "d4506c79258f07b66b0a720122a9efb2f874a478286dc2d1448b1e9c732f6860",
+    "method": "anchored_damped_euler",
+    "architectures": [
+      "afmoe",
+      "apertus",
+      "arcee",
+      "arctic",
+      "bailingmoe",
+      "bailingmoe2",
+      "bitnet",
+      "bloom",
+      "chameleon",
+      "chatglm",
+      "codeshell",
+      "cogvlm",
+      "cohere2",
+      "cohere2moe",
+      "command-r",
+      "dbrx",
+      "deepseek",
+      "dots1",
+      "ernie4_5",
+      "ernie4_5-moe",
+      "exaone",
+      "exaone-moe",
+      "exaone4",
+      "falcon",
+      "flint",
+      "gemma",
+      "gemma2",
+      "gemma3",
+      "gemma3n",
+      "gemma4",
+      "glm4",
+      "glm4moe",
+      "gpt-oss",
+      "gpt2",
+      "granite",
+      "granite_swa",
+      "graniteswitch",
+      "grok",
+      "grovemoe",
+      "hunyuan-moe",
+      "hunyuan_vl",
+      "hy_v3",
+      "internlm2",
+      "jais",
+      "k2-horizon",
+      "laguna",
+      "llama",
+      "llama4",
+      "maincoder",
+      "maion-coder",
+      "maple",
+      "mellum",
+      "mimo2",
+      "minicpm3",
+      "minimax-m2",
+      "mistral3",
+      "mpt",
+      "muse-glimmer",
+      "muse-spark",
+      "nemotron",
+      "olmo",
+      "olmo2",
+      "olmoe",
+      "openelm",
+      "orion",
+      "paddleocr",
+      "pangu-embedded",
+      "phi2",
+      "phi3",
+      "plamo",
+      "plamo3",
+      "plm",
+      "pockettts",
+      "qwen",
+      "qwen2",
+      "qwen2moe",
+      "qwen2vl",
+      "qwen3",
+      "qwen3moe",
+      "qwen3vl",
+      "qwen3vlmoe",
+      "refact",
+      "seed_oss",
+      "sensenova_u1",
+      "smallthinker",
+      "smollm3",
+      "spark2_5",
+      "stablelm",
+      "starcoder",
+      "starcoder2",
+      "step35",
+      "talkie",
+      "xverse"
+    ],
+    "adapters": {
+      "afmoe": {
+        "family": "moe",
+        "cache_interfaces": [
+          "kv_iswa"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "12b50d3d052ca77f8bdc90c8ae0181f7779821a1cb9029119d453ad29cdad765",
+        "source": "src/models/afmoe.cpp",
+        "tier": "experimental"
+      },
+      "apertus": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "ba06f01cf96625541b5c7d40202d7ab288e6c10e78bbff1053bd93a516d9b4c9",
+        "source": "src/models/apertus.cpp",
+        "tier": "experimental"
+      },
+      "arcee": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "fed27e724ad7c8838847ca0d9e77e2207f6132613b92b0482b1384b83f26e5fb",
+        "source": "src/models/arcee.cpp",
+        "tier": "experimental"
+      },
+      "arctic": {
+        "family": "moe",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "1ac20da7af62573511c658e6939275c5bcdc4b5cc4278d2eb48292da30fa348e",
+        "source": "src/models/arctic.cpp",
+        "tier": "experimental"
+      },
+      "bailingmoe": {
+        "family": "moe",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "3184ebc416af420d32989f422cd1e87cce8ce8181060e4f989d06aceeefb3af1",
+        "source": "src/models/bailingmoe.cpp",
+        "tier": "experimental"
+      },
+      "bailingmoe2": {
+        "family": "moe",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "709f55b1403e6b8b3b968805ce080d1fd408acc26d7a08029270a870374fa324",
+        "source": "src/models/bailingmoe2.cpp",
+        "tier": "experimental"
+      },
+      "bitnet": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "f0d9bae3c8d3ead788a9ebd08c4d5e3d0a9b2e59ded862d176023228454ddef8",
+        "source": "src/models/bitnet.cpp",
+        "tier": "experimental"
+      },
+      "bloom": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "2324fc2d9f0af98eb3ee802a26e0cea855a431de8f8ecc2eeffda9e3e4c9241b",
+        "source": "src/models/bloom.cpp",
+        "tier": "experimental"
+      },
+      "chameleon": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "5fd8e5195f9e9c07724b61ff9c7e59ad40477538f75fc2045573b655542ea021",
+        "source": "src/models/chameleon.cpp",
+        "tier": "experimental"
+      },
+      "chatglm": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "deac4baad2a2b32d7451713ff762d595356e49b99f837e4e223db826aebf4b32",
+        "source": "src/models/chatglm.cpp",
+        "tier": "experimental"
+      },
+      "codeshell": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "6a3aea96caadd414246c9aa1385ced5b17e6bd68da5398f489b605609ea608fd",
+        "source": "src/models/codeshell.cpp",
+        "tier": "experimental"
+      },
+      "cogvlm": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "077534ea7f36570c472354c6fd038d27fa41657d74fbe666fd7fcb1c7692678c",
+        "source": "src/models/cogvlm.cpp",
+        "tier": "experimental"
+      },
+      "cohere2": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv_iswa"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "b5c4fdf1c3050f2ddbb9881aed09ddcfc41c61e0ed14476c444cb36cc2fa6732",
+        "source": "src/models/cohere2.cpp",
+        "tier": "experimental"
+      },
+      "cohere2moe": {
+        "family": "moe",
+        "cache_interfaces": [
+          "kv_iswa"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "972623ce5a2d172da51020df3263c955605d84d5dcc0f1e6658ec705c5302afc",
+        "source": "src/models/cohere2moe.cpp",
+        "tier": "experimental"
+      },
+      "command-r": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "6685d4560d9455b4b8f31b807147045496bd4163545cbc6449e7fd2000b04e40",
+        "source": "src/models/command-r.cpp",
+        "tier": "experimental"
+      },
+      "dbrx": {
+        "family": "moe",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "e3c1c91537f96bd19e2d768dfbd1fde37066e01f9d102e923ecc642bb4ef18f9",
+        "source": "src/models/dbrx.cpp",
+        "tier": "experimental"
+      },
+      "deepseek": {
+        "family": "moe",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "6f049cc16f683758767d8eb7b4b48d677e279d64d6c3b2321b8d0fd0619fcefe",
+        "source": "src/models/deepseek.cpp",
+        "tier": "experimental"
+      },
+      "dots1": {
+        "family": "moe",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "efb6e91c2cf54f88e0dc08b4211778b575831fe9ecb8bd230507663cc73cc0d4",
+        "source": "src/models/dots1.cpp",
+        "tier": "experimental"
+      },
+      "ernie4_5": {
+        "family": "moe",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "7e092e0ed104f5ec8e2f3c40ac6113c654b6ba744d0829ea4faf935be2797609",
+        "source": "src/models/ernie4-5.cpp",
+        "tier": "experimental"
+      },
+      "ernie4_5-moe": {
+        "family": "moe",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "a56df8abb3098de710e5f11bd7adf332d3c431bcc057c745f758a8a6ed99837d",
+        "source": "src/models/ernie4-5-moe.cpp",
+        "tier": "experimental"
+      },
+      "exaone": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "41b91097e9a5129eeefc68fa9876383c15993a52f52af35a93697997127cc75f",
+        "source": "src/models/exaone.cpp",
+        "tier": "experimental"
+      },
+      "exaone4": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv",
+          "kv_iswa"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "f13cfaf5ab4605bdc53a449fcf2b4fcf3eb63e4feac57fceab88a91508dc0bae",
+        "source": "src/models/exaone4.cpp",
+        "tier": "experimental"
+      },
+      "exaone-moe": {
+        "family": "moe",
+        "cache_interfaces": [
+          "kv_iswa"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "17643760d5e827ca348403ed2a88998a332d4d56de87132e83e75f4bf5b82a84",
+        "source": "src/models/exaone-moe.cpp",
+        "tier": "experimental"
+      },
+      "falcon": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "6096f963608133808387dc52124621a4beb8512a94829e7baa644a0f4b98cb76",
+        "source": "src/models/falcon.cpp",
+        "tier": "experimental"
+      },
+      "flint": {
+        "family": "moe",
+        "cache_interfaces": [
+          "kv_iswa"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "72e6006cec7b8a53e91f6c58e5680feada3e4f43bfaef8bea8cff00793173399",
+        "source": "src/models/flint.cpp",
+        "tier": "experimental"
+      },
+      "gemma": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "3cc4452831d01e0255965e804e286969b63b6d7064aab2ab3edf8cf1cf46a87b",
+        "source": "src/models/gemma.cpp",
+        "tier": "experimental"
+      },
+      "gemma2": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv_iswa"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "cfd2b4a3fd5081ed7f726002fe6133572c8910fda3edf72fa5770495345641cc",
+        "source": "src/models/gemma2.cpp",
+        "tier": "experimental"
+      },
+      "gemma3": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv",
+          "kv_iswa"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "c2c620d079029a8a6e1fffbd81f36b3cfb2642aa9b68d8ca13b9a29be26655ef",
+        "source": "src/models/gemma3.cpp",
+        "tier": "experimental"
+      },
+      "gemma3n": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv_iswa"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "b0288e1166ab1eb2cb309569f1e0205a65f59504f0735796482c5d0e06aa8935",
+        "source": "src/models/gemma3n.cpp",
+        "tier": "experimental"
+      },
+      "gemma4": {
+        "family": "moe",
+        "cache_interfaces": [
+          "kv_iswa"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "247d458f93ddace3091141d7d7e4da0c0b589bc843e5737d3b39f804eb889339",
+        "source": "src/models/gemma4.cpp",
+        "tier": "experimental"
+      },
+      "glm4": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "043929a829094ed73d74e56817678e5860e1f133fe6dd3b351e38c786f3dee35",
+        "source": "src/models/glm4.cpp",
+        "tier": "experimental"
+      },
+      "glm4moe": {
+        "family": "moe",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "f4ce5a1474330edf62f96bfc0827a8c2fad35f3694622d19d8aca29172686638",
+        "source": "src/models/glm4-moe.cpp",
+        "tier": "experimental"
+      },
+      "gpt2": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "83bbefa0475a43a5c5d248e87f7bbc704c0c272188927eb5fdc9766b83ffc08f",
+        "source": "src/models/gpt2.cpp",
+        "tier": "experimental"
+      },
+      "granite": {
+        "family": "moe",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "8601bb092790b0ba1f81ed5f43181712965e5e891c9d2b0bc1137cd2c36a0dcf",
+        "source": "src/models/granite.cpp",
+        "tier": "experimental"
+      },
+      "granite_swa": {
+        "family": "moe",
+        "cache_interfaces": [
+          "kv_iswa"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "4a24fe067d3f9e0805fcef6c10a9675d2247291446ddab638085715d7fd10a97",
+        "source": "src/models/granite-swa.cpp",
+        "tier": "experimental"
+      },
+      "graniteswitch": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "66d2381104daf1667c44ca2a912954a395ec55737d81378ae6f1d217d1c4e24f",
+        "source": "src/models/granite-switch.cpp",
+        "tier": "experimental"
+      },
+      "grok": {
+        "family": "moe",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "f9ae932a0d4cd912a1f4f3efe685fed6ef44e20811f2cd8fb4553fa93e842d92",
+        "source": "src/models/grok.cpp",
+        "tier": "experimental"
+      },
+      "grovemoe": {
+        "family": "moe",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "4580744268e3113b8f38137b305506e45e5e627bc05d1bbc7ef2c9d59b5af7da",
+        "source": "src/models/grovemoe.cpp",
+        "tier": "experimental"
+      },
+      "hunyuan-moe": {
+        "family": "moe",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "5b0b27672cf5aee2a52f96e0cf48da9099c0dfb73035d7110d330d398b23b631",
+        "source": "src/models/hunyuan-moe.cpp",
+        "tier": "experimental"
+      },
+      "hunyuan_vl": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "571390d52499ddef30bae661be436f5dd0aed5068a15af698c8131263c095ff5",
+        "source": "src/models/hunyuan-vl.cpp",
+        "tier": "experimental"
+      },
+      "hy_v3": {
+        "family": "moe",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "695079faff1d3fd66544de2cc79c850f546e1ba1dcf25d946ae5ba16d207d97f",
+        "source": "src/models/hy-v3.cpp",
+        "tier": "experimental"
+      },
+      "internlm2": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "fe2e19b85a96c039f08fe2ea5cc90d0dbb7da718c2569b3539f7c8e51110daaa",
+        "source": "src/models/internlm2.cpp",
+        "tier": "experimental"
+      },
+      "jais": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "c467499e737980588ab0a7affb2f17ed42b426e584e75eaa8a798054600c957c",
+        "source": "src/models/jais.cpp",
+        "tier": "experimental"
+      },
+      "k2-horizon": {
+        "family": "moe",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "8c8613b19476be05aeca36b1af3071e46d97efd9af3559f0ce712fd9e37c3fb5",
+        "source": "src/models/k2-horizon.cpp",
+        "tier": "experimental"
+      },
+      "laguna": {
+        "family": "moe",
+        "cache_interfaces": [
+          "kv",
+          "kv_iswa"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "0a14c3d27cc0a1284a2dbb6c0fee2f5e7a99866e3367a0cb2a31fbb026834acb",
+        "source": "src/models/laguna.cpp",
+        "tier": "experimental"
+      },
+      "llama": {
+        "family": "moe",
+        "cache_interfaces": [
+          "kv",
+          "no_cache"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "38a43fef15432002ed7bc1a49ffb5e1c2cfba30beb5afc1d38422c288ad8d885",
+        "source": "src/models/llama.cpp",
+        "tier": "reference_validated"
+      },
+      "llama4": {
+        "family": "moe",
+        "cache_interfaces": [
+          "kv",
+          "kv_iswa"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "77a15ba7a8272a22f5f6ac1ce3a11e29f1253b0aa683b03b89b8708523db8f0b",
+        "source": "src/models/llama4.cpp",
+        "tier": "experimental"
+      },
+      "maincoder": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "a5e0e825c4a9bba96cff9a6b21422a7234e54a96c03de572c588a4c4e322d392",
+        "source": "src/models/maincoder.cpp",
+        "tier": "experimental"
+      },
+      "maion-coder": {
+        "family": "moe",
+        "cache_interfaces": [
+          "kv_iswa"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "d4363c94116ab94e2c9b75ee8468767c4b1d4639204ca32d5d776e7ff4878e1a",
+        "source": "src/models/maion-coder.cpp",
+        "tier": "experimental"
+      },
+      "maple": {
+        "family": "moe",
+        "cache_interfaces": [
+          "kv_iswa"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "6d9f39aae1c5ecfe5d7a10903ab8190f00a7fe931cf12638db448de2871a45ba",
+        "source": "src/models/maple.cpp",
+        "tier": "experimental"
+      },
+      "mellum": {
+        "family": "moe",
+        "cache_interfaces": [
+          "kv",
+          "kv_iswa"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "c9caf37e23d33bba8a579697097f518334d8df0ccd98ba113fa287f42ba0ad02",
+        "source": "src/models/mellum.cpp",
+        "tier": "experimental"
+      },
+      "mimo2": {
+        "family": "moe",
+        "cache_interfaces": [
+          "kv_iswa"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "55742ef5e8abb34d3c47f596bc95eac0876e30fef071488dfaa4691bdeaa904c",
+        "source": "src/models/mimo2.cpp",
+        "tier": "experimental"
+      },
+      "minicpm3": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "f417766c873f5ca7820b1d8f59a2fa869e82214078bc3f36f1de0529bd02a262",
+        "source": "src/models/minicpm3.cpp",
+        "tier": "experimental"
+      },
+      "minimax-m2": {
+        "family": "moe",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "9c7ce28df9ab13075eb2d97d6eb41b6f5923b1b66142e2b0516ce5e255831255",
+        "source": "src/models/minimax-m2.cpp",
+        "tier": "experimental"
+      },
+      "mistral3": {
+        "family": "moe",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "9bd6587f130cb55b34be3aa930341033889e85b01bc2b2d1b3fffea1de27a719",
+        "source": "src/models/mistral3.cpp",
+        "tier": "experimental"
+      },
+      "mpt": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "2768ec9d0752aef17598a49751ed209c4487bc6d9acf92e63ae02a5dcb1e91ff",
+        "source": "src/models/mpt.cpp",
+        "tier": "experimental"
+      },
+      "muse-glimmer": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv_iswa"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "a0f5a1a7af75e96fb5509b1cba99bb99226a310e172fbd3ccc628486eecf966d",
+        "source": "src/models/muse-glimmer.cpp",
+        "tier": "experimental"
+      },
+      "muse-spark": {
+        "family": "moe",
+        "cache_interfaces": [
+          "kv_iswa"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "e1019a52a82c9c710b9bf80577c63804a108389c13253b9e6a8ec7406507c708",
+        "source": "src/models/muse-spark.cpp",
+        "tier": "experimental"
+      },
+      "nemotron": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "046f8a401cf81ae1e6c0dfbe30e26832f1fc58b1b20d7f0be78a51cf88dc3c2a",
+        "source": "src/models/nemotron.cpp",
+        "tier": "experimental"
+      },
+      "olmo": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "a862adf8704c846f45d62a81ec2292e4b3f292efc2847470881dc9877b376d0f",
+        "source": "src/models/olmo.cpp",
+        "tier": "experimental"
+      },
+      "olmo2": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv",
+          "kv_iswa"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "57417a59d4469ae32b4f9a9046e5663d730d5cd8e4b2001e3295eb2f839f599a",
+        "source": "src/models/olmo2.cpp",
+        "tier": "experimental"
+      },
+      "olmoe": {
+        "family": "moe",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "738ff3789f79f20c1ec8a1610f01d1677b7014581230e454d002eab1cc1637dd",
+        "source": "src/models/olmoe.cpp",
+        "tier": "experimental"
+      },
+      "gpt-oss": {
+        "family": "moe",
+        "cache_interfaces": [
+          "kv_iswa"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "1e72822e506c534f111762e71ae282dbc20d9d9a26b12bfa6aeae384dbb027c0",
+        "source": "src/models/openai-moe.cpp",
+        "tier": "experimental"
+      },
+      "openelm": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "7f38a42a05f57d7c90123bfd5e50a4ddd9d224bdf575efc8f4265838b8fa4049",
+        "source": "src/models/openelm.cpp",
+        "tier": "experimental"
+      },
+      "orion": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "f20b9cfcc24c28a4adb89fe85ca35beed66be5661f5ea235c1c58225a488c438",
+        "source": "src/models/orion.cpp",
+        "tier": "experimental"
+      },
+      "paddleocr": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "684253648c1883e2503bce454d3f5de5a4508622049418660fcb170287e28b5c",
+        "source": "src/models/paddleocr.cpp",
+        "tier": "experimental"
+      },
+      "pangu-embedded": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "4930c915ec9391a0fb43d45f351b3f6220fb0b97ce57265923d1d365a6678e44",
+        "source": "src/models/pangu-embed.cpp",
+        "tier": "experimental"
+      },
+      "phi2": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "cc86ccb1eaa1d43968697fd7059b025266b903dd685353433d1f2277cd9ee851",
+        "source": "src/models/phi2.cpp",
+        "tier": "experimental"
+      },
+      "phi3": {
+        "family": "moe",
+        "cache_interfaces": [
+          "kv",
+          "kv_iswa"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "dd957f5ae2526482a6620cff8b4abc727f9e77fe56342f124f3f4c6b01fdc502",
+        "source": "src/models/phi3.cpp",
+        "tier": "experimental"
+      },
+      "plamo": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "1125dad2f7997b3d5e1736e52e4891b7cfd7418c857b4db5489a70189563b2fc",
+        "source": "src/models/plamo.cpp",
+        "tier": "experimental"
+      },
+      "plamo3": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv",
+          "kv_iswa"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "16d838ccdcd9653e0c62d95624a84ad5dc7abc8d6dedbf8aad46f1c6f086e78e",
+        "source": "src/models/plamo3.cpp",
+        "tier": "experimental"
+      },
+      "plm": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "8489c2c2d58c25ac9e90cd2fa0365e3933c5e48343aea4707691e6d9ec180698",
+        "source": "src/models/plm.cpp",
+        "tier": "experimental"
+      },
+      "pockettts": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "8c15d1f64dfeb89927ba4d2ea826a598b25e33ac18dee22d8720303dabc331f1",
+        "source": "src/models/pockettts.cpp",
+        "tier": "experimental"
+      },
+      "qwen": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "f266ec4142c47fc5c1adc1663136dbb92f614f8a3d58a168547ff5ba9b70f462",
+        "source": "src/models/qwen.cpp",
+        "tier": "experimental"
+      },
+      "qwen2": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "7f7f9df9bdaaf7c8aaab900fe046c97936b67d656f66dea445735f1beec695f4",
+        "source": "src/models/qwen2.cpp",
+        "tier": "reference_validated"
+      },
+      "qwen2moe": {
+        "family": "moe",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "8d368cd9cecd68b5bd8660338f57a5c2d3b2c750739fa251dff26ec1c4974abc",
+        "source": "src/models/qwen2moe.cpp",
+        "tier": "experimental"
+      },
+      "qwen2vl": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "2d00d03c371b87e158f95d69a89bf91cfbcbfa066c8d07f3738e264b3fe919c0",
+        "source": "src/models/qwen2vl.cpp",
+        "tier": "experimental"
+      },
+      "qwen3": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "6018840e2d7e23340e2404aceb216e6afcedbd8ae24977a0df0eb878be9d0107",
+        "source": "src/models/qwen3.cpp",
+        "tier": "reference_validated"
+      },
+      "qwen3moe": {
+        "family": "moe",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "0de78fd5efbd10e0fd851b85cba5f70f130681fac9569aafcfba0ce3ef00bf2d",
+        "source": "src/models/qwen3moe.cpp",
+        "tier": "reference_validated"
+      },
+      "qwen3vl": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "494b466fb76e70aa4553bf4be8825f8fb34f942b8ecaf1d8b8d24f0f709433f2",
+        "source": "src/models/qwen3vl.cpp",
+        "tier": "experimental"
+      },
+      "qwen3vlmoe": {
+        "family": "moe",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "815807c521a66194fca39c86a0f71d3ca662ce87a4525b7fdd99a0b86899ccbb",
+        "source": "src/models/qwen3vlmoe.cpp",
+        "tier": "experimental"
+      },
+      "refact": {
+        "family": "moe",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "74e1e45e2817a1a52e01562e1da1b53db07d82ec00ec05ba8678d924499d0371",
+        "source": "src/models/refact.cpp",
+        "tier": "experimental"
+      },
+      "seed_oss": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "e4314320f43a6f9c2d43b88a772422392fcf4e9df30d0c34ed7a2f92364a8418",
+        "source": "src/models/seed-oss.cpp",
+        "tier": "experimental"
+      },
+      "sensenova_u1": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "d66ad83606a29fcc593d895d9c6c9f5e0f8b6f799d4ec93cdcde31c8a2ecdac0",
+        "source": "src/models/sensenova-u1.cpp",
+        "tier": "experimental"
+      },
+      "smallthinker": {
+        "family": "moe",
+        "cache_interfaces": [
+          "kv",
+          "kv_iswa"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "54d9298da3b6a7903760f8689f5978273a8a4b1e971c4dfd7077e29a89af027c",
+        "source": "src/models/smallthinker.cpp",
+        "tier": "experimental"
+      },
+      "smollm3": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "3e08d93e5fdabd8208fb3668ecfd4a8c744487ed92447477ce7ba7e80f1e7d9b",
+        "source": "src/models/smollm3.cpp",
+        "tier": "experimental"
+      },
+      "spark2_5": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv_iswa"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "986b781ad1e62b72f7b51fa78afb7f260efc9a8e6e65d08d3d7cedd523496d50",
+        "source": "src/models/spark2-5.cpp",
+        "tier": "experimental"
+      },
+      "stablelm": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "396ae02ddf8c707ec6e93f57c1c885dfb1ad070bd9d5eff9238ef8a852803354",
+        "source": "src/models/stablelm.cpp",
+        "tier": "experimental"
+      },
+      "starcoder": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "38aa47794b7e5750f48deefa58b4845f877ea3e4e641a141620c5c07c2d21d27",
+        "source": "src/models/starcoder.cpp",
+        "tier": "experimental"
+      },
+      "starcoder2": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "9af5fe9511ca08c8d580de0ec5ce9f02874b20082b3d9f42af848f7e5ca8aa2f",
+        "source": "src/models/starcoder2.cpp",
+        "tier": "experimental"
+      },
+      "step35": {
+        "family": "moe",
+        "cache_interfaces": [
+          "kv_iswa"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "324ee292658bda0642c2914f2daaf50e6841220b04f2ec7112fffc2c7620aab1",
+        "source": "src/models/step35.cpp",
+        "tier": "experimental"
+      },
+      "talkie": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "174f6bc1464a6c9025e637510ece0a71255cf41b53f558fa975edcdc2a514709",
+        "source": "src/models/talkie.cpp",
+        "tier": "experimental"
+      },
+      "xverse": {
+        "family": "dense",
+        "cache_interfaces": [
+          "kv"
+        ],
+        "strategy": "preserve_native_layer_body",
+        "source_sha256": "0d1e2ca39c7949b46fe8c28b9c4daf23af753c157d2a61a534e1780bc7379425",
+        "source": "src/models/xverse.cpp",
+        "tier": "experimental"
+      }
+    },
+    "adapter_rejections": {
+      "arwkv7": {
+        "source": "src/models/arwkv7.cpp",
+        "reason": "Recurrent/SSM/convolution state needs an explicit snapshot adapter"
+      },
+      "baichuan": {
+        "source": "src/models/baichuan.cpp",
+        "reason": "Layer body has control flow requiring review"
+      },
+      "bailingmoe3": {
+        "source": "src/models/bailingmoe3.cpp",
+        "reason": "Recurrent/SSM/convolution state needs an explicit snapshot adapter"
+      },
+      "beam": {
+        "source": "src/models/beam.cpp",
+        "reason": "No single recognizable decoder-layer loop"
+      },
+      "bert": {
+        "source": "src/models/bert.cpp",
+        "reason": "Attention state is not the supported KV/SWA interface: no_cache"
+      },
+      "clef": {
+        "source": "src/models/clef.cpp",
+        "reason": "Recurrent/SSM/convolution state needs an explicit snapshot adapter"
+      },
+      "clip": {
+        "source": "src/models/clip.cpp",
+        "reason": "No single standard graph constructor"
+      },
+      "deci": {
+        "source": "src/models/deci.cpp",
+        "reason": "Layer body has control flow requiring review"
+      },
+      "deepseek2": {
+        "source": "src/models/deepseek2.cpp",
+        "reason": "Attention state is not the supported KV/SWA interface: k,kv"
+      },
+      "deepseek2-ocr": {
+        "source": "src/models/deepseek2ocr.cpp",
+        "reason": "No single standard graph constructor"
+      },
+      "deepseek32": {
+        "source": "src/models/deepseek32.cpp",
+        "reason": "Attention state is not the supported KV/SWA interface: k_dsa"
+      },
+      "deepseek4": {
+        "source": "src/models/deepseek4.cpp",
+        "reason": "Attention state is not the supported KV/SWA interface: "
+      },
+      "deepseek41": {
+        "source": "src/models/deepseek41.cpp",
+        "reason": "Attention state is not the supported KV/SWA interface: "
+      },
+      "dflash": {
+        "source": "src/models/dflash.cpp",
+        "reason": "No single standard graph constructor"
+      },
+      "dots3note": {
+        "source": "src/models/dots3note.cpp",
+        "reason": "Attention state is not the supported KV/SWA interface: k_dsa_iswa"
+      },
+      "dream": {
+        "source": "src/models/dream.cpp",
+        "reason": "Attention state is not the supported KV/SWA interface: no_cache"
+      },
+      "eagle3": {
+        "source": "src/models/eagle3.cpp",
+        "reason": "No single standard graph constructor"
+      },
+      "eurobert": {
+        "source": "src/models/eurobert.cpp",
+        "reason": "Attention state is not the supported KV/SWA interface: no_cache"
+      },
+      "falcon-h1": {
+        "source": "src/models/falcon-h1.cpp",
+        "reason": "Recurrent/SSM/convolution state needs an explicit snapshot adapter"
+      },
+      "gemma4-assistant": {
+        "source": "src/models/gemma4-assistant.cpp",
+        "reason": "No single recognizable decoder-layer loop"
+      },
+      "gemma-embedding": {
+        "source": "src/models/gemma-embedding.cpp",
+        "reason": "Attention state is not the supported KV/SWA interface: no_cache"
+      },
+      "gemma-embedding2": {
+        "source": "src/models/gemma-embedding2.cpp",
+        "reason": "Attention state is not the supported KV/SWA interface: no_cache"
+      },
+      "glm5-next": {
+        "source": "src/models/glm5-next.cpp",
+        "reason": "No single standard graph constructor"
+      },
+      "glm-dsa": {
+        "source": "src/models/glm-dsa.cpp",
+        "reason": "Attention state is not the supported KV/SWA interface: k_dsa"
+      },
+      "gptj": {
+        "reason": "Native graph source not directly discoverable"
+      },
+      "gptneox": {
+        "source": "src/models/gptneox.cpp",
+        "reason": "Residual-stream input/output boundaries are not recognized"
+      },
+      "granitehybrid": {
+        "source": "src/models/granite-hybrid.cpp",
+        "reason": "Recurrent/SSM/convolution state needs an explicit snapshot adapter"
+      },
+      "granitemoe": {
+        "source": "src/models/granite-moe.cpp",
+        "reason": "No single standard graph constructor"
+      },
+      "hrm_text": {
+        "source": "src/models/hrm-text.cpp",
+        "reason": "No single recognizable decoder-layer loop"
+      },
+      "hunyuan-dense": {
+        "source": "src/models/hunyuan-dense.cpp",
+        "reason": "No single standard graph constructor"
+      },
+      "hy_v4": {
+        "source": "src/models/hy-v4.cpp",
+        "reason": "Attention state is not the supported KV/SWA interface: k,k_dsa"
+      },
+      "jais2": {
+        "source": "src/models/jais2.cpp",
+        "reason": "Residual-stream input/output boundaries are not recognized"
+      },
+      "jamba": {
+        "source": "src/models/jamba.cpp",
+        "reason": "Recurrent/SSM/convolution state needs an explicit snapshot adapter"
+      },
+      "jina-bert-v2": {
+        "source": "src/models/jina-bert-v2.cpp",
+        "reason": "No single standard graph constructor"
+      },
+      "jina-bert-v3": {
+        "source": "src/models/jina-bert-v3.cpp",
+        "reason": "No single standard graph constructor"
+      },
+      "kimi-k3": {
+        "source": "src/models/kimi-k3.cpp",
+        "reason": "Recurrent/SSM/convolution state needs an explicit snapshot adapter"
+      },
+      "kimi-linear": {
+        "source": "src/models/kimi-linear.cpp",
+        "reason": "Recurrent/SSM/convolution state needs an explicit snapshot adapter"
+      },
+      "kolibri1": {
+        "source": "src/models/kolibri1.cpp",
+        "reason": "Residual-stream input/output boundaries are not recognized"
+      },
+      "lfm2": {
+        "source": "src/models/lfm2.cpp",
+        "reason": "Recurrent/SSM/convolution state needs an explicit snapshot adapter"
+      },
+      "lfm2moe": {
+        "source": "src/models/lfm2moe.cpp",
+        "reason": "No single standard graph constructor"
+      },
+      "lfm3": {
+        "source": "src/models/lfm3.cpp",
+        "reason": "Recurrent/SSM/convolution state needs an explicit snapshot adapter"
+      },
+      "limite": {
+        "source": "src/models/limite.cpp",
+        "reason": "Layer body has control flow requiring review"
+      },
+      "llada": {
+        "source": "src/models/llada.cpp",
+        "reason": "Attention state is not the supported KV/SWA interface: no_cache"
+      },
+      "llada-moe": {
+        "source": "src/models/llada-moe.cpp",
+        "reason": "Attention state is not the supported KV/SWA interface: no_cache"
+      },
+      "llama-embed": {
+        "source": "src/models/llama-embed.cpp",
+        "reason": "No single standard graph constructor"
+      },
+      "mamba": {
+        "source": "src/models/mamba.cpp",
+        "reason": "Recurrent/SSM/convolution state needs an explicit snapshot adapter"
+      },
+      "mamba2": {
+        "source": "src/models/mamba2.cpp",
+        "reason": "No single standard graph constructor"
+      },
+      "minicpm": {
+        "source": "src/models/minicpm.cpp",
+        "reason": "No single standard graph constructor"
+      },
+      "minimax-01": {
+        "source": "src/models/minimax-01.cpp",
+        "reason": "Recurrent/SSM/convolution state needs an explicit snapshot adapter"
+      },
+      "minimax-m3": {
+        "source": "src/models/minimax-m3.cpp",
+        "reason": "Attention state is not the supported KV/SWA interface: kv_msa"
+      },
+      "mistral4": {
+        "source": "src/models/mistral4.cpp",
+        "reason": "No single standard graph constructor"
+      },
+      "mistral-large4": {
+        "source": "src/models/mistral-large4.cpp",
+        "reason": "Recurrent/SSM/convolution state needs an explicit snapshot adapter"
+      },
+      "modern-bert": {
+        "source": "src/models/modern-bert.cpp",
+        "reason": "Attention state is not the supported KV/SWA interface: no_cache"
+      },
+      "nanbeige": {
+        "source": "src/models/nanbeige.cpp",
+        "reason": "Residual-stream input/output boundaries are not recognized"
+      },
+      "nemotron_h": {
+        "source": "src/models/nemotron-h.cpp",
+        "reason": "Recurrent/SSM/convolution state needs an explicit snapshot adapter"
+      },
+      "nemotron_h_moe": {
+        "source": "src/models/nemotron-h-moe.cpp",
+        "reason": "No single standard graph constructor"
+      },
+      "neo-bert": {
+        "source": "src/models/neo-bert.cpp",
+        "reason": "Attention state is not the supported KV/SWA interface: no_cache"
+      },
+      "nomic-bert": {
+        "source": "src/models/nomic-bert.cpp",
+        "reason": "No single standard graph constructor"
+      },
+      "nomic-bert-moe": {
+        "source": "src/models/nomic-bert-moe.cpp",
+        "reason": "No single standard graph constructor"
+      },
+      "phimoe": {
+        "source": "src/models/phimoe.cpp",
+        "reason": "No single standard graph constructor"
+      },
+      "plamo2": {
+        "source": "src/models/plamo2.cpp",
+        "reason": "Recurrent/SSM/convolution state needs an explicit snapshot adapter"
+      },
+      "qwen35": {
+        "source": "src/models/qwen35.cpp",
+        "reason": "Recurrent/SSM/convolution state needs an explicit snapshot adapter"
+      },
+      "qwen35moe": {
+        "source": "src/models/qwen35moe.cpp",
+        "reason": "Recurrent/SSM/convolution state needs an explicit snapshot adapter"
+      },
+      "qwen3next": {
+        "source": "src/models/qwen3next.cpp",
+        "reason": "Recurrent/SSM/convolution state needs an explicit snapshot adapter"
+      },
+      "qwen3tts": {
+        "reason": "Native graph source not directly discoverable"
+      },
+      "qwen4exp": {
+        "source": "src/models/qwen4exp.cpp",
+        "reason": "Recurrent/SSM/convolution state needs an explicit snapshot adapter"
+      },
+      "rnd1": {
+        "source": "src/models/rnd1.cpp",
+        "reason": "Attention state is not the supported KV/SWA interface: no_cache"
+      },
+      "rwkv6": {
+        "source": "src/models/rwkv6.cpp",
+        "reason": "Recurrent/SSM/convolution state needs an explicit snapshot adapter"
+      },
+      "rwkv6qwen2": {
+        "source": "src/models/rwkv6qwen2.cpp",
+        "reason": "Recurrent/SSM/convolution state needs an explicit snapshot adapter"
+      },
+      "rwkv7": {
+        "source": "src/models/rwkv7.cpp",
+        "reason": "Recurrent/SSM/convolution state needs an explicit snapshot adapter"
+      },
+      "t5": {
+        "source": "src/models/t5.cpp",
+        "reason": "No single standard graph constructor"
+      },
+      "t5encoder": {
+        "source": "src/models/t5encoder.cpp",
+        "reason": "No single standard graph constructor"
+      },
+      "(unknown)": {
+        "reason": "Native graph source not directly discoverable"
+      },
+      "vllm-decision2": {
+        "source": "src/models/vllm-decision2.cpp",
+        "reason": "Attention state is not the supported KV/SWA interface: "
+      },
+      "wavtokenizer-dec": {
+        "source": "src/models/wavtokenizer-dec.cpp",
+        "reason": "Attention state is not the supported KV/SWA interface: "
+      }
+    },
+    "cache": [
+      "first",
+      "last"
+    ],
+    "moe_routing": "pinned_ids_and_weights",
+    "version": 2,
+    "managed_files": {
+      "src/models/afmoe.cpp": "98efa7dd6f583a97edbc9aaf6e42aea4b91e0d4aaf95ded45aa18717e1a11379",
+      "src/models/apertus.cpp": "d10993b243bf683e0fa871761c48e51fdc52030a11368840a0e8b05d60f4778f",
+      "src/models/arcee.cpp": "90357793afc4d54662563ea330e57a394ea7a9f19df50d41ebd19dfbd8fe11a1",
+      "src/models/arctic.cpp": "4d0614bef393f0f9b1b6e5b0e5afe8ce1845240d618cdb5bd14370d464c62359",
+      "src/models/bailingmoe.cpp": "ac28819001d548ebfe2cac4472180d5e3a26bdb982621d19fda079f4e435e2c4",
+      "src/models/bailingmoe2.cpp": "bd77b5b85fd2012e2b71785bbebe619914c5927c9a4997a69d9f0676d173484c",
+      "src/models/bitnet.cpp": "6e7e36b89cf498234ca5ea4d9dafa2103891301cfa4f2c131bbba7cfeb70773e",
+      "src/models/bloom.cpp": "ace4b322ff801cb0e12e9a640c0c0bb366074fd10f8c275e5e8593b8651cda52",
+      "src/models/chameleon.cpp": "964ca6b8d44e3bb57d08cc44ca00dbfc19975c921442340402bd46afeff07082",
+      "src/models/chatglm.cpp": "daee8d51822b78c425c0591a2081b5f8eaa74519f84dc6b41fe3274f7dad427b",
+      "src/models/codeshell.cpp": "e83e863f88a45e75434af1aa7ca9d77e921c224f80b167ed16eff7326b6e9469",
+      "src/models/cogvlm.cpp": "030f7ed655b957c98d4e108de878417dd770eef187e6312b26795bceef23eea7",
+      "src/models/cohere2.cpp": "f752679b555e0528cbda3bc34c6526e3ee87cdda0935eb212c055265d0efa3bb",
+      "src/models/cohere2moe.cpp": "2623722659a9f6f1edc9dd60af64a4502af7590fbc089d76203ebf6b1c7751ad",
+      "src/models/command-r.cpp": "9f44334ddd3b200c7b717ebac09803ae1b263e2b804daccfb3767458335062ea",
+      "src/models/dbrx.cpp": "f29c7946e0557ce82ba78bdbb77e34707eecd53307b1841c2a8709d3d1067911",
+      "src/models/deepseek.cpp": "7a4ce2292cedf4055ab5766ec6825f70f7f3413bc4b6b06eedfb24c0cf53c653",
+      "src/models/dots1.cpp": "c0262ccc082ec8d4b91bd64b84db798a12a7774920e3a6fa749447ce0ee8059e",
+      "src/models/ernie4-5.cpp": "5f361db7830370b628cdd2acff5ca0c4f316221257650f4071b387329d5b4986",
+      "src/models/ernie4-5-moe.cpp": "d99b9b3f949026ecee56860ca2d14b6272e2647891ea2225fb8c8b21905e2be2",
+      "src/models/exaone.cpp": "21879ba6a876b1caf2dc168c22d39e0470644654cb42ccf24cd7b5b004810581",
+      "src/models/exaone4.cpp": "d6d5c9b35af2743017041d255d522c7169fbd12245ae39259175ada4a18f25c6",
+      "src/models/exaone-moe.cpp": "00d5bd61f531343ebd72b99a9121b5a861fb400b31fdfeffef1fe9557446e95c",
+      "src/models/falcon.cpp": "921e62c9382e290c39dbcdff0f0197d3f260581596ce491ef5358406eab5b256",
+      "src/models/flint.cpp": "5ac562b100b53af5734b160d1028429f53738758a7c35b71a0f209e86344efc0",
+      "src/models/gemma.cpp": "cf1eff3a58bb4ef06c07a76e8f9fad0867a27d66a2c5d65cd284d63eb2275667",
+      "src/models/gemma2.cpp": "ee0db1405a90dbcca03309938619600ae698dea52b8b5da4f54add0cd96c1351",
+      "src/models/gemma3.cpp": "02a56f08ae0b0fcb7ee0d4c537d87a637cbfe11e0dd64aad2042bb69af0aab12",
+      "src/models/gemma3n.cpp": "e118d439c3157063af41838527ea95c1ce19081f8de2653366c96512231820bc",
+      "src/models/gemma4.cpp": "ec849e91b5dca236cd7e8561e5a3207eb5be9da810c1ab10a9c4227cd89dec3b",
+      "src/models/glm4.cpp": "494ebe7a5823ef666cce3a7f1b70bece337a77bc17c76d61c0f55da91c2a96f9",
+      "src/models/glm4-moe.cpp": "3e137bcbb1395a04322f8000da45ada3c5ea7692958ba132b25246e9dbee08b4",
+      "src/models/gpt2.cpp": "5a6404cdd0ed132a1ce51b3569b5a6383c52347ee8eb10fc976283ad4cb18390",
+      "src/models/granite.cpp": "2d8f26997c9839ae52fd6642d74f90862e81393fb6e062e7af1921cf316b5151",
+      "src/models/granite-swa.cpp": "e3827afb3d5f109831e891e663488ab28f86d400d1fed54384185614afce6c92",
+      "src/models/granite-switch.cpp": "97659a014e290e0b79582935d8fe57944da608584fb9d9e36037de303e72f78a",
+      "src/models/grok.cpp": "8bd733aa123bbc4a73643d1108bdff209024d55239ecf19c107eccec19d6f9c9",
+      "src/models/grovemoe.cpp": "41697da01c144dca4c17e84dc76db7d9a5c4ceb5616a33d26d8e27431013414e",
+      "src/models/hunyuan-moe.cpp": "3c9b9029e7d8dc770756049c4a4317eda639c051f63381b9b567d82f1c181435",
+      "src/models/hunyuan-vl.cpp": "7a7da56c0c44e8ac459fa30b381dd21dca8f0b260cd37c98929cc5324761ea3f",
+      "src/models/hy-v3.cpp": "59c6696bae496614ee57ba9bfbdf04cbafcaffc11c58814af2ec8a63f80c0aca",
+      "src/models/internlm2.cpp": "0fde69a8de6bdde0387f3c22e86838be36e98142f4958f2cd81ba27dfd4ce093",
+      "src/models/jais.cpp": "379f0e503753b8da6b1ba3c709b8a45b75fdcf1d38c1a57c6f330a5bacc1060d",
+      "src/models/k2-horizon.cpp": "73409dc1584cbc0b9b8a4ff783a21e8de1d95efbf74d26a8868c8a59bbcf26fd",
+      "src/models/laguna.cpp": "af5a387aa9d0a6c65cfb3141b15f10348e71b3f6169dba973664eea56a128a5b",
+      "src/models/llama.cpp": "25df5046c7b0796ad303f46a3f5cf0a9b7892a4a0f84e97d8aa5da42f0a094b6",
+      "src/models/llama4.cpp": "ae2ff3a5c2fb5afd0264eb42d3a8c1002ae1698f825c7afd9ef44d7cdc3dbb52",
+      "src/models/maincoder.cpp": "59f4d0d5b356691c975a9d8232bddc47189c3a03dd74b1b2752aa2558fbca23c",
+      "src/models/maion-coder.cpp": "e3b038a674b68be74a0782146fdc9fdd6c3a77e281c5d7a027274bb4e728672c",
+      "src/models/maple.cpp": "e83652f69b5024cfe12bd28a947277bc6994e30d143e0afef1670035a9bc99c4",
+      "src/models/mellum.cpp": "092a627ca125570ff70e2b67450e112abd3cc03215f4dc59a6c6645a5b51703a",
+      "src/models/mimo2.cpp": "a23334b9eb6037307e1139aab5f6014879d080c5527d4886cd0761617f8ce2f9",
+      "src/models/minicpm3.cpp": "9a1b84bca3aa1f99376752a0c95c6ff3092e462e06ecbc258fe154fbf1f2e8bf",
+      "src/models/minimax-m2.cpp": "7aa4baedefab1688c046837551ece66661e065463f60c55019eb219bc5ede903",
+      "src/models/mistral3.cpp": "b192b4bf05918fb0b76a1a7f7b696ac83bc0c6dbd7bc2343f4f1c694568b84b6",
+      "src/models/mpt.cpp": "710db62d40407533d03e5e67aa1866a6ac99375d75d47d5977899539a04ceaf1",
+      "src/models/muse-glimmer.cpp": "3bcbee59e7ff0d19e9701924603443c5786372e16fb8d90736aedf65b00df78f",
+      "src/models/muse-spark.cpp": "3a4bec0c268e4f0b68cdb1c2c1e192a3045b6b152c90ddfbf227b8bf4ec3a545",
+      "src/models/nemotron.cpp": "73dbb0ab63b97b383bd8b2f593d47f0aba958395c17b8ee4c035ef9ec35a69a6",
+      "src/models/olmo.cpp": "fb1090ba8f6be1f5dd03109b1995fc8ee890efec53b00355819856eca332e929",
+      "src/models/olmo2.cpp": "32ce2748b67cda1242c932a236aed7ff5c9c9bd35e322a13240e6022f1156921",
+      "src/models/olmoe.cpp": "4d64de81de0dfac29ff4be123a16af3fa601ab2e331595396b5c687a98c07617",
+      "src/models/openai-moe.cpp": "944cd33c33d03fe65da2e90938839ce90aaa13aaa0c1985759b545ee9c2b3fff",
+      "src/models/openelm.cpp": "d8b7ad3f2c447779a886d72b690e05857c1d4e3dde56bc89bca3acd3cd1c2ae8",
+      "src/models/orion.cpp": "1c9b05d7ee59f5ec5816410ff9cb23b769dce7a682b34797876ed0f6942b3266",
+      "src/models/paddleocr.cpp": "05d656b6fefc0c7cdd8af79ef127e6f691d6df988671cc47e2caa1258fd186a4",
+      "src/models/pangu-embed.cpp": "6a7521af0fb63bf49699af2fac99b675989b0dca5a1c5510cb30c09e2294e88a",
+      "src/models/phi2.cpp": "499a7662d5877bedcd1a3f2c15165192072cb1de1ff63fdf2e1a1d00e2c81b0e",
+      "src/models/phi3.cpp": "44ea783acc1b296f060382fb00451c7a20c554e89fee9e88bc39ef47ba8e566d",
+      "src/models/plamo.cpp": "0628f3f035ff7e085be1915851423d1e4f7df5535079ef9a4de3125557f025c5",
+      "src/models/plamo3.cpp": "1afb10a28d8c8f4d1be0ec89b75442ede2abc5acf19fa4d0cce211e5b414dc4f",
+      "src/models/plm.cpp": "23194f1dd17bced2df08adb6b76a3d1e72250b3f63e0ac5b4df190cd89946a15",
+      "src/models/pockettts.cpp": "b221e74054ee6ba23ad515cb5b786545f654a35876ca8795fabe8df4c8e3c13f",
+      "src/models/qwen.cpp": "0352bd530212d1d383257c0727e4f2d27ab7c9222036858933244aad3bd36178",
+      "src/models/qwen2.cpp": "64d2a865f4abc7cc35e85da56df8c73a41b7a9bd92007e722c77b2b241862d6a",
+      "src/models/qwen2moe.cpp": "9f01cbfece3cec2c9220f6dfb6424116458233136700d8cc56072ddc3ad55556",
+      "src/models/qwen2vl.cpp": "60bc15eb3dc51fefa3b311ed0eb742720b3fddd978ffba3e774606a32fa40664",
+      "src/models/qwen3.cpp": "5c92a451277b12f2256b101e366865cf2f69013473177ecdf99136f7860a6b81",
+      "src/models/qwen3moe.cpp": "aff3d44ddb8bfcb60573c2dfc9e9f4a527eab4fcece8a9239cf83aabdab6076d",
+      "src/models/qwen3vl.cpp": "945259e21ff6fcae9ebe82769d352ae3c6e0f5a280b85f839eca237b3a17e47c",
+      "src/models/qwen3vlmoe.cpp": "b7ad93c5fb12bec8eaf5b3819be5bf3a11340dea178241c6ecd6319745de41d0",
+      "src/models/refact.cpp": "24b2932cb1288ba04f040ef5ee973277bb606b026d56dfea5d69e0830b6ddd94",
+      "src/models/seed-oss.cpp": "2ded05e463cc9cc4e4bc87b7f98fafc36fcdfc7f6767e57b9ff90a00dd5868cf",
+      "src/models/sensenova-u1.cpp": "910ac35539b4afdaed407d0ec9df3f33b8b18d022bfe74ea2ae4fff4b6ba8a65",
+      "src/models/smallthinker.cpp": "247a3fc7e75fe58137196c62385a147216c534a087493c7f127b44fb4452c69a",
+      "src/models/smollm3.cpp": "d13ff9b59d10e9c59dd06bb9c2e12a5b6c4e8bcfa98754310d630a4b3044343c",
+      "src/models/spark2-5.cpp": "dba14ad6dae8552e1c117ee2f7b6a5a53cfc4dc1ec70bf9dd5e455419bdce2a8",
+      "src/models/stablelm.cpp": "a34d98a8cf1f292c99fa6ed033efa1fb34bc46b8831abd8ff975e451ee2a2c74",
+      "src/models/starcoder.cpp": "9fb0b2289b3f8c01eabb6b2dcb47e026dd6fbf83172adee3fa87ce5b6f7f1e3c",
+      "src/models/starcoder2.cpp": "302d9f796e713f54b80cda1ab0c8e869f0eae0635957e1a0d18da47791f5c3a7",
+      "src/models/step35.cpp": "941b6b83f5c6cdc05c24824217059ce77bd546bf012e932f5d9b701061c57d27",
+      "src/models/talkie.cpp": "be0db05cb4a07115ca8010ddcda25f53ee43cc7b9bbf625b42f4e1ac53afb967",
+      "src/models/xverse.cpp": "1ec79172b78a701f49ed739025c13fb34eac9f337251711cc132247737d38be5",
+      "src/llama-graph.cpp": "790284baf056dda05ce33157a56fe816ea6e022895be02540402a16ad05c954e",
+      "src/llama-context.cpp": "6b00a016ff6448641974e142d17c4b0bcba114552c68d46a78b0db282f1244f9",
+      "src/looplab.h": "0fe9a4009aa1673f9d2da82e7324aa625f963e9aaef4d801dc9bca8720fa9ec3"
+    },
+    "backend": "vulkan",
+    "dependencies": {
+      "vulkan_headers": "9fbc2a782ee3f8a4db64e7d991e23da75e893f44",
+      "spirv_headers": "71747ddd16f20e9b379ce293dba2954931d3b3c1"
+    },
+    "execution_policy": {
+      "context": 2048,
+      "gpu_layers": 999,
+      "kv_type": "f16",
+      "flash_attention": false,
+      "vulkan_fusion": false,
+      "prefix_cache": false,
+      "swa_full": true,
+      "cpu_above_gib": 32,
+      "runner_version": "0.2.0"
+    }
+  },
+  "profiles": [],
+  "paper_reproduction": false,
+  "quality_tested": false,
+  "recommended_profile": "baseline",
+  "storage_before": {
+    "time": 1793767158.2622538,
+    "free_bytes": 520840769536,
+    "state_bytes": 973998,
+    "model_weight_bytes_written": 0
+  },
+  "baseline_check": {
+    "passed": true,
+    "embedding_dimensions": [
+      1024
+    ]
+  },
+  "storage_after": {
+    "time": 1793767159.797281,
+    "free_bytes": 520840769536,
+    "state_bytes": 975327,
+    "model_weight_bytes_written": 0
+  },
+  "seconds": 1.535457887002849
+}

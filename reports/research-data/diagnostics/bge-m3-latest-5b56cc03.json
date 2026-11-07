@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "model": {
+    "id": "bge-m3-latest-5b56cc03",
+    "name": "bge-m3-latest",
+    "architecture": "bert",
+    "layers": 24,
+    "size_bytes": 1157671200,
+    "header_sha256": "18a638b6f6876cf0f9d964caff4a9800bf31cdf788563036127aff9dcd3806ac",
+    "eligible": false,
+    "reasons": [
+      "No validated native adapter for bert",
+      "Embedding model; the generation test suite does not apply"
+    ],
+    "mode": "block"
+  },
+  "started": 1793763832.5694666,
+  "status": "unsupported",
+  "suite": "looplab-diagnostic-v2",
+  "suite_sha256": "8b2d60609aa5dccdb5e0c5680251a16ec3bfec3417ffacd99656b426bf7f848b",
+  "quick": false,
+  "evaluation_policy": {
+    "temperature": 0,
+    "seed": 1729,
+    "max_tokens": 192,
+    "cache_prompt": false,
+    "reasoning_effort": "none",
+    "reasoning_budget_tokens": 0,
+    "add_generation_prompt": false,
+    "continue_final_message": "content",
+    "response_format": {
+      "type": "json_object"
+    },
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    },
+    "assistant_prefill": "{\"answer\":"
+  },
+  "paper_reproduction": false,
+  "recommended_profile": "baseline",
+  "profiles": [],
+  "limitations": [
+    "Quantized checkpoints and a small local diagnostic suite differ from the paper's BF16 benchmarks.",
+    "Held-out tasks are public diagnostics, not a general capability guarantee.",
+    "Prompt-prefix reuse is disabled by default; a cache probe is reported separately."
+  ],
+  "storage_before": {
+    "time": 1793763832.5698097,
+    "free_bytes": 520991645696,
+    "state_bytes": 193983,
+    "model_weight_bytes_written": 0
+  },
+  "reasons": [
+    "No validated native adapter for bert",
+    "Embedding model; the generation test suite does not apply"
+  ]
+}

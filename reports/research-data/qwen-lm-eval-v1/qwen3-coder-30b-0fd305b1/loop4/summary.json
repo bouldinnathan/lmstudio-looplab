@@ -1,0 +1,68 @@
+{
+  "passes": 4,
+  "profile": {
+    "passes": 4,
+    "anchor": 0.5,
+    "mode": "layer",
+    "cache": "first",
+    "start": 22,
+    "end": 26
+  },
+  "questions": 100,
+  "correct": 86,
+  "accuracy": 0.86,
+  "tasks": {
+    "gsm8k_cot_zeroshot": {
+      "correct": 42,
+      "questions": 50
+    },
+    "bbh_cot_zeroshot_boolean_expressions": {
+      "correct": 24,
+      "questions": 25
+    },
+    "bbh_cot_zeroshot_logical_deduction_five_objects": {
+      "correct": 20,
+      "questions": 25
+    }
+  },
+  "official_correct": 83,
+  "numeric_normalization_changes": 3,
+  "request_seconds": 1293.4723761760688,
+  "mean_request_seconds": 12.934723761760688,
+  "median_request_seconds": 8.814890516005107,
+  "completion_tokens": 28150,
+  "end_to_end_output_tokens_per_second": 21.763124221655733,
+  "native_decode_tokens_per_second": 24.453110016633726,
+  "cached_prompt_tokens": 0,
+  "truncated": 4,
+  "empty_final_answer": 0,
+  "official_metrics": {
+    "gsm8k_cot_zeroshot": {
+      "name": "gsm8k_cot_zeroshot",
+      "alias": "gsm8k_cot_zeroshot",
+      "sample_len": 50,
+      "exact_match,strict-match": 0.14,
+      "exact_match_stderr,strict-match": 0.0495695759225642,
+      "exact_match,flexible-extract": 0.78,
+      "exact_match_stderr,flexible-extract": 0.05917804336345135
+    },
+    "bbh_cot_zeroshot_boolean_expressions": {
+      "name": "bbh_cot_zeroshot_boolean_expressions",
+      "alias": "bbh_cot_zeroshot_boolean_expressions",
+      "sample_len": 25,
+      "exact_match,flexible-extract": 0.96,
+      "exact_match_stderr,flexible-extract": 0.04000000000000002,
+      "exact_match,strict-match": 0.04,
+      "exact_match_stderr,strict-match": 0.04000000000000001
+    },
+    "bbh_cot_zeroshot_logical_deduction_five_objects": {
+      "name": "bbh_cot_zeroshot_logical_deduction_five_objects",
+      "alias": "bbh_cot_zeroshot_logical_deduction_five_objects",
+      "sample_len": 25,
+      "exact_match,flexible-extract": 0.8,
+      "exact_match_stderr,flexible-extract": 0.08164965809277261,
+      "exact_match,strict-match": 0.28,
+      "exact_match_stderr,strict-match": 0.09165151389911677
+    }
+  }
+}

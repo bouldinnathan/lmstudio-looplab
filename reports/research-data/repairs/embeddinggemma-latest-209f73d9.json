@@ -1,0 +1,182 @@
+{
+  "model_id": "embeddinggemma-latest-209f73d9",
+  "architecture": "gemma3",
+  "status": "baseline_failed",
+  "adapter": {
+    "family": "dense",
+    "cache_interfaces": [
+      "kv",
+      "kv_iswa"
+    ],
+    "strategy": "preserve_native_layer_body",
+    "source_sha256": "c2c620d079029a8a6e1fffbd81f36b3cfb2642aa9b68d8ca13b9a29be26655ef",
+    "source": "src/models/gemma3.cpp",
+    "tier": "experimental"
+  },
+  "metadata": {
+    "gemma3.context_length": 2048,
+    "gemma3.embedding_length": 768,
+    "gemma3.block_count": 24,
+    "gemma3.feed_forward_length": 1152,
+    "gemma3.attention.head_count": 3,
+    "gemma3.attention.layer_norm_rms_epsilon": 9.999999974752427e-07,
+    "gemma3.attention.key_length": 256,
+    "gemma3.attention.value_length": 256,
+    "gemma3.rope.freq_base": 1000000.0,
+    "gemma3.attention.sliding_window": 512,
+    "gemma3.attention.head_count_kv": 1,
+    "gemma3.attention.causal": false,
+    "gemma3.pooling_type": 1
+  },
+  "tensor_count": 316,
+  "representative_tensors": [
+    {
+      "name": "dense.0.weight",
+      "dimensions": [
+        768,
+        3072
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "dense.1.weight",
+      "dimensions": [
+        3072,
+        768
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "token_embd.weight",
+      "dimensions": [
+        768,
+        262144
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "blk.0.attn_norm.weight",
+      "dimensions": [
+        768
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.ffn_down.weight",
+      "dimensions": [
+        1152,
+        768
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "blk.0.ffn_gate.weight",
+      "dimensions": [
+        768,
+        1152
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "blk.0.ffn_up.weight",
+      "dimensions": [
+        768,
+        1152
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "blk.0.post_attention_norm.weight",
+      "dimensions": [
+        768
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.post_ffw_norm.weight",
+      "dimensions": [
+        768
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.ffn_norm.weight",
+      "dimensions": [
+        768
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.attn_k_norm.weight",
+      "dimensions": [
+        256
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.attn_k.weight",
+      "dimensions": [
+        768,
+        256
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "blk.0.attn_output.weight",
+      "dimensions": [
+        768,
+        768
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "blk.0.attn_q_norm.weight",
+      "dimensions": [
+        256
+      ],
+      "ggml_type": 0
+    },
+    {
+      "name": "blk.0.attn_q.weight",
+      "dimensions": [
+        768,
+        768
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "blk.0.attn_v.weight",
+      "dimensions": [
+        768,
+        256
+      ],
+      "ggml_type": 30
+    },
+    {
+      "name": "output_norm.weight",
+      "dimensions": [
+        768
+      ],
+      "ggml_type": 0
+    }
+  ],
+  "runtime_revision": "0893ec98f5eafad36a43a72cd1c3723d72b0d03a",
+  "patch_sha256": "d4506c79258f07b66b0a720122a9efb2f874a478286dc2d1448b1e9c732f6860",
+  "reasons": [
+    "Embedding model; the generation test suite does not apply"
+  ],
+  "failures": [
+    "RuntimeError: Runtime failed to start; inspect <home><path>/embeddinggemma-latest-209f73d9-baseline.log\n0.00.199.898 E llama_model_load: error loading model: done_getting_tensors: wrong number of tensors; expected 316, got 314\n0.00.199.906 E llama_model_load_from_file_impl: failed to load model\n0.00.199.945 E common_fit_params: encountered an error while trying to fit params to free device memory: failed to load model\n0.00.389.957 E llama_model_load: error loading model: done_getting_tensors: wrong number of tensors; expected 316, got 314\n0.00.389.963 E llama_model_load_from_file_impl: failed to load model\n0.00.389.969 E cmn  common_init_: failed to load model '<model.gguf>'\n0.00.389.975 E srv    load_model: failed to load model, '<model.gguf>'\n0.00.390.927 E srv  server_run_i: exiting due to model loading error"
+  ],
+  "profile_failures": [],
+  "reproduce": "python -m looplab explore embeddinggemma-latest-209f73d9 --no-resume",
+  "next_steps": [
+    "Check the pinned native model loader and original graph before changing metadata or tensor names.",
+    "For an unrecognized but similar graph, extend runtime/auto_adapters.py and preserve its original layer body.",
+    "For recurrent, MLA, shared, or convolution state, implement and test the state snapshot/restore semantics explicitly.",
+    "For MoE, retain the first expert IDs and mixture weights through the shared routing helper.",
+    "For repeat-request instability, inspect cache clearing, graph reuse and backend numerical behavior with cache_prompt=false.",
+    "Rebuild, pass the independent native reference tests, then rerun this exact model and its K=2/3/4 probes.",
+    "Treat successful smoke tests as experimental compatibility, never proof of quality gains or full paper reproduction."
+  ]
+}

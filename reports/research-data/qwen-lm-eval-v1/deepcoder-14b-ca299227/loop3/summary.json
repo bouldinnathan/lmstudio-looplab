@@ -1,0 +1,68 @@
+{
+  "passes": 3,
+  "profile": {
+    "passes": 3,
+    "anchor": 0.5,
+    "mode": "block",
+    "cache": "first",
+    "start": 22,
+    "end": 26
+  },
+  "questions": 100,
+  "correct": 52,
+  "accuracy": 0.52,
+  "tasks": {
+    "gsm8k_cot_zeroshot": {
+      "correct": 43,
+      "questions": 50
+    },
+    "bbh_cot_zeroshot_boolean_expressions": {
+      "correct": 7,
+      "questions": 25
+    },
+    "bbh_cot_zeroshot_logical_deduction_five_objects": {
+      "correct": 2,
+      "questions": 25
+    }
+  },
+  "official_correct": 50,
+  "numeric_normalization_changes": 2,
+  "request_seconds": 8421.350191653066,
+  "mean_request_seconds": 84.21350191653066,
+  "median_request_seconds": 91.8398434115079,
+  "completion_tokens": 60194,
+  "end_to_end_output_tokens_per_second": 7.147784931169599,
+  "native_decode_tokens_per_second": 7.365190552156985,
+  "cached_prompt_tokens": 0,
+  "truncated": 43,
+  "empty_final_answer": 34,
+  "official_metrics": {
+    "gsm8k_cot_zeroshot": {
+      "name": "gsm8k_cot_zeroshot",
+      "alias": "gsm8k_cot_zeroshot",
+      "sample_len": 50,
+      "exact_match,strict-match": 0.0,
+      "exact_match_stderr,strict-match": 0.0,
+      "exact_match,flexible-extract": 0.82,
+      "exact_match_stderr,flexible-extract": 0.05488392203513869
+    },
+    "bbh_cot_zeroshot_boolean_expressions": {
+      "name": "bbh_cot_zeroshot_boolean_expressions",
+      "alias": "bbh_cot_zeroshot_boolean_expressions",
+      "sample_len": 25,
+      "exact_match,flexible-extract": 0.28,
+      "exact_match_stderr,flexible-extract": 0.09165151389911678,
+      "exact_match,strict-match": 0.0,
+      "exact_match_stderr,strict-match": 0.0
+    },
+    "bbh_cot_zeroshot_logical_deduction_five_objects": {
+      "name": "bbh_cot_zeroshot_logical_deduction_five_objects",
+      "alias": "bbh_cot_zeroshot_logical_deduction_five_objects",
+      "sample_len": 25,
+      "exact_match,flexible-extract": 0.08,
+      "exact_match_stderr,flexible-extract": 0.05537749241945383,
+      "exact_match,strict-match": 0.0,
+      "exact_match_stderr,strict-match": 0.0
+    }
+  }
+}
