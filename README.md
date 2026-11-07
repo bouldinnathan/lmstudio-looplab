@@ -4,6 +4,8 @@ LoopLab adds ordinary LM Studio model entries for tested loop profiles, a genera
 
 **Experimental research software.** Passing a compatibility or numerical test does not demonstrate improved model quality. The recommended profile stays on the original model unless a selected loop configuration improves a separate held-out diagnostic set with sufficient paired evidence.
 
+**Completed test results:** the [1,600-response benchmark and per-model conclusions](reports/qwen-public-benchmark.md#results-for-each-model) show Qwen3-Coder's best observed score at three loops (84 → 88/100), DeepSeek-R1 32B's at two loops (72 → 78/100), and lower overall scores for every tested DeepCoder loop count. Reader-LM's intended HTML-conversion task was not evaluated. No quality change was statistically established; every looped batch took longer. The [report index](reports/README.md#current-results) also covers the 54-file compatibility survey, native numerical checks, LM Studio integration and earlier diagnostics.
+
 ```mermaid
 flowchart LR
     Client[External API client] --> LMS[LM Studio server and model dropdown]
@@ -78,6 +80,8 @@ The 2/3/4-pass sweep is a bounded starting point, not an established upper limit
 An independent NumPy test generates tiny F32 GGUF networks and compares full next-token distributions across prefill, autoregressive decode and repeated requests. It covers RMSNorm, RoPE, causal attention, SwiGLU, MoE routing, both cache policies and the anchor identity for the four reference-validated architectures. No pretrained weights are downloaded for this test.
 
 ### Optional public-task Qwen comparison
+
+The completed run is published in the [human-readable report](reports/qwen-public-benchmark.md) and [detailed JSON results](reports/qwen-public-benchmark.json), with original/2/3/4-pass scores, per-model interpretations, paired statistics, truncations, timings and exclusions.
 
 [`scripts/benchmark_qwen.py`](scripts/benchmark_qwen.py) runs the existing Qwen-family checkpoints against their current passing 2/3/4-loop profiles using [EleutherAI's evaluation harness](https://github.com/EleutherAI/lm-evaluation-harness). It downloads evaluation software and small text datasets, then performs inference locally with the existing weights. Install its optional API dependencies in a separate environment:
 

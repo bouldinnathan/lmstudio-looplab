@@ -1,8 +1,8 @@
 {
   "source_files_checked": 54,
   "source_stat_changes": [],
-  "profiles": 37,
-  "models": 14,
+  "profiles": 51,
+  "models": 17,
   "descriptor_bytes": 374700,
   "weight_bytes_copied": 0,
   "runtime_files_shared": 15,
@@ -789,5 +789,12 @@
   },
   "runtime_distinct_files_shared": 13,
   "verified_utc": "2026-11-04T19:03:51.058193+00:00",
-  "looplab_version": "0.3.1"
+  "looplab_version": "0.3.1",
+  "summary_count_correction": {
+    "previous": {
+      "profiles": 37,
+      "models": 14
+    },
+    "method": "Recomputed profiles from existing entries and models from distinct model_id values. The prior summary counts predated the recovery. No inference or installation rerun."
+  }
 }

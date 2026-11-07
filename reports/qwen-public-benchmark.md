@@ -11,6 +11,36 @@ Completed 100 questions for each of four profiles on four local Qwen-family chec
 | deepcoder-14b | 54/100 | 50/100 | 52/100 | 50/100 |
 | deepseek-r1-32b | 72/100 | 78/100 | 75/100 | 73/100 |
 
+## Results for each model
+
+Across the 12 loop-versus-original comparisons, seven scores increased, one tied and four decreased. These comparisons share questions and checkpoints; they are not 12 independent demonstrations of a general benefit. Every looped batch took longer than its original-model batch. Four loops never achieved the highest score for any of these checkpoints. Neither an accuracy increase nor a decrease was statistically significant after correction for all 12 comparisons.
+
+The interpretations below describe this fixed 100-question sample and its 768-token output limit. An experimental choice based on the best observed score is a judgment from these results; it is not an automatic promotion or a validated improvement on unseen tasks. All automatic recommendations remain on the original model.
+
+### Qwen3-Coder 30B
+
+**Observed result: a small gain at three loops.** Three loops scored **88/100 versus 84/100** for the original, correcting five previously wrong answers and spoiling one previously correct answer. The batch took **15.3% longer**. Both profiles had six truncated answers. Two loops scored 82 and four loops scored 86, so the direction depended on the loop count.
+
+**Practical interpretation:** three loops is the most promising experimental choice for this checkpoint when quality matters more than compute cost. The gain is not statistically established, and this math/logic test did not measure coding quality. The two-sided paired p-value was 0.21875 before correction and 1.0 after correction.
+
+### DeepSeek-R1 32B
+
+**Observed result: the largest score gain was at two loops.** Two loops scored **78/100 versus 72/100**, correcting eight answers and spoiling two. The batch took **6.5% longer**. Three loops scored 75 and four loops scored 73. This is the local dense **DeepSeek-R1-Distill-Qwen-32B** checkpoint, not a result for every DeepSeek model.
+
+**Practical interpretation:** two loops is the most promising experimental choice for this checkpoint. Truncations fell from **22 to 16**, so completion within the fixed token budget matters to the result. Math accuracy stayed at 44/50 for every profile; the net gains came from the logic tasks. The two-sided paired p-value was 0.109375 before correction and 1.0 after correction. The gain is not statistically established.
+
+### DeepCoder 14B
+
+**Observed result: every loop count scored lower overall.** The original scored **54/100**; two, three and four loops scored **50, 52 and 50**. Looped batches took **10.5%–24.6% longer**. Three loops improved the math subtotal from 41/50 to 43/50, but the combined logic score fell enough to reduce the total.
+
+**Practical interpretation:** retain the original for this tested workload and budget. **39–44 answers per profile were truncated**, which substantially limits conclusions about longer reasoning or coding tasks. The observed decreases were not statistically established either; this is an unfavorable sample result, not proof that looping always harms this checkpoint.
+
+### Reader-LM 1.5B
+
+**Observed result: scores stayed very low, with no useful conclusion for its intended task.** The original scored **3/100**, and two, three and four loops scored **3, 5 and 4**. Every profile scored zero on both logic tasks, and 67–83 responses per profile had an empty final answer. Looped batches took **37.5%–75.2% longer**.
+
+**Practical interpretation:** the 3-to-5 change is not evidence that HTML conversion improved. [Reader-LM is trained for HTML-to-Markdown conversion](https://huggingface.co/jinaai/reader-lm-1.5b), which this benchmark did not test. Its three-loop score is the best observed score on these outside-domain questions, not a validated choice for its actual workload.
+
 ## Paired changes
 
 Wins and losses compare answers to the same questions. Positive changes favor looping. Intervals are 95% stratified paired bootstrap intervals in percentage points; p-values are exact two-sided paired tests, with Holm correction across all 12 comparisons.
